@@ -106,9 +106,12 @@ public class UsrArticleController {
 
 		int repliesCount = replies.size();
 
+		String relTypeCode = "article";
+
 		model.addAttribute("article", article);
 		model.addAttribute("replies", replies);
 		model.addAttribute("repliesCount", repliesCount);
+		model.addAttribute("relTypeCode", relTypeCode);
 		model.addAttribute("isAlreadyAddGoodRp",
 				reactionPointService.isAlreadyAddGoodRp(rq.getLoginedMemberId(), id, "article"));
 		model.addAttribute("isAlreadyAddBadRp",

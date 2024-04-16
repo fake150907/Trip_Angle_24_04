@@ -133,8 +133,8 @@ public class Rq {
 		return getEncodedCurrentUri();
 	}
 
-	public String getImgUri(int id) {
-		return "/common/genFile/file/article/" + id + "/extra/Img/1";
+	public String getImgUri(int id, String relTypeCode) {
+		return "/common/genFile/file/" + relTypeCode + "/" + id + "/extra/Img/1";
 	}
 
 	public String getProfileFallbackImgUri() {
