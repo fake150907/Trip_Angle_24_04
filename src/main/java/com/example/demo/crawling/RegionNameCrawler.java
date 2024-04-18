@@ -4,6 +4,7 @@ import java.awt.AWTException;
 import java.awt.Robot;
 import java.awt.event.InputEvent;
 import java.time.Duration;
+import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -36,8 +37,19 @@ public class RegionNameCrawler {
         url = "https://travel.naver.com/domestic";
         driver.get(url);
         
+        // Find the WebElement
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".header_search__4UCHI")));
+        WebElement element = driver.findElement(By.cssSelector(".header_search__4UCHI"));
+
+        // Get the location and size of the WebElement
+        int x = element.getLocation().getX();
+        int y = element.getLocation().getY();
+        
+        
         Robot robot = new Robot();
-        robot.mouseMove(1470, 220);
+        robot.mouseMove(x+216, y+191);
+        //robot.mouseMove(1470, 220);
         robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
         robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
         
@@ -52,13 +64,42 @@ public class RegionNameCrawler {
 //        searchButton.click();
 //        
 //        System.out.println("안되나.");
-//        
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("div.searchbox_home_where__tayah>a:nth-child(2)")));
-        System.out.println("여기도 왔어.");
-        WebElement overseasButton = driver.findElement(By.cssSelector("div.searchbox_home_where__tayah>a:nth-child(2)"));
-        overseasButton.click();
+//
+        
+        
+        
+	        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+	        wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("div.searchbox_home_where__tayah>a:nth-child(2)")));
+	        System.out.println("여기도 왔어.");
+	        WebElement overseasButton = driver.findElement(By.cssSelector("div.searchbox_home_where__tayah>a:nth-child(2)"));
+	        overseasButton.click();
+	        
+	        wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.cssSelector(".searchbox_home_tabs__FA2_B>a")));
+	        List<WebElement> continents  = driver.findElements(By.cssSelector(".searchbox_home_tabs__FA2_B>a"));
+	        System.out.println(continents.size());
+//	        
+//	        continents.stream().forEach(continent -> {
+//	        continent.click();
+//	        });
+	        
+	        for(WebElement continent : continents) {
+	        	try {
+					Thread.sleep(1000);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} 
+	        	continent.click();
+//	        	List<WebElement> countries  = driver.findElements(By.cssSelector("div.searchbox_home_panel__Kn11B > div"));
+//	        	for(WebElement country: countries) {
+//	        		System.out.println(country.getText());
+//	        	}
+	        	
+	        }
+	        
+	        
         }
+    
 //        
 //        
 //        
