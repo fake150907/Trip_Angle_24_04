@@ -89,7 +89,7 @@ public class RegionNameCrawler {
         		String countryName = countryButton.getText().trim();
         		countryButton.click();
 	        	try {
-					Thread.sleep(200);
+					Thread.sleep(500);
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
