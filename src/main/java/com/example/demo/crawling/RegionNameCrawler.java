@@ -33,7 +33,7 @@ public class RegionNameCrawler {
     public static String WEB_DRIVER_ID = "webdriver.chrome.driver";
     public static String WEB_DRIVER_PATH = "C:/work/chromedriver.exe";
 
-    public void crawling(String location) throws AWTException, SQLException, ClassNotFoundException {
+    public void crawling() throws AWTException, SQLException, ClassNotFoundException {
         System.setProperty(WEB_DRIVER_ID, WEB_DRIVER_PATH);
 
         ChromeOptions options = new ChromeOptions();
@@ -78,7 +78,7 @@ public class RegionNameCrawler {
         	continent.click();
         	//wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.cssSelector("div.searchbox_home_panel__Kn11B > div.searchbox_home_PanelItem__fH6Nu > a")));
         	try {
-				Thread.sleep(1000);
+				Thread.sleep(500);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -89,11 +89,13 @@ public class RegionNameCrawler {
         		String countryName = countryButton.getText().trim();
         		countryButton.click();
 	        	try {
-					Thread.sleep(1000);
+					Thread.sleep(200);
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
+	        	
+	        	
         		
         		List<WebElement> regionButtons = driver.findElements(By.cssSelector("div.searchbox_home_regions__N8aCL > a"));
         		
@@ -151,9 +153,6 @@ public class RegionNameCrawler {
         conn.commit();
         conn.close();
         
-        
-        
-        
     }
     
 
@@ -162,7 +161,7 @@ public class RegionNameCrawler {
     public static void main(String[] args) {
     	RegionNameCrawler crawler = new RegionNameCrawler();
     	try {
-    	crawler.crawling(WEB_DRIVER_ID);
+    	  crawler.crawling();
     	}catch(ClassNotFoundException e) {
     		System.out.println("드라이버 로딩에 실패했습니다.");
     		e.printStackTrace();
