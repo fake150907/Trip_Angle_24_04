@@ -64,96 +64,84 @@
   });
 </script>
 </head>
-<body>
-
-	<header>
-		<div class="h-20 flex mx-auto items-center text-3xl">
-			<a href="/" class="logo logo1" style="font-family: pattaya; color: #696969">Trip</a>
-			<a href="/" class="logo" style="font-family: pattaya; color: #81C8A2">Angle</a>
-			<div class="flex-grow"></div>
-			<ul class="flex">
-				<li class=""><a
-					class="h-full px-3 flex items-center btn-theme-toggle"
-					href="javascript:Theme__toggle();"> <span>🌞</span> <span>🌚</span>
-				</a></li>
-				<li><a class="hover:underline" href="/">HOME</a></li>
-				<li><a class="hover:underline"
-					href="../article/list?boardId=1&page=1">LIST</a>
-					<ul>
-						<li><a class="hover:underline"
-							href="../article/list?boardId=1&page=1">NOTICE</a></li>
-						<li><a class="hover:underline"
-							href="../article/list?boardId=2&page=1">FREE</a></li>
-						<li><a class="hover:underline"
-							href="../article/list?boardId=3&page=1">QnA</a></li>
-					</ul></li>
-				<c:if test="${!rq.isLogined() }">
-					<li><a class="hover:underline" href="${rq.loginUri }">LOGIN</a></li>
-					<li><a class="hover:underline" href="../member/join">JOIN</a></li>
-				</c:if>
-				<c:if test="${rq.isLogined() }">
-					<li><a class="hover:underline" href="../article/write">WRITE</a></li>
-					<li class="hover:underline"><a
-						class="h-full px-3 flex items-center" href="/usr/member/myPage">MYPAGE</a></li>
-					<li><a
-						onclick="if(confirm('로그아웃 할래?') == false) return false;"
-						class="hover:underline" href="${rq.logoutUri }">LOGOUT</a></li>
-				</c:if>
-			</ul>
-		</div>
-		  <div class="div-8 header-line"></div>
-	</header>
-	<h1 style="font-size: 2rem;">${pageTitle }</h1>
-<!-- 	<hr class="my-hr"> -->
-	
-	
 
 
-
-
+	<div class="header-container">
+    <header>
+        <div class="h-20 flex mx-auto items-center text-3xl">
+            <a href="/" class="logo logo1" style="font-family: pattaya; color: #696969">Trip</a>
+            <a href="/" class="logo" style="font-family: pattaya; color: #81C8A2">Angle</a>
+            <div class="flex-grow"></div>
+            <ul class="flex">
+                <li class=""><a class="h-full px-3 flex items-center btn-theme-toggle" href="javascript:Theme__toggle();"> <span>🌞</span> <span>🌚</span></a></li>
+                <li><a class="hover:underline" href="../article/list?boardId=1&page=1">LIST</a>
+                    <ul>
+                        <li><a class="hover:underline" href="../article/list?boardId=1&page=1">NOTICE</a></li>
+                        <li><a class="hover:underline" href="../article/list?boardId=2&page=1">FREE</a></li>
+                        <li><a class="hover:underline" href="../article/list?boardId=3&page=1">QnA</a></li>
+                    </ul>
+                </li>
+                <c:if test="${!rq.isLogined() }">
+                    <li><a class="hover:underline" href="${rq.loginUri }">Login</a></li>
+                    
+                    <li><a class="join-btn hover:underline" href="../member/join">Join</a></li>
+                </c:if>
+                <c:if test="${rq.isLogined() }">
+                    <li><a class="hover:underline" href="../article/write">WRITE</a></li>
+                    <li class="hover:underline"><a class="h-full px-3 flex items-center" href="/usr/member/myPage">MYPAGE</a></li>
+                    <li><a onclick="if(confirm('로그아웃 할래?') == false) return false;" class="hover:underline" href="${rq.logoutUri }">LOGOUT</a></li>
+                </c:if>
+            </ul>
+        </div>
+        <div class="div-8 header-line"></div>
+    </header>
+</div>
 
 <style>
-
-.logo1 {
-margin-left: 30px;
+    .header-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 20px; /* 필요에 따라 패딩을 조정하세요 */
+    position: relative; /* 부모 요소에 position: relative; 추가 */
 }
 
 .header-line {
-position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    border-color: red;
+    position: absolute; /* 절대 위치 지정 */
+    left: 50%; /* 부모 요소를 기준으로 가운데 정렬 */
+    transform: translateX(-50%); /* 정확한 가운데 정렬 */
+    border-color: #CACACA;
     border-style: solid;
     border-bottom-width: 1px;
     margin-top: 6px;
     height: 2px;
-    width: 1246px;
-
+    width: 100%; /* 가로 너비 100% 설정 */
 }
-
-
-/* .header-line { */
-/*     position: absolute; */
-/*     left: 50%; */
-/*     transform: translateX(-50%); */
-/*     border-color: red; */
-/*     border-style: solid; */
-/*     border-bottom-width: 1px; */
-/*     height: 2px; */
-/*     width: 1246px; */
-/* } */
 
 @media (max-width: 991px) {
     .header-line {
-      max-width: 100%;
+        max-width: 100%;
+    }
+}
+
+
+.join-btn {
+    font-family: Pretendard, sans-serif;
+    justify-content: center;
+    border-radius: 4px;
+    background-color: #d5f1e2;
+    align-self: stretch;
+    color: #3b3d40;
+    white-space: nowrap;
+    padding: 10px 25px; /* 패딩을 조정하여 버튼의 크기를 변경합니다 */
+    font-size: 14px; /* 글꼴 크기를 조정합니다 */
+    /* 추가적인 스타일을 필요에 따라 적용하세요 */
+}
+
+  @media (max-width: 991px) {
+    .div-6 {
+      white-space: initial;
+      padding: 0 20px;
     }
   }
-
-/* .my-hr { */
-/* 	border: 1px solid #CECECE; /* 선의 스타일 설정 */ */
-/* 	margin: 20px 0; /* 여백 설정 */ */
-/* 	width: 90%; */
-	
-/* } */
 
 </style>
