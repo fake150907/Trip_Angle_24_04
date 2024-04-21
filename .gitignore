@@ -34,3 +34,5 @@ build/
 
 LOG_PATH_IS_UNDEFINED/
 log/
+
+.env
