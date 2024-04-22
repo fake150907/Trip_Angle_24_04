@@ -131,6 +131,34 @@ header {
 /* ///////////  여기까지 건드리지마요 ////////////*/
 
  
+ .scroll-down-sign1 {
+  position: absolute;
+  top: 79%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 30px;
+  font-family: "Nanum Brush Script", cursive;
+  color: white;
+  z-index: 999;
+}
+.scroll-down-sign2 {
+  position: absolute;
+  top: 83%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 30px;
+  font-family: "Nanum Brush Script", cursive;
+  color: white;
+  z-index: 999;
+}
+ 
+@media (max-width: 991px) {
+  .scroll-down-sign2,
+  .scroll-down-sign1 {
+    font-size: 20px; /* 화면 크기가 991px 이하일 때 텍스트 크기를 줄입니다. */
+  }
+}
+ 
 .text {
 	position: absolute;
 	top: 38%;
@@ -532,6 +560,9 @@ header {
 						<span style="--i: 5">A</span> <span style="--i: 6">n</span> <span style="--i: 7">g</span> <span style="--i: 8">l</span>
 						<span style="--i: 9">e</span>
 					</a>
+					
+					<div class="scroll-down-sign1"> SCROLL DOWN </div>
+     				<div class="scroll-down-sign2"> ↓ </div>
 
 				</div>
 

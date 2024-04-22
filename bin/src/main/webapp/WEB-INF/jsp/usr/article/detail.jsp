@@ -292,9 +292,9 @@ function doModifyReply(replyId) {
 				<tr>
 					<th>첨부 이미지</th>
 					<td>
-						<img class="w-full rounded-xl" src="${rq.getImgUri(article.id)}" onerror="${rq.profileFallbackImgOnErrorHtml}"
-							alt="" />
-						<div>${rq.getImgUri(article.id)}</div>
+						<img class="w-full rounded-xl" src="${rq.getImgUri(article.id,relTypeCode)}"
+							onerror="${rq.profileFallbackImgOnErrorHtml}" alt="" />
+						<div>${rq.getImgUri(article.id,relTypeCode)}</div>
 					</td>
 				</tr>
 				<tr>
