@@ -87,8 +87,8 @@
 					<li><a class="join-btn header-btns " href="../member/join">Join</a></li>
 				</c:if>
 				<c:if test="${rq.isLogined() }">
-					<li><a class="write-btns header-btn " href="../article/write">WRITE</a></li>
-					<li class="mypage-btns header-btn "><a class="h-full px-3 flex items-center" href="/usr/member/myPage">MYPAGE</a></li>
+					<li><a class="write-btns header-btns " href="../article/write">WRITE</a></li>
+					<li> <a class="mypage-btns header-btns" href="/usr/member/myPage">MYPAGE</a></li>
 					<li><a onclick="if(confirm('로그아웃 할래?') == false) return false;" class="logout-btn header-btns "
 							href="${rq.logoutUri }">LOGOUT</a></li>
 				</c:if>
