@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <!DOCTYPE html>
 <html data-theme="light">
 <head>
@@ -19,6 +20,17 @@
 
 <!-- 제이쿼리 불러오기 -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+
+<!-- 구글폰트(아이콘) 불러오기 -->
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+
+<!-- 구글폰트 Pattaya -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pattaya&display=swap" rel="stylesheet">
 
 <script>
   // 테마를 전환하는 함수
@@ -51,36 +63,107 @@
   });
 </script>
 </head>
-<body>
 
+
+<div class="header-container">
 	<header>
 		<div class="h-20 flex mx-auto items-center text-3xl">
-			<a href="/">LOGO</a>
+			<a href="/" class="logo logo1" style="font-family: pattaya; color: #696969; margin-left: 28px;">Trip</a>
+			<a href="/" class="logo" style="font-family: pattaya; color: #81C8A2">Angle</a>
 			<div class="flex-grow"></div>
 			<ul class="flex">
-				<li class=""><a class="h-full px-3 flex items-center btn-theme-toggle" href="javascript:Theme__toggle();">
-						<span>🌞</span>
-						<span>🌚</span>
-					</a></li>
-				<li><a class="hover:underline" href="/">HOME</a></li>
-				<li><a class="hover:underline" href="../article/list?boardId=1&page=1">LIST</a>
+<!-- 				<li class=""><a class="h-full px-3 flex items-center btn-theme-toggle" href="javascript:Theme__toggle();"> -->
+<!-- 						<span>🌞</span> <span>🌚</span> -->
+<!-- 					</a></li> -->
+				<li><a class="list-btn header-btns " href="../article/list?boardId=1&page=1">LIST</a>
 					<ul>
-						<li><a class="hover:underline" href="../article/list?boardId=1&page=1">NOTICE</a></li>
-						<li><a class="hover:underline" href="../article/list?boardId=2&page=1">FREE</a></li>
-						<li><a class="hover:underline" href="../article/list?boardId=3&page=1">QnA</a></li>
+						<li><a class="notice-btn header-btns " href="../article/list?boardId=1&page=1">NOTICE</a></li>
+						<li><a class="free-btn header-btns " href="../article/list?boardId=2&page=1">FREE</a></li>
+						<li><a class="qna-btn header-btns " href="../article/list?boardId=3&page=1">QnA</a></li>
 					</ul></li>
 				<c:if test="${!rq.isLogined() }">
-					<li><a class="hover:underline" href="${rq.loginUri }">LOGIN</a></li>
-					<li><a class="hover:underline" href="../member/join">JOIN</a></li>
+					<li><a class="login-btn header-btns" href="${rq.loginUri }">Login</a></li>
+
+					<li><a class="join-btn header-btns " href="../member/join">Join</a></li>
 				</c:if>
 				<c:if test="${rq.isLogined() }">
-					<li><a class="hover:underline" href="../article/write">WRITE</a></li>
-					<li class="hover:underline"><a class="h-full px-3 flex items-center" href="/usr/member/myPage">MYPAGE</a></li>
-					<li><a onclick="if(confirm('로그아웃 할래?') == false) return false;" class="hover:underline"
+					<li><a class="write-btns header-btns " href="../article/write">WRITE</a></li>
+					<li> <a class="mypage-btns header-btns" href="/usr/member/myPage">MYPAGE</a></li>
+					<li><a onclick="if(confirm('로그아웃 할래?') == false) return false;" class="logout-btn header-btns "
 							href="${rq.logoutUri }">LOGOUT</a></li>
 				</c:if>
 			</ul>
 		</div>
+		<div class="div-8 header-line"></div>
 	</header>
-	<h1 style="font-size: 2rem;">${pageTitle }</h1>
-	<hr />
+</div>
+
+<style>
+/* 헤더가 고정 위치로 설정될 수 있도록 수정 */
+.header-container {
+    z-index: 999;
+    max-width: 100%; /* 최대 너비를 조정 */
+    margin: 0 auto;
+    position: fixed; /* 고정 위치로 설정 */
+    top: 0; /* 상단에 배치 */
+    left: 0; /* 왼쪽에 배치 */
+    width: 100%; /* 가로 너비 100% 설정 */
+    background-color: white; /* 배경색 설정 */
+}
+
+/* 가운데 라인을 조정하여 헤더가 정렬되도록 수정 */
+.header-line {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    border-color: #CACACA;
+    border-style: solid;
+    border-bottom-width: 1px;
+    margin-top: -2px;
+    height: 2px;
+    width: calc(100% - 40px); /* 가로 너비 조정 */
+}
+
+
+
+/* 반응형 디자인을 위한 미디어 쿼리 추가 */
+@media (max-width: 991px) {
+    .header-container {
+        padding: 0 10px; /* 작은 화면에서의 패딩 조정 */
+    }
+    .header-line {
+        width: calc(100% - 20px); /* 작은 화면에서 가로 너비 조정 */
+    }
+}
+
+@media ( max-width : 991px) {
+	.header-line {
+		max-width: 100%;
+	}
+}
+
+.join-btn {
+	font-family: Pretendard, sans-serif;
+	justify-content: center;
+	border-radius: 7px;
+	background-color: #d5f1e2;
+	align-self: stretch;
+	color: #3b3d40;
+	white-space: nowrap;
+	padding: 10px 25px; /* 패딩을 조정하여 버튼의 크기를 변경합니다 */
+	font-size: 14px; /* 글꼴 크기를 조정합니다 */
+	/* 추가적인 스타일을 필요에 따라 적용하세요 */
+}
+
+.header-btns{
+font-size: 14px;
+
+}
+
+@media ( max-width : 991px) {
+	.div-6 {
+		white-space: initial;
+		padding: 0 20px;
+	}
+}
+</style>
