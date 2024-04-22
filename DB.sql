@@ -109,6 +109,7 @@ CREATE TABLE `fashion` (
 	`name`	VARCHAR(100)	NULL,
 	`brand`	VARCHAR(50)	NULL,
 	`imageUrl`	TEXT	NULL,
+	`gender`	TINYINT(1)	NULL,
 	`scheduleId`	INT(10)	NOT NULL
 );
 
