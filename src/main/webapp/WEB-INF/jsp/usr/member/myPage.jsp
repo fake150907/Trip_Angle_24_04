@@ -80,7 +80,7 @@
 	height: 100vh;
 	display: flex;
 	flex-direction: column;
-	margin-top: 100px;
+	margin-top: 10%;
 	align-items: center;
 	font-family: Pretendard;
 }
