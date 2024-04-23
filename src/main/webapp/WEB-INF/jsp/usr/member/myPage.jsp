@@ -51,7 +51,7 @@
 					<div class="btns">
 
 						<button class="backBtn" type="button" onclick="history.back();">뒤로가기</button>
-						<a class="toMyPageBtn" href="../member/myPage">마이페이지로 이동</a>
+<!-- 						<a class="toMyPageBtn" href="../member/myPage">마이페이지로 이동</a> -->
 						
 						<a class="loginBtn" href="../member/doDeleteId">회원탈퇴</a>
 
