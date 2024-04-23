@@ -63,14 +63,14 @@ CREATE TABLE `genFile` (
 );
 
 CREATE TABLE `regionInfoTips` (
-	`id`	INT(10)	NOT NULL	COMMENT '여행지 설명 및 꿀팁 세션 아이디',
+	`id`	INT(10)	UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT COMMENT '여행지 설명 및 꿀팁 세션 아이디',
 	`information`	TEXT	NULL	COMMENT '여행지에 대한 설명문',
 	`Voltage`	CHAR(30)	NULL	COMMENT '전압',
 	`language`	CHAR(20)	NULL	COMMENT '사용언어',
 	`climate`	CHAR(30)	NULL	COMMENT '기후',
-	`timeDifference`	TIME	NULL	COMMENT '시차',
-	`rate`	DECIMAL(10, 2)	NULL,
-	`tips`	CHAR(6)	NULL,
+	`timeDifference`	CHAR(100)	NULL	COMMENT '시차',
+	`rate`	CHAR(100)	NULL,
+	`tips`	CHAR(100)	NULL,
 	`regionId`	INT(10)	NOT NULL
 );
 
