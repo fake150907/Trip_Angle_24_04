@@ -1,4 +1,4 @@
-package com.example.demo.crawlling;
+package com.example.demo.crawling;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

@@ -1,4 +1,4 @@
-package com.example.demo.crawlling;
+package com.example.demo.crawling;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -34,7 +34,7 @@ public class CrawlingTest2 {
 		options.setCapability("ignoreProtectedModeSettings", true);
 		driver = new ChromeDriver(options);
 
-		url = "https://travel.naver.com/overseas/GBLON186338/city/prepare";
+		url = "https://travel.naver.com/overseas/JPOSA298566/city/prepare";
 		driver.get(url);
 
 		try {
@@ -95,7 +95,6 @@ public class CrawlingTest2 {
 
 		regionInfoTipsList.add(new RegionInfoTips(information, voltage, language, climate, timeDifference, rate, tips, regionId));
 
-		
 		String url = "jdbc:mysql://127.0.0.1:3306/Trip_Angle_24_04?useUnicode=true&characterEncoding=utf8&autoReconnect=true&serverTimezone=Asia/Seoul&useOldAliasMetadataBehavior=true&zeroDateTimeBehavior=convertToNull";
 	    Connection conn = DriverManager.getConnection(url, "root", "");
 	    String insertQuery = "INSERT INTO regionInfoTips (information, Voltage, language, climate, timeDifference, rate, tips, regionId) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
