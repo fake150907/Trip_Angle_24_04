@@ -16,12 +16,12 @@ CREATE TABLE `article` (
 
 CREATE TABLE `travelSchedule` (
 	`id`	INT(10)	NOT NULL,
-	`regDate`	DATETIME	NULL,
-	`updateDate`	DATETIME	NULL,
+	`regDate`	DateTime	NULL,
+	`updateDate`	DateTime	NULL,
 	`name`	CHAR(100)	NULL,
 	`description`	TEXT	NULL,
-	`startDate`	DATETIME	NULL,
-	`endDate`	DATETIME	NULL,
+	`startDate`	DateTime	NULL,
+	`endDate`	DateTime	NULL,
 	`step`	INT(2)	NULL,
 	`regionId`	INT(10)	NOT NULL,
 	`memberId`	INT(10)	NOT NULL	COMMENT 'member의 id'
@@ -45,10 +45,10 @@ CREATE TABLE `member` (
 
 CREATE TABLE `genFile` (
 	`id`	INT(10)	NOT NULL,
-	`regDate`	DATETIME	NULL,
-	`updateDate`	DATETIME	NULL,
-	`delDate`	DATETIME	NULL,
-	`delStatus`	TINYINT(1)	NULL,
+	`regDate`	DateTime	NULL,
+	`updateDate`	DateTime	NULL,
+	`delDate`	DateTime	NULL,
+	`delStatus`	TinyINT(1)	NULL,
 	`relTypeCode`	CHAR(50)	NULL,
 	`relId`	INT(10)	NULL,
 	`originFileName`	VARCHAR(100)	NULL,
@@ -240,4 +240,3 @@ ALTER TABLE `board` MODIFY `id` INT NOT NULL AUTO_INCREMENT, ADD PRIMARY KEY (`i
 ALTER TABLE `reactionPoint` MODIFY `id` INT NOT NULL AUTO_INCREMENT, ADD PRIMARY KEY (`id`);
 ALTER TABLE `spotifyMember` MODIFY `id` INT NOT NULL AUTO_INCREMENT, ADD PRIMARY KEY (`id`);
 ALTER TABLE `reply` MODIFY `id` INT NOT NULL AUTO_INCREMENT, ADD PRIMARY KEY (`id`);
-ALTER TABLE `recommendSpotReview` MODIFY `id` INT NOT NULL AUTO_INCREMENT, ADD PRIMARY KEY (`id`);
