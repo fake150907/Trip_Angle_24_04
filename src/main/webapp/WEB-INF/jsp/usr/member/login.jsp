@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="pageTitle" value="로그인"></c:set>
 <%@ include file="../common/head.jspf"%>
@@ -15,17 +16,22 @@
 					<div class="mx-auto">
 						<form action="../member/doLogin" method="POST">
 
-							<input type="hidden" name="afterLoginUri" value="${param.afterLoginUri}" />
+							<input type="hidden" name="afterLoginUri"
+								value="${param.afterLoginUri}" />
 							<div class="title">로그인</div>
 							<div class="mint-line"></div>
 
 							<div class="IdBox">
-								<span class="material-symbols-outlined"> person </span> <input id="loginId"
-									class="input input-sm w-full max-w-xs" autocomplete="off" type="text" placeholder="아이디를 입력해주세요" name="loginId" />
+								<span class="material-symbols-outlined"> person </span> <input
+									id="loginId" class="input input-sm w-full max-w-xs"
+									autocomplete="off" type="text" placeholder="아이디를 입력해주세요"
+									name="loginId" />
 							</div>
 							<div class="PwBox">
-								<span class="material-symbols-outlined"> lock </span> <input id="loginPw" class="input input-sm w-full max-w-xs"
-									autocomplete="off" type="password" placeholder="비밀번호를 입력해주세요" name="loginPw" />
+								<span class="material-symbols-outlined"> lock </span> <input
+									id="loginPw" class="input input-sm w-full max-w-xs"
+									autocomplete="off" type="password" placeholder="비밀번호를 입력해주세요"
+									name="loginPw" />
 							</div>
 
 							<input class="loginBtn btn btn-sm" type="submit" value="로그인" />
@@ -35,8 +41,15 @@
 							<button class="backBtn" type="button" onclick="history.back();">뒤로가기</button>
 							<a class="joinBtn" href="../member/join">회원가입</a>
 
-
 						</div>
+
+						<div class="spotify-wrapper">
+							<a class="spotify-btn" href="/"> <img
+								src="https://velog.velcdn.com/images/yunlinit/post/9169e991-187d-44b4-ab8f-a8223651ad66/image.png"
+								alt="Spotify로 시작하기">
+							</a>
+						</div>
+
 					</div>
 				</section>
 			</div>
@@ -103,7 +116,7 @@
 
 .Rectangle6 {
 	width: 500px;
-	height: 311px;
+	height: 350px;
 	left: 0px;
 	top: 0px;
 	position: absolute;
@@ -139,7 +152,7 @@
 	height: 39px;
 	position: absolute;
 	left: 40%;
-	bottom: 30px;
+	bottom: 22%;
 	background-color: #d5f1e2;
 }
 
@@ -148,10 +161,25 @@
 	height: 39px;
 	position: absolute;
 	left: 40%;
-	bottom: 30px;
+	bottom: 22%;
 	background-color: #ededed;
 	border: solid #ededed;
 }
+
+.spotify-wrapper {
+    position: absolute; /* 절대 위치 지정 */
+    bottom: 22px; /* 원하는 위치로 조정 */
+    left: 50%; /* 왼쪽으로부터 중앙에 배치 */
+    transform: translateX(-50%); /* 중앙 정렬 */
+}
+
+/* .spotify-btn img { */
+/*     /* 이미지에 대한 스타일 */ */
+/*     width: 100px; */
+/*     height: auto; */
+/* } */
+
+
 
 </style>
 
@@ -159,4 +187,4 @@
 
 
 
-<%@ include file="../common/foot.jspf"%>
+<%@ include file="../common/foot.jspf"%>S
