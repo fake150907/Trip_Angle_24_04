@@ -35,6 +35,7 @@
 							<button class="backBtn" type="button" onclick="history.back();">뒤로가기</button>
 							<a class="joinBtn" href="../member/join">회원가입</a>
 
+
 						</div>
 					</div>
 				</section>
