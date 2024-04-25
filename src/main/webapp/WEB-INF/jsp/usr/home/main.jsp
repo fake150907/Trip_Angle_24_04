@@ -349,8 +349,8 @@ transform: translateY(-20px);
 	padding: 32px 80px 80px;
 	max-width: 1280px;
 	margin: auto;
-	margin-top: 120px;
-	margin-bottom: 100px;
+	margin-top: 190px;
+	margin-bottom: 90px;
 }
 
 @media ( max-width : 991px) {
@@ -370,10 +370,10 @@ transform: translateY(-20px);
 	}
 }
 
-.mint-line {
+.mint-line1 {
 	border-color: rgba(213, 241, 226, 1);
 	border-style: solid;
-	border-bottom-width: 1px;
+	border-bottom-width: 3px;
 	width: 224px;
 	height: 2px;
 	margin-top: 7px;
@@ -558,11 +558,10 @@ transform: translateY(-20px);
 }
 
 
-.suranna-regular {
-  font-family: "Suranna", serif;
-  font-weight: 400;
-  font-style: normal;
-}
+
+/* CONTACT US  */
+
+
 .contactus {
   background-color: #fff;
   display: flex;
@@ -570,6 +569,7 @@ transform: translateY(-20px);
   align-items: center;
   text-align: center;
   padding: 13px 80px 75px;
+  margin-bottom: 100px;
 }
 @media (max-width: 991px) {
   .contactus {
@@ -580,7 +580,7 @@ transform: translateY(-20px);
 .title {
   color: #3b3d40;
   margin-top: 75px;
-  font: 400 80px/35% Suranna, sans-serif;
+  font: 400 60px/35% Suranna, sans-serif;
 }
 @media (max-width: 991px) {
   .title {
@@ -588,19 +588,128 @@ transform: translateY(-20px);
     font-size: 40px;
   }
 }
-.body {
+.message {
   color: #3b3d40;
   margin-top: 32px;
   font: italic 300 20px/28px Urbanist, -apple-system, Roboto, Helvetica,
     sans-serif;
 }
 @media (max-width: 991px) {
-  .body {
+  .message {
     max-width: 100%;
     font-size: 12px;
   }
 }
 
+.container {
+  perspective: 1000px; /* 시점 설정 */
+  margin-top: 50px;
+}
+
+
+* {
+  box-sizing: border-box;
+}
+
+.flip {
+  position: relative;
+}
+.flip > .front,
+.flip > .back {
+  display: block;
+  transition-timing-function: cubic-bezier(.175, .885, .32, 1.275);
+  transition-duration: 1s;
+  transition-property: transform, opacity;
+}
+.flip > .front {
+  transform: rotateY(0deg);
+}
+.flip > .back {
+  position: absolute;
+  opacity: 0;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  transform: rotateY(-180deg);
+}
+.flip:hover > .front {
+  transform: rotateY(180deg);
+}
+.flip:hover > .back {
+  opacity: 1;
+  transform: rotateY(0deg);
+}
+
+/* custom */
+.flip {
+  display: inline-block;
+  margin-right: 5px;
+  margin-bottom: 1em;
+  width: 235px;
+  
+}
+.flip > .front {
+  display: block;
+  color: white;
+  width: inherit;
+  background-size: cover!important;
+  background-position: center!important;
+  height: 350px;
+  padding: 5em 2em;
+  background: white;
+  border-radius: 10px;
+
+}
+
+.flip > .back {
+  font-family: Urbanist;
+  display: block;
+  color: #696969;
+  width: inherit;
+  background-size: cover!important;
+  background-position: center!important;
+  height: 350px;
+  padding: 5em 2em;
+  background: white;
+  border-radius: 10px;
+  border: solid #ededed 1px;
+
+}
+
+.korean-name {
+  font-weight: 500;
+  font-size: 25px;
+}
+
+.name {
+  font-size: 20px;
+  margin-top: 95%;
+  font-family: Urbanist;
+  font-weight: 500px;
+  
+}
+
+.name{
+  text-shadow: 1px 1px rgba(0, 0, 0, 0.04), 2px 2px rgba(0, 0, 0, 0.04), 3px 3px rgba(0, 0, 0, 0.04), 4px 4px rgba(0, 0, 0, 0.04), 0.125rem 0.125rem rgba(0, 0, 0, 0.04), 6px 6px rgba(0, 0, 0, 0.04), 7px 7px rgba(0, 0, 0, 0.04), 8px 8px rgba(0, 0, 0, 0.04), 9px 9px rgba(0, 0, 0, 0.04), 0.3125rem 0.3125rem rgba(0, 0, 0, 0.04), 11px 11px rgba(0, 0, 0, 0.04), 12px 12px rgba(0, 0, 0, 0.04), 13px 13px rgba(0, 0, 0, 0.04), 14px 14px rgba(0, 0, 0, 0.04), 0.625rem 0.625rem rgba(0, 0, 0, 0.04), 16px 16px rgba(0, 0, 0, 0.04), 17px 17px rgba(0, 0, 0, 0.04), 18px 18px rgba(0, 0, 0, 0.04), 19px 19px rgba(0, 0, 0, 0.04), 1.25rem 1.25rem rgba(0, 0, 0, 0.04);
+}
+
+
+.mint-line {
+  display: block;
+  height: 3px;
+  width: 90px;
+  background-color: #d5f1e2;
+  margin-left: 23.5%;
+}
+
+.button {
+	background-color: #d5f1e2;
+}
+
+.button:hover {
+	background-color: #ededed;
+	border: solid #ededed;
+}
 
 </style>
 <body>
@@ -672,7 +781,7 @@ transform: translateY(-20px);
 							style="color: rgba(105, 105, 105, 1)">Trip</span> <span
 							style="color: rgba(129, 200, 162, 1)">Angle</span>
 					</div>
-					<div class="mint-line"></div>
+					<div class="mint-line1"></div>
 					<div class="trip-style-music-section">
 						<div class="div-5">
 							<div class="trip-box">
@@ -703,21 +812,97 @@ transform: translateY(-20px);
 
 			<div class="section">
 
-				<div class="div contactus">
-				
-					<div class="div-3 title">Contact Us</div>
-					<div class="body">
-						Thanks to the project <span
-							style="font-weight: 500; font-style: italic; color: rgba(129, 200, 162, 1);">
-							TripAngle </span> , we've had the pleasure of exchanging ideas and
-						inspirations,</br> exploring boundless creative avenues through
-						collaborative efforts. </br> Below, you'll find additional personal
-						information about each of our team members. </br>Feel free to reach out
-						to us anytime!
-					</div>
-				</div>
-				
-				<div class= "personal-info-card" style="height: 870px;"> </div>
+				<div class="contactus">
+  <div class="title">Contact Us</div>
+  <div class="message">
+    Thanks to the project
+    <span style="
+        font-weight: 500;
+        font-style: italic;
+        color: rgba(129, 200, 162, 1);
+      ">
+      TripAngle
+    </span>
+    , we've had the pleasure of exchanging ideas and inspirations,</br> exploring
+    boundless creative avenues through collaborative efforts. </br> Below, you'll
+    find additional personal information about each of our team members. </br>Feel
+    free to reach out to us anytime!
+  </div>
+
+
+<div class="container">
+  <div class="flip">
+    <div class="front" style="background-image: url(https://images.unsplash.com/photo-1552960394-c81add8de6b8?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)">
+      <h1 class="name">Seo Myeong Won</h1>
+    </div>
+    <div class="back">
+      <h2 class="korean-name">서명원</h2>
+      <div class ="mint-line"></div>
+      </br>
+      <p>010-1234-1234</p>
+      <button class="button btn btn-xs">text message</button>
+      </br>
+    </br>
+      <p>insamjoo300@gmail.com</p>
+      <button class="button btn btn-xs">send e-mail</button>
+
+
+    </div>
+  </div>
+
+  <div class="flip">
+    <div class="front" style="background-image: url(https://images.unsplash.com/photo-1543269664-56d93c1b41a6?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)">
+      <h1 class="name">Chang Yun Lin</h1>
+    </div>
+    <div class="back">
+      <h2 class="korean-name">장윤린</h2>
+       <div class ="mint-line"></div>
+     </br>
+      <p>010-1234-1234</p>
+      <button class="button btn btn-xs">text message</button>
+      </br>
+    </br>
+      <p>insamjoo300@gmail.com</p>
+      <button class="button btn btn-xs">send e-mail</button>
+    </div>
+  </div>
+
+  <div class="flip">
+    <div class="front" style="background-image: url(https://images.unsplash.com/photo-1571365689578-618663443bd7?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)">
+      <h1 class="name">Yun Ga Yeon</h1>
+    </div>
+    <div class="back">
+      <h2 class="korean-name">윤가연</h2>
+       <div class ="mint-line"></div>
+      </br>
+      <p>010-1234-1234</p>
+      <button class="button btn btn-xs">text message</button>
+      </br>
+    </br>
+      <p>insamjoo300@gmail.com</p>
+      <button class="button btn btn-xs">send e-mail</button>
+    </div>
+  </div>
+
+  <div class="flip">
+    <div class="front" style="background-image: url(https://images.unsplash.com/photo-1507537297725-24a1c029d3ca?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)">
+      <h1 class="name">Shin Gyu Seob</h1>
+    </div>
+    <div class="back">
+      <h2 class="korean-name">신규섭</h2>
+       <div class ="mint-line"></div>
+      </br>
+      <p>010-1234-1234</p>
+      <button class="button btn btn-xs">text message</button>
+      </br>
+    </br>
+      <p>insamjoo300@gmail.com</p>
+      <button class="button btn btn-xs">send e-mail</button>
+    </div>
+  </div>
+</div>
+</div>
+
 
 			</div>
 
