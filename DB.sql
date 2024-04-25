@@ -349,3 +349,280 @@ ALTER TABLE `recommendSpotReview` ADD CONSTRAINT `FK_member_TO_recommendSpotRevi
 REFERENCES `member` (
 	`id`
 );
+
+
+########### TEST DATA ############
+
+
+# article TD 생성
+INSERT INTO article
+SET regDate = NOW(),
+updateDate = NOW(),
+title = '제목1',
+`body` = '내용1';
+
+INSERT INTO article
+SET regDate = NOW(),
+updateDate = NOW(),
+title = '제목2',
+`body` = '내용2';
+
+INSERT INTO article
+SET regDate = NOW(),
+updateDate = NOW(),
+title = '제목3',
+`body` = '내용3';
+
+INSERT INTO article
+SET regDate = NOW(),
+updateDate = NOW(),
+title = '제목4',
+`body` = '내용4';
+
+# member TD 생성
+# (관리자)
+INSERT INTO `member`
+SET regDate = NOW(),
+updateDate = NOW(),
+loginId = 'admin',
+loginPw = 'admin',
+`authLevel` = 7,
+`name` = '관리자',
+nickname = '관리자',
+cellphoneNum = '01012341234',
+email = 'abcd@gmail.com';
+
+# (일반)
+INSERT INTO `member`
+SET regDate = NOW(),
+updateDate = NOW(),
+loginId = 'test1',
+loginPw = 'test1',
+`name` = '회원1',
+nickname = '회원1',
+cellphoneNum = '01043214321',
+email = 'abcde@gmail.com';
+
+# (일반)
+INSERT INTO `member`
+SET regDate = NOW(),
+updateDate = NOW(),
+loginId = 'test2',
+loginPw = 'test2',
+`name` = '회원2',
+nickname = '회원2',
+cellphoneNum = '01056785678',
+email = 'abcdef@gmail.com';
+
+
+UPDATE article
+SET memberId = 2
+WHERE id IN (1,2);
+
+UPDATE article
+SET memberId = 3
+WHERE id IN (3,4);
+
+
+# board TD 생성
+INSERT INTO board
+SET regDate = NOW(),
+updateDate = NOW(),
+`code` = 'NOTICE',
+`name` = '공지사항';
+
+INSERT INTO board
+SET regDate = NOW(),
+updateDate = NOW(),
+`code` = 'FREE',
+`name` = '자유';
+
+INSERT INTO board
+SET regDate = NOW(),
+updateDate = NOW(),
+`code` = 'QnA',
+`name` = '질의응답';
+
+
+UPDATE article
+SET boardId = 1
+WHERE id IN (1,2);
+
+UPDATE article
+SET boardId = 2
+WHERE id = 3;
+
+UPDATE article
+SET boardId = 3
+WHERE id = 4;
+
+
+# reactionPoint 테스트 데이터 생성
+# 1번 회원이 1번 글에 싫어요
+INSERT INTO reactionPoint
+SET regDate = NOW(),
+updateDate = NOW(),
+memberId = 1,
+relTypeCode = 'article',
+relId = 1,
+`point` = -1;
+
+# 1번 회원이 2번 글에 좋아요
+INSERT INTO reactionPoint
+SET regDate = NOW(),
+updateDate = NOW(),
+memberId = 1,
+relTypeCode = 'article',
+relId = 2,
+`point` = 1;
+
+# 2번 회원이 1번 글에 싫어요
+INSERT INTO reactionPoint
+SET regDate = NOW(),
+updateDate = NOW(),
+memberId = 2,
+relTypeCode = 'article',
+relId = 1,
+`point` = -1;
+
+# 2번 회원이 2번 글에 싫어요
+INSERT INTO reactionPoint
+SET regDate = NOW(),
+updateDate = NOW(),
+memberId = 2,
+relTypeCode = 'article',
+relId = 2,
+`point` = -1;
+
+# 3번 회원이 1번 글에 좋아요
+INSERT INTO reactionPoint
+SET regDate = NOW(),
+updateDate = NOW(),
+memberId = 3,
+relTypeCode = 'article',
+relId = 1,
+`point` = 1;
+
+# article 테이블에 좋아요 관련 컬럼 추가
+ALTER TABLE article ADD COLUMN goodReactionPoint INT(10) UNSIGNED NOT NULL DEFAULT 0;
+ALTER TABLE article ADD COLUMN badReactionPoint INT(10) UNSIGNED NOT NULL DEFAULT 0;
+
+# update join -> 기존 게시물의 good,bad RP 값을 RP 테이블에서 가져온 데이터로 채운다
+UPDATE article AS A
+INNER JOIN (
+    SELECT RP.relTypeCode,RP.relId,
+    SUM(IF(RP.point > 0, RP.point, 0)) AS goodReactionPoint,
+    SUM(IF(RP.point < 0, RP.point * -1, 0)) AS badReactionPoint
+    FROM reactionPoint AS RP
+    GROUP BY RP.relTypeCode, RP.relId
+) AS RP_SUM
+ON A.id = RP_SUM.relId
+SET A.goodReactionPoint = RP_SUM.goodReactionPoint,
+A.badReactionPoint = RP_SUM.badReactionPoint;
+
+
+
+# 2번 회원이 1번 글에 댓글 작성
+INSERT INTO reply
+SET regDate = NOW(),
+updateDate = NOW(),
+memberId = 2,
+relTypeCode = 'article',
+relId = 1,
+`body` = '댓글 1';
+
+# 2번 회원이 1번 글에 댓글 작성
+INSERT INTO reply
+SET regDate = NOW(),
+updateDate = NOW(),
+memberId = 2,
+relTypeCode = 'article',
+relId = 1,
+`body` = '댓글 2';
+
+# 3번 회원이 1번 글에 댓글 작성
+INSERT INTO reply
+SET regDate = NOW(),
+updateDate = NOW(),
+memberId = 3,
+relTypeCode = 'article',
+relId = 1,
+`body` = '댓글 3';
+
+# 3번 회원이 1번 글에 댓글 작성
+INSERT INTO reply
+SET regDate = NOW(),
+updateDate = NOW(),
+memberId = 2,
+relTypeCode = 'article',
+relId = 2,
+`body` = '댓글 4';
+
+# reply 테이블에 좋아요 관련 컬럼 추가
+ALTER TABLE reply ADD COLUMN goodReactionPoint INT(10) UNSIGNED NOT NULL DEFAULT 0;
+ALTER TABLE reply ADD COLUMN badReactionPoint INT(10) UNSIGNED NOT NULL DEFAULT 0;
+
+# reactionPoint 테스트 데이터 생성
+# 1번 회원이 1번 댓글에 싫어요
+INSERT INTO reactionPoint
+SET regDate = NOW(),
+updateDate = NOW(),
+memberId = 1,
+relTypeCode = 'reply',
+relId = 1,
+`point` = -1;
+
+# 1번 회원이 2번 댓글에 좋아요
+INSERT INTO reactionPoint
+SET regDate = NOW(),
+updateDate = NOW(),
+memberId = 1,
+relTypeCode = 'reply',
+relId = 2,
+`point` = 1;
+
+# 2번 회원이 1번 댓글에 싫어요
+INSERT INTO reactionPoint
+SET regDate = NOW(),
+updateDate = NOW(),
+memberId = 2,
+relTypeCode = 'reply',
+relId = 1,
+`point` = -1;
+
+# 2번 회원이 2번 댓글에 싫어요
+INSERT INTO reactionPoint
+SET regDate = NOW(),
+updateDate = NOW(),
+memberId = 2,
+relTypeCode = 'reply',
+relId = 2,
+`point` = -1;
+
+# 3번 회원이 1번 댓글에 좋아요
+INSERT INTO reactionPoint
+SET regDate = NOW(),
+updateDate = NOW(),
+memberId = 3,
+relTypeCode = 'reply',
+relId = 1,
+`point` = 1;
+
+# update join -> 기존 게시물의 good,bad RP 값을 RP 테이블에서 가져온 데이터로 채운다
+UPDATE reply AS R
+INNER JOIN (
+    SELECT RP.relTypeCode,RP.relId,
+    SUM(IF(RP.point > 0, RP.point, 0)) AS goodReactionPoint,
+    SUM(IF(RP.point < 0, RP.point * -1, 0)) AS badReactionPoint
+    FROM reactionPoint AS RP
+    GROUP BY RP.relTypeCode, RP.relId
+) AS RP_SUM
+ON R.id = RP_SUM.relId
+SET R.goodReactionPoint = RP_SUM.goodReactionPoint,
+R.badReactionPoint = RP_SUM.badReactionPoint;
+
+
+
+SELECT * FROM article;
+
+SELECT * FROM board;

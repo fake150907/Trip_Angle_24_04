@@ -32,6 +32,17 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Pattaya&display=swap" rel="stylesheet">
 
+<!-- 구글폰트 Suranna -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Suranna&display=swap" rel="stylesheet">
+
+
+<!-- 구글폰트 Urbanist -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Suranna&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
 <script>
   // 테마를 전환하는 함수
   function Theme__toggle() {
