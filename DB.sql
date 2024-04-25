@@ -245,6 +245,7 @@ ALTER TABLE `spotifyMember` MODIFY `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT
 ALTER TABLE `reply` MODIFY `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT, ADD PRIMARY KEY (`id`);
 
 ## 관계키 추가
+/*
 ALTER TABLE `article` ADD CONSTRAINT `FK_member_TO_article_1` FOREIGN KEY (
 	`memberId`
 )
@@ -349,7 +350,7 @@ ALTER TABLE `recommendSpotReview` ADD CONSTRAINT `FK_member_TO_recommendSpotRevi
 REFERENCES `member` (
 	`id`
 );
-
+*/
 
 ########### TEST DATA ############
 
