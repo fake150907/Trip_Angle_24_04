@@ -872,9 +872,7 @@ transform: translateY(-20px);
         font-weight: 500;
         font-style: italic;
         color: rgba(129, 200, 162, 1);">
-          TripAngle
-        </span>
-        , we've had the pleasure of exchanging ideas and inspirations,</br> exploring
+          TripAngle</span>, we've had the pleasure of exchanging ideas and inspirations,</br> and exploring
         boundless creative avenues through collaborative efforts. </br> Below, you'll
         find additional personal information about each of our team members. </br>Feel
         free to reach out to us anytime!
@@ -903,7 +901,8 @@ transform: translateY(-20px);
           <h2 class="korean-name">서명원</h2>
           <div class="mint-line"></div>
           </br>
-          <p>010-1234-1234</p>
+          <p>010-4495-0000</p>
+<!--           <p>010-4495-8592</p> -->
           <button class="button btn btn-xs">text message</button>
           </br>
           </br>
