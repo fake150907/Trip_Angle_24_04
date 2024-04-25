@@ -8,6 +8,7 @@ public class RegionCrawlingDto {
 	String naverRegionCord;
 	String regionName;
 	String imageUrl;
+	String englishName;
 	int regionId;
 	
 	public RegionCrawlingDto(String countryName, String naverRegionCord, String regionName) {

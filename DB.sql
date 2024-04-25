@@ -20,8 +20,8 @@ CREATE TABLE `travelSchedule` (
 	`updateDate`	DATETIME	NULL,
 	`name`	CHAR(100)	NULL,
 	`description`	TEXT	NULL,
-	`startDate`	DATETIME	NULL,
-	`endDate`	DATETIME	NULL,
+	`startDate`	DATE	NULL,
+	`endDate`	DATE	NULL,
 	`step`	INT(2)	NULL,
 	`regionId`	INT(10)	UNSIGNED NOT NULL,
 	`memberId`	INT(10)	UNSIGNED NOT NULL	COMMENT 'member의 id'
@@ -94,9 +94,9 @@ CREATE TABLE `weather` (
 	`id`	INT(10)	NOT NULL,
 	`regDate`	DATETIME	NULL,
 	`updateDate`	DATETIME	NULL,
-	`day`	DATETIME	NULL,
-	`minTemp`	DECIMAL(5,2)	NULL,
-	`maxTemp`	DECIMAL(5,2)	NULL,
+	`day`	DATE	NULL,
+	`minTemp`	INT(3)	NULL,
+	`maxTemp`	INT(3)	NULL,
 	`humidity`	INT(3)	NULL,
 	`icon`	CHAR(3)	NULL,
 	`scheduleId`	INT(10)	UNSIGNED NOT NULL
@@ -104,13 +104,14 @@ CREATE TABLE `weather` (
 
 CREATE TABLE `fashion` (
 	`id`	INT(10)	NOT NULL,
-	`regData`	DATETIME	NULL,
+	`regDate`	DATETIME	NULL,
 	`updateDate`	DATETIME	NULL,
 	`name`	VARCHAR(100)	NULL,
 	`brand`	VARCHAR(50)	NULL,
 	`imageUrl`	TEXT	NULL,
 	`gender`	TINYINT(1)	NULL,
-	`scheduleId`	INT(10)	UNSIGNED NOT NULL
+	`scheduleId`	INT(10)	UNSIGNED NOT NULL,
+	`description`	TEXT	NULL
 );
 
 CREATE TABLE `shoppingList` (
@@ -120,7 +121,7 @@ CREATE TABLE `shoppingList` (
 	`name`	VARCHAR(30)	NULL,
 	`description`	TEXT	NULL,
 	`imageUrl`	TEXT	NULL,
-	`regionId`	INT(10)	UNSIGNED NOT NULL
+	`scheduleId`	INT(10)	NOT NULL
 );
 
 CREATE TABLE `region` (
@@ -130,6 +131,7 @@ CREATE TABLE `region` (
 	`name`	VARCHAR(30)	NULL,
 	`naverRegionCord`	CHAR(20)	NULL,
 	`imageUrl`	TEXT	NULL,
+	`englishName`	VARCHAR(30)	NULL,
 	`countryId`	INT(10)	UNSIGNED NOT NULL
 );
 
@@ -303,9 +305,9 @@ REFERENCES `travelSchedule` (
 );
 
 ALTER TABLE `shoppingList` ADD CONSTRAINT `FK_region_TO_shoppingList_1` FOREIGN KEY (
-	`regionId`
+	`scheduleId`
 )
-REFERENCES `region` (
+REFERENCES `travelSchedule` (
 	`id`
 );
 
@@ -627,3 +629,6 @@ R.badReactionPoint = RP_SUM.badReactionPoint;
 SELECT * FROM article;
 
 SELECT * FROM board;
+
+INSERT INTO TRAVELSCHEDULE(regDate, updateDate, `name`, `description`, startDate, endDate, regionId, memberId)
+VALUES(NOW(), NOW(), "여행 일기", "오늘은 밥이 맛있다.", "2024-05-05", "2024-05-10", 1, 1);
