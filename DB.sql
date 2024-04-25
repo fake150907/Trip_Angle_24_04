@@ -10,8 +10,8 @@ CREATE TABLE `article` (
 	`hitCount`	INT(10)	NULL,
 	`title`	CHAR(100)	NULL	COMMENT '제목',
 	`body`	TEXT	NULL	COMMENT '내용',
-	`memberId`	INT(10)	NOT NULL	COMMENT 'member의 id',
-	`boardId`	INT(10)	NOT NULL
+	`memberId`	INT(10)	UNSIGNED NOT NULL	COMMENT 'member의 id',
+	`boardId`	INT(10)	UNSIGNED NOT NULL
 );
 
 CREATE TABLE `travelSchedule` (
@@ -23,8 +23,8 @@ CREATE TABLE `travelSchedule` (
 	`startDate`	DATETIME	NULL,
 	`endDate`	DATETIME	NULL,
 	`step`	INT(2)	NULL,
-	`regionId`	INT(10)	NOT NULL,
-	`memberId`	INT(10)	NOT NULL	COMMENT 'member의 id'
+	`regionId`	INT(10)	UNSIGNED NOT NULL,
+	`memberId`	INT(10)	UNSIGNED NOT NULL	COMMENT 'member의 id'
 );
 
 CREATE TABLE `member` (
@@ -63,7 +63,7 @@ CREATE TABLE `genFile` (
 );
 
 CREATE TABLE `regionInfoTips` (
-	`id`	INT(10)	UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT COMMENT '여행지 설명 및 꿀팁 세션 아이디',
+	`id`	INT(10)	COMMENT '여행지 설명 및 꿀팁 세션 아이디',
 	`information`	TEXT	NULL	COMMENT '여행지에 대한 설명문',
 	`Voltage`	CHAR(30)	NULL	COMMENT '전압',
 	`language`	CHAR(20)	NULL	COMMENT '사용언어',
@@ -71,7 +71,7 @@ CREATE TABLE `regionInfoTips` (
 	`timeDifference`	CHAR(100)	NULL	COMMENT '시차',
 	`rate`	CHAR(100)	NULL,
 	`tips`	CHAR(100)	NULL,
-	`regionId`	INT(10)	NOT NULL
+	`regionId`	INT(10)	UNSIGNED NOT NULL
 );
 
 CREATE TABLE `anniversaryDates` (
@@ -80,7 +80,7 @@ CREATE TABLE `anniversaryDates` (
 	`updateDate`	DATETIME	NULL,
 	`name`	VARCHAR(30)	NULL,
 	`day`	DATETIME	NULL,
-	`countryId`	INT(10)	NOT NULL
+	`countryId`	INT(10)	UNSIGNED NOT NULL
 );
 
 CREATE TABLE `country` (
@@ -99,7 +99,7 @@ CREATE TABLE `weather` (
 	`maxTemp`	DECIMAL(5,2)	NULL,
 	`humidity`	INT(3)	NULL,
 	`icon`	CHAR(3)	NULL,
-	`scheduleId`	INT(10)	NOT NULL
+	`scheduleId`	INT(10)	UNSIGNED NOT NULL
 );
 
 CREATE TABLE `fashion` (
@@ -110,7 +110,7 @@ CREATE TABLE `fashion` (
 	`brand`	VARCHAR(50)	NULL,
 	`imageUrl`	TEXT	NULL,
 	`gender`	TINYINT(1)	NULL,
-	`scheduleId`	INT(10)	NOT NULL
+	`scheduleId`	INT(10)	UNSIGNED NOT NULL
 );
 
 CREATE TABLE `shoppingList` (
@@ -120,7 +120,7 @@ CREATE TABLE `shoppingList` (
 	`name`	VARCHAR(30)	NULL,
 	`description`	TEXT	NULL,
 	`imageUrl`	TEXT	NULL,
-	`regionId`	INT(10)	NOT NULL
+	`regionId`	INT(10)	UNSIGNED NOT NULL
 );
 
 CREATE TABLE `region` (
@@ -129,7 +129,8 @@ CREATE TABLE `region` (
 	`updateDate`	DATETIME	NULL,
 	`name`	VARCHAR(30)	NULL,
 	`naverRegionCord`	CHAR(20)	NULL,
-	`countryId`	INT(10)	NOT NULL
+	`imageUrl`	TEXT	NULL,
+	`countryId`	INT(10)	UNSIGNED NOT NULL
 );
 
 CREATE TABLE `recommendRegion` (
@@ -163,7 +164,7 @@ CREATE TABLE `regionSymbolicWord` (
 	`regDate`	DATETIME	NULL,
 	`updateDate`	DATETIME	NULL,
 	`symbolicWord`	CHAR(30)	NULL,
-	`countryId`	INT(10)	NOT NULL
+	`countryId`	INT(10)	UNSIGNED NOT NULL
 );
 
 CREATE TABLE `tag` (
@@ -192,14 +193,14 @@ CREATE TABLE `reactionPoint` (
 	`relTypeCode`	CHAR(50)	NULL,
 	`relId`	INT(10)	NULL,
 	`point`	INT(10)	NULL,
-	`memberId`	INT(10)	NOT NULL	COMMENT 'member의 id'
+	`memberId`	INT(10)	UNSIGNED NOT NULL	COMMENT 'member의 id'
 );
 
 CREATE TABLE `spotifyMember` (
 	`id`	INT(20)	NOT NULL	COMMENT '스포티파이 소셜로그인 회원id',
 	`name`	CHAR(50)	NULL	COMMENT '스포티파이 소셜로그인 회원 이름',
 	`email`	CHAR(100)	NULL	COMMENT '스포티파이 소셜로그인 회원 email',
-	`sporifyUserId`	INT(20)	NULL	COMMENT '스포티파이 회원의 id'
+	`sporifyUserId`	INT(20)	UNSIGNED NULL	COMMENT '스포티파이 회원의 id'
 );
 
 CREATE TABLE `reply` (
@@ -209,7 +210,7 @@ CREATE TABLE `reply` (
 	`relTypeCode`	CHAR(50)	NULL,
 	`relId`	INT(10)	NULL,
 	`body`	TEXT	NULL,
-	`memberId`	INT(10)	NOT NULL	COMMENT 'member의 id'
+	`memberId`	INT(10)	UNSIGNED NOT NULL	COMMENT 'member의 id'
 );
 
 CREATE TABLE `recommendSpotReview` (
@@ -217,31 +218,137 @@ CREATE TABLE `recommendSpotReview` (
 	`grade`	INT(10)	NULL	COMMENT '평점',
 	`regDate`	DATETIME	NULL	COMMENT '작성날짜',
 	`body`	TEXT	NULL	COMMENT '리뷰 내용',
-	`spotId`	INT(10)	NOT NULL	COMMENT '추천 장소 id',
-	`memberId`	INT(10)	NOT NULL	COMMENT 'member의 id'
+	`spotId`	INT(10)	UNSIGNED NOT NULL	COMMENT '추천 장소 id',
+	`memberId`	INT(10)	UNSIGNED NOT NULL	COMMENT 'member의 id'
 );
 
-ALTER TABLE `article` MODIFY `id` INT NOT NULL AUTO_INCREMENT, ADD PRIMARY KEY (`id`);
-ALTER TABLE `travelSchedule` MODIFY `id` INT NOT NULL AUTO_INCREMENT, ADD PRIMARY KEY (`id`);
-ALTER TABLE `member` MODIFY `id` INT NOT NULL AUTO_INCREMENT, ADD PRIMARY KEY (`id`);
-ALTER TABLE `genFile` MODIFY `id` INT NOT NULL AUTO_INCREMENT, ADD PRIMARY KEY (`id`);
-ALTER TABLE `regionInfoTips` MODIFY `id` INT NOT NULL AUTO_INCREMENT, ADD PRIMARY KEY (`id`);
-ALTER TABLE `anniversaryDates` MODIFY `id` INT NOT NULL AUTO_INCREMENT, ADD PRIMARY KEY (`id`);
-ALTER TABLE `country` MODIFY `id` INT NOT NULL AUTO_INCREMENT, ADD PRIMARY KEY (`id`);
-ALTER TABLE `weather` MODIFY `id` INT NOT NULL AUTO_INCREMENT, ADD PRIMARY KEY (`id`);
-ALTER TABLE `fashion` MODIFY `id` INT NOT NULL AUTO_INCREMENT, ADD PRIMARY KEY (`id`);
-ALTER TABLE `shoppingList` MODIFY `id` INT NOT NULL AUTO_INCREMENT, ADD PRIMARY KEY (`id`);
-ALTER TABLE `region` MODIFY `id` INT NOT NULL AUTO_INCREMENT, ADD PRIMARY KEY (`id`);
-ALTER TABLE `recommendRegion` MODIFY `id` INT NOT NULL AUTO_INCREMENT, ADD PRIMARY KEY (`id`);
-ALTER TABLE `tabList` MODIFY `id` INT NOT NULL AUTO_INCREMENT, ADD PRIMARY KEY (`id`);
-ALTER TABLE `recommendSpot` MODIFY `id` INT NOT NULL AUTO_INCREMENT, ADD PRIMARY KEY (`id`);
-ALTER TABLE `regionSymbolicWord` MODIFY `id` INT NOT NULL AUTO_INCREMENT, ADD PRIMARY KEY (`id`);
-ALTER TABLE `tag` MODIFY `id` INT NOT NULL AUTO_INCREMENT, ADD PRIMARY KEY (`id`);
-ALTER TABLE `board` MODIFY `id` INT NOT NULL AUTO_INCREMENT, ADD PRIMARY KEY (`id`);
-ALTER TABLE `reactionPoint` MODIFY `id` INT NOT NULL AUTO_INCREMENT, ADD PRIMARY KEY (`id`);
-ALTER TABLE `spotifyMember` MODIFY `id` INT NOT NULL AUTO_INCREMENT, ADD PRIMARY KEY (`id`);
-ALTER TABLE `reply` MODIFY `id` INT NOT NULL AUTO_INCREMENT, ADD PRIMARY KEY (`id`);
+## 주키 추가
+ALTER TABLE `article` MODIFY `id`  INT(10) UNSIGNED NOT NULL AUTO_INCREMENT, ADD PRIMARY KEY (`id`);
+ALTER TABLE `travelSchedule` MODIFY `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT, ADD PRIMARY KEY (`id`);
+ALTER TABLE `member` MODIFY `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT, ADD PRIMARY KEY (`id`);
+ALTER TABLE `genFile` MODIFY `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT, ADD PRIMARY KEY (`id`);
+ALTER TABLE `regionInfoTips` MODIFY `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT, ADD PRIMARY KEY (`id`);
+ALTER TABLE `anniversaryDates` MODIFY `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT, ADD PRIMARY KEY (`id`);
+ALTER TABLE `country` MODIFY `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT, ADD PRIMARY KEY (`id`);
+ALTER TABLE `weather` MODIFY `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT, ADD PRIMARY KEY (`id`);
+ALTER TABLE `fashion` MODIFY `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT, ADD PRIMARY KEY (`id`);
+ALTER TABLE `shoppingList` MODIFY `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT, ADD PRIMARY KEY (`id`);
+ALTER TABLE `region` MODIFY `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT, ADD PRIMARY KEY (`id`);
+ALTER TABLE `recommendRegion` MODIFY `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT, ADD PRIMARY KEY (`id`);
+ALTER TABLE `tabList` MODIFY `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT, ADD PRIMARY KEY (`id`);
+ALTER TABLE `recommendSpot` MODIFY `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT, ADD PRIMARY KEY (`id`);
+ALTER TABLE `regionSymbolicWord` MODIFY `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT, ADD PRIMARY KEY (`id`);
+ALTER TABLE `tag` MODIFY `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT, ADD PRIMARY KEY (`id`);
+ALTER TABLE `board` MODIFY `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT, ADD PRIMARY KEY (`id`);
+ALTER TABLE `reactionPoint` MODIFY `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT, ADD PRIMARY KEY (`id`);
+ALTER TABLE `spotifyMember` MODIFY `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT, ADD PRIMARY KEY (`id`);
+ALTER TABLE `reply` MODIFY `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT, ADD PRIMARY KEY (`id`);
 
+## 관계키 추가
+ALTER TABLE `article` ADD CONSTRAINT `FK_member_TO_article_1` FOREIGN KEY (
+	`memberId`
+)
+REFERENCES `member` (
+	`id`
+);
+
+ALTER TABLE `article` ADD CONSTRAINT `FK_board_TO_article_1` FOREIGN KEY (
+	`boardId`
+)
+REFERENCES `board` (
+	`id`
+);
+
+ALTER TABLE `travelSchedule` ADD CONSTRAINT `FK_region_TO_travelSchedule_1` FOREIGN KEY (
+	`regionId`
+)
+REFERENCES `region` (
+	`id`
+);
+
+ALTER TABLE `travelSchedule` ADD CONSTRAINT `FK_member_TO_travelSchedule_1` FOREIGN KEY (
+	`memberId`
+)
+REFERENCES `member` (
+	`id`
+);
+
+ALTER TABLE `regionInfoTips` ADD CONSTRAINT `FK_region_TO_regionInfoTips_1` FOREIGN KEY (
+	`regionId`
+)
+REFERENCES `region` (
+	`id`
+);
+
+ALTER TABLE `anniversaryDates` ADD CONSTRAINT `FK_country_TO_anniversaryDates_1` FOREIGN KEY (
+	`countryId`
+)
+REFERENCES `country` (
+	`id`
+);
+
+ALTER TABLE `weather` ADD CONSTRAINT `FK_travelSchedule_TO_weather_1` FOREIGN KEY (
+	`scheduleId`
+)
+REFERENCES `travelSchedule` (
+	`id`
+);
+
+ALTER TABLE `fashion` ADD CONSTRAINT `FK_travelSchedule_TO_fashion_1` FOREIGN KEY (
+	`scheduleId`
+)
+REFERENCES `travelSchedule` (
+	`id`
+);
+
+ALTER TABLE `shoppingList` ADD CONSTRAINT `FK_region_TO_shoppingList_1` FOREIGN KEY (
+	`regionId`
+)
+REFERENCES `region` (
+	`id`
+);
+
+ALTER TABLE `region` ADD CONSTRAINT `FK_country_TO_region_1` FOREIGN KEY (
+	`countryId`
+)
+REFERENCES `country` (
+	`id`
+);
+
+ALTER TABLE `regionSymbolicWord` ADD CONSTRAINT `FK_region_TO_regionSymbolicWord_1` FOREIGN KEY (
+	`countryId`
+)
+REFERENCES `region` (
+	`id`
+);
+
+ALTER TABLE `reactionPoint` ADD CONSTRAINT `FK_member_TO_reactionPoint_1` FOREIGN KEY (
+	`memberId`
+)
+REFERENCES `member` (
+	`id`
+);
+
+ALTER TABLE `reply` ADD CONSTRAINT `FK_member_TO_reply_1` FOREIGN KEY (
+	`memberId`
+)
+REFERENCES `member` (
+	`id`
+);
+
+ALTER TABLE `recommendSpotReview` ADD CONSTRAINT `FK_recommendSpot_TO_recommendSpotReview_1` FOREIGN KEY (
+	`spotId`
+)
+REFERENCES `recommendSpot` (
+	`id`
+);
+
+ALTER TABLE `recommendSpotReview` ADD CONSTRAINT `FK_member_TO_recommendSpotReview_1` FOREIGN KEY (
+	`memberId`
+)
+REFERENCES `member` (
+	`id`
+);
 
 
 ########### TEST DATA ############

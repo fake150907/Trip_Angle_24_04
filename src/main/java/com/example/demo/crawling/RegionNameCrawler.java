@@ -21,10 +21,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 
-record Region(String countryName, String naverRegionCord, String regionName){
-	
-}
-
 public class RegionNameCrawler {
 
     private WebDriver driver;
@@ -33,7 +29,7 @@ public class RegionNameCrawler {
     public static String WEB_DRIVER_ID = "webdriver.chrome.driver";
     public static String WEB_DRIVER_PATH = "C:/work/chromedriver.exe";
 
-    public void crawling() throws AWTException, SQLException, ClassNotFoundException {
+    public List<RegionCrawlingDto> crawling() throws AWTException, SQLException, ClassNotFoundException {
         System.setProperty(WEB_DRIVER_ID, WEB_DRIVER_PATH);
 
         ChromeOptions options = new ChromeOptions();
@@ -72,7 +68,7 @@ public class RegionNameCrawler {
 
         wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.cssSelector(".searchbox_home_tabs__FA2_B")));
         List<WebElement> continents  = driver.findElements(By.cssSelector(".searchbox_home_tabs__FA2_B>a"));
-        List<Region> regionList = new ArrayList<>();
+        List<RegionCrawlingDto> regionList = new ArrayList<>();
         
         for(WebElement continent : continents) {
         	continent.click();
@@ -105,7 +101,7 @@ public class RegionNameCrawler {
         			String type = regionButton.findElement(By.tagName("i")).getText().trim();
         			
         			if(type.equals("도시")) {
-        				regionList.add(new Region(countryName, naverRegionCord, regionName));
+        				regionList.add(new RegionCrawlingDto(countryName, naverRegionCord, regionName));
         			}
         			
         			
@@ -114,10 +110,23 @@ public class RegionNameCrawler {
         	
         	
         }
+        
+        for(RegionCrawlingDto region: regionList) {
+        	String url = String.format("https://travel.naver.com/overseas/%s/city/summary", region.naverRegionCord);
+            driver.get(url);
+            
+            wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+            wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".topImages_thumb__fhc1R")));
+            WebElement thumb = driver.findElement(By.cssSelector(".topImages_thumb__fhc1R"));
+            WebElement image = thumb.findElement(By.tagName("img"));
+            String src = image.getAttribute("src");
+            region.setImageUrl(src);
+        }
+        
         driver.close();
         
         
-        String url = "jdbc:mysql://127.0.0.1:3306/Trip_Angle_24_04?useUnicode=true&characterEncoding=utf8&autoReconnect=true&serverTimezone=Asia/Seoul&useOldAliasMetadataBehavior=true&zeroDateTimeBehavior=convertToNull";
+        url = "jdbc:mysql://127.0.0.1:3306/Trip_Angle_24_04?useUnicode=true&characterEncoding=utf8&autoReconnect=true&serverTimezone=Asia/Seoul&useOldAliasMetadataBehavior=true&zeroDateTimeBehavior=convertToNull";
         Connection conn = DriverManager.getConnection(url, "root", "");
         conn.setAutoCommit(false);
         conn.prepareStatement(url);
@@ -125,33 +134,40 @@ public class RegionNameCrawler {
         
         
         String countryInsertSql = "INSERT INTO country (regDate, updateDate, `name`) VALUES (NOW(), NOW(), ?)";
-        String regionInsertSql = "INSERT INTO region (regDate, updateDate, `name`, naverRegionCord, countryId) VALUES (NOW(), NOW(), ?, ?, ?)";
+        String regionInsertSql = "INSERT INTO region (regDate, updateDate, `name`, naverRegionCord, countryId, imageUrl) VALUES (NOW(), NOW(), ?, ?, ?, ?)";
         String currentCountryName= "";
         int currentCountryId = -1;
-        for(Region region: regionList) {
-        	if(!region.countryName().equals(currentCountryName)) {
+        for(RegionCrawlingDto region: regionList) {
+        	if(!region.getCountryName().equals(currentCountryName)) {
         		PreparedStatement pstmt = conn.prepareStatement(countryInsertSql, PreparedStatement.RETURN_GENERATED_KEYS);
-        		pstmt.setString(1, region.countryName());
+        		pstmt.setString(1, region.getCountryName());
         		pstmt.executeUpdate();
         		
         		ResultSet rs = pstmt.getGeneratedKeys();
         		rs.next();
         		currentCountryId = rs.getInt(1); 
-        		currentCountryName = region.countryName();
+        		currentCountryName = region.getCountryName();
         		pstmt.close();
         	}
         	
-        	PreparedStatement pstmt = conn.prepareStatement(regionInsertSql);
-        	pstmt.setString(1, region.regionName());
-        	pstmt.setString(2, region.naverRegionCord());
+        	PreparedStatement pstmt = conn.prepareStatement(regionInsertSql, PreparedStatement.RETURN_GENERATED_KEYS);
+        	pstmt.setString(1, region.getCountryName());
+        	pstmt.setString(2, region.getNaverRegionCord());
         	pstmt.setInt(3, currentCountryId);
+        	pstmt.setString(4, region.getImageUrl());
         	pstmt.executeUpdate();
+        	ResultSet rs = pstmt.getGeneratedKeys();
+        	rs.next();
+        	region.setRegionId(rs.getInt(1));
         	pstmt.close();
         	
         }
         
         conn.commit();
         conn.close();
+        
+        
+        return regionList;
         
     }
     

@@ -27,74 +27,76 @@ public class CrawlingTest2 {
 	public static String WEB_DRIVER_ID = "webdriver.chrome.driver";
 	public static String WEB_DRIVER_PATH = "C:/work/chromedriver.exe";
 
-	public void crawling() throws SQLException, ClassNotFoundException {
+	public void crawling(List<RegionCrawlingDto> regionCrawlingDtos) throws SQLException, ClassNotFoundException {
 		System.setProperty(WEB_DRIVER_ID, WEB_DRIVER_PATH);
 
 		ChromeOptions options = new ChromeOptions();
 		options.setCapability("ignoreProtectedModeSettings", true);
 		driver = new ChromeDriver(options);
+		
+		List<RegionInfoTips> regionInfoTipsList = new ArrayList<>();
+		
+		for(RegionCrawlingDto regionCrawlingDto : regionCrawlingDtos ) {
+	
+			url = String.format("https://travel.naver.com/overseas/%s/city/prepare", regionCrawlingDto.getNaverRegionCord());
+			driver.get(url);
+	
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			
+			//여행정보 리스트 상단 제목
+			List<WebElement> informNames = driver.findElements(By.className("item_name__rmJh2"));
+			
+			//여행정보 리스트 하단 텍스트
+			List<WebElement> informValues = driver.findElements(By.className("item_value__JKA9S"));
+			
+			 
+	
+			    int size = Math.min(informNames.size(), informValues.size());
+			    String information = "";
+			    String voltage = "";
+			    String language = "";
+			    String climate = "";
+			    String timeDifference = "";
+			    String rate = "";
+			    String tips = "";
+			    //int regionId = 0;
+	
+			    for (int i = 0; i < size; i++) {
+			        String informName = informNames.get(i).getText();
+			        String informValue = informValues.get(i).getText();
+			        
+			        switch (informName) {
+			            case "설명문":
+			                information = informValue;
+			                break;
+			            case "전압":
+			                voltage = informValue;
+			                break;
+			            case "언어":
+			                language = informValue;
+			                break;
+			            case "기후":
+			                climate = informValue;
+			                break;
+			            case "시차":
+			                timeDifference = informValue;
+			                break;
+			            case "환율":
+			                rate = informValue;
+			                break;
+			            case "팁":
+			                tips = informValue;
+			                break;
+			        }
+			    }
+	
+			regionInfoTipsList.add(new RegionInfoTips(information, voltage, language, climate, timeDifference, rate, tips, regionCrawlingDto.getRegionId()));
 
-		url = "https://travel.naver.com/overseas/JPOSA298566/city/prepare";
-		driver.get(url);
-
-		try {
-			Thread.sleep(1000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
 		}
-		
-		//여행정보 리스트 상단 제목
-		List<WebElement> informNames = driver.findElements(By.className("item_name__rmJh2"));
-		
-		//여행정보 리스트 하단 텍스트
-		List<WebElement> informValues = driver.findElements(By.className("item_value__JKA9S"));
-		
-		 List<RegionInfoTips> regionInfoTipsList = new ArrayList<>();
-
-		    int size = Math.min(informNames.size(), informValues.size());
-		    String information = "";
-		    String voltage = "";
-		    String language = "";
-		    String climate = "";
-		    String timeDifference = "";
-		    String rate = "";
-		    String tips = "";
-		    int regionId = 0;
-
-		    for (int i = 0; i < size; i++) {
-		        String informName = informNames.get(i).getText();
-		        String informValue = informValues.get(i).getText();
-		        
-		        switch (informName) {
-		            case "설명문":
-		                information = informValue;
-		                break;
-		            case "전압":
-		                voltage = informValue;
-		                break;
-		            case "언어":
-		                language = informValue;
-		                break;
-		            case "기후":
-		                climate = informValue;
-		                break;
-		            case "시차":
-		                timeDifference = informValue;
-		                break;
-		            case "환율":
-		                rate = informValue;
-		                break;
-		            case "팁":
-		                tips = informValue;
-		                break;
-		            case "지역 아이디":
-		                regionId = Integer.parseInt(informValue);
-		                break;
-		        }
-		    }
-
-		regionInfoTipsList.add(new RegionInfoTips(information, voltage, language, climate, timeDifference, rate, tips, regionId));
-
 		String url = "jdbc:mysql://127.0.0.1:3306/Trip_Angle_24_04?useUnicode=true&characterEncoding=utf8&autoReconnect=true&serverTimezone=Asia/Seoul&useOldAliasMetadataBehavior=true&zeroDateTimeBehavior=convertToNull";
 	    Connection conn = DriverManager.getConnection(url, "root", "");
 	    String insertQuery = "INSERT INTO regionInfoTips (information, Voltage, language, climate, timeDifference, rate, tips, regionId) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
@@ -118,9 +120,14 @@ public class CrawlingTest2 {
 	}
 
 	public static void main(String[] args) {
+		List<RegionCrawlingDto> regionCrawlingDtos = new ArrayList<>();
+		RegionCrawlingDto regionCrawlingDto = new RegionCrawlingDto("국가명", "JPOSA298566", "도시명");
+		regionCrawlingDto.setRegionId(0);
+		regionCrawlingDtos.add(regionCrawlingDto);
+		
 		CrawlingTest2 crawler = new CrawlingTest2();
 	    try {
-	        crawler.crawling();
+	        crawler.crawling(regionCrawlingDtos);
 	    } catch (ClassNotFoundException e) {
 	        System.out.println("드라이버 로딩에 실패했습니다.");
 	        e.printStackTrace();
