@@ -67,7 +67,7 @@ CREATE TABLE `regionInfoTips` (
 	`information`	TEXT	NULL	COMMENT '여행지에 대한 설명문',
 	`Voltage`	CHAR(30)	NULL	COMMENT '전압',
 	`language`	CHAR(20)	NULL	COMMENT '사용언어',
-	`climate`	CHAR(30)	NULL	COMMENT '기후',
+	`climate`	TEXT	NULL	COMMENT '기후',
 	`timeDifference`	CHAR(100)	NULL	COMMENT '시차',
 	`rate`	CHAR(100)	NULL,
 	`tips`	CHAR(100)	NULL,
