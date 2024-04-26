@@ -27,4 +27,31 @@ public class UsrHomeController {
 
 		return "redirect:/usr/home/main";
 	}
+	
+	
+	@RequestMapping("/usr/home/writeEmailToYunlin")
+	public String writeEmailToYunlin() {
+
+		return "/usr/home/writeEmailToYunlin";
+	}
+	
+	@RequestMapping("/usr/home/writeEmailToGayeon")
+	public String writeEmailToGayeon() {
+
+		return "/usr/home/writeEmailToGayeon";
+	}
+	
+	@RequestMapping("/usr/home/writeEmailToGyusub")
+	public String writeEmailToGyusub() {
+
+		return "/usr/home/writeEmailToGyusub";
+	}
+	
+	@RequestMapping("/usr/home/writeEmailToMyeongwon")
+	public String writeEmailToMyeongwon() {
+
+		return "/usr/home/writeEmailToMyeongwon";
+	}
+	
+	
 }
