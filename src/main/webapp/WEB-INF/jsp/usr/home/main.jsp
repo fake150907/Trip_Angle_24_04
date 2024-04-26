@@ -349,7 +349,7 @@ transform: translateY(-20px);
 	padding: 32px 80px 80px;
 	max-width: 1280px;
 	margin: auto;
-	margin-top: 190px;
+	margin-top: 150px;
 	margin-bottom: 90px;
 }
 
@@ -719,6 +719,7 @@ transform: translateY(-20px);
 }
 
 .korean-name {
+  font-family: 'KyoboHandwriting2023wsa';
   font-weight: 500;
   font-size: 25px;
   color: #3b3d40;'
@@ -753,12 +754,16 @@ transform: translateY(-20px);
 }
 
 .button {
-  background-color:#d5f1e2;
+/*   background-color:#d5f1e2; */
+  background-color: rgba(213, 241, 226, 0.3);
+border: solid 1px rgba(213, 241, 226, 0.3);
+
+
 }
 
 .button:hover {
   background-color: #ededed;
-  border: solid #ededed;
+  border: solid 1px #ededed;
 }
 
 
@@ -907,7 +912,7 @@ transform: translateY(-20px);
           </br>
           </br>
           <p>insamjoo300@gmail.com</p>
-          <button class="button btn btn-xs">send e-mail</button>
+          <button class="button btn btn-xs" onclick="writeEmailToMyeongwon()" >send e-mail</button>
 
         </div>
       </div>
@@ -926,9 +931,10 @@ transform: translateY(-20px);
           </br>
           </br>
           <p>yunlinit@gmail.com</p>
-          <button class="button btn btn-xs">send e-mail</button>
+          <button class="button btn btn-xs" onclick="writeEmailToYunlin()">send e-mail</button>
         </div>
       </div>
+
 
       <div class="flip">
         <div class="front" style="background-image: url(https://images.unsplash.com/photo-1571365689578-618663443bd7?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)">
@@ -944,13 +950,13 @@ transform: translateY(-20px);
           </br>
           </br>
           <p>yungayeon223gmail.com</p>
-          <button class="button btn btn-xs">send e-mail</button>
+          <button class="button btn btn-xs" onclick="writeEmailToGayeon()">send e-mail</button>
         </div>
       </div>
 
       <div class="flip">
         <div class="front" style="background-image: url(https://images.unsplash.com/photo-1507537297725-24a1c029d3ca?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)">
-          <h1 class="name">Shin Gyu Seob</h1>
+          <h1 class="name">Shin Gyu Sub</h1>
         </div>
         <div class="back">
           <h2 class="korean-name">신규섭</h2>
@@ -958,11 +964,11 @@ transform: translateY(-20px);
           </br>
           <p>010-7752-0000</p>
 <!--           <p>010-7752-8687</p> -->
-          <button class="button btn btn-xs">text message</button>
+          <button class="button btn btn-xs" >text message</button>
           </br>
           </br>
           <p>tlstlsrbrb11@gmail.com</p>
-          <button class="button btn btn-xs">send e-mail</button>
+          <button class="button btn btn-xs" onclick="writeEmailToGyusub()">send e-mail</button>
         </div>
       </div>
     </div>
@@ -974,6 +980,40 @@ transform: translateY(-20px);
 		</div>
 	</section>
 
+<script>
+  function writeEmailToYunlin() {
+    // 여기서는 예시로 mailto 링크를 사용하여 이메일 클라이언트를 열도록 하였습니다.
+    // 실제로는 백엔드와의 통신 등을 통해 이메일을 보내는 방법을 구현해야 할 수 있습니다.
+    window.location.href = "/usr/home/writeEmailToYunlin";
+  }
+</script>
+
+
+<script>
+  function writeEmailToGayeon() {
+    // 여기서는 예시로 mailto 링크를 사용하여 이메일 클라이언트를 열도록 하였습니다.
+    // 실제로는 백엔드와의 통신 등을 통해 이메일을 보내는 방법을 구현해야 할 수 있습니다.
+    window.location.href = "/usr/home/writeEmailToGayeon";
+  }
+</script>
+
+
+
+<script>
+  function writeEmailToGyusub() {
+    // 여기서는 예시로 mailto 링크를 사용하여 이메일 클라이언트를 열도록 하였습니다.
+    // 실제로는 백엔드와의 통신 등을 통해 이메일을 보내는 방법을 구현해야 할 수 있습니다.
+    window.location.href = "/usr/home/writeEmailToGyusub";
+  }
+</script>
+
+<script>
+  function writeEmailToMyeongwon() {
+    // 여기서는 예시로 mailto 링크를 사용하여 이메일 클라이언트를 열도록 하였습니다.
+    // 실제로는 백엔드와의 통신 등을 통해 이메일을 보내는 방법을 구현해야 할 수 있습니다.
+    window.location.href = "/usr/home/writeEmailToMyeongwon";
+  }
+</script>
 
 
 	<script>
