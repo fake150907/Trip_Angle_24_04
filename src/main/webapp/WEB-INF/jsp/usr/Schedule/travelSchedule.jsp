@@ -24,97 +24,106 @@
 
 @import url("https://fonts.googleapis.com/css?family=Raleway:400,300,600");
 
-#calendar-details .check-in, #calendar-details .check-out, #calendar-details .arrow {
-  float: left;
-  white-space: nowrap;
-  width: 39.3333333333%;
-  margin-left: 4%;
-}
-#calendar-details h5 {
-  font-size: 1.8rem;
-  margin-bottom: 0;
-}
-#calendar-details .check-in {
-  text-align: right;
-  margin-left: 0;
-}
-#calendar-details .arrow {
-  width: 13.3333333333%;
-  margin-top: 0.5em;
-  font-size: 2em;
-  line-height: 1em;
-  text-align: center;
-}
-#calendar-details .arrow:before {
-  display: inline-block;
-  content: "→";
+/*   #calendar-details .check-in, #calendar-details .check-out, #calendar-details .arrow {  */
+/*     float: left;    */
+/*      white-space: nowrap;     */
+/*       width: 39.3333333333%;   */
+/*       margin-left: 4%;     */
+/*   }  */
+
+/*  #calendar-details h5 {  */
+/*    font-size: 1.8rem;  */
+/*    margin-bottom: 0;  */
+/*  }  */
+
+/* #calendar-details .check-in { */
+/*   text-align: right; */
+/*   margin-left: 0; */
+/* } */
+
+/*  #calendar-details .arrow {  */
+/*    width: 13.3333333333%; */
+/*    margin-top: 0.5em;  */
+/*    font-size: 2em;  */
+/*    line-height: 1em;  */
+/*    text-align: center;  */
+/*     }  */
+
+/* #calendar-details .arrow:before { */
+/*   display: inline-block; */
+/*   content: "→"; */
+/* } */
+
+/*  .ui-datepicker * { */
+/*    -webkit-user-select: none;  */
+/*       -moz-user-select: none;  */
+/*        -ms-user-select: none;  */
+/*            user-select: none;  */
+/*    outline: 0;  */
+/*  }  */
+
+.ui-datepicker.ui-datepicker-multi {
+   width: 100% !important; 
+   max-width: 24em; 
+   margin: 0 auto; 
 }
 
-.ui-datepicker * {
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
-  outline: 0;
-}
-.ui-datepicker.ui-datepicker-multi {
-  width: 100% !important;
-  max-width: 24em;
-  margin: 0 auto;
-}
 .ui-datepicker.ui-datepicker-multi .ui-datepicker-group {
-  width: 100%;
+/*    width: 100%;  */
 }
 .ui-datepicker.ui-datepicker-multi.ui-datepicker-multi-2 {
-  max-width: 50em;
+/*    max-width: 50em;  */
 }
 .ui-datepicker.ui-datepicker-multi.ui-datepicker-multi-2 .ui-datepicker-group {
-  width: 45%;
+/*   width: 45%; */
 }
 .ui-datepicker.ui-datepicker-multi.ui-datepicker-multi-2 .ui-datepicker-group.ui-datepicker-group-first {
-  padding-right: 5%;
+/*   padding-right: 5%; */
 }
 .ui-datepicker.ui-datepicker-multi.ui-datepicker-multi-2 .ui-datepicker-group.ui-datepicker-group-last {
-  padding-left: 5%;
+/*   padding-left: 5%; */
 }
 .ui-datepicker.ui-datepicker-multi.ui-datepicker-multi-3 {
-  max-width: 70em;
+/*   max-width: 70em; */
 }
 .ui-datepicker.ui-datepicker-multi.ui-datepicker-multi-3 .ui-datepicker-group {
-  width: 30%;
+/*   width: 30%; */
 }
 .ui-datepicker.ui-datepicker-multi.ui-datepicker-multi-3 .ui-datepicker-group.ui-datepicker-group-middle {
-  padding: 0 3.33%;
+/*    padding: 0 3.33%;  */
 }
 .ui-datepicker td a, .ui-datepicker td span {
-  border: 1px solid #fff;
-  border-radius: 0.5em;
-  text-align: center;
-  width: 2em;
+/*      border: 1px solid #fff;    */
+/*     border-radius: 0.5em;   */
+/*     background-color: black; */
+/*   text-align: center; */
+/*   width: 2em; */
 }
 .ui-datepicker td a.ui-state-active, .ui-datepicker td span.ui-state-active {
-  background-color: #1EAEDB;
-  color: #fff;
+   background-color: #D5F1E2; 
+/*    color: #fff;  */
 }
 .ui-datepicker td a.ui-state-hover, .ui-datepicker td span.ui-state-hover {
-  border-color: #1EAEDB;
+/*    border-color: #1EAEDB;  */
 }
 .ui-datepicker td.ui-datepicker-reserved a, .ui-datepicker td.ui-datepicker-reserved span {
-  background-color: #1EAEDB;
-  color: #fff;
+/*    background-color: #CECECE; */
+ background-color:rgba(222, 222, 222, 0.5);/*까만색(0,0,0) 20% 불투명도 */
+    color: #696969;
 }
 .ui-datepicker td.ui-datepicker-reserved.ui-datepicker-checkin a, .ui-datepicker td.ui-datepicker-reserved.ui-datepicker-checkin span, .ui-datepicker td.ui-datepicker-reserved.ui-datepicker-checkout a, .ui-datepicker td.ui-datepicker-reserved.ui-datepicker-checkout span {
-  background-color: #fff;
-  border-color: #1EAEDB;
-  color: #1EAEDB;
+   background-color: #D5F1E2;
+/*    border-color: #D5F1E2;   */
+/*    color: #fff;  */
+    color: black;
 }
 .ui-datepicker .ui-datepicker-today a:not(.ui-state-hover), .ui-datepicker .ui-datepicker-today span:not(.ui-state-hover) {
-  border-color: #11DFC7;
-  color: #11DFC7;
+/*     border-color: #11DFC7;  */
+/*     color: #11DFC7;   */
 }
 .ui-datepicker .ui-datepicker-prev,
 .ui-datepicker .ui-datepicker-next {
-  border: 1px solid #fff;
+/*   border: 1px solid #fff; */
   border-radius: 0.5em;
   text-align: center;
   text-indent: 0;
@@ -126,7 +135,7 @@
 }
 .ui-datepicker .ui-datepicker-prev.ui-state-hover,
 .ui-datepicker .ui-datepicker-next.ui-state-hover {
-  border-color: #1EAEDB;
+/*   border-color: #1EAEDB; */
   top: 2px;
 }
 .ui-datepicker .ui-datepicker-prev:before {
@@ -200,14 +209,88 @@ show {
     opacity: 1;
   }
 }
-</style>
 
+/* 데이트피커 한국분이 만든 UI */
+ .ui-widget-header { border: 0px solid #dddddd; background: #fff; } 
+
+ .ui-datepicker-calendar>thead>tr>th { font-size: 14px !important; } 
+
+  .ui-datepicker .ui-datepicker-header { position: relative; padding: 50px 0; }
+
+ .ui-state-default,
+ .ui-widget-content .ui-state-default,
+ .ui-widget-header .ui-state-default,
+ .ui-button,
+ html .ui-button.ui-state-disabled:hover,
+ html .ui-button.ui-state-disabled:active { border: 0px solid #c5c5c5; background-color: transparent; font-weight: normal; color: #454545; text-align: center; } 
+
+ .ui-datepicker .ui-datepicker-title { margin: 0 0em; line-height: 16px; text-align: center; font-size: 14px; padding: 0px; font-weight: bold; } 
+
+  .ui-datepicker { display: none; background-color: #fff; border-radius: 4px; margin-top: 10px; margin-left: 0px; margin-right: 0px; padding: 20px; padding-bottom: 10px; width: 300px; box-shadow: 10px 10px 40px rgba(0, 0, 0, 0.1); } 
+
+ .ui-widget.ui-widget-content { border: 1px solid #eee; } 
+
+ #datepicker:focus>.ui-datepicker { display: block; } 
+
+ .ui-datepicker-prev,
+ .ui-datepicker-next { cursor: pointer; } 
+
+ .ui-datepicker-next { float: right; } 
+
+ .ui-state-disabled { cursor: auto; color: hsla(0, 0%, 80%, 1); } 
+
+ .ui-datepicker-title { text-align: center; padding: 10px; font-weight: 100; font-size: 20px; } 
+
+ .ui-datepicker-calendar { width: 100%; } 
+
+ .ui-datepicker-calendar>thead>tr>th { padding: 5px; font-size: 20px; font-weight: 400; } 
+
+ .ui-datepicker-calendar>tbody>tr>td>a { color: #000; font-size: 12px !important; font-weight: bold !important; text-decoration: none;}
+
+ .ui-datepicker-calendar>tbody>tr>.ui-state-disabled:hover { cursor: auto; background-color: #fff; } 
+
+ .ui-datepicker-calendar>tbody>tr>td { border-radius: 100%; width: 44px; height: 30px; cursor: pointer; padding: 5px; font-weight: 100; text-align: center; font-size: 12px; } 
+
+ .ui-datepicker-calendar>tbody>tr>td:hover { background-color: transparent; opacity: 0.6; } 
+
+ .ui-state-hover,
+ .ui-widget-content .ui-state-hover,
+ .ui-widget-header .ui-state-hover,
+ .ui-state-focus,
+ .ui-widget-content .ui-state-focus,
+ .ui-widget-header .ui-state-focus,
+ .ui-button:hover,
+ .ui-button:focus { border: 0px solid #cccccc; background-color: transparent; font-weight: normal; color: #2b2b2b; } 
+
+ .ui-widget-header .ui-icon { background-image: url('./btns.png'); } 
+
+ .ui-icon-circle-triangle-e { background-position: -20px 0px; background-size: 36px; } 
+
+ .ui-icon-circle-triangle-w { background-position: -0px -0px; background-size: 36px; } 
+
+ .ui-datepicker-calendar>tbody>tr>td:first-child a { color: red !important; } 
+
+ .ui-datepicker-calendar>tbody>tr>td:last-child a { color: #0099ff !important; } 
+
+ .ui-datepicker-calendar>thead>tr>th:first-child { color: red !important; } 
+
+ .ui-datepicker-calendar>thead>tr>th:last-child { color: #0099ff !important; } 
+
+ .ui-state-highlight,
+ .ui-widget-content .ui-state-highlight,
+ .ui-widget-header .ui-state-highlight { border: 0px; background: #f1f1f1; border-radius: 50%; padding-top: 10px; padding-bottom: 10px; } 
+
+ .inp { padding: 10px 10px; background-color: #f1f1f1; border-radius: 4px; border: 0px; } 
+
+ .inp:focus { outline: none; background-color: #eee; } 
+
+</style>
 
 <script>
 $(function() {
 	  'use strict';
 
-	  var checkIn, checkOut, numberOfMonths = [2, 3],
+	  var checkIn, checkOut, numberOfMonths = [1, 2],
 	      $calendar = $('#calendar').datepicker({
 	        numberOfMonths: numberOfMonths,
 	        prevText: '',
@@ -250,45 +333,62 @@ $(function() {
 	      }).on('animationend webkitAnimationEnd', function() {
 	        $calendar.removeClass('fade-in');
 	      });
-	  
+ 
 	  function resize() {
 	    var element = $('.ui-datepicker').get(0),
 	        style = window.getComputedStyle(element).getPropertyValue('min-width'), 
 	        value;
-	    
+
 	    switch (style) {
-	      case '765px': value = [2, 3]; break;
-	      case '510px': value = [2, 2]; break;
+	      case '765px': value = [1, 2]; break;
+	      case '510px': value = [2, 1]; break;
 	      default: value = [2, 1]; break;
 	    }
-	    
+
 	    if (numberOfMonths !== value) {
 	      if (checkIn) $calendar.datepicker('setDate', checkIn.toDate());
-	      
+
 	      $calendar.datepicker('option', 'numberOfMonths', numberOfMonths = value);
 	    }
 	  }
 
 	  $(window).on('resize', resize);
-	  
+
 	  resize();
 	});
+	
+$.datepicker.setDefaults({
+	  dateFormat: 'yy-mm-dd',
+	  prevText: '이전 달',
+	  nextText: '다음 달',
+	  monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+	  monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+	  dayNames: ['일', '월', '화', '수', '목', '금', '토'],
+	  dayNamesShort: ['일', '월', '화', '수', '목', '금', '토'],
+	  dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
+	  showMonthAfterYear: true,
+	  yearSuffix: '년'
+	});
+
+	$(function () {
+	  $('.datepicker').datepicker();
+	});
+	
 </script>
 
 <div class="container">
   <div id="calendar-details">
     <div class="check-in">
-      <h5>Check-In</h5>
-      <h6 id="check-in-date">Choose a date</h6>
+<!--       <h5>Check-In</h5> -->
+<!--       <h6 id="check-in-date">Choose a date</h6> -->
     </div>
     <div class="arrow"></div>
     <div class="check-out">
-      <h5>Check-Out</h5>
-      <h6 id="check-out-date">Choose a date</h6>
+<!--       <h5>Check-Out</h5> -->
+<!--       <h6 id="check-out-date">Choose a date</h6> -->
     </div>
   </div>
   <div id="calendar"></div>
 </div>
-
 
 <%@ include file="../common/foot.jspf"%>
