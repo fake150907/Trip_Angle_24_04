@@ -726,9 +726,9 @@ transform: translateY(-20px);
 }
 
 .name {
-  font-size: 20px;
+  font-family: 'KyoboHandwriting2023wsa';
+  font-size: 25px;
   margin-top: 95%;
-  font-family: Urbanist;
   font-weight: 500px;
 }
 
@@ -750,7 +750,7 @@ transform: translateY(-20px);
   height: 3px;
   width: 90px;
   background-color: #d5f1e2;
-  margin-left: 23.5%;
+  margin-left: 2f3.5%;
 }
 
 .button {
