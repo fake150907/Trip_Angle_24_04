@@ -750,13 +750,15 @@ transform: translateY(-20px);
   height: 3px;
   width: 90px;
   background-color: #d5f1e2;
-  margin-left: 2f3.5%;
+  margin-left: 23.5%;
 }
 
 .button {
-/*   background-color:#d5f1e2; */
-  background-color: rgba(213, 241, 226, 0.3);
-border: solid 1px rgba(213, 241, 226, 0.3);
+	margin-top: 10px;
+  background-color:#d5f1e2; 
+  border : solid 1px #d5f1e2;
+/*   background-color: rgba(213, 241, 226, 0.3); */
+/* border: solid 1px rgba(213, 241, 226, 0.3); */
 
 
 }
@@ -892,7 +894,7 @@ border: solid 1px rgba(213, 241, 226, 0.3);
           TripAngle
         </span>
         프로젝트를 통해 우리는 다양한 아이디어와 영감을 공유하고, </br>
-        협력을 통해 개개인의 무한한 창의적 가능성을 발견할 수 있었습니다. </br>아래에서 이 프로젝트를 함께 한 팀원을 확인 하실 수 있으니 </br> 언제든지 연락 주시길 바랍니다!
+        협력을 통해 개개인의 무한한 창의적 가능성을 발견할 수 있었습니다. </br>아래에서 이 프로젝트를 함께한 팀원을 확인하실 수 있으니 </br> 언제든지 연락 주시길 바랍니다!
       </div>
 
     </div>
@@ -908,11 +910,11 @@ border: solid 1px rgba(213, 241, 226, 0.3);
           </br>
           <p>010-4495-0000</p>
 <!--           <p>010-4495-8592</p> -->
-          <button class="button btn btn-xs">text message</button>
+          <button class="button btn btn-sm"> text message</button>
           </br>
           </br>
           <p>insamjoo300@gmail.com</p>
-          <button class="button btn btn-xs" onclick="writeEmailToMyeongwon()" >send e-mail</button>
+          <button class="button btn btn-sm" onclick="writeEmailToMyeongwon()" > send e-mail</button>
 
         </div>
       </div>
@@ -927,11 +929,11 @@ border: solid 1px rgba(213, 241, 226, 0.3);
           </br>
           <p>010-4249-0000</p>
 <!--           <p>010-4249-0977</p> -->
-          <button class="button btn btn-xs">text message</button>
+          <button class="button btn btn-sm">text message</button>
           </br>
           </br>
           <p>yunlinit@gmail.com</p>
-          <button class="button btn btn-xs" onclick="writeEmailToYunlin()">send e-mail</button>
+          <button class="button btn btn-sm" onclick="writeEmailToYunlin()">send e-mail</button>
         </div>
       </div>
 
@@ -946,11 +948,11 @@ border: solid 1px rgba(213, 241, 226, 0.3);
           </br>
           <p>010-5408-0000</p>
 <!--           <p>010-5408-4893</p> -->
-          <button class="button btn btn-xs">text message</button>
+          <button class="button btn btn-sm">text message</button>
           </br>
           </br>
           <p>yungayeon223gmail.com</p>
-          <button class="button btn btn-xs" onclick="writeEmailToGayeon()">send e-mail</button>
+          <button class="button btn btn-sm" onclick="writeEmailToGayeon()">send e-mail</button>
         </div>
       </div>
 
@@ -964,11 +966,11 @@ border: solid 1px rgba(213, 241, 226, 0.3);
           </br>
           <p>010-7752-0000</p>
 <!--           <p>010-7752-8687</p> -->
-          <button class="button btn btn-xs" >text message</button>
+          <button class="button btn btn-sm" >text message</button>
           </br>
           </br>
           <p>tlstlsrbrb11@gmail.com</p>
-          <button class="button btn btn-xs" onclick="writeEmailToGyusub()">send e-mail</button>
+          <button class="button btn btn-sm" onclick="writeEmailToGyusub()">send e-mail</button>
         </div>
       </div>
     </div>
