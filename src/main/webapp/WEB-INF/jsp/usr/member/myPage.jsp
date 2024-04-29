@@ -253,11 +253,11 @@
 
 
 
-<div>1${loginedMember }</div>
-<div>2${rq.loginedMember }</div>
-<div>${loginedMember.loginId }</div>
-<div>${rq.loginedMember.loginId }</div>
-<div>${rq.loginedMember.getLoginId() }</div>
+<%-- <div>1${loginedMember }</div> --%>
+<%-- <div>2${rq.loginedMember }</div> --%>
+<%-- <div>${loginedMember.loginId }</div> --%>
+<%-- <div>${rq.loginedMember.loginId }</div> --%>
+<%-- <div>${rq.loginedMember.getLoginId() }</div> --%>
 
 
 
