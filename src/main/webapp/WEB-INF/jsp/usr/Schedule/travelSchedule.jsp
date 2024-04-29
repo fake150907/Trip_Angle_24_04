@@ -422,6 +422,10 @@ font: 14px Pretendard, sans-serif;
 }
 
 
+#my_modal_1 {
+
+}
+
 </style>
 
 <script>
@@ -560,16 +564,18 @@ $.datepicker.setDefaults({
 		        	alert("오늘 날짜로부터 15일 이하로 선택해 주세요.");
 		        	return;
 		        }
+				
+		        my_modal_1.showModal();
 
 // 		        console.log(getDateDiff(getToday(), checkOutDate));
 		        
 // 	        	console.log(getDateDiff(checkInDate, checkOutDate) + 1);
-		        
-	        	
+
 	        // form 제출
 // 	        $('form').submit();
 	    });
 	});
+	
 </script>
 
 <div class="div">
@@ -587,21 +593,37 @@ $.datepicker.setDefaults({
 
 <div class="check-in">
 <!--       <h5>Check-In</h5> -->
-      <input type="hidden" id="check-in-date"></h6>
+     <h6><input type=""hidden"" id="check-in-date"></h6>
     </div>
     <div class="arrow"></div>
     <div class="check-out">
-<!--       <h5>Check-Out</h5> <--></-->
-      <input type="hidden" id="check-out-date"></h6>
+<!--        <h5>Check-Out</h5> -->
+      <h6><input type="hidden" id="check-out-date"></h6>
     </div>
     
 <!-- <form action="/usr/tipInfo/information" method="get"> -->
-    <input type="hidden" id="checkInDateInput" name="checkInDate">
-    <input type="hidden" id="checkOutDateInput" name="checkOutDate">
+<!--     <input type="text" id="checkInDateInput" name="checkInDate"> -->
+<!--     <input type="text" id="checkOutDateInput" name="checkOutDate"> -->
     <div class="button-flex">
         <button type="button" class="create-button">추가</button>
     </div>
 <!-- </form> -->
 
+<!-- <button class="btn" onclick="my_modal_1.showModal()">open modal</button> -->
+<dialog id="my_modal_1" class="modal">
+  <div class="modal-box">
+    <h3 class="font-bold text-lg">마이일정 생성하기</h3>
+    <p class="py-4">오사카</p>
+    
+<!--     <div id="checkInDateInput"></div> -->
+    <input type="text" id="checkInDateInput" name="checkInDate">
+    <input type="text" id="checkOutDateInput" name="checkOutDate">
+    <div class="modal-action">
+      <form method="dialog">
+        <button class="btn">Close</button>
+      </form>
+    </div>
+  </div>
+</dialog>
 
 <%@ include file="../common/foot.jspf"%>
