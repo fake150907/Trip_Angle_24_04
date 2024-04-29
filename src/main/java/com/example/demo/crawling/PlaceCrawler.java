@@ -38,7 +38,7 @@ public class PlaceCrawler {
         // 관광, 맛집, 쇼핑 탭 선택하기
         List<WebElement> buttons = driver.findElements(By.className("tag_Tag__K3_0D"));
         for (WebElement button : buttons) {
-            if (button.findElement(By.className("tag_text___rnsu")).getText().equals("쇼핑")) {
+            if (button.findElement(By.className("tag_text___rnsu")).getText().equals("맛집")) {
                 button.click();
                 break;
             }
