@@ -18,5 +18,12 @@ public class MyPlanController {
 
 		return "/usr/myPlan/placeDetail";
 	}
+	
+	
+	@RequestMapping("/usr/myPlan/myPlanDetail")
+	public String showDetail() {
+
+		return "/usr/myPlan/myPlanDetail";
+	}
 
 }

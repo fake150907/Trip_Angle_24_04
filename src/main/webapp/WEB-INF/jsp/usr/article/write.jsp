@@ -38,7 +38,7 @@
 <section class="mt-8 text-xl px-4">
 	<h1 style="text-align: center; font-size: 25; margin-top: 100px; font-weight: 600;">게시글 작성</h1>
 	<div class="mx-auto">
-		<div>${currentId }</div>
+<%-- 		<div>${currentId }</div> --%>
 		<form action="../article/doWrite" method="POST" onsubmit="ArticleWrite__submit(this); return false;"
 			enctype="multipart/form-data">
 			<input type="hidden" name=">${currentId }">
