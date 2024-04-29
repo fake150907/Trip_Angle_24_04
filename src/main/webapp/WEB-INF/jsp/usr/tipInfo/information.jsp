@@ -5,8 +5,23 @@
 <%@ include file="../common/head.jspf"%>
 
 <!-- <iframe src="http://localhost:8081/usr/article/doIncreaseHitCountRd?id=372" frameborder="0"></iframe> -->
+<script>
+	$(document).ready(function() {
+		$('.regDate_text').css('background-color', '#CDEAC0');
+		$('.InfoLabel1').click(function() {
+			$('.TipInformationPage').show();
+			$('.HoneyTipsPage').hide();
+		});
+
+		$('.InfoLabel2').click(function() {
+			$('.HoneyTipsPage').show();
+			$('.TipInformationPage').hide();
+		});
+	});
+</script>
 <style>
 .TipInformationPage {
+	display: inline-block;
 	display: flex;
 }
 
@@ -100,10 +115,11 @@
 
 .column {
 	display: flex;
-	flex-direction: column;
+	display: inline-block;
 	line-height: normal;
 	width: 40%;
 	margin-left: 0px;
+	flex-direction: column;
 }
 
 @media ( max-width : 991px) {
@@ -144,7 +160,7 @@
 	object-fit: auto;
 	border-radius: 10px;
 	width: 70%; /* You can adjust the width as needed */
-	margin-top: 100px;
+	margin-top: 35%;
 	margin-left: auto; /* This will push it to the right */
 	margin-right: 120px;
 	object-position: center; /* Resetting margin-right */
@@ -173,7 +189,7 @@
 
 .InfoItemContainer {
 	display: flex;
-	margin-top: 143px;
+	margin-top: 27%;
 	flex-grow: 1;
 	flex-direction: column;
 	color: #000;
@@ -273,21 +289,21 @@
 }
 </style>
 <div>
-	<div class="TipInformationPage">
-		<div class="column">
-			<div class="div-2">
-				<div class="Tab">
-					<div class="InfoLabel1">
-						<span class="TabContent1">기본 정보</span>
-					</div>
-					<div class="InfoLabel2">
-						<span class="TabContent2">꿀팁</span>
-					</div>
+	<div class="column">
+		<div class="div-2">
+			<div class="Tab">
+				<div class="InfoLabel1">
+					<span class="TabContent1">기본 정보</span>
 				</div>
-				<img class="OsakaImage"
-					src="https://velog.velcdn.com/images/fake150907/post/1e16874d-8b4e-41ba-a863-a04ea355831b/image.jpg" alt="오사카 이미지">
+				<div class="InfoLabel2">
+					<span class="TabContent2">꿀팁</span>
+				</div>
 			</div>
+			<img class="OsakaImage"
+				src="https://velog.velcdn.com/images/fake150907/post/1e16874d-8b4e-41ba-a863-a04ea355831b/image.jpg" alt="오사카 이미지">
 		</div>
+	</div>
+	<div class="TipInformationPage">
 		<div class="column-2">
 			<div class="InfoItemContainer">
 				<div class="OsakaInfo">OSAKA</div>
@@ -302,7 +318,42 @@
 			</div>
 		</div>
 	</div>
+	<div class="HoneyTipsPage">
+		<div class="column-2">
+			<div class="InfoItemContainer">
+				<div class="OsakaInfo">OSAKA</div>
+				<div class="div">
+					<div class="div-2">
+						<div class="column">
+							<div class="div-3">
+								<div class="language-text">사용 언어</div>
+								<div class="language">일본어</div>
+								<div class="currency-text">사용 화폐</div>
+								<div class="currency">가상화폐</div>
+								<div class="voltage-text">전압</div>
+								<div class="voltage">피카츄 백만볼트</div>
+							</div>
+						</div>
+						<div class="column-2">
+							<div class="div-10">
+								<div class="transportation-text">주요 대중교통</div>
+								<div class="transportation">전용기</div>
+								<div class="time-difference-text">시차</div>
+								<div class="time-difference">별로안남</div>
+								<div class="significant-text">특이사항</div>
+								<div class="significant">일식 존맛</div>
+							</div>
+						</div>
+						<div class="column-3">
+							<div class="ScheduleButton">일정 만들기</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
+
 
 
 

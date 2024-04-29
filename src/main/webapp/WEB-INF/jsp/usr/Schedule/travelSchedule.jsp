@@ -20,6 +20,13 @@
 
 <style>
 
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
 @charset "UTF-8";
 
 @import url("https://fonts.googleapis.com/css?family=Raleway:400,300,600");
@@ -102,6 +109,9 @@
 .ui-datepicker td a.ui-state-active, .ui-datepicker td span.ui-state-active {
    background-color: #D5F1E2; 
 /*    color: #fff;  */
+/* border: solid black 5px; */
+border-radius: 5px;
+
 }
 .ui-datepicker td a.ui-state-hover, .ui-datepicker td span.ui-state-hover {
 /*    border-color: #1EAEDB;  */
@@ -110,12 +120,14 @@
 /*    background-color: #CECECE; */
  background-color:rgba(222, 222, 222, 0.5);/*까만색(0,0,0) 20% 불투명도 */
     color: #696969;
+    border-radius: 5px;
 }
 .ui-datepicker td.ui-datepicker-reserved.ui-datepicker-checkin a, .ui-datepicker td.ui-datepicker-reserved.ui-datepicker-checkin span, .ui-datepicker td.ui-datepicker-reserved.ui-datepicker-checkout a, .ui-datepicker td.ui-datepicker-reserved.ui-datepicker-checkout span {
    background-color: #D5F1E2;
 /*    border-color: #D5F1E2;   */
 /*    color: #fff;  */
     color: black;
+    border-radius: 5px;
 }
 .ui-datepicker .ui-datepicker-today a:not(.ui-state-hover), .ui-datepicker .ui-datepicker-today span:not(.ui-state-hover) {
 /*     border-color: #11DFC7;  */
@@ -140,6 +152,9 @@
 }
 .ui-datepicker .ui-datepicker-prev:before {
   content: "←";
+  align-content: center;
+  align-items: center;
+  top:100px;
 }
 .ui-datepicker .ui-datepicker-prev, .ui-datepicker .ui-datepicker-prev.ui-state-hover {
   left: 10px;
@@ -213,9 +228,11 @@ show {
 /* 데이트피커 한국분이 만든 UI */
  .ui-widget-header { border: 0px solid #dddddd; background: #fff; } 
 
- .ui-datepicker-calendar>thead>tr>th { font-size: 14px !important; } 
+ .ui-datepicker-calendar>thead>tr>th { font-size: 17px !important; } 
 
-  .ui-datepicker .ui-datepicker-header { position: relative; padding: 10px 0; }
+  .ui-datepicker .ui-datepicker-header { position: relative; padding: 0px 0; font-family: 'Pretendard-Regular';
+font-weight: 400;
+font-style: normal;}
 
  .ui-state-default,
  .ui-widget-content .ui-state-default,
@@ -224,9 +241,9 @@ show {
  html .ui-button.ui-state-disabled:hover,
  html .ui-button.ui-state-disabled:active { border: 0px solid #c5c5c5; background-color: transparent; font-weight: normal; color: #454545; text-align: center; } 
 
-  .ui-datepicker .ui-datepicker-title { margin: 0 0em; line-height: 16px; text-align: center; font-size: 14px; padding: 0px; font-weight: bold; }  
+  .ui-datepicker .ui-datepicker-title { margin: 30px; line-height: 16px; text-align: center; font-size: 20px; padding: 0px; }  
 
-   .ui-datepicker { display: none; background-color: #fff; border-radius: 4px; margin-top: 10px; margin-left: 0px; margin-right: 0px; padding: 20px; padding-bottom: 10px; width: 300px; box-shadow: 10px 10px 40px rgba(0, 0, 0, 0.1); }
+   .ui-datepicker { display: none; background-color: #fff; border-radius: 10px; margin-top: 10px; margin-left: 0px; margin-right: 0px; padding: 20px; padding-bottom: 10px; width: 300px; box-shadow: 10px 10px 40px rgba(0, 0, 0, 0.1); }
 
  .ui-widget.ui-widget-content { border: 1px solid #eee; } 
 
@@ -245,7 +262,7 @@ show {
 
  .ui-datepicker-calendar>thead>tr>th { padding: 5px; font-size: 20px; font-weight: 400; } 
 
- .ui-datepicker-calendar>tbody>tr>td>a { color: #000; font-size: 12px !important; font-weight: bold !important; text-decoration: none;}
+ .ui-datepicker-calendar>tbody>tr>td>a { color: #000; font-size: 15px !important; font-weight: !important; text-decoration: none;}
 
  .ui-datepicker-calendar>tbody>tr>.ui-state-disabled:hover { cursor: auto; background-color: #fff; } 
 
@@ -293,12 +310,15 @@ show {
  #calendar {
 /*  position: absolute; */
 /*  left: 500px; */
-margin: 100px;
+margin: 50px;
+/* font-family: 'Pretendard-Regular'; */
+/* font-weight: 400; */
+/* font-style: normal; */
  }
- 
+
 * {
-  list-style-type: none;
-  color:black;
+list-style-type: none;
+color:black;
 }
 
 header{
@@ -307,6 +327,10 @@ padding:20px;
 
 .logo {
 font-size:30px;
+/* align-content: center; */
+/* align-items: center; */
+ padding-bottom:20px;
+/* margin: 10px; */
 }
 
 a {
@@ -314,14 +338,67 @@ color:black;
 }
 
 .ui-datepicker-current-day {
-padding:20px;
-margin: 20px;
+/*  padding:20px; */
+/*  margin: 20px; */
 }
 
 .ui-state-default{
-/* padding:20px; */
- margin: 10px; 
+/*  padding: 20px; */
+/*  margin: 10px;  */
+/*  width: 30px; */
+   height: 35px;
+   align-content: center;
+   align-items: center;
+   font-family: 'Pretendard-Regular';
+   font-weight: 400;
+   font-style: normal;
+   font-size: 15px;
 }
+
+.ui-datepicker-week-end, th {
+font-family: 'Pretendard-Regular';
+font-weight: 400;
+font-style: normal;
+}
+
+.wall {
+height: 90px;
+}
+
+.div {
+    display: flex;
+/*     max-width: 289px; */
+    flex-direction: column;
+    align-items: center;
+    color: #3b3d40;
+    font-weight: 500;
+    text-align: center;
+    padding: 0 20px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+  }
+  .div-2 {
+    font: 36px Pretendard, sans-serif;
+  }
+  .div-3 {
+    background-color: #d5f1e2;
+    margin-top: 10px;
+    width: 165px;
+    height: 3px;
+  }
+  .div-4 {
+    margin-top: 45px;
+    font: 16px Pretendard, sans-serif;
+  }
+  .div-5 {
+    color: #81c8a2;
+    align-self: stretch;
+    margin-top: 5px;
+    width: 100%;
+    font: 14px Pretendard, sans-serif;
+/*     white-space: nowrap; */
+  }
 
 </style>
 
@@ -417,17 +494,28 @@ $.datepicker.setDefaults({
 	
 </script>
 
+<!-- <div class="wall"></div> -->
+
+<!-- <div>벽</div> -->
+
+<div class="div">
+  <div class="div-2">하와이</div>
+  <div class="div-3"></div>
+  <div class="div-4">여행 기간을 선택해주세요</div>
+  <div class="div-5">여행지 출발 날짜와, 여행지 도착 날짜로 입력해주세요.</div>
+</div>
+
 <div id="calendar"></div>
 <div class="container">
   <div id="calendar-details">
     <div class="check-in">
-      <h5>Check-In</h5>
-      <h6 id="check-in-date">Choose a date</h6>
+<!--       <h5>Check-In</h5> -->
+<!--       <h6 id="check-in-date"></h6> -->
     </div>
     <div class="arrow"></div>
     <div class="check-out">
-      <h5>Check-Out</h5>
-      <h6 id="check-out-date">Choose a date</h6>
+<!--       <h5>Check-Out</h5> -->
+<!--       <h6 id="check-out-date"></h6> -->
     </div>
   </div>
 <!--   <div id="calendar"></div> -->
