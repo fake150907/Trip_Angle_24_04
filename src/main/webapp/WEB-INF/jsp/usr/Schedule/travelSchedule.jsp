@@ -397,8 +397,30 @@ height: 90px;
     margin-top: 5px;
     width: 100%;
     font: 14px Pretendard, sans-serif;
-/*     white-space: nowrap; */
   }
+
+.button-flex {
+/* width: 70%; */
+/*  display: flex; */
+/*  justify-content: flex-end; */
+/*  flex-direction: column-reverse; */
+width:750px;
+display: block;
+margin-left: auto;
+margin-right: auto;
+}
+
+.create-button {
+/* margin-left: 65%; */
+/* position: absolute; */
+display: block;
+ margin-left: auto;
+/* margin-right: auto; */
+background-color: #D5F1E2;
+border: white;
+font: 14px Pretendard, sans-serif;
+}
+
 
 </style>
 
@@ -440,8 +462,8 @@ $(function() {
 	            checkOut = null;
 	          }
 	          
-	          $('#check-in-date').text(checkIn ? checkIn.format('DD/MM/YYYY') : 'Choose a date');
-	          $('#check-out-date').text(checkOut ? checkOut.format('DD/MM/YYYY') : 'Choose a date');
+	          $('#check-in-date').text(checkIn ? checkIn.format('YYYY-MM-DD') : '날짜를 선택하세요');
+	          $('#check-out-date').text(checkOut ? checkOut.format('YYYY-MM-DD') : '날짜를 선택하세요');
 	        },
 	        onChangeMonthYear: function() {
 	          $calendar.addClass('fade-in');
@@ -489,14 +511,66 @@ $.datepicker.setDefaults({
 	$(function () {
 	  $('.datepicker').datepicker();
 	});
-	
-	
-	
+
+	$(document).ready(function() {
+	    // 추가 버튼을 클릭할 때 실행되는 함수
+	    $('.create-button').click(function() {
+	        // 선택한 체크인 날짜와 체크아웃 날짜 가져오기
+	        var checkInDate = $('#check-in-date').text();
+	        var checkOutDate = $('#check-out-date').text();
+	        
+	        // hidden input 태그에 선택한 날짜 설정
+	        $('#checkInDateInput').val(checkInDate);
+	        $('#checkOutDateInput').val(checkOutDate);
+	        
+	        if(checkInDate.trim() == "") {
+	        	alert("날짜를 2일 이상으로 선택해주세요");
+	        	return;
+	        } else if(checkOutDate.trim() == "날짜를 선택하세요"){
+	        	alert("날짜를 2일 이상으로 선택해주세요");
+	        	return;
+	        }
+	        
+	        // 선택 시작 날짜, 종료 날짜.
+	        console.log(checkInDate);
+	        console.log(checkOutDate);
+	        
+	        // 날짜 사이의 차이를 구하는 함수
+	        const getDateDiff = (d1, d2) => {
+	        	  const date1 = new Date(d1);
+	        	  const date2 = new Date(d2);
+
+	        	  const diffDate = date1.getTime() - date2.getTime();
+
+	        	  return Math.abs(diffDate / (1000 * 60 * 60 * 24)); // 밀리세컨 * 초 * 분 * 시 = 일
+	        	}
+
+				// 오늘 날짜를 구하는 함수
+		        function getToday(){
+	        	    var date = new Date();
+	        	    var year = date.getFullYear();
+	        	    var month = ("0" + (1 + date.getMonth())).slice(-2);
+	        	    var day = ("0" + date.getDate()).slice(-2);
+
+	        	    return year + "-" + month + "-" + day;
+	        	}
+		        
+				// 현재 날짜로부터 15일 이상 선택시 알람
+		        if(getDateDiff(getToday(), checkOutDate) > 15) {
+		        	alert("오늘 날짜로부터 15일 이하로 선택해 주세요.");
+		        	return;
+		        }
+
+// 		        console.log(getDateDiff(getToday(), checkOutDate));
+		        
+// 	        	console.log(getDateDiff(checkInDate, checkOutDate) + 1);
+		        
+	        	
+	        // form 제출
+// 	        $('form').submit();
+	    });
+	});
 </script>
-
-<!-- <div class="wall"></div> -->
-
-<!-- <div>벽</div> -->
 
 <div class="div">
   <div class="div-2">하와이</div>
@@ -508,18 +582,26 @@ $.datepicker.setDefaults({
 <div id="calendar"></div>
 <div class="container">
   <div id="calendar-details">
-    <div class="check-in">
+  </div>
+</div>
+
+<div class="check-in">
 <!--       <h5>Check-In</h5> -->
-<!--       <h6 id="check-in-date"></h6> -->
+      <input type="hidden" id="check-in-date"></h6>
     </div>
     <div class="arrow"></div>
     <div class="check-out">
-<!--       <h5>Check-Out</h5> -->
-<!--       <h6 id="check-out-date"></h6> -->
+<!--       <h5>Check-Out</h5> <--></-->
+      <input type="hidden" id="check-out-date"></h6>
     </div>
-  </div>
-<!--   <div id="calendar"></div> -->
-</div>
+    
+<!-- <form action="/usr/tipInfo/information" method="get"> -->
+    <input type="hidden" id="checkInDateInput" name="checkInDate">
+    <input type="hidden" id="checkOutDateInput" name="checkOutDate">
+    <div class="button-flex">
+        <button type="button" class="create-button">추가</button>
+    </div>
+<!-- </form> -->
 
 
 <%@ include file="../common/foot.jspf"%>
