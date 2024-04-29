@@ -938,6 +938,46 @@ fashions = [
 	}
 
 	printFashions();
+	
+    document.addEventListener('DOMContentLoaded', function() {
+        // Select all elements with the class 'recommendation-tab'
+        var tabs = document.querySelectorAll('.recommendation-tab');
+
+        // Loop through each tab and add a click event listener
+        tabs.forEach(function(tab) {
+            tab.addEventListener('click', function() {
+                // Remove 'active-recommendation-tab' class from all tabs
+                document.querySelectorAll('.active-recommendation-tab').forEach(function(activeTab) {
+                    activeTab.classList.remove('active-recommendation-tab');
+                });
+
+                // Hide all item containers
+                document.querySelectorAll('.ta-item-container').forEach(function(container) {
+                    container.style.display = 'none';
+                });
+
+                // Display the corresponding item container if tab has specific classes
+                if (tab.classList.contains('fashion-all')) {
+                    document.querySelectorAll('.ta-item-container.fashion-all').forEach(function(container) {
+                        container.style.display = 'flex';
+                    });
+                } else if (tab.classList.contains('fashion-man')) {
+                    document.querySelectorAll('.ta-item-container.fashion-man').forEach(function(container) {
+                        container.style.display = 'flex';
+                    });
+                } else if (tab.classList.contains('fashion-women')) {
+                    document.querySelectorAll('.ta-item-container.fashion-women').forEach(function(container) {
+                        container.style.display = 'flex';
+                    });
+                }
+
+                // Add 'active-recommendation-tab' class to the clicked tab
+                tab.classList.add('active-recommendation-tab');
+
+            });
+        });
+    });
+
 
 
 </script>
