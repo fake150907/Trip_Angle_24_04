@@ -31,10 +31,10 @@
 /*       margin-left: 4%;     */
 /*   }  */
 
-/*  #calendar-details h5 {  */
-/*    font-size: 1.8rem;  */
-/*    margin-bottom: 0;  */
-/*  }  */
+/*   #calendar-details h5 {   */
+/*     font-size: 1.8rem;   */
+/*     margin-bottom: 0;   */
+/*   }   */
 
 /* #calendar-details .check-in { */
 /*   text-align: right; */
@@ -62,11 +62,11 @@
 /*    outline: 0;  */
 /*  }  */
 
-.ui-datepicker.ui-datepicker-multi {
-   width: 100% !important; 
-   max-width: 24em; 
-   margin: 0 auto; 
-}
+ .ui-datepicker.ui-datepicker-multi { 
+    width: 100% !important;  
+    max-width: 24em;  
+    margin: auto;  
+ } 
 
 .ui-datepicker.ui-datepicker-multi .ui-datepicker-group {
 /*    width: 100%;  */
@@ -215,7 +215,7 @@ show {
 
  .ui-datepicker-calendar>thead>tr>th { font-size: 14px !important; } 
 
-  .ui-datepicker .ui-datepicker-header { position: relative; padding: 50px 0; }
+  .ui-datepicker .ui-datepicker-header { position: relative; padding: 10px 0; }
 
  .ui-state-default,
  .ui-widget-content .ui-state-default,
@@ -224,9 +224,9 @@ show {
  html .ui-button.ui-state-disabled:hover,
  html .ui-button.ui-state-disabled:active { border: 0px solid #c5c5c5; background-color: transparent; font-weight: normal; color: #454545; text-align: center; } 
 
- .ui-datepicker .ui-datepicker-title { margin: 0 0em; line-height: 16px; text-align: center; font-size: 14px; padding: 0px; font-weight: bold; } 
+  .ui-datepicker .ui-datepicker-title { margin: 0 0em; line-height: 16px; text-align: center; font-size: 14px; padding: 0px; font-weight: bold; }  
 
-  .ui-datepicker { display: none; background-color: #fff; border-radius: 4px; margin-top: 10px; margin-left: 0px; margin-right: 0px; padding: 20px; padding-bottom: 10px; width: 300px; box-shadow: 10px 10px 40px rgba(0, 0, 0, 0.1); } 
+   .ui-datepicker { display: none; background-color: #fff; border-radius: 4px; margin-top: 10px; margin-left: 0px; margin-right: 0px; padding: 20px; padding-bottom: 10px; width: 300px; box-shadow: 10px 10px 40px rgba(0, 0, 0, 0.1); }
 
  .ui-widget.ui-widget-content { border: 1px solid #eee; } 
 
@@ -283,6 +283,45 @@ show {
  .inp { padding: 10px 10px; background-color: #f1f1f1; border-radius: 4px; border: 0px; } 
 
  .inp:focus { outline: none; background-color: #eee; } 
+ 
+ .container {
+/*   position: absolute; */
+/* display:block; */
+/*  top:100px; */
+ }
+ 
+ #calendar {
+/*  position: absolute; */
+/*  left: 500px; */
+margin: 100px;
+ }
+ 
+* {
+  list-style-type: none;
+  color:black;
+}
+
+header{
+padding:20px;
+}
+
+.logo {
+font-size:30px;
+}
+
+a {
+color:black;
+}
+
+.ui-datepicker-current-day {
+padding:20px;
+margin: 20px;
+}
+
+.ui-state-default{
+/* padding:20px; */
+ margin: 10px; 
+}
 
 </style>
 
@@ -374,21 +413,25 @@ $.datepicker.setDefaults({
 	  $('.datepicker').datepicker();
 	});
 	
+	
+	
 </script>
 
+<div id="calendar"></div>
 <div class="container">
   <div id="calendar-details">
     <div class="check-in">
-<!--       <h5>Check-In</h5> -->
-<!--       <h6 id="check-in-date">Choose a date</h6> -->
+      <h5>Check-In</h5>
+      <h6 id="check-in-date">Choose a date</h6>
     </div>
     <div class="arrow"></div>
     <div class="check-out">
-<!--       <h5>Check-Out</h5> -->
-<!--       <h6 id="check-out-date">Choose a date</h6> -->
+      <h5>Check-Out</h5>
+      <h6 id="check-out-date">Choose a date</h6>
     </div>
   </div>
-  <div id="calendar"></div>
+<!--   <div id="calendar"></div> -->
 </div>
+
 
 <%@ include file="../common/foot.jspf"%>
