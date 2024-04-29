@@ -754,7 +754,7 @@ transform: translateY(-20px);
 }
 
 .button {
-	margin-top: 10px;
+	margin-top: 50px;
   background-color:#d5f1e2; 
   border : solid 1px #d5f1e2;
 /*   background-color: rgba(213, 241, 226, 0.3); */
@@ -910,8 +910,8 @@ transform: translateY(-20px);
           </br>
           <p>010-4495-0000</p>
 <!--           <p>010-4495-8592</p> -->
-          <button class="button btn btn-sm"> text message</button>
-          </br>
+<!--           <button class="button btn btn-sm"> text message</button> -->
+<!--           </br> -->
           </br>
           <p>insamjoo300@gmail.com</p>
           <button class="button btn btn-sm" onclick="writeEmailToMyeongwon()" > send e-mail</button>
@@ -929,8 +929,8 @@ transform: translateY(-20px);
           </br>
           <p>010-4249-0000</p>
 <!--           <p>010-4249-0977</p> -->
-          <button class="button btn btn-sm">text message</button>
-          </br>
+<!--           <button class="button btn btn-sm">text message</button> -->
+<!--           </br> -->
           </br>
           <p>yunlinit@gmail.com</p>
           <button class="button btn btn-sm" onclick="writeEmailToYunlin()">send e-mail</button>
@@ -948,8 +948,8 @@ transform: translateY(-20px);
           </br>
           <p>010-5408-0000</p>
 <!--           <p>010-5408-4893</p> -->
-          <button class="button btn btn-sm">text message</button>
-          </br>
+<!--           <button class="button btn btn-sm">text message</button> -->
+<!--           </br> -->
           </br>
           <p>yungayeon223gmail.com</p>
           <button class="button btn btn-sm" onclick="writeEmailToGayeon()">send e-mail</button>
@@ -966,8 +966,8 @@ transform: translateY(-20px);
           </br>
           <p>010-7752-0000</p>
 <!--           <p>010-7752-8687</p> -->
-          <button class="button btn btn-sm" >text message</button>
-          </br>
+<!--           <button class="button btn btn-sm" >text message</button> -->
+<!--           </br> -->
           </br>
           <p>tlstlsrbrb11@gmail.com</p>
           <button class="button btn btn-sm" onclick="writeEmailToGyusub()">send e-mail</button>
