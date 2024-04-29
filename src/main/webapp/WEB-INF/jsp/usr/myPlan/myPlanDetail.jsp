@@ -399,7 +399,7 @@
 }
 
 .recommendation-title {
-  font: 400 24px/28px Inter, sans-serif;
+  font: 500 24px/28px Inter, sans-serif;
   flex: 1;
 }
 
@@ -412,9 +412,10 @@
   gap: 14px;
   font-size: 16px;
   color: #3b3d40;
-  font-weight: 600;
+  font-weight: 500;
   line-height: 175%;
   align-items: center;
+  margin-top: 30px;
 }
 
 .recommendation-tab {
