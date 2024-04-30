@@ -8,6 +8,9 @@
 
 
 <style>
+
+
+
 .my-plan-detail {
 	width: 80%;
 	display: flex;
@@ -376,6 +379,18 @@
 
 
 
+/* 날씨 섹션 */
+.weather-section{
+	width: 80%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 0 auto; 
+	background-color: #ededed;
+	height: 200px;
+	margin-top: 50px;
+}
+
 /* 옷 추천 탭 */
 .recommendation-section {
   display: flex;
@@ -384,7 +399,7 @@
   margin: 0 auto;
   width: 80%;
   align-self: start;
-  margin-top: 300px;
+  margin-top: 50px;
 }
 
 /* 	width: 80%; */
@@ -699,7 +714,44 @@
 	</div>
 </div>
 
+<div class ="weather-section">
+</div>
+
 <div class="fashion-recommendation-main">
+
+  <div class="section-container mt-100">
+    <section class="recommendation-section">
+      <header class="recommendation-header">
+        <h2 class="recommendation-title">
+          <span>날씨에 알맞는</span>
+          <span class="recommendation-accent">옷 추천</span>
+        </h2>
+        <nav class="recommendation-tabs">
+          <div class="recommendation-tab fashion-all">전체</div>
+          <div class="recommendation-tab fashion-women">여성</div>
+          <div class="recommendation-tab fashion-man">남성</div>
+        </nav>
+      </header>
+      <div class="recommendation-divider"></div>
+    </section>
+
+  </div>
+  <div class="section-container">
+    <div class="loading-container">
+      <svg class="spinner" width="65px" height="65px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+        <circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
+      </svg>
+      <p>지금 ai가 날씨에 맞는 옷을 찾아주는 중입니다.</p>
+    </div>
+
+    <section class="ta-item-container fashion-all"></section>
+    <section class="ta-item-container fashion-women"></section>
+    <section class="ta-item-container fashion-man"></section>
+
+  </div>
+</div>
+
+<div class="place-recommendation-main">
 
   <div class="section-container mt-100">
     <section class="recommendation-section">
@@ -981,4 +1033,254 @@ fashions = [
 
 
 </script>
+
+
+<script>
+
+fashions = [
+	  {
+	    name: "롱패딩",
+	    brand: "뉴발란스",
+	    gender: 0,
+	    description:
+	      "한국 겨울에 적합한 롱패딩. 보온성이 뛰어나고 스타일리시한 디자인.",
+	    imageUrl:
+	      "https://shopping-phinf.pstatic.net/main_8704333/87043339346.1.jpg"
+	  },
+	  {
+	    name: "니트 가디건",
+	    brand: "지오다노",
+	    gender: 0,
+	    description: "가벼운 니트 가디건. 쾌적한 여행을 위한 아우터로 적합.",
+	    imageUrl:
+	      "https://shopping-phinf.pstatic.net/main_3170904/31709040807.20220410190846.jpg"
+	  },
+	  {
+	    name: "카고 바지",
+	    brand: "리바이스",
+	    gender: 0,
+	    description: "다양한 수납공간이 있는 카고 바지. 편안한 착용감과 실용성.",
+	    imageUrl:
+	      "https://shopping-phinf.pstatic.net/main_4680554/46805540242.20240403061756.jpg"
+	  },
+	  {
+	    name: "맨투맨",
+	    brand: "에잇세컨즈",
+	    gender: 0,
+	    description: "편안하고 스타일리시한 맨투맨. 다양한 코디에 활용 가능.",
+	    imageUrl:
+	      "https://shopping-phinf.pstatic.net/main_4528440/45284407201.20240217015504.jpg"
+	  },
+	  {
+	    name: "청바지",
+	    brand: "지오다노",
+	    gender: 0,
+	    description: "한국에서 인기있는 지오다노 청바지. 스트레치로 편안한 착용감.",
+	    imageUrl:
+	      "https://shopping-phinf.pstatic.net/main_4519423/45194233182.20240111171516.jpg"
+	  },
+	  {
+	    name: "스니커즈",
+	    brand: "컨버스",
+	    gender: 0,
+	    description: "대중적이고 편안한 컨버스 스니커즈. 여행 중 편리한 신발.",
+	    imageUrl: "https://shopping-phinf.pstatic.net/main_8637022/86370224181.jpg"
+	  },
+	  {
+	    name: "롱패딩",
+	    brand: "뉴발란스",
+	    gender: 1,
+	    description:
+	      "한국 겨울에 적합한 롱패딩. 보온성이 뛰어나고 여성스러운 실루엣.",
+	    imageUrl:
+	      "https://shopping-phinf.pstatic.net/main_8680585/86805851138.3.jpg"
+	  },
+	  {
+	    name: "캐시미어 스웨터",
+	    brand: "유니클로",
+	    gender: 1,
+	    description: "포근한 캐시미어 스웨터. 여행 중 따뜻하고 세련된 룩.",
+	    imageUrl:
+	      "https://shopping-phinf.pstatic.net/main_4392540/43925409499.20231110122444.jpg"
+	  },
+	  {
+	    name: "와이드 데님 팬츠",
+	    brand: "폴로 랄프로렌",
+	    gender: 1,
+	    description: "스타일리시한 와이드 데님 팬츠. 여행 중 편안한 착용감.",
+	    imageUrl: "https://shopping-phinf.pstatic.net/main_8771557/87715578465.jpg"
+	  },
+	  {
+	    name: "블라우스",
+	    brand: "제이에스티나",
+	    gender: 1,
+	    description:
+	      "세련된 디자인의 블라우스. 여행 중 여성스러운 매력을 선보일 수 있음.",
+	    imageUrl: "https://velog.velcdn.com/images/yunlinit/post/5d80752c-cbf7-44fd-9110-d29944d911b0/image.webp"
+	  },
+	  {
+	    name: "롱 스커트",
+	    brand: "린",
+	    gender: 1,
+	    description: "한국에서 유행하는 롱 스커트. 여성스러우면서도 편안한 착용감.",
+	    imageUrl:
+	      "https://shopping-phinf.pstatic.net/main_4092679/40926796986.20240320231821.jpg"
+	  },
+	  {
+	    name: "로퍼",
+	    brand: "존스부띠끄",
+	    gender: 1,
+	    description: "대중적인 존스부띠끄 로퍼. 여행 중 편리한 신발로 추천.",
+	    imageUrl: "https://velog.velcdn.com/images/yunlinit/post/5d80752c-cbf7-44fd-9110-d29944d911b0/image.webp"
+	  }
+	];
+
+	function printFashions() {
+	  const fashionAll = document.querySelector(".ta-item-container.fashion-all");
+	  const fashionMan = document.querySelector(".ta-item-container.fashion-man");
+	  const fashionWomen = document.querySelector(
+	    ".ta-item-container.fashion-women"
+	  );
+
+	  fashions.forEach((fashion) => {
+	    // Create the article element
+	    const article = document.createElement("article");
+	    article.className = "ta-item-card";
+
+	    // Create the image container div
+	    const imageContainer = document.createElement("div");
+	    imageContainer.className = "ta-item-image-container";
+
+	    // Create the image element
+	    const image = document.createElement("img");
+	    if (fashion.imageUrl == "") {
+	      image.src = "FashionNoimage.webp";
+	    } else {
+	      image.src = fashion.imageUrl;
+	    }
+
+	    image.alt = "Fashion Image";
+	    image.className = "ta-item-image";
+	    image.loading = "lazy";
+
+	    // Append the image to the image container
+	    imageContainer.appendChild(image);
+
+	    // Create the description div
+	    const description = document.createElement("div");
+	    description.className = "ta-item-description";
+	    description.textContent = fashion.description;
+
+	    // Append the description to the image container
+	    imageContainer.appendChild(description);
+
+	    // Append the image container to the article
+	    article.appendChild(imageContainer);
+
+	    // Create the details div
+	    const details = document.createElement("div");
+	    details.className = "ta-item-details";
+
+	    // Create the item name h3
+	    const itemName = document.createElement("h3");
+	    itemName.className = "ta-item-name";
+	    itemName.textContent = fashion.name;
+
+	    // Append the item name to the details div
+	    details.appendChild(itemName);
+
+	    // Create the details info div
+	    const detailsInfo = document.createElement("div");
+	    detailsInfo.className = "ta-item-details-info";
+
+	    // Create and append brand name paragraph
+	    const brandName = document.createElement("p");
+	    brandName.className = "ta-item-info";
+	    brandName.textContent = fashion.brand;
+	    detailsInfo.appendChild(brandName);
+
+	    // Create and append gender paragraph
+	    const gender = document.createElement("p");
+	    gender.className = "ta-item-info";
+	    if (fashion.gender == 0) {
+	      gender.textContent = "남성";
+	    } else {
+	      gender.textContent = "여성";
+	    }
+
+	    detailsInfo.appendChild(gender);
+
+	    // Append the details info to the details div
+	    details.appendChild(detailsInfo);
+
+	    // Append the details div to the article
+	    article.appendChild(details);
+	    console.log(article);
+
+	    fashionAll.appendChild(article);
+	    const articleClone = article.cloneNode(true);
+	    if (fashion.gender == 0) {
+	      fashionMan.appendChild(articleClone);
+	    } else {
+	      fashionWomen.appendChild(articleClone);
+	    }
+	  });
+
+	  // Append the article to the document body or any other container
+	  fashionAll.style.display = "flex";
+	  document.querySelector(".recommendation-tabs").style.display = "flex";
+	  document.querySelector(
+	    ".fashion-recommendation-main .loading-container"
+	  ).style.display = "none";
+	  document
+	    .querySelector(".recommendation-tab.fashion-all")
+	    .classList.add("active-recommendation-tab");
+	}
+
+	printFashions();
+	
+    document.addEventListener('DOMContentLoaded', function() {
+        // Select all elements with the class 'recommendation-tab'
+        var tabs = document.querySelectorAll('.recommendation-tab');
+
+        // Loop through each tab and add a click event listener
+        tabs.forEach(function(tab) {
+            tab.addEventListener('click', function() {
+                // Remove 'active-recommendation-tab' class from all tabs
+                document.querySelectorAll('.active-recommendation-tab').forEach(function(activeTab) {
+                    activeTab.classList.remove('active-recommendation-tab');
+                });
+
+                // Hide all item containers
+                document.querySelectorAll('.ta-item-container').forEach(function(container) {
+                    container.style.display = 'none';
+                });
+
+                // Display the corresponding item container if tab has specific classes
+                if (tab.classList.contains('fashion-all')) {
+                    document.querySelectorAll('.ta-item-container.fashion-all').forEach(function(container) {
+                        container.style.display = 'flex';
+                    });
+                } else if (tab.classList.contains('fashion-man')) {
+                    document.querySelectorAll('.ta-item-container.fashion-man').forEach(function(container) {
+                        container.style.display = 'flex';
+                    });
+                } else if (tab.classList.contains('fashion-women')) {
+                    document.querySelectorAll('.ta-item-container.fashion-women').forEach(function(container) {
+                        container.style.display = 'flex';
+                    });
+                }
+
+                // Add 'active-recommendation-tab' class to the clicked tab
+                tab.classList.add('active-recommendation-tab');
+
+            });
+        });
+    });
+
+
+
+</script>
+
+
 
