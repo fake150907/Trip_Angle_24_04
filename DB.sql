@@ -67,7 +67,7 @@ CREATE TABLE `regionInfoTips` (
 	`information`	TEXT	NULL	COMMENT '여행지에 대한 설명문',
 	`Voltage`	CHAR(30)	NULL	COMMENT '전압',
 	`language`	CHAR(20)	NULL	COMMENT '사용언어',
-	`climate`	CHAR(30)	NULL	COMMENT '기후',
+	`climate`	TEXT	NULL	COMMENT '기후',
 	`timeDifference`	CHAR(100)	NULL	COMMENT '시차',
 	`rate`	CHAR(100)	NULL,
 	`tips`	CHAR(100)	NULL,
@@ -151,12 +151,20 @@ CREATE TABLE `tabList` (
 
 CREATE TABLE `recommendSpot` (
 	`id`	INT(10)	NOT NULL	COMMENT '추천 장소 id',
+	`regDate`	DATETIME	NULL,
+	`updateDate`	DATETIME	NULL,
 	`groceryName`	CHAR(50)	NULL	COMMENT '가게명',
 	`grade`	INT(20)	NULL	COMMENT '평점',
-	`reviewCount`	INT(100)	NULL	COMMENT '리뷰 갯수',
+	`reviewCount`	CHAR(100)	NULL	COMMENT '리뷰 갯수',
+	`facilities` CHAR(100)	NULL	COMMENT '시설 정보',
 	`address`	CHAR(50)	NULL	COMMENT '주소',
-	`operatingTime`	TIME	NULL	COMMENT '운영 시간',
-	`phoneNumber`	CHAR(100)	NULL	COMMENT '전화번호'
+	`operatingTime`	CHAR(100)	NULL	COMMENT '운영 시간',
+	`phoneNumber`	CHAR(100)	NULL	COMMENT '전화번호',
+	`imageUrl1`	TEXT	NULL,
+	`imageUrl2`	TEXT	NULL,
+	`imageUrl3`	TEXT	NULL,
+	`imageUrl4`	TEXT	NULL,
+	`imageUrl5`	TEXT	NULL
 );
 
 CREATE TABLE `regionSymbolicWord` (

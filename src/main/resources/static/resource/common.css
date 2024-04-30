@@ -44,6 +44,13 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'KyoboHandwriting2023wsa';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2404-2@1.0/KyoboHandwriting2023wsa.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
 html>body {
 	font-family: 'Pretendard-Regular', sans-serif;
 }
@@ -83,10 +90,15 @@ header>div>ul>li {
 /* .modify-box>tbody>tr:nth-child(5)>td>input, .modify-box>tbody>tr:nth-child(6)>td>input, */
 /* 	.modify-box>tbody>tr:nth-child(7)>td>input { */
 /* } */
+
+
+/* 테이블 */
 .table-box-1 th, .table-box-1 td {
-	border: 1px solid black;
+	border: 1px solid rgb(192, 192, 192)(28, 128, 128);
 	padding: 10px;
-	text-align: center;
+	font-size: 15px;
+	font-weight: 500;
+	/* 	text-align: center; */
 }
 
 /* 기본 네비게이션 2차 메뉴 스타일 */
@@ -117,3 +129,4 @@ html[data-theme='light'] .toast-ui-editor {
 html[data-theme='dark'] .toast-ui-editor {
     background-color: #333333; /* 또는 어두운 테마에 적합한 다른 색상 */
 }
+

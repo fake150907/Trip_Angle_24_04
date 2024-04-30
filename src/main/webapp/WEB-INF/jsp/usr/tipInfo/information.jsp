@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <c:set var="pageTitle" value="HONEYTIPS PAGE"></c:set>
@@ -299,8 +300,8 @@
 					<span class="TabContent2">꿀팁</span>
 				</div>
 			</div>
-			<img class="OsakaImage"
-				src="https://velog.velcdn.com/images/fake150907/post/1e16874d-8b4e-41ba-a863-a04ea355831b/image.jpg" alt="오사카 이미지">
+			<img class="OsakaImage" src="https://velog.velcdn.com/images/fake150907/post/1e16874d-8b4e-41ba-a863-a04ea355831b/image.jpg" alt="오사카 이미지">
+
 		</div>
 	</div>
 	<div class="TipInformationPage">
@@ -308,12 +309,15 @@
 			<div class="InfoItemContainer">
 				<div class="OsakaInfo">OSAKA</div>
 				<div class="country-city-text">일본 오사카</div>
-				<div class="country-city">일본 오사카는 일본의 중부 서쪽에 위치한 도시로, 현대적인 도시와 전통적인 일본 문화가 공존하는 곳입니다. 오사카는 맛집이 많고 음식 다양한 것으로
-					유명합니다. 돈키호테와 같은 대형 쇼핑 몰과 전통 시장들이 함께 있어 쇼핑하기에 좋은 도시이기도 합니다. 또한, 오사카성, 우메다 스카이 빌딩, 도톤보리 등의 명소가 있어 여행객들에게 인기가 많습니다. 관광
-					명소 뿐만 아니라, 교토나 나라 등 주변 관광지와 접근성이 좋아 일본을 여행하는 분들에게 좋은 출발점이기도 합니다.</div>
+				<div class="country-city">일본 오사카는 일본의 중부 서쪽에 위치한 도시로, 현대적인 도시와
+					전통적인 일본 문화가 공존하는 곳입니다. 오사카는 맛집이 많고 음식 다양한 것으로 유명합니다. 돈키호테와 같은 대형 쇼핑
+					몰과 전통 시장들이 함께 있어 쇼핑하기에 좋은 도시이기도 합니다. 또한, 오사카성, 우메다 스카이 빌딩, 도톤보리 등의
+					명소가 있어 여행객들에게 인기가 많습니다. 관광 명소 뿐만 아니라, 교토나 나라 등 주변 관광지와 접근성이 좋아 일본을
+					여행하는 분들에게 좋은 출발점이기도 합니다.</div>
 				<div class="climate-text">기후</div>
-				<div class="climate">오사카의 기후는 온습한 기후로, 여름에는 무더운 날씨가 이어지고, 겨울에는 비교적 추운 기운이 느껴집니다. 봄과 가을은 기온이 쾌적하며 여행하기 좋은 계절로
-					알려져 있습니다. 비가 많이 내리는 편이며, 특히 여름철에는 열대성 폭염이 올라오기도 합니다.</div>
+				<div class="climate">오사카의 기후는 온습한 기후로, 여름에는 무더운 날씨가 이어지고, 겨울에는
+					비교적 추운 기운이 느껴집니다. 봄과 가을은 기온이 쾌적하며 여행하기 좋은 계절로 알려져 있습니다. 비가 많이 내리는
+					편이며, 특히 여름철에는 열대성 폭염이 올라오기도 합니다.</div>
 				<div class="ScheduleButton">일정 만들기</div>
 			</div>
 		</div>
