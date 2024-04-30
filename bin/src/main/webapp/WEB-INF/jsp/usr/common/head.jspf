@@ -32,6 +32,17 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Pattaya&display=swap" rel="stylesheet">
 
+<!-- 구글폰트 Suranna -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Suranna&display=swap" rel="stylesheet">
+
+
+<!-- 구글폰트 Urbanist -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Suranna&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
 <script>
   // 테마를 전환하는 함수
   function Theme__toggle() {
@@ -88,7 +99,9 @@
 				</c:if>
 				<c:if test="${rq.isLogined() }">
 					<li><a class="write-btns header-btns " href="../article/write">WRITE</a></li>
-					<li> <a class="mypage-btns header-btns" href="/usr/member/myPage">MYPAGE</a></li>
+					
+					<li> <a class="mypage-btns header-btns" href="/usr/myPlan/myPlanList">My Plan</a></li>
+					<li> <a class="mypage-btns header-btns" href="/usr/member/myPage">회원정보</a></li>
 					<li><a onclick="if(confirm('로그아웃 할래?') == false) return false;" class="logout-btn header-btns "
 							href="${rq.logoutUri }">LOGOUT</a></li>
 				</c:if>
@@ -97,6 +110,8 @@
 		<div class="div-8 header-line"></div>
 	</header>
 </div>
+
+<div class="wall"></div>
 
 <style>
 /* 헤더가 고정 위치로 설정될 수 있도록 수정 */
@@ -165,5 +180,9 @@ font-size: 14px;
 		white-space: initial;
 		padding: 0 20px;
 	}
+}
+
+.wall {
+height: 90px;
 }
 </style>

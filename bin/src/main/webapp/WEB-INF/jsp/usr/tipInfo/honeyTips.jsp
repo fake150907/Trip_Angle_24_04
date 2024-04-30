@@ -369,34 +369,28 @@
 	<div class="InfoItemContainer">
 		<div class="language-box">
 			<div class="InfoItem language-text">사용 언어</div>
-			<div class="InfoItem language">일본어</div>
+			<div class="InfoItem language">${language }</div>
 		</div>
 		<div class="currency-box">
-			<div class="InfoItem currency-text">사용 화폐</div>
-			<div class="InfoItem currency">가상화폐</div>
+			<div class="InfoItem currency-text">환율</div>
+			<div class="InfoItem currency">${rate }</div>
 		</div>
 		<div class="voltage-box">
 			<div class="InfoItem voltage-text">전압</div>
-			<div class="InfoItem voltage">피카츄 백만볼트</div>
+			<div class="InfoItem voltage">${Voltage }</div>
 		</div>
 		<div class="transportation-box">
-			<div class="InfoItem transportation-text">주요 대중교통</div>
-			<div class="InfoItem transportation">전용기</div>
+			<div class="InfoItem transportation-text">팁</div>
+			<div class="InfoItem transportation">${tips }</div>
 		</div>
 		<div class="time-difference-box">
 			<div class="InfoItem time-difference-text">시차</div>
-			<div class="InfoItem time-difference">별로 안남</div>
-		</div>
-		<div class="significant-box">
-			<div class="InfoItem significant-text">특이사항</div>
-			<div class="InfoItem significant">일식 존맛</div>
+			<div class="InfoItem time-difference">${TimeDifference }</div>
 		</div>
 	</div>
 	<div class="Rectangle1">
 		<a href="schedule.jsp" class="ScheduleButton">일정 만들기</a>
 	</div>
 </div>
-
-
 
 <%@ include file="../common/foot.jspf"%>
