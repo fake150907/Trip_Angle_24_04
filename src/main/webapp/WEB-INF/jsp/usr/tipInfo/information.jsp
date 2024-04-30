@@ -300,9 +300,8 @@
 					<span class="TabContent2">꿀팁</span>
 				</div>
 			</div>
-			<img class="OsakaImage"
-				src="https://velog.velcdn.com/images/fake150907/post/1e16874d-8b4e-41ba-a863-a04ea355831b/image.jpg"
-				alt="오사카 이미지">
+			<img class="OsakaImage" src="https://velog.velcdn.com/images/fake150907/post/1e16874d-8b4e-41ba-a863-a04ea355831b/image.jpg" alt="오사카 이미지">
+
 		</div>
 	</div>
 	<div class="TipInformationPage">

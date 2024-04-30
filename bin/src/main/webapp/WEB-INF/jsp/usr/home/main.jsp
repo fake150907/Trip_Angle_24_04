@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="pageTitle" value=""></c:set>
 <%@ include file="../common/head.jspf"%>
@@ -16,7 +17,9 @@
 <script src="script.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Pattaya&display=swap" rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css2?family=Pattaya&display=swap"
+	rel="stylesheet">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link
@@ -103,11 +106,9 @@ header {
 	}
 }
 
-
 /* ///////////  여기서부터 건드리지마요 ////////////*/
 
 /* ///////////  로고 통통튀는 애니메이션 효과 CSS ////////////*/
-
 
 /* @keyframes waviy { */
 /*   0%, 40%, 100% { */
@@ -117,20 +118,46 @@ header {
 /*     transform: translateY(-20px); */
 /*   } */
 /* } */
+@keyframes waviy { 
+0%, 40%, 100% {
+	transform: translateY(0);
+}
 
-
-@keyframes waviy {
-  0%, 40%, 100% {
-    transform: translateY(0);
-  }
-  20% {
-    transform: translateY(-20px);
-  }
+20%
+{
+transform: translateY(-20px);
+}
 }
 
 /* ///////////  여기까지 건드리지마요 ////////////*/
+.scroll-down-sign1 {
+	position: absolute;
+	top: 79%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	font-size: 30px;
+	font-family: "Nanum Brush Script", cursive;
+	color: white;
+	z-index: 999;
+}
 
- 
+.scroll-down-sign2 {
+	position: absolute;
+	top: 83%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	font-size: 30px;
+	font-family: "Nanum Brush Script", cursive;
+	color: white;
+	z-index: 999;
+}
+
+@media ( max-width : 991px) {
+	.scroll-down-sign2, .scroll-down-sign1 {
+		font-size: 20px; /* 화면 크기가 991px 이하일 때 텍스트 크기를 줄입니다. */
+	}
+}
+
 .text {
 	position: absolute;
 	top: 38%;
@@ -312,198 +339,268 @@ header {
 
 /* /////////////////////////// bottom-area */
 .div-bottom {
-  position: relative;
-  width: 100%; /* 이 부분을 추가하여 가로 길이를 화면의 100%로 설정합니다. */
-  justify-content: center;
-  align-items: start;
+	position: relative;
+	width: 100%; /* 이 부분을 추가하여 가로 길이를 화면의 100%로 설정합니다. */
+	justify-content: center;
+	align-items: start;
+	background-color: #fff;
+	display: flex;
+	flex-direction: column;
+	padding: 32px 80px 80px;
+	max-width: 1280px;
+	margin: auto;
+	margin-top: 120px;
+	margin-bottom: 100px;
+}
+
+@media ( max-width : 991px) {
+	.div-bottom {
+		padding: 0 20px;
+	}
+}
+
+.about-trip-angle {
+	color: #81c8a2;
+	font: 400 24px/28px Pretendard, sans-serif;
+}
+
+@media ( max-width : 991px) {
+	.about-trip-angle {
+		
+	}
+}
+
+.mint-line {
+	border-color: rgba(213, 241, 226, 1);
+	border-style: solid;
+	border-bottom-width: 1px;
+	width: 224px;
+	height: 2px;
+	margin-top: 7px;
+}
+
+.trip-style-music-section {
+	align-self: stretch;
+	margin-top: 14px;
+}
+
+@media ( max-width : 991px) {
+	.trip-style-music-section {
+		max-width: 100%;
+	}
+}
+
+.div-5 {
+	gap: 20px;
+	display: flex;
+}
+
+@media ( max-width : 991px) {
+	.div-5 {
+		flex-direction: column;
+		align-items: stretch;
+		gap: 0px;
+	}
+}
+
+.trip-box {
+	display: flex;
+	flex-direction: column;
+	line-height: normal;
+	width: 35%;
+	height: 550px;
+	margin-left: 0px;
+}
+
+@media ( max-width : 991px) {
+	.trip-box {
+		width: 100%;
+		align-self: center;
+	}
+}
+
+.trip-box-img {
+	disply: flex;
+	flex-direction: column;
+	overflow: hidden;
+	position: relative;
+	display: flex;
+	aspect-ratio: 0.83;
+	flex-grow: 1;
+	color: #fff;
+	padding: 80px 14px 40px;
+	background-image:
+		url("https://velog.velcdn.com/images/yunlinit/post/995800fa-cbf0-4dfd-9b9d-846e9bb31b56/image.png");
+	background-size: cover; /* 배경 이미지를 요소에 맞게 채우기 */
+	border-radius: 10px;
+}
+
+@media ( max-width : 991px) {
+	.trip-box-img {
+		margin-top: 40px;
+	}
+}
+
+.trip-title {
+	position: relative;
+	letter-spacing: -0.8px;
+	margin-top: 300px;
+	font: 400 40px/96% Pattaya, sans-serif;
+}
+
+.trip-comment {
+	position: relative;
+	margin-top: 9px;
+	font: 400 16px/26px Pretendard, sans-serif;
+}
+
+.style-box {
+	display: flex;
+	flex-direction: column;
+	line-height: normal;
+	width: 35%;
+	margin-left: 30px;
+}
+
+@media ( max-width : 991px) {
+	.style-box {
+		width: 100%;
+		margin-right: 20px; /* 요소들 사이의 간격을 지정합니다. */
+		align-self: center; /* 가운데 정렬 */
+	}
+}
+
+.style-box-img {
+	disply: flex;
+	flex-direction: column;
+	overflow: hidden;
+	position: relative;
+	display: flex;
+	aspect-ratio: 0.83;
+	flex-grow: 1;
+	color: #fff;
+	padding: 80px 14px 38px;
+	background-image:
+		url("https://velog.velcdn.com/images/yunlinit/post/d9b5ca6f-79fa-4b55-9cb7-b66d6a2bdea4/image.png");
+	background-size: cover; /* 배경 이미지를 요소에 맞게 채우기 */
+	border-radius: 10px;
+}
+
+@media ( max-width : 991px) {
+	.style-box-img {
+		margin-top: 40px;
+		padding-right: 20px;
+	}
+}
+
+.style-title {
+	position: relative;
+	letter-spacing: -0.8px;
+	margin-top: 300px;
+	font: 400 40px/96% Pattaya, sans-serif;
+}
+
+.style-comment {
+	position: relative;
+	margin-top: 9px;
+	font: 400 16px/26px Pretendard, sans-serif;
+}
+
+.music-box {
+	display: flex;
+	flex-direction: column;
+	line-height: normal;
+	width: 35%;
+	margin-left: 30px;
+}
+
+@media ( max-width : 991px) {
+	.music-box {
+		width: 100%;
+		margin-right: 20px; /* 요소들 사이의 간격을 지정합니다. */
+		align-self: center; /* 가운데 정렬 */
+	}
+}
+
+.music-box-img {
+	disply: flex;
+	flex-direction: column;
+	overflow: hidden;
+	position: relative;
+	display: flex;
+	aspect-ratio: 0.83;
+	flex-grow: 1;
+	color: #fff;
+	padding: 80px 14px 40px;
+	background-image:
+		url("https://velog.velcdn.com/images/yunlinit/post/7741f6b1-9c7d-40e2-b8b9-c6398de90082/image.png");
+	background-size: cover; /* 배경 이미지를 요소에 맞게 채우기 */
+	border-radius: 10px;
+}
+
+@media ( max-width : 991px) {
+	.music-box-img {
+		margin-top: 40px;
+	}
+}
+
+.music-title {
+	position: relative;
+	letter-spacing: -0.8px;
+	margin-top: 300px;
+	font: 400 40px/96% Pattaya, sans-serif;
+}
+
+.music-comment {
+	position: relative;
+	margin-top: 19px;
+	font: 400 16px/26px Pretendard, sans-serif;
+}
+
+
+.suranna-regular {
+  font-family: "Suranna", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+.contactus {
   background-color: #fff;
   display: flex;
   flex-direction: column;
-  padding: 32px 80px 80px;
-  max-width: 1280px;
-  margin: auto;
-  margin-top: 120px;
-  margin-bottom: 100px;
+  align-items: center;
+  text-align: center;
+  padding: 13px 80px 75px;
 }
 @media (max-width: 991px) {
-  .div-bottom {
+  .contactus {
     padding: 0 20px;
   }
 }
 
-.about-trip-angle {
-  color: #81c8a2;
-  font: 400 24px/28px Pretendard, sans-serif;
+.title {
+  color: #3b3d40;
+  margin-top: 75px;
+  font: 400 80px/35% Suranna, sans-serif;
 }
 @media (max-width: 991px) {
-  .about-trip-angle {
+  .title {
+    margin-top: 40px;
+    font-size: 40px;
   }
 }
-.mint-line {
-  border-color: rgba(213, 241, 226, 1);
-  border-style: solid;
-  border-bottom-width: 1px;
-  width: 224px;
-  height: 2px;
-  margin-top: 7px;
-}
-.trip-style-music-section {
-  align-self: stretch;
-  margin-top: 14px;
+.body {
+  color: #3b3d40;
+  margin-top: 32px;
+  font: italic 300 20px/28px Urbanist, -apple-system, Roboto, Helvetica,
+    sans-serif;
 }
 @media (max-width: 991px) {
-  .trip-style-music-section {
+  .body {
     max-width: 100%;
-  }
-}
-.div-5 {
-  gap: 20px;
-  display: flex;
-}
-@media (max-width: 991px) {
-  .div-5 {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 0px;
-  }
-}
-.trip-box {
-  display: flex;
-  flex-direction: column;
-  line-height: normal;
-  width: 35%;
-  height: 550px;
-  margin-left: 0px;
-}
-@media (max-width: 991px) {
-  .trip-box {
-    width: 100%;
-    align-self: center;
-  }
-}
-.trip-box-img {
-  disply: flex;
-  flex-direction: column;
-  overflow: hidden;
-  position: relative;
-  display: flex;
-  aspect-ratio: 0.83;
-  flex-grow: 1;
-  color: #fff;
-  padding: 80px 14px 40px;
-  background-image: url("https://velog.velcdn.com/images/yunlinit/post/995800fa-cbf0-4dfd-9b9d-846e9bb31b56/image.png");
-  background-size: cover; /* 배경 이미지를 요소에 맞게 채우기 */
-  border-radius: 10px;
-}
-@media (max-width: 991px) {
-  .trip-box-img {
-    margin-top: 40px;
+    font-size: 12px;
   }
 }
 
-.trip-title {
-  position: relative;
-  letter-spacing: -0.8px;
-  margin-top: 300px;
-  font: 400 40px/96% Pattaya, sans-serif;
-}
-
-.trip-comment {
-  position: relative;
-  margin-top: 9px;
-  font: 400 16px/26px Pretendard, sans-serif;
-}
-.style-box {
-  display: flex;
-  flex-direction: column;
-  line-height: normal;
-  width: 35%;
-  margin-left: 30px;
-}
-@media (max-width: 991px) {
-  .style-box {
-    width: 100%;
-    margin-right: 20px; /* 요소들 사이의 간격을 지정합니다. */
-    align-self: center; /* 가운데 정렬 */
-  }
-}
-.style-box-img {
-  disply: flex;
-  flex-direction: column;
-  overflow: hidden;
-  position: relative;
-  display: flex;
-  aspect-ratio: 0.83;
-  flex-grow: 1;
-  color: #fff;
-  padding: 80px 14px 38px;
-  background-image: url("https://velog.velcdn.com/images/yunlinit/post/d9b5ca6f-79fa-4b55-9cb7-b66d6a2bdea4/image.png");
-  background-size: cover; /* 배경 이미지를 요소에 맞게 채우기 */
-  border-radius: 10px;
-}
-@media (max-width: 991px) {
-  .style-box-img {
-    margin-top: 40px;
-    padding-right: 20px;
-  }
-}
-.style-title {
-  position: relative;
-  letter-spacing: -0.8px;
-  margin-top: 300px;
-  font: 400 40px/96% Pattaya, sans-serif;
-}
-
-.style-comment {
-  position: relative;
-  margin-top: 9px;
-  font: 400 16px/26px Pretendard, sans-serif;
-}
-.music-box {
-  display: flex;
-  flex-direction: column;
-  line-height: normal;
-  width: 35%;
-  margin-left: 30px;
-}
-@media (max-width: 991px) {
-  .music-box {
-    width: 100%;
-    margin-right: 20px; /* 요소들 사이의 간격을 지정합니다. */
-    align-self: center; /* 가운데 정렬 */
-  }
-}
-.music-box-img {
-  disply: flex;
-  flex-direction: column;
-  overflow: hidden;
-  position: relative;
-  display: flex;
-  aspect-ratio: 0.83;
-  flex-grow: 1;
-  color: #fff;
-  padding: 80px 14px 40px;
-  background-image: url("https://velog.velcdn.com/images/yunlinit/post/7741f6b1-9c7d-40e2-b8b9-c6398de90082/image.png");
-  background-size: cover; /* 배경 이미지를 요소에 맞게 채우기 */
-  border-radius: 10px;
-}
-@media (max-width: 991px) {
-  .music-box-img {
-    margin-top: 40px;
-  }
-}
-.music-title {
-  position: relative;
-  letter-spacing: -0.8px;
-  margin-top: 300px;
-  font: 400 40px/96% Pattaya, sans-serif;
-}
-
-.music-comment {
-  position: relative;
-  margin-top: 19px;
-  font: 400 16px/26px Pretendard, sans-serif;
-}
 
 </style>
 <body>
@@ -513,25 +610,34 @@ header {
 			<div class="section">
 				<div class="video-container">
 					<video muted autoplay loop class="fullscreen-video active">
-						<source src="https://videos.pexels.com/video-files/5363146/5363146-hd_1920_1080_25fps.mp4">
+						<source
+							src="https://videos.pexels.com/video-files/5363146/5363146-hd_1920_1080_25fps.mp4">
 					</video>
 					<video muted autoplay loop class="fullscreen-video">
-						<source src="https://videos.pexels.com/video-files/3015510/3015510-hd_1920_1080_24fps.mp4">
+						<source
+							src="https://videos.pexels.com/video-files/3015510/3015510-hd_1920_1080_24fps.mp4">
 					</video>
 					<video muted autoplay loop class="fullscreen-video">
-						<source src="https://videos.pexels.com/video-files/9113144/9113144-uhd_3840_2160_30fps.mp4">
+						<source
+							src="https://videos.pexels.com/video-files/9113144/9113144-uhd_3840_2160_30fps.mp4">
 					</video>
 					<video muted autoplay loop class="fullscreen-video">
-						<source src="https://videos.pexels.com/video-files/1550080/1550080-uhd_3840_2160_30fps.mp4">
+						<source
+							src="https://videos.pexels.com/video-files/1550080/1550080-uhd_3840_2160_30fps.mp4">
 					</video>
 
 					<div class="text">여행을 듣다, 여행을 입다</div>
 
-					<a href="#" id="wavy-tripangle" class="wavy-tripangle">
-						<span style="--i: 1">T</span> <span style="--i: 2">r</span> <span style="--i: 3">i</span> <span style="--i: 4">p</span>
-						<span style="--i: 5">A</span> <span style="--i: 6">n</span> <span style="--i: 7">g</span> <span style="--i: 8">l</span>
-						<span style="--i: 9">e</span>
+					<a href="#" id="wavy-tripangle" class="wavy-tripangle"> <span
+						style="--i: 1">T</span> <span style="--i: 2">r</span> <span
+						style="--i: 3">i</span> <span style="--i: 4">p</span> <span
+						style="--i: 5">A</span> <span style="--i: 6">n</span> <span
+						style="--i: 7">g</span> <span style="--i: 8">l</span> <span
+						style="--i: 9">e</span>
 					</a>
+
+					<div class="scroll-down-sign1">SCROLL DOWN</div>
+					<div class="scroll-down-sign2">↓</div>
 
 				</div>
 
@@ -547,11 +653,11 @@ header {
 						</div>
 						<div class="search-area">
 							<div class="search-box">
-								<input type="text" class="search-input" style="border: none;" placeholder="떠나고 싶은 여행지를 알려주세요!">
-								<a href="/" class="search-btn">
-									<img
-										src="https://cdn.builder.io/api/v1/image/assets/TEMP/9d1bcbb2b727b63e8a9b71f8ed09c2fbb0673fbc7961acc79bf133cb2367d88c?apiKey=725f06f0daeb4ab382150ea4b4cf3550&"
-										alt="검색">
+								<input type="text" class="search-input" style="border: none;"
+									placeholder="떠나고 싶은 여행지를 알려주세요!"> <a href="/"
+									class="search-btn"> <img
+									src="https://cdn.builder.io/api/v1/image/assets/TEMP/9d1bcbb2b727b63e8a9b71f8ed09c2fbb0673fbc7961acc79bf133cb2367d88c?apiKey=725f06f0daeb4ab382150ea4b4cf3550&"
+									alt="검색">
 								</a>
 							</div>
 						</div>
@@ -562,7 +668,8 @@ header {
 			<div class="section">
 				<div class="div-bottom">
 					<div class="about-trip-angle">
-						<span style="color: rgba(66, 66, 66, 1)">About</span> <span style="color: rgba(105, 105, 105, 1)">Trip</span> <span
+						<span style="color: rgba(66, 66, 66, 1)">About</span> <span
+							style="color: rgba(105, 105, 105, 1)">Trip</span> <span
 							style="color: rgba(129, 200, 162, 1)">Angle</span>
 					</div>
 					<div class="mint-line"></div>
@@ -571,25 +678,50 @@ header {
 							<div class="trip-box">
 								<div class="trip-box-img">
 									<div class="div-7 trip-title">Trip</div>
-									<div class="div-8 trip-comment">감각적인 여행을 위해 여행지의 기온과 분위기를 고려하여 맞춤형 스타일링과 특별한 음악을 제공합니다.</div>
+									<div class="div-8 trip-comment">감각적인 여행을 위해 여행지의 기온과 분위기를
+										고려하여 맞춤형 스타일링과 특별한 음악을 제공합니다.</div>
 								</div>
 							</div>
 							<div class="style-box">
 								<div class="style-box-img">
 									<div class="style-title">Style</div>
-									<div class="style-comment">전 세계의 다양한 여행지에 대한 최신 날씨 정보를 제공하고, 그에 맞는 스타일링 팁을 제시합니다.</div>
+									<div class="style-comment">전 세계의 다양한 여행지에 대한 최신 날씨 정보를
+										제공하고, 그에 맞는 스타일링 팁을 제시합니다.</div>
 								</div>
 							</div>
 							<div class="music-box">
 								<div class="music-box-img">
 									<div class="music-title">Music</div>
-									<div class="music-comment">여행을 더욱 특별하게 만들기 위해 여행지와 어울리는 특별한 플레이리스트를 제공합니다.</div>
+									<div class="music-comment">여행을 더욱 특별하게 만들기 위해 여행지와 어울리는
+										특별한 플레이리스트를 제공합니다.</div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
+
+			<div class="section">
+
+				<div class="div contactus">
+				
+					<div class="div-3 title">Contact Us</div>
+					<div class="body">
+						Thanks to the project <span
+							style="font-weight: 500; font-style: italic; color: rgba(129, 200, 162, 1);">
+							TripAngle </span> , we've had the pleasure of exchanging ideas and
+						inspirations,</br> exploring boundless creative avenues through
+						collaborative efforts. </br> Below, you'll find additional personal
+						information about each of our team members. </br>Feel free to reach out
+						to us anytime!
+					</div>
+				</div>
+				
+				<div class= "personal-info-card" style="height: 870px;"> </div>
+
+			</div>
+
+
 		</div>
 	</section>
 
@@ -664,7 +796,7 @@ header {
 </script>
 
 
-<script>
+	<script>
 	window.addEventListener('scroll', function() {
 		var scroll = window.scrollY;
 		var header = document.querySelector('header');

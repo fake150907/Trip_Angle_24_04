@@ -15,7 +15,6 @@ public class TipInfoController {
 
 	@RequestMapping("/usr/tipInfo/information")
 	public String showinformation() {
-
 		return "/usr/tipInfo/information";
 	}
 	
