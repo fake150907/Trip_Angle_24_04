@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<c:set var="pageTitle" value="카페 상세보기"></c:set>
+<c:set var="pageTitle" value="마이일정 상세보기"></c:set>
 <%@ include file="../common/head.jspf"%>
 
 <meta charset="utf-8">
@@ -25,13 +25,14 @@
 	width: 100%;
 }
 
-@media ( max-width : 991px) {
-	.detail-box {
-		flex-direction: column;
-		align-items: stretch;
-		gap: 0px;
-	}
-}
+ @media ( max-width : 991px) { 
+ 	.detail-box { */
+ 		flex-direction: column; 
+ 		align-items: stretch; 
+ 		gap: 0px;
+ 	} 
+ } 
+
 
 .column {
 	display: flex;
@@ -636,10 +637,259 @@
 }
 
 
+/* 추천 */
+/* 옷 추천 탭 */
+.recommendation-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 auto;
+    width: 80%;
+    align-self: start;
+    margin-top: 50px;
+}
+
+.recommendation-header {
+    align-self: start;
+    display: flex;
+    gap: 20px;
+    padding: 0 20px;
+}
+
+.recommendation-title {
+    flex: 1;
+    font: 400 24px/28px Inter, sans-serif;
+}
+
+.recommendation-accent {
+    color: #81c8a2;
+}
+
+.recommendation-tabs {
+    display: flex;
+    gap: 14px;
+    font-size: 16px;
+    color: #3b3d40;
+    font-weight: 600;
+    line-height: 175%;
+    align-items: center;
+}
+
+@media (max-width: 991px) {
+    .recommendation-tabs {
+        white-space: initial;
+    }
+}
+
+.recommendation-tab {
+    border-bottom: solid #d5f1e2;
+    border-bottom-width: 0px;
+    transition-duration: 0.1s;
+    text-decoration: none;
+}
+
+.recommendation-tab:hover {
+    border-bottom-width: 3px;
+    cursor: pointer;
+}
+
+.recommendation-divider {
+    border-bottom: 1px solid rgba(206, 206, 206, 1);
+    margin-top: 11px;
+    width: 100%;
+}
+
+@media (max-width: 991px) {
+    .recommendation-divider {
+        max-width: 100%;
+    }
+}
+
+.ta-item-container {
+    /*perspective: 1000px;*/
+    display: flex;
+    overflow: auto;
+    gap: 30px;
+    width: 80%;
+    justify-content: center;
+    margin: 0 auto;
+    -ms-overflow-style: none;
+    scroll-snap-type: x mandatory;
+    padding-top: 10px;
+    position: relative;
+}
+
+.ta-item-container::-webkit-scrollbar {
+    display: none;
+}
+
+.ta-item-card {
+    display: flex;
+    flex-direction: column;
+    max-width: 270px;
+    border: 1px solid #ededed;
+    border-radius: 8px;
+    background-color: #fff;
+    padding-bottom: 18px;
+    font-weight: 400;
+    position: relative;
+    scroll-snap-align: start;
+    min-width: 250px;
+    text-decoration: none;
+}
+
+.ta-item-image {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    object-position: center;
+}
+
+.ta-item-details {
+    display: flex;
+    flex-direction: column;
+    margin: 36px 0 0 20px;
+}
+
+.ta-item-name {
+    font: 20px;
+    color: #383230;
+    letter-spacing: -0.4px;
+    font-weight: 500px;
+}
+
+.ta-item-info {
+    font: 12px;
+    color: #8c8c8c;
+    margin-top: 5px;
+}
+
+section.ta-item-container.fashion-man,
+section.ta-item-container.fashion-women {
+    display: none;
+}
+
+.ta-item-details-info {
+    display: flex;
+    gap: 50px;
+}
+
+.ta-item-description {
+    position: absolute;
+    top: 0; /* Align top edge with the parent container */
+    left: 0; /* Align left edge with the parent container */
+    width: 100%; /* Match the width of the parent container */
+    aspect-ratio: 1;
+    height: 0px; /* Auto height to maintain aspect ratio, or set a fixed height */
+    overflow: hidden;
+    background-color: #474747; /* Solid white background */
+    opacity: 60%;
+    z-index: 2; /* Ensures it covers the image beneath it */
+    transition-duration: 500ms;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    word-wrap: break-word;
+    color: white;
+}
+
+.ta-item-image-container:hover .ta-item-description {
+    height: 270px;
+}
+
+.play-button-container {
+    background-color: #81c8a2;
+    display: flex;
+    gap: 30px;
+    font-size: 20px;
+    color: #fff;
+    font-weight: 700;
+    justify-content: space-between;
+
+    height: 35px;
+    align-items: center;
+    padding: 0px 5px;
+    cursor: pointer;
+
+    transition-duration: 200ms;
+}
+
+@media (max-width: 991px) {
+    .play-button-container {
+        white-space: initial;
+    }
+}
+
+.play-button-container:hover {
+    background-color: #5e9d7a;
+}
+
+.play-button-icon {
+    width: 14px;
+    fill: #fff;
+}
+
+.next-step-container {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 0 20px;
+}
+
+/* .next-step-button {
+    display: flex;
+    gap: 8px;
+    font-size: 16px;
+    color: #505967;
+    font-weight: 600;
+    padding: 0 1px;
+  }
+
+  @media (max-width: 991px) {
+    .next-step-button {
+      white-space: initial;
+    }
+  }*/
+
+.next-step-text {
+    text-decoration: none;
+    color: #383230;
+    transition-duration: 200ms;
+}
+
+.next-step-text:hover {
+    text-shadow: 0px -1px 1px #8c8c8c;
+}
+.next-step-text:active {
+    color: #383230;
+}
+
+.next-step-icon {
+    width: 12px;
+    fill: #575757;
+    align-self: start;
+}
+
+.detail-page-link {
+    color: #81c8a2;
+    margin-top: 9px;
+    font: 400 11px Inter, sans-serif;
+}
+
+/* 옷 추천 탭 */
+.bottom-buttons-section {
+    display: flex;
+    width: 1280px;
+    justify-content: space-between;
+}
+
+
+
 </style>
 
 
 <div class = "wall" style = "height: 120px;"> </div>
+
 <div class="my-plan-detail">
 	<div class="detail-box">
 		<div class="column">
@@ -722,8 +972,8 @@ Weather API
 
 </div>
 
+<!-- 스타일 추천 -->
 <div class="fashion-recommendation-main">
-
   <div class="section-container mt-100">
     <section class="recommendation-section">
       <header class="recommendation-header">
@@ -756,8 +1006,104 @@ Weather API
   </div>
 </div>
 
+<!-- 장소 추천 -->
+<div class="place-recommendation-main">
+    <a class="section-container ">
+        <section class="recommendation-section ">
+            <header class="recommendation-header">
+                <h2 class="recommendation-title">
+                    <span>장소 </span>
+                    <span class="recommendation-accent">추천</span>
+                </h2>
+                <nav class="recommendation-tabs">
+                    <a href="/" class="recommendation-tab dining">맛집</a>
+                    <a href="/" class="recommendation-tab tour">관광</a>
+                    <a href="/" class="recommendation-tab shopping">쇼핑</a>
 
+                </nav>
+            </header>
+            <div class="recommendation-divider"></div>
+        </section>
 
+        </div>
+        <div class="section-container">
+            <section class="ta-item-container fashion-all">
+
+                <a href="../myPlan/placeDetail" class="ta-item-card">
+                    <div class="ta-item-image-container">
+                        <img src="https://images.unsplash.com/photo-1660495396534-c56f48502cc5?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Fashion Image" class="ta-item-image" loading="lazy" />
+                        <div class="ta-item-description">Click</div>
+                    </div>
+
+                    <div class="ta-item-details">
+                        <h3 class="ta-item-name">Restaurant Name</h3>
+                        <div class="ta-item-details-info">
+                            <p class="ta-item-info">Address St. Honolulu, Hawaii</p>
+                        </div>
+                    </div>
+                    </article>
+
+                    <a href="../myPlan/placeDetail" class="ta-item-card">
+                        <div class="ta-item-image-container">
+                            <img src="https://images.unsplash.com/photo-1562785561-d88a65a2679e?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Fashion Image" class="ta-item-image" loading="lazy" />
+                            <div class="ta-item-description">Click</div>
+                        </div>
+
+                        <div class="ta-item-details">
+
+                            <h3 class="ta-item-name">Restaurant Name</h3>
+                            <div class="ta-item-details-info">
+                                <p class="ta-item-info">Address St. Honolulu, Hawaii</p>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="../myPlan/placeDetail" class="ta-item-card">
+                        <div class="ta-item-image-container">
+                            <img src="https://images.unsplash.com/photo-1533193773788-92826ee86674?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Fashion Image" class="ta-item-image" loading="lazy" />
+                            <div class="ta-item-description">Click</div>
+                        </div>
+
+                        <div class="ta-item-details">
+
+                            <h3 class="ta-item-name">Restaurant Name</h3>
+                            <div class="ta-item-details-info">
+                                <p class="ta-item-info">Address St. Honolulu, Hawaii</p>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="../myPlan/placeDetail" class="ta-item-card">
+                        <div class="ta-item-image-container">
+                            <img src="https://images.unsplash.com/photo-1484980972926-edee96e0960d?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Fashion Image" class="ta-item-image" loading="lazy" />
+                            <div class="ta-item-description">Click</div>
+                        </div>
+
+                        <div class="ta-item-details">
+
+                            <h3 class="ta-item-name">Restaurant Name</h3>
+                            <div class="ta-item-details-info">
+                                <p class="ta-item-info">Address St. Honolulu, Hawaii</p>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="../myPlan/placeDetail" class="ta-item-card">
+                        <div class="ta-item-image-container">
+                            <img src="https://images.unsplash.com/photo-1677517497394-87d635cf7e10?q=80&w=2050&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Fashion Image" class="ta-item-image" loading="lazy" />
+                            <div class="ta-item-description">Click</div>
+                        </div>
+
+                        <div class="ta-item-details">
+
+                            <h3 class="ta-item-name">Restaurant Name</h3>
+                            <div class="ta-item-details-info">
+                                <p class="ta-item-info">Address St. Honolulu, Hawaii</p>
+                            </div>
+                        </div>
+                    </a>
+            </section>
+        </div>
+</div>
+
+<div class = "wall" style = "height: 120px;"> </div>
 
 <script>
 
@@ -1005,7 +1351,6 @@ fashions = [
 
 
 </script>
-
 
 <div class="place-recommendation-main">
 
@@ -1288,6 +1633,7 @@ places = [
 	});
 
 </script>
+>>>>>>> ebb6e15210f99916b5d3a291e885d6b63c3dff16
 
 
 

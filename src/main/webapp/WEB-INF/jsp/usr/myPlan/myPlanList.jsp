@@ -22,36 +22,8 @@
 </style>
 
 <!-- 찜 한 카페 페이지  -->
-<section class="like-cafe">
+<section class="my-plan-list-page">
 
-	<!-- 찜한 카페목록 -->
-
-
-	<!-- 검색결과 -->
-	<!-- 	실제 데이터가 들어갈 소스로써, 반복문으로 처리 -->
-<!-- 	<section class="search-result like-list" id="search-result"> -->
-<%-- 		<c:forEach var="myPlan" items="${myPlans}"> --%>
-
-<%-- 			<a href="myPlanDetail?id=${myPlan.id}" class="linkbox１"> --%>
-<!-- 				<div class="content-info-box" style="margin-bottom: 50px"> -->
-<!-- 					<div class="my-plan-img-box"> -->
-<%-- 						<img src="${myPlan.myPlanImgUrl}" alt="마이 일정 이미지" /> --%>
-<!-- 					</div> -->
-<!-- 					<div class="name-regdate"> -->
-<%-- 						<div class="my-plan-name">${myPlan.name}</div> --%>
-<%-- 		S				<p class="regdate">${myPlan.regDate}</p> --%>
-<!-- 					</div> -->
-<!-- 					<div class="div line"></div> -->
-
-<!-- 					<div class="destination-schedule"> -->
-<%-- 						<div class="my-destination">${myPlan.destination}</div> --%>
-<%-- 						<p class="my-schedule">${myPlan.schedule}</p> --%>
-<!-- 					</div> -->
-
-<!-- 				</div> -->
-<!-- 			</a> -->
-<%-- 		</c:forEach> --%>
-<!-- 	</section> -->
 
 
 
@@ -172,9 +144,10 @@
 
 		</div>
 	</a>
+	
+	
 
 </section>
-
 
 
 
@@ -217,10 +190,11 @@ margin-left: 31%;
 }
 
 /* 카페검색결과 */
-.like-cafe {
+.my-plan-list-page {
 	display: flex;
 	justify-content: center; /* 좌우 중앙 정렬 */
-	margin-top: 150px
+	margin-top: 150px;
+	margin-bottom: 100px;
 }
 </style>
 
