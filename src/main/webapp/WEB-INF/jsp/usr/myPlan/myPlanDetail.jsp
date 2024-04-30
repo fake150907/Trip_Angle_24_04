@@ -1050,7 +1050,7 @@ places = [
 	    address: "Whowho St. Honolulu, Hawaii",
 	    hashtag: 0,
 	    description:
-	      "한국 겨울에 적합한 롱패딩. 보온성이 뛰어나고 스타일리시한 디자인.",
+	      "맛있는 맛.",
 	    imageUrl:
 	      "https://images.unsplash.com/photo-1660495396534-c56f48502cc5?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
 	  },
@@ -1058,7 +1058,7 @@ places = [
 	    name: "Whowho Restaurant",
 	    address: "Whowho St. Honolulu, Hawaii",
 	    hashtag: 0,
-	    description: "가벼운 니트 가디건. 쾌적한 여행을 위한 아우터로 적합.",
+	    description: "맛있는 맛.",
 	    imageUrl:
 	      "https://images.unsplash.com/photo-1484980972926-edee96e0960d?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
 	  },
@@ -1066,7 +1066,7 @@ places = [
 	    name: "Whowho Restaurant",
 	    address: "Whowho St. Honolulu, Hawaii",
 	    hashtag: 0,
-	    description: "다양한 수납공간이 있는 카고 바지. 편안한 착용감과 실용성.",
+	    description: "맛있는 맛.",
 	    imageUrl:
 	      "https://images.unsplash.com/photo-1562785561-d88a65a2679e?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
 	  },
@@ -1074,7 +1074,7 @@ places = [
 	    name: "Whowho Restaurant",
 	    address: "Whowho St. Honolulu, Hawaii",
 	    hashtag: 0,
-	    description: "편안하고 스타일리시한 맨투맨. 다양한 코디에 활용 가능.",
+	    description: "맛있는 맛.",
 	    imageUrl:
 	      "https://images.unsplash.com/photo-1484980972926-edee96e0960d?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
 	  },
@@ -1082,7 +1082,7 @@ places = [
 	    name: "Whowho Restaurant",
 	    address: "Whowho St. Honolulu, Hawaii",
 	    hashtag: 0,
-	    description: "한국에서 인기있는 지오다노 청바지. 스트레치로 편안한 착용감.",
+	    description: "맛있는 맛.",
 	    imageUrl:
 	      "https://images.unsplash.com/photo-1533193773788-92826ee86674?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
 	  },
@@ -1090,7 +1090,7 @@ places = [
 	    name: "Whowho Restaurant",
 	    address: "Whowho St. Honolulu, Hawaii",
 	    hashtag: 0,
-	    description: "대중적이고 편안한 컨버스 스니커즈. 여행 중 편리한 신발.",
+	    description: "맛있는 맛.",
 	    imageUrl:
 	      "https://images.unsplash.com/photo-1484980972926-edee96e0960d?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
 	  },
@@ -1098,8 +1098,7 @@ places = [
 	    name: "Whowho Restaurant패딩",
 	    address: "Whowho St. Honolulu, Hawaii",
 	    hashtag: 1,
-	    description:
-	      "한국 겨울에 적합한 롱패딩. 보온성이 뛰어나고 여성스러운 실루엣.",
+	    description: "맛있는 맛.",
 	    imageUrl:
 	      "https://images.unsplash.com/photo-1562785561-d88a65a2679e?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
 	  },
@@ -1107,7 +1106,7 @@ places = [
 	    name: "Whowho Restaurant",
 	    address: "Whowho St. Honolulu, Hawaii",
 	    hashtag: 1,
-	    description: "포근한 캐시미어 스웨터. 여행 중 따뜻하고 세련된 룩.",
+	    description: "맛있는 맛.",
 	    imageUrl:
 	      "https://images.unsplash.com/photo-1677517497394-87d635cf7e10?q=80&w=2050&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
 	  },
@@ -1115,7 +1114,7 @@ places = [
 	    name: "Whowho Restaurant",
 	    address: "howho St. Honolulu, Hawaii",
 	    gender: 1,
-	    description: "스타일리시한 와이드 데님 팬츠. 여행 중 편안한 착용감.",
+	    description: "맛있는 맛.",
 	    imageUrl:
 	      "https://images.unsplash.com/photo-1677517497394-87d635cf7e10?q=80&w=2050&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
 	  },
@@ -1123,8 +1122,7 @@ places = [
 	    name: "Whowho Restaurant",
 	    address: "Whowho St. Honolulu, Hawaii",
 	    hashtag: 1,
-	    description:
-	      "세련된 디자인의 블라우스. 여행 중 여성스러운 매력을 선보일 수 있음.",
+	    description: "맛있는 맛.",
 	    imageUrl:
 	      "https://images.unsplash.com/photo-1677517497394-87d635cf7e10?q=80&w=2050&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
 	  },
@@ -1132,7 +1130,7 @@ places = [
 	    name: "Whowho Restaurant",
 	    address: "Whowho St. Honolulu, Hawaii",
 	    hashtag: 1,
-	    description: "한국에서 유행하는 롱 스커트. 여성스러우면서도 편안한 착용감.",
+	    description: "맛있는 맛.",
 	    imageUrl:
 	      "https://images.unsplash.com/photo-1562785561-d88a65a2679e?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
 	  },
@@ -1140,7 +1138,7 @@ places = [
 	    name: "Whowho Restaurant",
 	    address: "Whowho St. Honolulu, Hawaii",
 	    hashtag: 1,
-	    description: "대중적인 존스부띠끄 로퍼. 여행 중 편리한 신발로 추천.",
+	    description: "맛있는 맛.",
 	    imageUrl:
 	      "https://images.unsplash.com/photo-1484980972926-edee96e0960d?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
 	  }
