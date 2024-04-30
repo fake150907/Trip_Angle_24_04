@@ -500,14 +500,14 @@
 }
 
 .ta-item-name {
-  font: 20px;
+  font-size: 20px;
   color: #383230;
   letter-spacing: -0.4px;
   font-weight: 500px;
 }
 
 .ta-item-info {
-  font: 12px;
+  font-size: 13px;
   color: #8c8c8c;
   margin-top: 5px;
 }
@@ -1095,7 +1095,7 @@ places = [
 	      "https://images.unsplash.com/photo-1484980972926-edee96e0960d?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
 	  },
 	  {
-	    name: "Whowho Restaurant패딩",
+	    name: "Whowho Restaurant",
 	    address: "Whowho St. Honolulu, Hawaii",
 	    hashtag: 1,
 	    description: "맛있는 맛.",
@@ -1206,20 +1206,6 @@ places = [
 	    address.textContent = place.address;
 	    detailsInfo.appendChild(address);
 
-	    /*
-	    // Create and append gender paragraph
-	    const hashtag = document.createElement("p");
-	    hashtag.className = "ta-item-info";
-	    if (place.hashtag == 0) {
-	      hashtag.textContent = "남성";
-	    } else {
-	      hashtag.textContent = "여성";
-	    }
-	   
-
-	    detailsInfo.appendChild(hashtag);
-	    */
-
 	    // Append the details info to the details div
 	    details.appendChild(detailsInfo);
 
@@ -1235,6 +1221,10 @@ places = [
 	      tour.appendChild(articleClone);
 	    }
 	  });
+
+
+
+
 
 	  // Append the article to the document body or any other container
 	  dining.style.display = "flex";
