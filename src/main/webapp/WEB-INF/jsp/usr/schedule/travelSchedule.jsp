@@ -255,285 +255,20 @@ show {
 }
 
 /* Larger than Desktop HD */
-@
--webkit-keyframes fade-in { 0% {
+@-webkit-keyframes fade-in { 
+	0% {
+	opacity: 0;
+	}
+	100% {
+	opacity:1;
+	}
+}
+@keyframes fade-in { 0% {
 	opacity: 0;
 }
-
-100
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-%
-{
-opacity
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-:
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-1
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-;
-}
-}
-@
-keyframes fade-in { 0% {
-	opacity: 0;
-}
-
-100
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-%
-{
-opacity
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-:
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-1
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-;
-}
+	100%{
+		opacity:1;
+	}
 }
 
 /* 데이트피커 한국분이 만든 UI */
@@ -778,7 +513,7 @@ a {
 }
 
 .div {
-	display: flex;
+ 	display: flex;
 	/*     max-width: 289px; */
 	flex-direction: column;
 	align-items: center;
@@ -849,7 +584,6 @@ a {
 #checkDateModal {
 	text-align: center;
 	margin-bottom: 10px;
-	
 }
 
 /* 모달창 박스 */
@@ -885,11 +619,10 @@ a {
 input {
 	display: flex;
 	max-height: 1000px;
-	
 }
 
 form {
-margin-bottom: 0%;
+	margin-bottom: 0%;
 }
 
 /* 모달창 - 마이일정 생성하기 텍스트 박스 */
@@ -911,25 +644,34 @@ margin-bottom: 0%;
 .close-button {
 	display: inline-block;
 	border: none;
- 	margin-left: 93%; 
-  	margin-bottom: 0%; 
-  	font-size: 16px;
+	margin-left: 93%;
+	margin-bottom: 0%;
+	font-size: 16px;
 }
 
 /* 모달창 생성 버튼 */
 .modal-create-button {
-background-color: #D5F1E2;
+	background-color: #D5F1E2;
 	border: white;
 	font: 14px Pretendard, sans-serif;
-display: block;
-margin-left: auto;
-margin-right: auto;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
 }
 
-/* .schedule-content::placeholder { */
-/*   position: absolute; */
-/*   top: 10%; */
-/* } */
+.schedule-content::placeholder {
+	position: absolute;
+	left: 32%;
+	color: #c8c8c8;
+	font-weight: 100;
+}
+
+.schedule-title::placeholder {
+	position: absolute;
+	left: 30%;
+	color: #c8c8c8;
+	font-weight: 100;
+}
 
 </style>
 
@@ -1085,6 +827,8 @@ $.datepicker.setDefaults({
 	
 </script>
 
+<div class="wall"></div>
+
 <div class="div">
 	<div class="div-2">하와이</div>
 	<div class="div-3"></div>
@@ -1112,8 +856,7 @@ $.datepicker.setDefaults({
 </div>
 
 <!-- <form action="/usr/tipInfo/information" method="get"> -->
-<!--     <input type="text" id="checkInDateInput" name="checkInDate"> -->
-<!--     <input type="text" id="checkOutDateInput" name="checkOutDate"> -->
+
 <div class="button-flex">
 	<button type="button" class="create-button">추가</button>
 </div>
@@ -1131,11 +874,14 @@ $.datepicker.setDefaults({
 		</form>
 		<div class="modal-schedule-region">오사카</div>
 		<div id="checkDateModal"></div>
-		<input class="schedule-title" placeholder="일정명을 입력해주세요." type="text" />
-		<input class="schedule-content" placeholder="내용을 작성해주세요." type="text" />
-<!-- 		<textarea name="" id="" cols="30" rows="10"></textarea> -->
+<!-- 달력 CSS로 input 포커싱 색상이 바뀌지않아 태그로 직접 변경 -->
+<form action="/넘겨주기만하면됨~~~" method="get">
+<input name="title" class="focus:outline-none focus:ring-1 focus:ring-green-100 focus:border-transparent schedule-title" placeholder="일정명을 입력해주세요." style="border-color: #ededed;" type="text" />
+    <input name="content" class="focus:outline-none focus:ring-1 focus:ring-green-100 focus:border-transparent schedule-content" placeholder="내용을 작성해주세요." style="border-color: #ededed;" type="text" />
+	<input type="hidden" id="checkInDateInput" name="checkInDate">
+    <input type="hidden" id="checkOutDateInput" name="checkOutDate">
 		<button class="modal-create-button">생성</button>
-	
+		</form>
 </div>
 </dialog>
 
