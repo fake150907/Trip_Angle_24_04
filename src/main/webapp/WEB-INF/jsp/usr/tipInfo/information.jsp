@@ -8,6 +8,7 @@
 <!-- <iframe src="http://localhost:8081/usr/article/doIncreaseHitCountRd?id=372" frameborder="0"></iframe> -->
 <script>
 	$(document).ready(function() {
+		$('.HoneyTipsPage').hide();
 		$('.regDate_text').css('background-color', '#CDEAC0');
 		$('.InfoLabel1').click(function() {
 			$('.TipInformationPage').show();
@@ -19,25 +20,31 @@
 			$('.TipInformationPage').hide();
 		});
 	});
+
+	function hideHoneyTipsPage() {
+		$('.HoneyTipsPage').hide();
+	}
+
+	hideHoneyTipsPage();
 </script>
 <style>
+.informationPage {
+	margin-left: 150px;
+}
+
 .TipInformationPage {
 	display: inline-block;
 	display: flex;
-}
-
-@media ( max-width : 991px) {
-	.TipInformationPage {
-		flex-direction: column;
-		align-items: stretch;
-		gap: 0px;
-	}
+	position: absolute;
+	top: 5%;
+	left: 43%;
+	width: 1300px;
 }
 
 .Tab {
 	width: 224px;
-	left: 333px;
-	top: 100px;
+	left: 400px;
+	top: 70px;
 	position: absolute;
 	justify-content: space-between;
 	align-items: center;
@@ -45,7 +52,7 @@
 }
 
 .InfoLabel1, .InfoLabel2 {
-	width: 215.60px;
+	width: 130px;
 	height: 53px;
 	left: 137px;
 	top: 127px;
@@ -76,11 +83,18 @@
 	color: #3B3D40;
 	content: "";
 	bottom: 0;
-	left: 0;
 	width: 0;
 	height: 3px;
 	background-color: transparent;
 	transition: background-color 0.3s, width 0.3s;
+}
+
+.TabContent1::after {
+	left: 12px;
+}
+
+.TabContent2::after {
+	left: 42px;
 }
 
 .TabContent1, .TabContent2 {
@@ -129,7 +143,7 @@
 	}
 }
 
-.div-2 {
+.Tab-container {
 	display: flex;
 	flex-grow: 1;
 	flex-direction: column;
@@ -138,7 +152,7 @@
 }
 
 @media ( max-width : 991px) {
-	.div-2 {
+	.Tab-container {
 		max-width: 100%;
 		margin-top: 40px;
 	}
@@ -239,7 +253,8 @@
 
 .country-city {
 	margin-top: 21px;
-	font: 400 14px/28px Inter, sans-serif;
+	font: 400 15px/28px Inter, sans-serif;
+	font-weight: 500;
 }
 
 @media ( max-width : 991px) {
@@ -261,8 +276,9 @@
 }
 
 .climate {
-	margin-top: 22px;
-	font: 14px/28px Pretendard, sans-serif;
+	margin-top: 21px;
+	font: 400 15px/28px Inter, sans-serif;
+	font-weight: 500;
 }
 
 @media ( max-width : 991px) {
@@ -288,10 +304,162 @@
 		margin-top: 40px;
 	}
 }
+/* 꿀팁 창 */
+.HoneyTipsPage {
+	display: inline-block;
+	display: flex;
+	position: absolute;
+	top: 5%;
+	left: 43%;
+	width: 1300px;
+}
+
+.HoneyTipsPageContainer {
+	display: flex;
+	margin-top: 27%;
+	flex-grow: 1;
+	flex-direction: column;
+	color: #000;
+	font-weight: 500;
+	padding: 0 20px;
+}
+
+.InfoItem {
+	color: #3B3D40;
+	font-size: 20px;
+	font-family: Pretendard;
+	font-weight: 500;
+	line-height: 28px;
+	word-wrap: break-word;
+}
+
+.column-3 {
+	display: flex;
+	flex-direction: column;
+	line-height: normal;
+	width: 60%;
+	margin-right: 160px;
+	margin-bottom: 50px;
+}
+
+.div-2 {
+	display: flex;
+	flex-grow: 1;
+	flex-direction: column;
+	font-size: 19px;
+	text-align: center;
+	position: relative;
+	width: 900px;
+	height: 450px;
+	width: 900px;
+}
+
+.language-box, .currency-box, .voltage-box, .transportation-box,
+	.time-difference-box, .significant-box {
+	position: absolute;
+	width: 170px;
+}
+
+.language-box {
+	top: 10%;
+}
+
+.transportation-box, .time-difference-box, .significant-box {
+	left: 30%;
+}
+
+.language-text {
+	font-size: 25px;
+}
+
+.language {
+	
+}
+
+.currency-box {
+	top: 40%;
+}
+
+.currency-text {
+	font-size: 25px;
+}
+
+.currency {
+	
+}
+
+.voltage-box {
+	top: 70%;
+}
+
+.voltage-text {
+	font-size: 25px;
+}
+
+.voltage {
+	
+}
+
+.transportation-box {
+	top: 10%;
+}
+
+.transportation-text {
+	font-size: 25px;
+}
+
+.transportation {
+	
+}
+
+.time-difference-box {
+	top: 40%;
+}
+
+.time-difference-text {
+	font-size: 25px;
+}
+
+.time-difference {
+	
+}
+
+.significant-box {
+	top: 70%;
+}
+
+.significant-text {
+	font-size: 25px;
+}
+
+.significant {
+	
+}
+
+.ScheduleButton2 {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	color: #3B3D40;
+	font-size: 16px;
+	font-family: Pretendard;
+	font-weight: 500;
+	text-decoration: none; /* Remove underline from links */
+	border-radius: 5px;
+	width: 100px;
+	height: 40px;
+	position: absolute;
+	left: 65%;
+	top: 80%;
+	background: #D5F1E2;
+	border-radius: 5px;
+	background: #D5F1E2;
+}
 </style>
-<div>
+<div class="informationPage">
 	<div class="column">
-		<div class="div-2">
+		<div class="Tab-container">
 			<div class="Tab">
 				<div class="InfoLabel1">
 					<span class="TabContent1">기본 정보</span>
@@ -300,8 +468,9 @@
 					<span class="TabContent2">꿀팁</span>
 				</div>
 			</div>
-			<img class="OsakaImage" src="https://velog.velcdn.com/images/fake150907/post/1e16874d-8b4e-41ba-a863-a04ea355831b/image.jpg" alt="오사카 이미지">
-
+			<img class="OsakaImage"
+				src="https://velog.velcdn.com/images/fake150907/post/1e16874d-8b4e-41ba-a863-a04ea355831b/image.jpg"
+				alt="오사카 이미지">
 		</div>
 	</div>
 	<div class="TipInformationPage">
@@ -323,35 +492,35 @@
 		</div>
 	</div>
 	<div class="HoneyTipsPage">
-		<div class="column-2">
-			<div class="InfoItemContainer">
+		<div class="column-3">
+			<div class="HoneyTipsPageContainer">
 				<div class="OsakaInfo">OSAKA</div>
-				<div class="div">
-					<div class="div-2">
-						<div class="column">
-							<div class="div-3">
-								<div class="language-text">사용 언어</div>
-								<div class="language">일본어</div>
-								<div class="currency-text">사용 화폐</div>
-								<div class="currency">가상화폐</div>
-								<div class="voltage-text">전압</div>
-								<div class="voltage">피카츄 백만볼트</div>
-							</div>
-						</div>
-						<div class="column-2">
-							<div class="div-10">
-								<div class="transportation-text">주요 대중교통</div>
-								<div class="transportation">전용기</div>
-								<div class="time-difference-text">시차</div>
-								<div class="time-difference">별로안남</div>
-								<div class="significant-text">특이사항</div>
-								<div class="significant">일식 존맛</div>
-							</div>
-						</div>
-						<div class="column-3">
-							<div class="ScheduleButton">일정 만들기</div>
-						</div>
+				<div class="div-2">
+					<div class="language-box">
+						<div class="InfoItem language-text">사용 언어</div>
+						<div class="InfoItem language">일본어</div>
 					</div>
+					<div class="currency-box">
+						<div class="InfoItem currency-text">사용 화폐</div>
+						<div class="InfoItem currency">가상화폐</div>
+					</div>
+					<div class="voltage-box">
+						<div class="InfoItem voltage-text">전압</div>
+						<div class="InfoItem voltage">피카츄 백만볼트</div>
+					</div>
+					<div class="transportation-box">
+						<div class="InfoItem transportation-text">주요 대중교통</div>
+						<div class="InfoItem transportation">전용기</div>
+					</div>
+					<div class="time-difference-box">
+						<div class="InfoItem time-difference-text">시차</div>
+						<div class="InfoItem time-difference">별로 안남</div>
+					</div>
+					<div class="significant-box">
+						<div class="InfoItem significant-text">특이사항</div>
+						<div class="InfoItem significant">일식 존맛</div>
+					</div>
+					<div class="ScheduleButton2">일정 만들기</div>
 				</div>
 			</div>
 		</div>

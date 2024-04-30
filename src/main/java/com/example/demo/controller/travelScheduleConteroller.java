@@ -12,4 +12,9 @@ public class travelScheduleConteroller {
 		return "/usr/schedule/travelSchedule";
 	}
 
+	@RequestMapping("/usr/schedule/ticketing")
+	public String travelSchedule() {
+		return "/usr/schedule/ticketing";
+	}
+
 }
