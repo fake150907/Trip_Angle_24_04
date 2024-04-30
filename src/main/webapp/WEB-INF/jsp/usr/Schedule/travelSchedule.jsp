@@ -9,8 +9,6 @@
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
-
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
@@ -422,8 +420,54 @@ font: 14px Pretendard, sans-serif;
 }
 
 
-#my_modal_1 {
+/* 모달창 - 마이일정 생성하기 텍스트 */
+.modal-schedule-create-text {
+text-align: center;
+color:#81c8a2;
+}
 
+
+/* 모달창 - 마이일정 생성하기 도시명 */
+.modal-schedule-region {
+text-align: center;
+font-size: 25px;
+}
+
+/* 모달창 - 선택 날짜 */
+#checkDateModal {
+text-align: center;
+}
+
+/* 모달창 박스 */
+
+ .modal-box {
+  width: 475px;
+ max-width: 1000px;
+ max-height: 1000px;
+  }
+
+/* 모달창 - 일정명 */
+.schedule-title {
+display: block;
+ width:360px;
+ height: 27px;
+ margin-left: auto;
+margin-right: auto;
+}
+
+/* 모달창 - 내용 */
+.schedule-content {
+display: block;
+ width:360px;
+ height: 115px;
+ margin-left: auto;
+margin-right: auto;
+}
+
+input {
+display: block;
+max-height: 1000px;
+height: 115px;
 }
 
 </style>
@@ -565,7 +609,9 @@ $.datepicker.setDefaults({
 		        	return;
 		        }
 				
-		        my_modal_1.showModal();
+		        $('#checkDateModal').text(checkInDate + " 부터 " + checkOutDate);
+				
+		        my_modal_4.showModal();
 
 // 		        console.log(getDateDiff(getToday(), checkOutDate));
 		        
@@ -610,14 +656,13 @@ $.datepicker.setDefaults({
 <!-- </form> -->
 
 <!-- <button class="btn" onclick="my_modal_1.showModal()">open modal</button> -->
-<dialog id="my_modal_1" class="modal">
-  <div class="modal-box">
-    <h3 class="font-bold text-lg">마이일정 생성하기</h3>
-    <p class="py-4">오사카</p>
-    
-<!--     <div id="checkInDateInput"></div> -->
-    <input type="text" id="checkInDateInput" name="checkInDate">
-    <input type="text" id="checkOutDateInput" name="checkOutDate">
+<dialog id="my_modal_4" class="modal">
+  <div class="modal-box w-11/12 max-w-5xl">
+    <div class="modal-schedule-create-text">마이일정 생성하기</div>
+    <div class="modal-schedule-region">오사카</div>
+    <div id="checkDateModal"></div>
+    <input class="schedule-title" type="text" />
+    <input class="schedule-content" type="text" />
     <div class="modal-action">
       <form method="dialog">
         <button class="btn">Close</button>
