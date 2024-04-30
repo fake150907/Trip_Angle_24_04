@@ -6,10 +6,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class travelScheduleConteroller {
 
-	@RequestMapping("/usr/Schedule/travelSchedule")
+	@RequestMapping("/usr/schedule/travelSchedule")
 	public String showMyPlanList() {
 
-		return "/usr/Schedule/travelSchedule";
+		return "/usr/schedule/travelSchedule";
 	}
 
 }

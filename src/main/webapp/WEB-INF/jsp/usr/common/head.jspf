@@ -111,8 +111,6 @@
 	</header>
 </div>
 
-<div class="wall"></div>
-
 <style>
 /* 헤더가 고정 위치로 설정될 수 있도록 수정 */
 .header-container {
@@ -182,7 +180,4 @@ font-size: 14px;
 	}
 }
 
-.wall {
-height: 90px;
-}
 </style>
