@@ -190,8 +190,8 @@ CREATE TABLE `board` (
 	`updateDate`	DATETIME	NULL	COMMENT '수정날짜',
 	`code`	CHAR(50)	NULL	COMMENT '제목',
 	`name`	TEXT	NULL	COMMENT '내용',
-	`delStatus`	TINYINT(1)	NULL,
-	`delDate`	DATETIME	NULL
+	delStatus TINYINT(1) UNSIGNED NOT NULL DEFAULT 0 COMMENT '삭제 여부 (0=삭제 전, 1=삭제 후)',
+    delDate DATETIME COMMENT '삭제 날짜'
 );
 
 CREATE TABLE `reactionPoint` (
@@ -632,6 +632,13 @@ R.badReactionPoint = RP_SUM.badReactionPoint;
 
 
 
+########################################################################################
+
 SELECT * FROM article;
 
 SELECT * FROM board;
+
+SELECT *
+	FROM board
+	WHERE id = 1
+	AND delStatus = 0;

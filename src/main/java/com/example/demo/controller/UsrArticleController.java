@@ -66,7 +66,7 @@ public class UsrArticleController {
 		int articlesCount = articleService.getArticlesCount(boardId, searchKeywordTypeCode, searchKeyword);
 
 		if (board == null) {
-			return rq.historyBackOnView("없는 게시판이야");
+			return rq.historyBackOnView("존재하지 않는 게시판입니다.");
 		}
 
 		// 한페이지에 글 10개씩이야

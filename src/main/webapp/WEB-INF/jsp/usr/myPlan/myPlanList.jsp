@@ -8,7 +8,7 @@
 <!-- 페이지제목 -->
 <div class="page-title">
 	<div class="result">
-		'${rq.loginedMember.nickname }'님의 마이 일정  
+		'${rq.loginedMember.nickname }'님의 나의 일정  
 		<div class="mint-line"></div>
 	</div>
 </div>
