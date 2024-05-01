@@ -11,7 +11,7 @@ public class AllInitCrawler {
     	List<RegionCrawlingDto> regionList = null;
     	
     	try {
-			regionList = regionCrawling.crawling(null);
+			regionList = regionCrawling.crawling(100);
 			
 			System.out.println("여행 국가 및 도시정보 입력");
 		} catch (ClassNotFoundException e) {

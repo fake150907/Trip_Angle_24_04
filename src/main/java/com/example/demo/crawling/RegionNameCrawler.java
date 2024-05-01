@@ -129,6 +129,10 @@ public class RegionNameCrawler {
 			WebElement image = thumb.findElement(By.tagName("img"));
 			String src = image.getAttribute("src");
 			region.setImageUrl(src);
+			
+			String englishName = driver.findElement(By.cssSelector(".commonGeoInfo_foreign__EtgPn .english")).getText().trim();
+			region.setEnglishName(englishName);
+			
 		}
 
 		driver.close();
@@ -139,7 +143,7 @@ public class RegionNameCrawler {
 		conn.prepareStatement(url);
 
 		String countryInsertSql = "INSERT INTO country (regDate, updateDate, `name`) VALUES (NOW(), NOW(), ?)";
-		String regionInsertSql = "INSERT INTO region (regDate, updateDate, `name`, naverRegionCord, countryId, imageUrl) VALUES (NOW(), NOW(), ?, ?, ?, ?)";
+		String regionInsertSql = "INSERT INTO region (regDate, updateDate, `name`, naverRegionCord, countryId, imageUrl, englishName) VALUES (NOW(), NOW(), ?, ?, ?, ?, ?)";
 		String currentCountryName = "";
 		int currentCountryId = -1;
 		for (RegionCrawlingDto region : regionList) {
@@ -161,6 +165,7 @@ public class RegionNameCrawler {
 			pstmt.setString(2, region.getNaverRegionCord());
 			pstmt.setInt(3, currentCountryId);
 			pstmt.setString(4, region.getImageUrl());
+			pstmt.setString(5, region.getEnglishName());
 			pstmt.executeUpdate();
 			ResultSet rs = pstmt.getGeneratedKeys();
 			rs.next();
