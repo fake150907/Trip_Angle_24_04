@@ -1,9 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<c:set var="pageTitle" value="게시판"></c:set>
+<c:set var="pageTitle" value="TripAngle | #{board.name }"></c:set>
 <%-- <c:set var="pageTitle" value="#{board.name }"></c:set> --%>
 <%@ include file="../common/head.jspf"%>
 
+<style>
+.writeBtn {
+	background-color: #d5f1e2
+}
+
+.writeBtn:hover {
+	background-color: #ededed;
+	border: solid 1px #ededed;
+}
+</style>
+
+</head>
 
 <section class="mt-8 text-xl px-4">
 	<div class="mx-auto overflow-x-auto">
@@ -27,22 +39,20 @@
 		</colgroup>
 		<thead>
 			<tr>
-				<th style="background-color: #f9f9f9f9;">번호</th>
-				<th style="text-align: center; background-color: #f9f9f9f9;">제목</th>
-				<th style="background-color: #f9f9f9f9;">작성자</th>
-				<th style="text-align: center; background-color: #f9f9f9f9;">날짜</th>
-				<th style="text-align: center; background-color: #f9f9f9f9;">조회수</th>
-				<th style="text-align: center; background-color: #f9f9f9f9;">좋아요</th>
-				<th style="text-align: center; background-color: #f9f9f9f9;">싫어요</th>
+				<th style="background-color: #F2FBF6;">번호</th>
+				<th style="text-align: center; background-color: #F2FBF6;">제목</th>
+				<th style="background-color: #F2FBF6;">작성자</th>
+				<th style="text-align: center; background-color: #F2FBF6;">날짜</th>
+				<th style="text-align: center; background-color: #F2FBF6;">조회수</th>
+				<th style="text-align: center; background-color: #F2FBF6;">좋아요</th>
+				<th style="text-align: center; background-color: #F2FBF6;">싫어요</th>
 
 			</tr>
 		</thead>
 		<tbody>
 			<c:forEach var="article" items="${articles }">
 				<tr class="hover">
-
 					<td>${article.id }</td>
-
 					<td>
 						<a href="detail?id=${article.id }">${article.title }
 							<c:if test="${article.extra__repliesCnt > 0 }">
@@ -59,15 +69,15 @@
 			</c:forEach>
 		</tbody>
 	</table>
-	
+
 	<!-- 	글쓰기버튼 -->
 	<div class="area-for-writeBtn mx-auto" style="width: 50%; position: relative;">
-		
+
 		<a class="writeBtn btn btn-sm
 		" href="../article/write" style="position: absolute; right: 15px; top: 15px;">글쓰기</a>
 	</div>
-	
-	
+
+
 	<!-- 	동적 페이징 -->
 	<div class="pagination flex justify-center mt-3" style="margin-top: 50px;">
 		<c:set var="paginationLen" value="3" />
@@ -80,12 +90,13 @@
 
 		<c:if test="${startPage > 1 }">
 			<a class="btn btn-circle btn-ghost btn-xs" style="margin-left: 5px; margin-right: 5px;" href="${baseUri }&page=1">1</a>
-			<button class="btn btn-xs btn-circle btn-disabled" style="margin-left: 5px; margin-right: 5px;">...</button>
+			<button class="btn btn-xs btn-circle btn-disabled"
+				style="margin-left: 5px; margin-right: 5px; background-color: #d5f1e2">...</button>
 		</c:if>
 
 		<c:forEach begin="${startPage }" end="${endPage }" var="i">
 			<a class="btn btn-circle btn-ghost btn-xs ${param.page == i ? 'btn-active' : '' }"
-				style="margin-left: 5px; margin-right: 5px;" href="${baseUri }&page=${i }">${i }</a>
+				style="margin-left: 5px; margin-right: 5px; background-color: #d5f1e2" href="${baseUri }&page=${i }">${i }</a>
 		</c:forEach>
 
 		<c:if test="${endPage < pagesCount }">
@@ -95,8 +106,8 @@
 		</c:if>
 
 	</div>
-	
-	
+
+
 	<!-- 검색창 -->
 	<div class="mb-4 flex justify-center" style="margin-top: 50px;">
 		<div class="flex"></div>

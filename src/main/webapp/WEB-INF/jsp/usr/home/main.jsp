@@ -1,36 +1,20 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<c:set var="pageTitle" value=""></c:set>
+<c:set var="pageTitle" value="TripAngle | 메인"></c:set>
 <%@ include file="../common/head.jspf"%>
 
 
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Your Title</title>
-<!-- 위에 제공된 스크립트 및 링크 코드 추가 -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="jquery.mousewheel.min.js"></script>
 <script src="script.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link
-	href="https://fonts.googleapis.com/css2?family=Pattaya&display=swap"
-	rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Pattaya&display=swap" rel="stylesheet">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link
 	href="https://fonts.googleapis.com/css2?family=Hi+Melody&family=Nanum+Brush+Script&family=Nanum+Pen+Script&family=Pattaya&display=swap"
 	rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="fullpage.css" />
-
-<!-- 아래는 선택사항입니다. css3:false 옵션을 쓰시면서 "linear", "swing" 또는 "easeInOutCubic" 대신 다른 전환(easing) 효과를 원하시는 경우에만 필요합니다. -->
-<script src="vendors/easings.min.js"></script>
-
-<script type="text/javascript" src="fullpage.js"></script>
 
 
 
@@ -557,219 +541,224 @@ transform: translateY(-20px);
 	font: 400 16px/26px Pretendard, sans-serif;
 }
 
-
-
 /* CONTACT US  */
-
-
 .contactus {
-  background-color: #fff;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  padding: 13px 80px 75px;
+	background-color: #fff;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+	padding: 13px 80px 75px;
 }
-@media (max-width: 991px) {
-  .contactus {
-    padding: 0 20px;
-  }
+
+@media ( max-width : 991px) {
+	.contactus {
+		padding: 0 20px;
+	}
 }
 
 .title {
-  color: #3b3d40;
-  margin-top: 75px;
-  font: 400 60px/35% Suranna, sans-serif;
+	color: #3b3d40;
+	margin-top: 75px;
+	font: 400 60px/35% Suranna, sans-serif;
 }
-@media (max-width: 991px) {
-  .title {
-    margin-top: 40px;
-    font-size: 40px;
-  }
+
+@media ( max-width : 991px) {
+	.title {
+		margin-top: 40px;
+		font-size: 40px;
+	}
 }
 
 .message-container {
-  position: relative;
-  width: 100%;
-  display: flex; /* 내부 요소를 가로로 정렬하기 위해 flex 사용 */
-  justify-content: center; /* 가로로 가운데 정렬 */
-   margin-top: 3%;
+	position: relative;
+	width: 100%;
+	display: flex; /* 내부 요소를 가로로 정렬하기 위해 flex 사용 */
+	justify-content: center; /* 가로로 가운데 정렬 */
+	margin-top: 3%;
 }
 
 .message {
-  position: absolute;
-  color: #3b3d40;
-  margin-top: 32px;
-  font:  400 20px/28px Urbanist, Helvetica;
-  transition: opacity 0.8s ease; /* 투명도에 대한 애니메이션 효과 적용 */
+	position: absolute;
+	color: #3b3d40;
+	margin-top: 32px;
+	font: 400 20px/28px Urbanist, Helvetica;
+	transition: opacity 0.8s ease; /* 투명도에 대한 애니메이션 효과 적용 */
 }
 
 .message2 {
-  position: absolute;
-  color: #3b3d40;
-  margin-top: 32px;
-  font:  500 17px/28px Pretendard;
-  transition: opacity 0.8s ease; /* 투명도에 대한 애니메이션 효과 적용 */
+	position: absolute;
+	color: #3b3d40;
+	margin-top: 32px;
+	font: 500 17px/28px Pretendard;
+	transition: opacity 0.8s ease; /* 투명도에 대한 애니메이션 효과 적용 */
 }
 
 .message:hover {
-  opacity: 0; /* hover하면 투명도를 0으로 설정하여 message 요소를 숨김 */
+	opacity: 0; /* hover하면 투명도를 0으로 설정하여 message 요소를 숨김 */
 }
 
 .message2 {
-  opacity: 0; /* 초기에는 숨겨진 상태로 설정 */
-  pointer-events: none; /* 초기에는 hover되지 않도록 함 */
+	opacity: 0; /* 초기에는 숨겨진 상태로 설정 */
+	pointer-events: none; /* 초기에는 hover되지 않도록 함 */
 }
 
 .message-container:hover .message2 {
-  opacity: 1; /* .message-container를 hover 했을 때 .message2 요소를 서서히 나타나게 함 */
-  pointer-events: auto; /* .message-container를 hover 했을 때 hover 효과가 발생하도록 함 */
+	opacity: 1;
+	/* .message-container를 hover 했을 때 .message2 요소를 서서히 나타나게 함 */
+	pointer-events: auto;
+	/* .message-container를 hover 했을 때 hover 효과가 발생하도록 함 */
 }
 
 .message-container:hover .message {
-  opacity: 0; /* .message-container를 hover 했을 때 .message2 요소를 서서히 나타나게 함 */
-  pointer-events: auto; /* .message-container를 hover 했을 때 hover 효과가 발생하도록 함 */
+	opacity: 0;
+	/* .message-container를 hover 했을 때 .message2 요소를 서서히 나타나게 함 */
+	pointer-events: auto;
+	/* .message-container를 hover 했을 때 hover 효과가 발생하도록 함 */
 }
 
-@media (max-width: 991px) {
-  .message {
-    max-width: 100%;
-    font-size: 12px;
-  }
+@media ( max-width : 991px) {
+	.message {
+		max-width: 100%;
+		font-size: 12px;
+	}
 }
 
-@media (max-width: 991px) {
-  .message2 {
-    max-width: 100%;
-    font-size: 12px;
-  }
+@media ( max-width : 991px) {
+	.message2 {
+		max-width: 100%;
+		font-size: 12px;
+	}
 }
 
 .container {
-  perspective: 1000px; /* 시점 설정 */
-  margin-top: 19%;
-  margin-bottom: 10%;
+	perspective: 1000px; /* 시점 설정 */
+	margin-top: 19%;
+	margin-bottom: 10%;
 }
 
-
 * {
-  box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 .flip {
-  position: relative;
+	position: relative;
 }
-.flip > .front,
-.flip > .back {
-  display: block;
-  transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  transition-duration: 1s;
-  transition-property: transform, opacity;
+
+.flip>.front, .flip>.back {
+	display: block;
+	transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+	transition-duration: 1s;
+	transition-property: transform, opacity;
 }
-.flip > .front {
-  transform: rotateY(0deg);
+
+.flip>.front {
+	transform: rotateY(0deg);
 }
-.flip > .back {
-  position: absolute;
-  opacity: 0;
-  top: 0px;
-  width: 100%;
-  height: 100%;
-  transform: rotateY(-180deg);
+
+.flip>.back {
+	position: absolute;
+	opacity: 0;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	transform: rotateY(-180deg);
 }
-.flip:hover > .front {
-  transform: rotateY(180deg);
+
+.flip:hover>.front {
+	transform: rotateY(180deg);
 }
-.flip:hover > .back {
-  opacity: 1;
-  transform: rotateY(0deg);
+
+.flip:hover>.back {
+	opacity: 1;
+	transform: rotateY(0deg);
 }
 
 /* custom */
 .flip {
-  display: inline-block;
-  margin-right: 5px;
-  margin-bottom: 1em;
-  width: 235px;
-}
-.flip > .front {
-  display: block;
-  color: white;
-  width: inherit;
-  background-size: cover !important;
-  background-position: center !important;
-  height: 350px;
-  padding: 5em 2em;
-  background: white;
-  border-radius: 10px;
+	display: inline-block;
+	margin-right: 5px;
+	margin-bottom: 1em;
+	width: 235px;
 }
 
-.flip > .back {
-  font-family: Urbanist;
-  display: block;
-  color: #696969;
-  width: inherit;
-  background-size: cover !important;
-  background-position: center !important;
-  height: 350px;
-  padding: 5em 2em;
-  background: white;
-  border-radius: 10px;
-  border: solid #ededed 1px;
+.flip>.front {
+	display: block;
+	color: white;
+	width: inherit;
+	background-size: cover !important;
+	background-position: center !important;
+	height: 350px;
+	padding: 5em 2em;
+	background: white;
+	border-radius: 10px;
+}
+
+.flip>.back {
+	font-family: Urbanist;
+	display: block;
+	color: #696969;
+	width: inherit;
+	background-size: cover !important;
+	background-position: center !important;
+	height: 350px;
+	padding: 5em 2em;
+	background: white;
+	border-radius: 10px;
+	border: solid #ededed 1px;
 }
 
 .korean-name {
-  font-family: 'KyoboHandwriting2023wsa';
-  font-weight: 500;
-  font-size: 25px;
-  color: #3b3d40;'
+	font-family: 'KyoboHandwriting2023wsa';
+	font-weight: 500;
+	font-size: 25px;
+	color: #3b3d40;
+	'
 }
 
 .name {
-  font-family: 'KyoboHandwriting2023wsa';
-  font-size: 25px;
-  margin-top: 95%;
-  font-weight: 500px;
+	font-family: 'KyoboHandwriting2023wsa';
+	font-size: 25px;
+	margin-top: 95%;
+	font-weight: 500px;
 }
 
 .name {
-  text-shadow: 1px 1px rgba(0, 0, 0, 0.04), 2px 2px rgba(0, 0, 0, 0.04),
-    3px 3px rgba(0, 0, 0, 0.04), 4px 4px rgba(0, 0, 0, 0.04),
-    0.125rem 0.125rem rgba(0, 0, 0, 0.04), 6px 6px rgba(0, 0, 0, 0.04),
-    7px 7px rgba(0, 0, 0, 0.04), 8px 8px rgba(0, 0, 0, 0.04),
-    9px 9px rgba(0, 0, 0, 0.04), 0.3125rem 0.3125rem rgba(0, 0, 0, 0.04),
-    11px 11px rgba(0, 0, 0, 0.04), 12px 12px rgba(0, 0, 0, 0.04),
-    13px 13px rgba(0, 0, 0, 0.04), 14px 14px rgba(0, 0, 0, 0.04),
-    0.625rem 0.625rem rgba(0, 0, 0, 0.04), 16px 16px rgba(0, 0, 0, 0.04),
-    17px 17px rgba(0, 0, 0, 0.04), 18px 18px rgba(0, 0, 0, 0.04),
-    19px 19px rgba(0, 0, 0, 0.04), 1.25rem 1.25rem rgba(0, 0, 0, 0.04);
+	text-shadow: 1px 1px rgba(0, 0, 0, 0.04), 2px 2px rgba(0, 0, 0, 0.04),
+		3px 3px rgba(0, 0, 0, 0.04), 4px 4px rgba(0, 0, 0, 0.04), 0.125rem
+		0.125rem rgba(0, 0, 0, 0.04), 6px 6px rgba(0, 0, 0, 0.04), 7px 7px
+		rgba(0, 0, 0, 0.04), 8px 8px rgba(0, 0, 0, 0.04), 9px 9px
+		rgba(0, 0, 0, 0.04), 0.3125rem 0.3125rem rgba(0, 0, 0, 0.04), 11px
+		11px rgba(0, 0, 0, 0.04), 12px 12px rgba(0, 0, 0, 0.04), 13px 13px
+		rgba(0, 0, 0, 0.04), 14px 14px rgba(0, 0, 0, 0.04), 0.625rem 0.625rem
+		rgba(0, 0, 0, 0.04), 16px 16px rgba(0, 0, 0, 0.04), 17px 17px
+		rgba(0, 0, 0, 0.04), 18px 18px rgba(0, 0, 0, 0.04), 19px 19px
+		rgba(0, 0, 0, 0.04), 1.25rem 1.25rem rgba(0, 0, 0, 0.04);
 }
 
 .mint-line {
-  display: block;
-  height: 3px;
-  width: 90px;
-  background-color: #d5f1e2;
-  margin-left: 23.5%;
+	display: block;
+	height: 3px;
+	width: 90px;
+	background-color: #d5f1e2;
+	margin-left: 23.5%;
 }
 
 .button {
 	margin-top: 50px;
-  background-color:#d5f1e2; 
-  border : solid 1px #d5f1e2;
-/*   background-color: rgba(213, 241, 226, 0.3); */
-/* border: solid 1px rgba(213, 241, 226, 0.3); */
-
-
+	background-color: #d5f1e2;
+	border: solid 1px #d5f1e2;
+	/* background-color: rgba(213, 241, 226, 0.3);  */
+	/* border: solid 1px rgba(213, 241, 226, 0.3); */
 }
 
 .button:hover {
-  background-color: #ededed;
-  border: solid 1px #ededed;
+	background-color: #ededed;
+	border: solid 1px #ededed;
 }
-
-
 </style>
+</head>
+
 <body>
 	<section>
 
@@ -777,30 +766,30 @@ transform: translateY(-20px);
 			<div class="section">
 				<div class="video-container">
 					<video muted autoplay loop class="fullscreen-video active">
-						<source
-							src="https://videos.pexels.com/video-files/5363146/5363146-hd_1920_1080_25fps.mp4">
+						<source src="https://videos.pexels.com/video-files/5363146/5363146-hd_1920_1080_25fps.mp4">
 					</video>
 					<video muted autoplay loop class="fullscreen-video">
-						<source
-							src="https://videos.pexels.com/video-files/3015510/3015510-hd_1920_1080_24fps.mp4">
+						<source src="https://videos.pexels.com/video-files/3015510/3015510-hd_1920_1080_24fps.mp4">
 					</video>
 					<video muted autoplay loop class="fullscreen-video">
-						<source
-							src="https://videos.pexels.com/video-files/9113144/9113144-uhd_3840_2160_30fps.mp4">
+						<source src="https://videos.pexels.com/video-files/9113144/9113144-uhd_3840_2160_30fps.mp4">
 					</video>
 					<video muted autoplay loop class="fullscreen-video">
-						<source
-							src="https://videos.pexels.com/video-files/1550080/1550080-uhd_3840_2160_30fps.mp4">
+						<source src="https://videos.pexels.com/video-files/1550080/1550080-uhd_3840_2160_30fps.mp4">
 					</video>
 
 					<div class="text">여행을 듣다, 여행을 입다</div>
 
-					<a href="#" id="wavy-tripangle" class="wavy-tripangle"> <span
-						style="--i: 1">T</span> <span style="--i: 2">r</span> <span
-						style="--i: 3">i</span> <span style="--i: 4">p</span> <span
-						style="--i: 5">A</span> <span style="--i: 6">n</span> <span
-						style="--i: 7">g</span> <span style="--i: 8">l</span> <span
-						style="--i: 9">e</span>
+					<a href="#" id="wavy-tripangle" class="wavy-tripangle">
+						<span style="--i: 1">T</span>
+						<span style="--i: 2">r</span>
+						<span style="--i: 3">i</span>
+						<span style="--i: 4">p</span>
+						<span style="--i: 5">A</span>
+						<span style="--i: 6">n</span>
+						<span style="--i: 7">g</span>
+						<span style="--i: 8">l</span>
+						<span style="--i: 9">e</span>
 					</a>
 
 					<div class="scroll-down-sign1">SCROLL DOWN</div>
@@ -815,16 +804,18 @@ transform: translateY(-20px);
 					<div class="comment-and-search-box">
 						<div class="comment-box">
 							<div class="comment">
-								TripAngle로 나만의 여행을 <br /> 음악과 패션을 통해 감각적으로 계획해보세요
+								TripAngle로 나만의 여행을
+								<br />
+								음악과 패션을 통해 감각적으로 계획해보세요
 							</div>
 						</div>
 						<div class="search-area">
 							<div class="search-box">
-								<input type="text" class="search-input" style="border: none;"
-									placeholder="떠나고 싶은 여행지를 알려주세요!"> <a href="/"
-									class="search-btn"> <img
-									src="https://cdn.builder.io/api/v1/image/assets/TEMP/9d1bcbb2b727b63e8a9b71f8ed09c2fbb0673fbc7961acc79bf133cb2367d88c?apiKey=725f06f0daeb4ab382150ea4b4cf3550&"
-									alt="검색">
+								<input type="text" class="search-input" style="border: none;" placeholder="떠나고 싶은 여행지를 알려주세요!">
+								<a href="/" class="search-btn">
+									<img
+										src="https://cdn.builder.io/api/v1/image/assets/TEMP/9d1bcbb2b727b63e8a9b71f8ed09c2fbb0673fbc7961acc79bf133cb2367d88c?apiKey=725f06f0daeb4ab382150ea4b4cf3550&"
+										alt="검색">
 								</a>
 							</div>
 						</div>
@@ -835,9 +826,9 @@ transform: translateY(-20px);
 			<div class="section">
 				<div class="div-bottom">
 					<div class="about-trip-angle">
-						<span style="color: rgba(66, 66, 66, 1)">About</span> <span
-							style="color: rgba(105, 105, 105, 1)">Trip</span> <span
-							style="color: rgba(129, 200, 162, 1)">Angle</span>
+						<span style="color: rgba(66, 66, 66, 1)">About</span>
+						<span style="color: rgba(105, 105, 105, 1)">Trip</span>
+						<span style="color: rgba(129, 200, 162, 1)">Angle</span>
 					</div>
 					<div class="mint-line1"></div>
 					<div class="trip-style-music-section">
@@ -845,22 +836,19 @@ transform: translateY(-20px);
 							<div class="trip-box">
 								<div class="trip-box-img">
 									<div class="div-7 trip-title">Trip</div>
-									<div class="div-8 trip-comment">감각적인 여행을 위해 여행지의 기온과 분위기를
-										고려하여 맞춤형 스타일링과 특별한 음악을 제공합니다.</div>
+									<div class="div-8 trip-comment">감각적인 여행을 위해 여행지의 기온과 분위기를 고려하여 맞춤형 스타일링과 특별한 음악을 제공합니다.</div>
 								</div>
 							</div>
 							<div class="style-box">
 								<div class="style-box-img">
 									<div class="style-title">Style</div>
-									<div class="style-comment">전 세계의 다양한 여행지에 대한 최신 날씨 정보를
-										제공하고, 그에 맞는 스타일링 팁을 제시합니다.</div>
+									<div class="style-comment">전 세계의 다양한 여행지에 대한 최신 날씨 정보를 제공하고, 그에 맞는 스타일링 팁을 제시합니다.</div>
 								</div>
 							</div>
 							<div class="music-box">
 								<div class="music-box-img">
 									<div class="music-title">Music</div>
-									<div class="music-comment">여행을 더욱 특별하게 만들기 위해 여행지와 어울리는
-										특별한 플레이리스트를 제공합니다.</div>
+									<div class="music-comment">여행을 더욱 특별하게 만들기 위해 여행지와 어울리는 특별한 플레이리스트를 제공합니다.</div>
 								</div>
 							</div>
 						</div>
@@ -870,111 +858,114 @@ transform: translateY(-20px);
 
 			<div class="section">
 
-  <div class="contactus">
-    <div class="title">Contact Us</div>
-    <div class="message-container">
-      <div class="message">
-        Thanks to the project
-        <span style="
-        font-weight: 500;
-        font-style: italic;
-        color: rgba(129, 200, 162, 1);">
-          TripAngle</span>, we've had the pleasure of exchanging ideas and inspirations,</br> and exploring
-        boundless creative avenues through collaborative efforts. </br> Below, you'll
-        find additional personal information about each of our team members. </br>Feel
-        free to reach out to us anytime!
-      </div>
+				<div class="contactus">
+					<div class="title">Contact Us</div>
+					<div class="message-container">
+						<div class="message">
+							Thanks to the project
+							<span style="font-weight: 500; font-style: italic; color: rgba(129, 200, 162, 1);"> TripAngle</span>
+							, we've had the pleasure of exchanging ideas and inspirations,
+							</br>
+							and exploring boundless creative avenues through collaborative efforts.
+							</br>
+							Below, you'll find additional personal information about each of our team members.
+							</br>
+							Feel free to reach out to us anytime!
+						</div>
 
-      <div class="message2">
-        <span style="
-        font-weight: 500;
-        font-style: italic;
-        color: rgba(129, 200, 162, 1);
-      ">
-          TripAngle
-        </span>
-        프로젝트를 통해 우리는 다양한 아이디어와 영감을 공유하고, </br>
-        협력을 통해 개개인의 무한한 창의적 가능성을 발견할 수 있었습니다. </br>아래에서 이 프로젝트를 함께한 팀원을 확인하실 수 있으니 </br> 언제든지 연락 주시길 바랍니다!
-      </div>
+						<div class="message2">
+							<span style="font-weight: 500; font-style: italic; color: rgba(129, 200, 162, 1);"> TripAngle </span>
+							프로젝트를 통해 우리는 다양한 아이디어와 영감을 공유하고,
+							</br>
+							협력을 통해 개개인의 무한한 창의적 가능성을 발견할 수 있었습니다.
+							</br>
+							아래에서 이 프로젝트를 함께한 팀원을 확인하실 수 있으니
+							</br>
+							언제든지 연락 주시길 바랍니다!
+						</div>
 
-    </div>
+					</div>
 
-    <div class="container">
-      <div class="flip">
-        <div class="front" style="background-image: url(https://images.unsplash.com/photo-1552960394-c81add8de6b8?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)">
-          <h1 class="name">Seo Myeong Won</h1>
-        </div>
-        <div class="back">
-          <h2 class="korean-name">서명원</h2>
-          <div class="mint-line"></div>
-          </br>
-          <p>010-4495-0000</p>
-<!--           <p>010-4495-8592</p> -->
-<!--           <button class="button btn btn-sm"> text message</button> -->
-<!--           </br> -->
-          </br>
-          <p>insamjoo300@gmail.com</p>
-          <button class="button btn btn-sm" onclick="writeEmailToMyeongwon()" > send e-mail</button>
+					<div class="container">
+						<div class="flip">
+							<div class="front"
+								style="background-image: url(https://images.unsplash.com/photo-1552960394-c81add8de6b8?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)">
+								<h1 class="name">Seo Myeong Won</h1>
+							</div>
+							<div class="back">
+								<h2 class="korean-name">서명원</h2>
+								<div class="mint-line"></div>
+								</br>
+								<p>010-4495-0000</p>
+								<!--           <p>010-4495-8592</p> -->
+								<!--           <button class="button btn btn-sm"> text message</button> -->
+								<!--           </br> -->
+								</br>
+								<p>insamjoo300@gmail.com</p>
+								<button class="button btn btn-sm" onclick="writeEmailToMyeongwon()">send e-mail</button>
 
-        </div>
-      </div>
+							</div>
+						</div>
 
-      <div class="flip">
-        <div class="front" style="background-image: url(https://images.unsplash.com/photo-1543269664-56d93c1b41a6?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)">
-          <h1 class="name">Chang Yun Lin</h1>
-        </div>
-        <div class="back">
-          <h2 class="korean-name">장윤린</h2>
-          <div class="mint-line"></div>
-          </br>
-          <p>010-4249-0000</p>
-<!--           <p>010-4249-0977</p> -->
-<!--           <button class="button btn btn-sm">text message</button> -->
-<!--           </br> -->
-          </br>
-          <p>yunlinit@gmail.com</p>
-          <button class="button btn btn-sm" onclick="writeEmailToYunlin()">send e-mail</button>
-        </div>
-      </div>
+						<div class="flip">
+							<div class="front"
+								style="background-image: url(https://images.unsplash.com/photo-1543269664-56d93c1b41a6?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)">
+								<h1 class="name">Chang Yun Lin</h1>
+							</div>
+							<div class="back">
+								<h2 class="korean-name">장윤린</h2>
+								<div class="mint-line"></div>
+								</br>
+								<p>010-4249-0000</p>
+								<!--           <p>010-4249-0977</p> -->
+								<!--           <button class="button btn btn-sm">text message</button> -->
+								<!--           </br> -->
+								</br>
+								<p>yunlinit@gmail.com</p>
+								<button class="button btn btn-sm" onclick="writeEmailToYunlin()">send e-mail</button>
+							</div>
+						</div>
 
 
-      <div class="flip">
-        <div class="front" style="background-image: url(https://images.unsplash.com/photo-1571365689578-618663443bd7?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)">
-          <h1 class="name">Yun Ga Yeon</h1>
-        </div>
-        <div class="back">
-          <h2 class="korean-name">윤가연</h2>
-          <div class="mint-line"></div>
-          </br>
-          <p>010-5408-0000</p>
-<!--           <p>010-5408-4893</p> -->
-<!--           <button class="button btn btn-sm">text message</button> -->
-<!--           </br> -->
-          </br>
-          <p>yungayeon223gmail.com</p>
-          <button class="button btn btn-sm" onclick="writeEmailToGayeon()">send e-mail</button>
-        </div>
-      </div>
+						<div class="flip">
+							<div class="front"
+								style="background-image: url(https://images.unsplash.com/photo-1571365689578-618663443bd7?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)">
+								<h1 class="name">Yun Ga Yeon</h1>
+							</div>
+							<div class="back">
+								<h2 class="korean-name">윤가연</h2>
+								<div class="mint-line"></div>
+								</br>
+								<p>010-5408-0000</p>
+								<!--           <p>010-5408-4893</p> -->
+								<!--           <button class="button btn btn-sm">text message</button> -->
+								<!--           </br> -->
+								</br>
+								<p>yungayeon223gmail.com</p>
+								<button class="button btn btn-sm" onclick="writeEmailToGayeon()">send e-mail</button>
+							</div>
+						</div>
 
-      <div class="flip">
-        <div class="front" style="background-image: url(https://images.unsplash.com/photo-1507537297725-24a1c029d3ca?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)">
-          <h1 class="name">Shin Gyu Sub</h1>
-        </div>
-        <div class="back">
-          <h2 class="korean-name">신규섭</h2>
-          <div class="mint-line"></div>
-          </br>
-          <p>010-7752-0000</p>
-<!--           <p>010-7752-8687</p> -->
-<!--           <button class="button btn btn-sm" >text message</button> -->
-<!--           </br> -->
-          </br>
-          <p>tlstlsrbrb11@gmail.com</p>
-          <button class="button btn btn-sm" onclick="writeEmailToGyusub()">send e-mail</button>
-        </div>
-      </div>
-    </div>
-  </div>
+						<div class="flip">
+							<div class="front"
+								style="background-image: url(https://images.unsplash.com/photo-1507537297725-24a1c029d3ca?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)">
+								<h1 class="name">Shin Gyu Sub</h1>
+							</div>
+							<div class="back">
+								<h2 class="korean-name">신규섭</h2>
+								<div class="mint-line"></div>
+								</br>
+								<p>010-7752-0000</p>
+								<!--           <p>010-7752-8687</p> -->
+								<!--           <button class="button btn btn-sm" >text message</button> -->
+								<!--           </br> -->
+								</br>
+								<p>tlstlsrbrb11@gmail.com</p>
+								<button class="button btn btn-sm" onclick="writeEmailToGyusub()">send e-mail</button>
+							</div>
+						</div>
+					</div>
+				</div>
 
 			</div>
 
@@ -982,7 +973,7 @@ transform: translateY(-20px);
 		</div>
 	</section>
 
-<script>
+	<script>
   function writeEmailToYunlin() {
     // 여기서는 예시로 mailto 링크를 사용하여 이메일 클라이언트를 열도록 하였습니다.
     // 실제로는 백엔드와의 통신 등을 통해 이메일을 보내는 방법을 구현해야 할 수 있습니다.
@@ -991,7 +982,7 @@ transform: translateY(-20px);
 </script>
 
 
-<script>
+	<script>
   function writeEmailToGayeon() {
     // 여기서는 예시로 mailto 링크를 사용하여 이메일 클라이언트를 열도록 하였습니다.
     // 실제로는 백엔드와의 통신 등을 통해 이메일을 보내는 방법을 구현해야 할 수 있습니다.
@@ -1001,7 +992,7 @@ transform: translateY(-20px);
 
 
 
-<script>
+	<script>
   function writeEmailToGyusub() {
     // 여기서는 예시로 mailto 링크를 사용하여 이메일 클라이언트를 열도록 하였습니다.
     // 실제로는 백엔드와의 통신 등을 통해 이메일을 보내는 방법을 구현해야 할 수 있습니다.
@@ -1009,7 +1000,7 @@ transform: translateY(-20px);
   }
 </script>
 
-<script>
+	<script>
   function writeEmailToMyeongwon() {
     // 여기서는 예시로 mailto 링크를 사용하여 이메일 클라이언트를 열도록 하였습니다.
     // 실제로는 백엔드와의 통신 등을 통해 이메일을 보내는 방법을 구현해야 할 수 있습니다.

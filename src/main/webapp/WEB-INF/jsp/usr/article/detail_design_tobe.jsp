@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<c:set var="pageTitle" value="TripAngle | 게시글 상세보기"></c:set>
+<c:set var="pageTitle" value="게시글 상세보기"></c:set>
 <%@ include file="../common/head.jspf"%>
 <%@ include file="../common/toastUiEditorLib.jspf"%>
 
@@ -245,7 +245,7 @@ function doModifyReply(replyId) {
 
 	<!-- 글 상세보기 부분 -->
 
-	<div class="page-title"> 게시글 상세보기 </div>
+	<div class="page-title">자유게시판</div>
 
 	<!-- 	상단버튼들 -->
 
@@ -277,7 +277,7 @@ function doModifyReply(replyId) {
 		<div class="top-line"></div>
 		<div class="body">
 			<!-- 첨부 이미지 -->
-			<img class="max-w-2xl rounded-xl" src="${rq.getImgUri(article.id,relTypeCode)}"
+			<img class="w-full rounded-xl" src="${rq.getImgUri(article.id,relTypeCode)}"
 				onerror="${rq.profileFallbackImgOnErrorHtml}" alt="" />
 			<div>${rq.getImgUri(article.id,relTypeCode)}</div>
 			<!-- 내용 -->
@@ -316,7 +316,7 @@ function doModifyReply(replyId) {
 						style="height: 83px; width: 1064px;"> </textarea>
 
 					<div></div>
-					<input class="reply-btn btn btn-sm mt-4" type="submit" value="등록" />
+					<input class="btn btn-sm mt-4" type="submit" value="등록" />
 				</form>
 			</c:if>
 			<c:if test="${!rq.isLogined() }">
@@ -438,10 +438,9 @@ function doModifyReply(replyId) {
 .modify-btn {
 	font-family: Pretendard, sans-serif;
 	font-size: 12px;
-	color: black;
 	border-radius: 5px;
-	border: 1px solid #d5f1e2;
-	background-color: #d5f1e2;
+	border: 1px solid #fff;
+	background-color: #333;
 	aspect-ratio: 2.74;
 	justify-content: center;
 	padding: 7px 23px;
@@ -458,10 +457,9 @@ function doModifyReply(replyId) {
 .delete-btn {
 	font-family: Pretendard, sans-serif;
 	font-size: 12px;
-	color: black;
 	border-radius: 5px;
-	border: 1px solid #d5f1e2;
-	background-color: #d5f1e2;
+	border: 1px solid #fff;
+	background-color: #333;
 	aspect-ratio: 2.74;
 	justify-content: center;
 	padding: 7px 23px;
@@ -477,10 +475,9 @@ function doModifyReply(replyId) {
 .list-btn {
 	font-family: Pretendard, sans-serif;
 	font-size: 12px;
-	color: black;
 	border-radius: 5px;
-	border: 1px solid #d5f1e2;
-	background-color: #d5f1e2;
+	border: 1px solid #fff;
+	background-color: #333;
 	margin-top: 11px;
 	aspect-ratio: 2.74;
 	justify-content: center;
@@ -745,18 +742,80 @@ function doModifyReply(replyId) {
 	margin-top: 8px;
 }
 
-.reply-btn {
-
-background-color: #d5f1e2;
-}
-
 .reply-regDate {
 	color: #a9a9a9;
 	margin-top: 13px;
 	font: 10px Pretendard, sans-serif;
 }
 
+.re-reply-btn {
+	color: #a9a9a9;
+	align-self: end;
+	margin-top: 42px;
+	font: 10px Pretendard, sans-serif;
+}
 
+@media ( max-width : 991px) {
+	.re-reply-btn {
+		margin-top: 40px;
+	}
+}
+
+.re-reply {
+	display: flex;
+	justify-content: space-between;
+	gap: 20px;
+	margin: 17px 0 0 15px;
+}
+
+@media ( max-width : 991px) {
+	.re-reply {
+		margin-left: 10px;
+		white-space: initial;
+	}
+}
+
+.re-reply-box {
+	display: flex;
+	flex-direction: column;
+	font-size: 12px;
+	color: #333;
+}
+
+@media ( max-width : 991px) {
+	.re-reply-box {
+		white-space: initial;
+	}
+}
+
+.re-reply-writer {
+	font-family: Pretendard, sans-serif;
+	font-weight: 600;
+}
+
+.re-reply-body {
+	font-family: Pretendard, sans-serif;
+	margin-top: 8px;
+}
+
+.re-reply-regDate {
+	color: #a9a9a9;
+	margin-top: 13px;
+	font: 10px Pretendard, sans-serif;
+}
+
+.re-re-reply-bnt {
+	color: #a9a9a9;
+	align-self: end;
+	margin-top: 42px;
+	font: 10px Pretendard, sans-serif;
+}
+
+@media ( max-width : 991px) {
+	.re-re-reply-bnt {
+		margin-top: 40px;
+	}
+}
 </style>
 
 

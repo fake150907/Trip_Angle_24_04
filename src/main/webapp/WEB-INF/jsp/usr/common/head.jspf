@@ -2,11 +2,11 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!DOCTYPE html>
-<html data-theme="light">
 <head>
 <meta charset="UTF-8">
 <title>${pageTitle }</title>
 <link rel="stylesheet" href="/resource/common.css" />
+
 <script src="/resource/common.js" defer="defer"></script>
 <!-- 테일윈드 불러오기 -->
 <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" /> -->
@@ -41,38 +41,10 @@
 <!-- 구글폰트 Urbanist -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Suranna&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css2?family=Suranna&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap"
+	rel="stylesheet">
 
-<script>
-  // 테마를 전환하는 함수
-  function Theme__toggle() {
-    const theme = localStorage.getItem('theme') ?? 'light';
-
-    if (theme == 'light') {
-      localStorage.setItem('theme', 'dark');
-      Theme__applyTo('dark'); // 테마를 어두운 테마로 설정
-    } else {
-      localStorage.setItem('theme', 'light');
-      Theme__applyTo('light'); // 테마를 밝은 테마로 설정
-    }
-  }
-
-  // 특정 테마를 적용하는 함수
-  function Theme__applyTo(themeName) {
-    $('html').attr('data-theme', themeName);
-  }
-
-  // 초기 테마 설정 함수
-  function Theme__init() {
-    const theme = localStorage.getItem('theme') ?? 'light';
-    Theme__applyTo(theme);
-  }
-
-  // 문서 로드 완료 시 초기 테마 설정
-  $(document).ready(function () {
-    Theme__init();
-  });
-</script>
 </head>
 
 
@@ -83,27 +55,40 @@
 			<a href="/" class="logo" style="font-family: pattaya; color: #81C8A2">Angle</a>
 			<div class="flex-grow"></div>
 			<ul class="flex">
-<!-- 				<li class=""><a class="h-full px-3 flex items-center btn-theme-toggle" href="javascript:Theme__toggle();"> -->
-<!-- 						<span>🌞</span> <span>🌚</span> -->
-<!-- 					</a></li> -->
-				<li><a class="list-btn header-btns " href="../article/list?boardId=1&page=1">LIST</a>
-					<ul>
-						<li><a class="notice-btn header-btns " href="../article/list?boardId=1&page=1">NOTICE</a></li>
-						<li><a class="free-btn header-btns " href="../article/list?boardId=2&page=1">FREE</a></li>
-						<li><a class="qna-btn header-btns " href="../article/list?boardId=3&page=1">QnA</a></li>
-					</ul></li>
+				<li>
+					<a class="articleList-btn header-btns " href="../article/list?boardId=1&page=1">공지사항</a>
+				</li>
+				<li>
+					<a class="login-btn header-btns" href="../trip/reviewList">여행 후기</a>
+				</li>
 				<c:if test="${!rq.isLogined() }">
-					<li><a class="login-btn header-btns" href="${rq.loginUri }">Login</a></li>
+					<li></li>
+					<li></li>
+					<li>
+						<a class="login-btn header-btns" href="${rq.loginUri }">로그인</a>
+					</li>
 
-					<li><a class="join-btn header-btns " href="../member/join">Join</a></li>
+					<li>
+						<a class="join-btn header-btns " href="../member/join">회원가입</a>
+					</li>
 				</c:if>
 				<c:if test="${rq.isLogined() }">
-					<li><a class="write-btns header-btns " href="../article/write">WRITE</a></li>
-					
-					<li> <a class="mypage-btns header-btns" href="/usr/myPlan/myPlanList">My Plan</a></li>
-					<li> <a class="mypage-btns header-btns" href="/usr/member/myPage">회원정보</a></li>
-					<li><a onclick="if(confirm('로그아웃 할래?') == false) return false;" class="logout-btn header-btns "
-							href="${rq.logoutUri }">LOGOUT</a></li>
+					<li>
+						<a class="write-btns header-btns " href="../article/write">후기 작성</a>
+					</li>
+
+					<li>
+						<a class="mypage-btns header-btns" href="/usr/myPlan/myPlanList">나의 일정</a>
+					</li>
+					<li></li>
+					<li></li>
+					<li>
+						<a class="mypage-btns header-btns" href="/usr/member/myPage">회원정보</a>
+					</li>
+					<li>
+						<a onclick="if(confirm('로그아웃 할래?') == false) return false;" class="logout-btn header-btns "
+							href="${rq.logoutUri }">로그아웃</a>
+					</li>
 				</c:if>
 			</ul>
 		</div>
@@ -114,39 +99,37 @@
 <style>
 /* 헤더가 고정 위치로 설정될 수 있도록 수정 */
 .header-container {
-    z-index: 999;
-    max-width: 100%; /* 최대 너비를 조정 */
-    margin: 0 auto;
-    position: fixed; /* 고정 위치로 설정 */
-    top: 0; /* 상단에 배치 */
-    left: 0; /* 왼쪽에 배치 */
-    width: 100%; /* 가로 너비 100% 설정 */
-    background-color: white; /* 배경색 설정 */
+	z-index: 999;
+	max-width: 100%; /* 최대 너비를 조정 */
+	margin: 0 auto;
+	position: fixed; /* 고정 위치로 설정 */
+	top: 0; /* 상단에 배치 */
+	left: 0; /* 왼쪽에 배치 */
+	width: 100%; /* 가로 너비 100% 설정 */
+	background-color: white; /* 배경색 설정 */
 }
 
 /* 가운데 라인을 조정하여 헤더가 정렬되도록 수정 */
 .header-line {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    border-color: #CACACA;
-    border-style: solid;
-    border-bottom-width: 1px;
-    margin-top: -2px;
-    height: 2px;
-    width: calc(100% - 40px); /* 가로 너비 조정 */
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+	border-color: #CACACA;
+	border-style: solid;
+	border-bottom-width: 1px;
+	margin-top: -2px;
+	height: 2px;
+	width: calc(100% - 40px); /* 가로 너비 조정 */
 }
 
-
-
 /* 반응형 디자인을 위한 미디어 쿼리 추가 */
-@media (max-width: 991px) {
-    .header-container {
-        padding: 0 10px; /* 작은 화면에서의 패딩 조정 */
-    }
-    .header-line {
-        width: calc(100% - 20px); /* 작은 화면에서 가로 너비 조정 */
-    }
+@media ( max-width : 991px) {
+	.header-container {
+		padding: 0 10px; /* 작은 화면에서의 패딩 조정 */
+	}
+	.header-line {
+		width: calc(100% - 20px); /* 작은 화면에서 가로 너비 조정 */
+	}
 }
 
 @media ( max-width : 991px) {
@@ -159,7 +142,8 @@
 	font-family: Pretendard, sans-serif;
 	justify-content: center;
 	border-radius: 7px;
-	background-color: #d5f1e2;
+ 	background-color: #d5f1e2; 
+/* background-color: rgba(213, 241, 226, 0.3); */
 	align-self: stretch;
 	color: #3b3d40;
 	white-space: nowrap;
@@ -168,9 +152,8 @@
 	/* 추가적인 스타일을 필요에 따라 적용하세요 */
 }
 
-.header-btns{
-font-size: 14px;
-
+.header-btns {
+	font-size: 14px;
 }
 
 @media ( max-width : 991px) {
@@ -179,5 +162,4 @@ font-size: 14px;
 		padding: 0 20px;
 	}
 }
-
 </style>
