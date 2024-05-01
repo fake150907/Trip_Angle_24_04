@@ -44,6 +44,13 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'KyoboHandwriting2023wsa';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2404-2@1.0/KyoboHandwriting2023wsa.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
 html>body {
 	font-family: 'Pretendard-Regular', sans-serif;
 }
@@ -68,21 +75,6 @@ header>div>ul>li {
 	margin-right: 30px;
 }
 
-/* .login-box>tbody>tr>td>input { */
-/* 	padding-left: 10px; */
-/* } */
-
-/* .login-box>tbody>tr:nth-child(3)>td>input { */
-/* 	padding-left: 0; */
-/* } */
-
-/* .join-box>tbody>tr:nth-child(7)>td>input { */
-/* 	padding-left: 0; */
-/* } */
-
-/* .modify-box>tbody>tr:nth-child(5)>td>input, .modify-box>tbody>tr:nth-child(6)>td>input, */
-/* 	.modify-box>tbody>tr:nth-child(7)>td>input { */
-/* } */
 
 
 /* 테이블 */
@@ -100,26 +92,4 @@ header>div>ul>li>ul {
     position: absolute;
 }
 
-/* 밝은 테마에서의 네비게이션 2차 메뉴 배경색 */
-html[data-theme='light'] header>div>ul>li>ul {
-    background-color: white; /* 또는 밝은 테마에 적합한 다른 색상 */
-}
-
-/* 어두운 테마에서의 네비게이션 2차 메뉴 배경색 */
-html[data-theme='dark'] header>div>ul>li>ul {
-    background-color: #333333; /* 또는 어두운 테마에 적합한 다른 색상 */
-}
-
-/* 네비게이션 2차 메뉴 호버 스타일 */
-header>div>ul>li:hover>ul {
-    display: block;
-}
-
-html[data-theme='light'] .toast-ui-editor {
-    background-color: white; /* 또는 밝은 테마에 적합한 다른 색상 */
-}
-
-html[data-theme='dark'] .toast-ui-editor {
-    background-color: #333333; /* 또는 어두운 테마에 적합한 다른 색상 */
-}
 

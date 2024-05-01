@@ -153,12 +153,20 @@ CREATE TABLE `tabList` (
 
 CREATE TABLE `recommendSpot` (
 	`id`	INT(10)	NOT NULL	COMMENT '추천 장소 id',
+	`regDate`	DATETIME	NULL,
+	`updateDate`	DATETIME	NULL,
 	`groceryName`	CHAR(50)	NULL	COMMENT '가게명',
 	`grade`	INT(20)	NULL	COMMENT '평점',
-	`reviewCount`	INT(100)	NULL	COMMENT '리뷰 갯수',
+	`reviewCount`	CHAR(100)	NULL	COMMENT '리뷰 갯수',
+	`facilities` CHAR(100)	NULL	COMMENT '시설 정보',
 	`address`	CHAR(50)	NULL	COMMENT '주소',
-	`operatingTime`	TIME	NULL	COMMENT '운영 시간',
-	`phoneNumber`	CHAR(100)	NULL	COMMENT '전화번호'
+	`operatingTime`	CHAR(100)	NULL	COMMENT '운영 시간',
+	`phoneNumber`	CHAR(100)	NULL	COMMENT '전화번호',
+	`imageUrl1`	TEXT	NULL,
+	`imageUrl2`	TEXT	NULL,
+	`imageUrl3`	TEXT	NULL,
+	`imageUrl4`	TEXT	NULL,
+	`imageUrl5`	TEXT	NULL
 );
 
 CREATE TABLE `regionSymbolicWord` (
@@ -184,8 +192,8 @@ CREATE TABLE `board` (
 	`updateDate`	DATETIME	NULL	COMMENT '수정날짜',
 	`code`	CHAR(50)	NULL	COMMENT '제목',
 	`name`	TEXT	NULL	COMMENT '내용',
-	`delStatus`	TINYINT(1)	NULL,
-	`delDate`	DATETIME	NULL
+	delStatus TINYINT(1) UNSIGNED NOT NULL DEFAULT 0 COMMENT '삭제 여부 (0=삭제 전, 1=삭제 후)',
+    delDate DATETIME COMMENT '삭제 날짜'
 );
 
 CREATE TABLE `reactionPoint` (
@@ -626,9 +634,18 @@ R.badReactionPoint = RP_SUM.badReactionPoint;
 
 
 
+########################################################################################
+
 SELECT * FROM article;
 
 SELECT * FROM board;
 
+
 INSERT INTO TRAVELSCHEDULE(regDate, updateDate, `name`, `description`, startDate, endDate, regionId, memberId)
 VALUES(NOW(), NOW(), "여행 일기", "오늘은 밥이 맛있다.", "2024-05-05", "2024-05-10", 1, 1);
+
+
+SELECT *
+	FROM board
+	WHERE id = 1
+	AND delStatus = 0;

@@ -8,7 +8,7 @@
 <!-- 페이지제목 -->
 <div class="page-title">
 	<div class="result">
-		'${rq.loginedMember.nickname }'님의 마이 일정  
+		'${rq.loginedMember.nickname }'님의 나의 일정  
 		<div class="mint-line"></div>
 	</div>
 </div>
@@ -22,36 +22,8 @@
 </style>
 
 <!-- 찜 한 카페 페이지  -->
-<section class="like-cafe">
+<section class="my-plan-list-page">
 
-	<!-- 찜한 카페목록 -->
-
-
-	<!-- 검색결과 -->
-	<!-- 	실제 데이터가 들어갈 소스로써, 반복문으로 처리 -->
-<!-- 	<section class="search-result like-list" id="search-result"> -->
-<%-- 		<c:forEach var="myPlan" items="${myPlans}"> --%>
-
-<%-- 			<a href="myPlanDetail?id=${myPlan.id}" class="linkbox１"> --%>
-<!-- 				<div class="content-info-box" style="margin-bottom: 50px"> -->
-<!-- 					<div class="my-plan-img-box"> -->
-<%-- 						<img src="${myPlan.myPlanImgUrl}" alt="마이 일정 이미지" /> --%>
-<!-- 					</div> -->
-<!-- 					<div class="name-regdate"> -->
-<%-- 						<div class="my-plan-name">${myPlan.name}</div> --%>
-<%-- 		S				<p class="regdate">${myPlan.regDate}</p> --%>
-<!-- 					</div> -->
-<!-- 					<div class="div line"></div> -->
-
-<!-- 					<div class="destination-schedule"> -->
-<%-- 						<div class="my-destination">${myPlan.destination}</div> --%>
-<%-- 						<p class="my-schedule">${myPlan.schedule}</p> --%>
-<!-- 					</div> -->
-
-<!-- 				</div> -->
-<!-- 			</a> -->
-<%-- 		</c:forEach> --%>
-<!-- 	</section> -->
 
 
 
@@ -60,8 +32,7 @@
 		<a href="myPlanDetail?id=${myPlan.id}" class="linkbox１">
 			<div class="content-info-box content-1">
 				<div class="my-plan-img-box">
-					<img
-						src="https://images.unsplash.com/photo-1551918120-9739cb430c6d?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+					<img src="https://images.unsplash.com/photo-1551918120-9739cb430c6d?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
 						alt="마이 일정 이미지" />
 				</div>
 				<div class="name-regdate">
@@ -77,7 +48,7 @@
 
 			</div>
 	</div>
-	</a> <a href="cafeDetail" class="linkbox１">
+	</a> <a href="myPlanDetail?id=${myPlan.id}" class="linkbox１">
 		<div class="content-info-box content-2" style="top: 50px;">
 			<div class="my-plan-img-box">
 				<img
@@ -96,7 +67,7 @@
 			</div>
 
 		</div>
-	</a> <a href="cafeDetail" class="linkbox１">
+	</a> <a href="myPlanDetail?id=${myPlan.id}" class="linkbox１">
 		<div class="content-info-box content-3" style="top: 100px;">
 			<div class="my-plan-img-box">
 				<img
@@ -115,7 +86,7 @@
 			</div>
 
 		</div>
-	</a> <a href="cafeDetail" class="linkbox１">
+	</a> <a href="myPlanDetail?id=${myPlan.id}" class="linkbox１">
 		<div class="content-info-box content-4" style="top: 150px;">
 			<div class="my-plan-img-box">
 				<img
@@ -134,7 +105,7 @@
 			</div>
 
 		</div>
-	</a> <a href="cafeDetail" class="linkbox１">
+	</a> <a href="myPlanDetail?id=${myPlan.id}" class="linkbox１">
 		<div class="content-info-box content-5" style="top: 200px;">
 			<div class="my-plan-img-box">
 				<img
@@ -153,7 +124,7 @@
 			</div>
 
 		</div>
-	</a> <a href="cafeDetail" class="linkbox１">
+	</a> <a href="myPlanDetail?id=${myPlan.id}" class="linkbox１">
 		<div class="content-info-box content-6" style="top: 250px;">
 			<div class="my-plan-img-box">
 				<img
@@ -173,8 +144,9 @@
 
 		</div>
 	</a>
+	
+	
 
-</section>
 </section>
 
 
@@ -218,10 +190,11 @@ margin-left: 31%;
 }
 
 /* 카페검색결과 */
-.like-cafe {
+.my-plan-list-page {
 	display: flex;
 	justify-content: center; /* 좌우 중앙 정렬 */
-	margin-top: 150px
+	margin-top: 150px;
+	margin-bottom: 100px;
 }
 </style>
 

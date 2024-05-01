@@ -1,27 +1,50 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <c:set var="pageTitle" value="HONEYTIPS PAGE"></c:set>
 <%@ include file="../common/head.jspf"%>
 
 <!-- <iframe src="http://localhost:8081/usr/article/doIncreaseHitCountRd?id=372" frameborder="0"></iframe> -->
+<script>
+	$(document).ready(function() {
+		$('.HoneyTipsPage').hide();
+		$('.regDate_text').css('background-color', '#CDEAC0');
+		$('.InfoLabel1').click(function() {
+			$('.TipInformationPage').show();
+			$('.HoneyTipsPage').hide();
+		});
+
+		$('.InfoLabel2').click(function() {
+			$('.HoneyTipsPage').show();
+			$('.TipInformationPage').hide();
+		});
+	});
+
+	function hideHoneyTipsPage() {
+		$('.HoneyTipsPage').hide();
+	}
+
+	hideHoneyTipsPage();
+</script>
 <style>
-.TipInformationPage {
-	display: flex;
+.informationPage {
+	margin-left: 150px;
 }
 
-@media ( max-width : 991px) {
-	.TipInformationPage {
-		flex-direction: column;
-		align-items: stretch;
-		gap: 0px;
-	}
+.TipInformationPage {
+	display: inline-block;
+	display: flex;
+	position: absolute;
+	top: 5%;
+	left: 43%;
+	width: 1300px;
 }
 
 .Tab {
 	width: 224px;
-	left: 333px;
-	top: 100px;
+	left: 400px;
+	top: 70px;
 	position: absolute;
 	justify-content: space-between;
 	align-items: center;
@@ -29,7 +52,7 @@
 }
 
 .InfoLabel1, .InfoLabel2 {
-	width: 215.60px;
+	width: 130px;
 	height: 53px;
 	left: 137px;
 	top: 127px;
@@ -60,11 +83,18 @@
 	color: #3B3D40;
 	content: "";
 	bottom: 0;
-	left: 0;
 	width: 0;
 	height: 3px;
 	background-color: transparent;
 	transition: background-color 0.3s, width 0.3s;
+}
+
+.TabContent1::after {
+	left: 12px;
+}
+
+.TabContent2::after {
+	left: 42px;
 }
 
 .TabContent1, .TabContent2 {
@@ -100,10 +130,11 @@
 
 .column {
 	display: flex;
-	flex-direction: column;
+	display: inline-block;
 	line-height: normal;
 	width: 40%;
 	margin-left: 0px;
+	flex-direction: column;
 }
 
 @media ( max-width : 991px) {
@@ -112,7 +143,7 @@
 	}
 }
 
-.div-2 {
+.Tab-container {
 	display: flex;
 	flex-grow: 1;
 	flex-direction: column;
@@ -121,7 +152,7 @@
 }
 
 @media ( max-width : 991px) {
-	.div-2 {
+	.Tab-container {
 		max-width: 100%;
 		margin-top: 40px;
 	}
@@ -144,7 +175,7 @@
 	object-fit: auto;
 	border-radius: 10px;
 	width: 70%; /* You can adjust the width as needed */
-	margin-top: 100px;
+	margin-top: 35%;
 	margin-left: auto; /* This will push it to the right */
 	margin-right: 120px;
 	object-position: center; /* Resetting margin-right */
@@ -173,7 +204,7 @@
 
 .InfoItemContainer {
 	display: flex;
-	margin-top: 143px;
+	margin-top: 27%;
 	flex-grow: 1;
 	flex-direction: column;
 	color: #000;
@@ -222,7 +253,8 @@
 
 .country-city {
 	margin-top: 21px;
-	font: 400 14px/28px Inter, sans-serif;
+	font: 400 15px/28px Inter, sans-serif;
+	font-weight: 500;
 }
 
 @media ( max-width : 991px) {
@@ -244,8 +276,9 @@
 }
 
 .climate {
-	margin-top: 22px;
-	font: 14px/28px Pretendard, sans-serif;
+	margin-top: 21px;
+	font: 400 15px/28px Inter, sans-serif;
+	font-weight: 500;
 }
 
 @media ( max-width : 991px) {
@@ -271,38 +304,229 @@
 		margin-top: 40px;
 	}
 }
+/* 꿀팁 창 */
+.HoneyTipsPage {
+	display: inline-block;
+	display: flex;
+	position: absolute;
+	top: 5%;
+	left: 43%;
+	width: 1300px;
+}
+
+.HoneyTipsPageContainer {
+	display: flex;
+	margin-top: 27%;
+	flex-grow: 1;
+	flex-direction: column;
+	color: #000;
+	font-weight: 500;
+	padding: 0 20px;
+}
+
+.InfoItem {
+	color: #3B3D40;
+	font-size: 20px;
+	font-family: Pretendard;
+	font-weight: 500;
+	line-height: 28px;
+	word-wrap: break-word;
+}
+
+.column-3 {
+	display: flex;
+	flex-direction: column;
+	line-height: normal;
+	width: 60%;
+	margin-right: 160px;
+	margin-bottom: 50px;
+}
+
+.div-2 {
+	display: flex;
+	flex-grow: 1;
+	flex-direction: column;
+	font-size: 19px;
+	text-align: center;
+	position: relative;
+	width: 900px;
+	height: 450px;
+	width: 900px;
+}
+
+.language-box, .currency-box, .voltage-box, .transportation-box,
+	.time-difference-box, .significant-box {
+	position: absolute;
+	width: 170px;
+}
+
+.language-box {
+	top: 10%;
+}
+
+.transportation-box, .time-difference-box, .significant-box {
+	left: 30%;
+}
+
+.language-text {
+	font-size: 25px;
+}
+
+.language {
+	
+}
+
+.currency-box {
+	top: 40%;
+}
+
+.currency-text {
+	font-size: 25px;
+}
+
+.currency {
+	
+}
+
+.voltage-box {
+	top: 70%;
+}
+
+.voltage-text {
+	font-size: 25px;
+}
+
+.voltage {
+	
+}
+
+.transportation-box {
+	top: 10%;
+}
+
+.transportation-text {
+	font-size: 25px;
+}
+
+.transportation {
+	
+}
+
+.time-difference-box {
+	top: 40%;
+}
+
+.time-difference-text {
+	font-size: 25px;
+}
+
+.time-difference {
+	
+}
+
+.significant-box {
+	top: 70%;
+}
+
+.significant-text {
+	font-size: 25px;
+}
+
+.significant {
+	
+}
+
+.ScheduleButton2 {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	color: #3B3D40;
+	font-size: 16px;
+	font-family: Pretendard;
+	font-weight: 500;
+	text-decoration: none; /* Remove underline from links */
+	border-radius: 5px;
+	width: 100px;
+	height: 40px;
+	position: absolute;
+	left: 65%;
+	top: 80%;
+	background: #D5F1E2;
+	border-radius: 5px;
+	background: #D5F1E2;
+}
 </style>
-<div>
-	<div class="TipInformationPage">
-		<div class="column">
-			<div class="div-2">
-				<div class="Tab">
-					<div class="InfoLabel1">
-						<span class="TabContent1">기본 정보</span>
-					</div>
-					<div class="InfoLabel2">
-						<span class="TabContent2">꿀팁</span>
-					</div>
+<div class="informationPage">
+	<div class="column">
+		<div class="Tab-container">
+			<div class="Tab">
+				<div class="InfoLabel1">
+					<span class="TabContent1">기본 정보</span>
 				</div>
-				<img class="OsakaImage"
-					src="https://velog.velcdn.com/images/fake150907/post/1e16874d-8b4e-41ba-a863-a04ea355831b/image.jpg" alt="오사카 이미지">
+				<div class="InfoLabel2">
+					<span class="TabContent2">꿀팁</span>
+				</div>
 			</div>
+			<img class="OsakaImage"
+				src="https://velog.velcdn.com/images/fake150907/post/1e16874d-8b4e-41ba-a863-a04ea355831b/image.jpg"
+				alt="오사카 이미지">
 		</div>
+	</div>
+	<div class="TipInformationPage">
 		<div class="column-2">
 			<div class="InfoItemContainer">
 				<div class="OsakaInfo">OSAKA</div>
 				<div class="country-city-text">일본 오사카</div>
-				<div class="country-city">일본 오사카는 일본의 중부 서쪽에 위치한 도시로, 현대적인 도시와 전통적인 일본 문화가 공존하는 곳입니다. 오사카는 맛집이 많고 음식 다양한 것으로
-					유명합니다. 돈키호테와 같은 대형 쇼핑 몰과 전통 시장들이 함께 있어 쇼핑하기에 좋은 도시이기도 합니다. 또한, 오사카성, 우메다 스카이 빌딩, 도톤보리 등의 명소가 있어 여행객들에게 인기가 많습니다. 관광
-					명소 뿐만 아니라, 교토나 나라 등 주변 관광지와 접근성이 좋아 일본을 여행하는 분들에게 좋은 출발점이기도 합니다.</div>
+				<div class="country-city">일본 오사카는 일본의 중부 서쪽에 위치한 도시로, 현대적인 도시와
+					전통적인 일본 문화가 공존하는 곳입니다. 오사카는 맛집이 많고 음식 다양한 것으로 유명합니다. 돈키호테와 같은 대형 쇼핑
+					몰과 전통 시장들이 함께 있어 쇼핑하기에 좋은 도시이기도 합니다. 또한, 오사카성, 우메다 스카이 빌딩, 도톤보리 등의
+					명소가 있어 여행객들에게 인기가 많습니다. 관광 명소 뿐만 아니라, 교토나 나라 등 주변 관광지와 접근성이 좋아 일본을
+					여행하는 분들에게 좋은 출발점이기도 합니다.</div>
 				<div class="climate-text">기후</div>
-				<div class="climate">오사카의 기후는 온습한 기후로, 여름에는 무더운 날씨가 이어지고, 겨울에는 비교적 추운 기운이 느껴집니다. 봄과 가을은 기온이 쾌적하며 여행하기 좋은 계절로
-					알려져 있습니다. 비가 많이 내리는 편이며, 특히 여름철에는 열대성 폭염이 올라오기도 합니다.</div>
+				<div class="climate">오사카의 기후는 온습한 기후로, 여름에는 무더운 날씨가 이어지고, 겨울에는
+					비교적 추운 기운이 느껴집니다. 봄과 가을은 기온이 쾌적하며 여행하기 좋은 계절로 알려져 있습니다. 비가 많이 내리는
+					편이며, 특히 여름철에는 열대성 폭염이 올라오기도 합니다.</div>
 				<div class="ScheduleButton">일정 만들기</div>
 			</div>
 		</div>
 	</div>
+	<div class="HoneyTipsPage">
+		<div class="column-3">
+			<div class="HoneyTipsPageContainer">
+				<div class="OsakaInfo">OSAKA</div>
+				<div class="div-2">
+					<div class="language-box">
+						<div class="InfoItem language-text">사용 언어</div>
+						<div class="InfoItem language">일본어</div>
+					</div>
+					<div class="currency-box">
+						<div class="InfoItem currency-text">사용 화폐</div>
+						<div class="InfoItem currency">가상화폐</div>
+					</div>
+					<div class="voltage-box">
+						<div class="InfoItem voltage-text">전압</div>
+						<div class="InfoItem voltage">피카츄 백만볼트</div>
+					</div>
+					<div class="transportation-box">
+						<div class="InfoItem transportation-text">주요 대중교통</div>
+						<div class="InfoItem transportation">전용기</div>
+					</div>
+					<div class="time-difference-box">
+						<div class="InfoItem time-difference-text">시차</div>
+						<div class="InfoItem time-difference">별로 안남</div>
+					</div>
+					<div class="significant-box">
+						<div class="InfoItem significant-text">특이사항</div>
+						<div class="InfoItem significant">일식 존맛</div>
+					</div>
+					<div class="ScheduleButton2">일정 만들기</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
+
 
 
 

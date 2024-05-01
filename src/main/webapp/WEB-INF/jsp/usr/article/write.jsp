@@ -38,7 +38,7 @@
 <section class="mt-8 text-xl px-4">
 	<h1 style="text-align: center; font-size: 25; margin-top: 100px; font-weight: 600;">게시글 작성</h1>
 	<div class="mx-auto">
-		<div>${currentId }</div>
+<%-- 		<div>${currentId }</div> --%>
 		<form action="../article/doWrite" method="POST" onsubmit="ArticleWrite__submit(this); return false;"
 			enctype="multipart/form-data">
 			<input type="hidden" name=">${currentId }">
@@ -55,10 +55,10 @@
 						<th style="font-weight: 600">게시판</th>
 						<td>
 							<select class="select select-bordered select-sm w-full max-w-xs" name="boardId">
-								<!-- 									<option selected="selected" disabled>게시판을 선택해주세요</option> -->
-								<option value="1">트립앵글 소식</option>
-								<option value="2">여행 후기</option>
-								<option value="3">질문게시판</option>
+								<!-- <option selected="selected" disabled>게시판을 선택해주세요</option> -->
+								<option value="1">여행 후기</option>
+								<option value="2">공지사항</option>
+
 							</select>
 						</td>
 					</tr>
@@ -107,6 +107,15 @@
 <style>
 .backBtn {
 	color: #a9a9a9;
+}
+
+.writeBtn {
+	background-color: #d5f1e2
+}
+
+.writeBtn:hover {
+	background-color: #ededed;
+	border: solid 1px #ededed;
 }
 </style>
 
