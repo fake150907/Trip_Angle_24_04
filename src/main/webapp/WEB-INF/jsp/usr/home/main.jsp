@@ -274,29 +274,99 @@ transform: translateY(-20px);
 	}
 }
 
-.search-box {
-	justify-content: flex-end;
-	border-radius: 50px;
-	background-color: white;
-	display: flex;
-	gap: 20px;
-	align-self: stretch;
-	font-size: 16px;
-	color: #3b3d40;
-	font-weight: 600;
-	width: 100%;
-	margin: auto 0;
-	padding: 12px 38px;
+
+.search-area {
+  display: flex;
+  flex-direction: column;
+  line-height: normal;
+  width: 39%;
+  margin-right: 85px;
+  position: relative;
 }
 
-@media ( max-width : 991px) {
-	.search-box {
-		margin-top: 40px;
-		padding: 0 20px;
-		display: flex;
-		justify-content: center; /* 가로 가운데 정렬 */
-		align-items: center; /* 세로 가운데 정렬 */
-	}
+/* 미디어 쿼리를 사용하여 화면 크기가 작을 때 가운데 정렬 */
+@media (max-width: 991px) {
+  .search-area {
+    width: 100%; /* 너비를 100%로 설정하여 가로로 채웁니다. */
+    display: flex;
+    justify-content: center; /* 수평 가운데 정렬 */
+  }
+}
+
+@media (max-width: 991px , min-width : 200px) {
+  .column-2 {
+    width: 100%;
+  }
+}
+
+.search-box {
+  justify-content: flex-end;
+  border-radius: 50px;
+  background-color: white;
+  display: flex;
+  gap: 20px;
+  align-self: stretch;
+  font-size: 16px;
+  color: #3b3d40;
+  font-weight: 600;
+  width: 100%;
+  margin: auto 0;
+  padding: 12px 38px;
+}
+
+.search-list {
+  display: flex;
+  flex-direction: column;
+  align-self: stretch;
+  font-size: 16px;
+
+  font-weight: 600;
+  width: 100%;
+
+  position: absolute;
+  top: 120%;
+  left: 0%;
+  max-height: 230px;
+  overflow: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+@media (max-width: 991px) {
+  .search-box {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center; /* 가로 가운데 정렬 */
+    align-items: center; /* 세로 가운데 정렬 */
+  }
+}
+
+.search-item {
+  width: 100%;
+  opacity: 0.8;
+  cursor: pointer;
+  background-color: white;
+  transition-duration: 0.5s;
+}
+
+.search-item:hover {
+  background-color: #d5f1e2;
+  opacity: 1;
+}
+
+.country-region-name {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-items: center;
+  padding: 5px 10px;
+}
+.country-name {
+  font-weight: 900;
+}
+.region-name {
+  font-weight: 200;
+  margin-top: -1px;
 }
 
 .search-input {
@@ -808,6 +878,23 @@ transform: translateY(-20px);
 										alt="검색">
 								</a>
 							</div>
+							
+							
+							
+							<div class="search-list">
+							
+							  <c:forEach var="region" items="${regions }">
+					              <div class="search-item">
+					                <div class="country-region-name">
+					                  <p class="country-name">${region.name }</p>
+					                  <p class="region-name">${region.extra__countryName }</p>
+					                </div>
+					              </div>
+				              </c:forEach>
+				              
+				           </div>
+              
+              
 						</div>
 					</div>
 				</div>
@@ -1065,6 +1152,7 @@ transform: translateY(-20px);
             }
         });
     });
+    
 </script>
 
 
@@ -1082,6 +1170,8 @@ transform: translateY(-20px);
 			header.style.backgroundColor = 'transparent'; // 헤더의 배경색을 투명으로 변경
 		}
 	});
+	
+
 </script>
 
 

@@ -1,15 +1,27 @@
 package com.example.demo.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.example.demo.service.RegionService;
 import com.example.demo.util.crawlTest;
 
 @Controller
 public class UsrHomeController {
+	@Autowired
+	RegionService regionService;
+	
+	
+
+	public UsrHomeController(RegionService regionService) {
+		this.regionService = regionService;
+	}
 
 	@RequestMapping("/usr/home/main")
-	public String showMain() {
+	public String showMain(Model model) {
+		model.addAttribute("regions", regionService.getRegionList());
 
 		return "/usr/home/main";
 	}
