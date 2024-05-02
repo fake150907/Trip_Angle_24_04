@@ -24,6 +24,11 @@ public class PlaceInfoDto {
 	private String imgUrl3;
 	private String imgUrl4;
 	private String imgUrl5;
+	
+	
+	private String naverSpotCord;
+	private int tabId;
+	private int regionId;
 
 	public PlaceInfoDto(String name, String address, String phoneNum, String facilities, String operatingTime,
 			String grade, String imgUrl1, String imgUrl2, String imgUrl3, String imgUrl4, String imgUrl5,
@@ -42,4 +47,13 @@ public class PlaceInfoDto {
 		this.imgUrl5 = imgUrl5;
 		this.reviewCount = reviewCount;
 	}
+
+	public PlaceInfoDto(String naverSpotCord, int tabId, int regionId) {
+		super();
+		this.naverSpotCord = naverSpotCord;
+		this.tabId = tabId;
+		this.regionId = regionId;
+	}
+	
+	
 }
