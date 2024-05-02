@@ -4,6 +4,7 @@
 
 <c:set var="pageTitle" value="Schedule PAGE"></c:set>
 <%@ include file="../common/head.jspf"%>
+
 <link rel="stylesheet"
 	href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
@@ -570,6 +571,7 @@ a {
 	background-color: #D5F1E2;
 	border: white;
 	font: 14px Pretendard, sans-serif;
+	margin-top: 100px;
 }
 
 /* 모달창 - 마이일정 생성하기 도시명 */

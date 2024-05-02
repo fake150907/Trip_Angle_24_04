@@ -1,16 +1,32 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="pageTitle" value="마이일정 상세보기"></c:set>
 <%@ include file="../common/head.jspf"%>
-
 <meta charset="utf-8">
 
+<!-- <link rel="stylesheet" -->
+<!-- 	href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css"> -->
+<!-- <link rel="stylesheet" -->
+<!-- 	href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.structure.min.css"> -->
+
+
+<script>
+$(document).ready(function() {
+    // 추가 버튼을 클릭할 때 실행되는 함수
+    $('.create-button').click(function() {
+
+			
+	        my_modal_3.showModal();
+
+
+    });
+});
+
+</script>
 
 
 <style>
-
-
-
 .my-plan-detail {
 	width: 70%;
 	display: flex;
@@ -25,14 +41,13 @@
 	width: 100%;
 }
 
- @media ( max-width : 991px) { 
- 	.detail-box { */
- 		flex-direction: column; 
- 		align-items: stretch; 
- 		gap: 0px;
- 	} 
- } 
-
+@media ( max-width : 991px) {
+	.detail-box { */
+		flex-direction: column;
+		align-items: stretch;
+		gap: 0px;
+	}
+}
 
 .column {
 	display: flex;
@@ -365,7 +380,6 @@
 	font: 600 20px/140% Pretendard, sans-serif;
 }
 
-
 .explanation-tip {
 	color: #afafaf;
 	margin-top: 32px;
@@ -378,15 +392,13 @@
 	font: 500 14px/17px Pretendard, sans-serif;
 }
 
-
-
 /* 날씨 섹션 */
-.weather-section{
+.weather-section {
 	width: 70%;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	margin: 0 auto; 
+	margin: 0 auto;
 	background-color: #ededed;
 	height: 200px;
 	margin-top: 50px;
@@ -394,501 +406,776 @@
 
 /* 옷 추천 / 추천장소 탭 */
 .recommendation-section {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin: 0 auto;
-  width: 70%;
-  align-self: start;
-  margin-top: 50px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	margin: 0 auto;
+	width: 70%;
+	align-self: start;
+	margin-top: 50px;
 }
 
 /* 	width: 80%; */
 /* 	display: flex; */
 /* 	justify-content: center; */
-/* 	margin: 0 auto; /* Add this to center the container itself */ */
+/* 	margin: 0 auto; /* Add this to center the container itself */
+* /
 
 .recommendation-header {
-  display: flex;
-  gap: 20px;
-  padding: 0 20px;
+	display: flex;
+	gap: 20px;
+	padding: 0 20px;
 }
 
 .recommendation-title {
-  font: 500 24px/28px Inter, sans-serif;
-  flex: 1;
+	font: 500 24px/28px Inter, sans-serif;
+	flex: 1;
 }
 
 .recommendation-accent {
-  color: #81c8a2;
+	color: #81c8a2;
 }
 
 .recommendation-tabs {
-  display: flex;
-  gap: 14px;
-  font-size: 16px;
-  color: #3b3d40;
-  font-weight: 500;
-  line-height: 175%;
-  align-items: center;
-  margin-top: 30px;
+	display: flex;
+	gap: 14px;
+	font-size: 16px;
+	color: #3b3d40;
+	font-weight: 500;
+	line-height: 175%;
+	align-items: center;
+	margin-top: 30px;
 }
-
-
 
 .recommendation-tab {
-  border-bottom: solid #d5f1e2;
-  border-bottom-width: 0px;
-  transition-duration: 0.1s;
-  cursor: pointer;
+	border-bottom: solid #d5f1e2;
+	border-bottom-width: 0px;
+	transition-duration: 0.1s;
+	cursor: pointer;
 }
 
-.recommendation-tab:hover,
-.active-recommendation-tab {
-  border-bottom-width: 3px;
+.recommendation-tab:hover, .active-recommendation-tab {
+	border-bottom-width: 3px;
 }
 
 .recommendation-divider {
-  border-bottom: 1px solid rgba(206, 206, 206, 1);
-  margin-top: 11px;
-  width: 100%;
-  max-width: 100%;
+	border-bottom: 1px solid rgba(206, 206, 206, 1);
+	margin-top: 11px;
+	width: 100%;
+	max-width: 100%;
 }
 
 .ta-item-container {
-  display: none;
-  overflow: auto;
-  gap: 30px;
-  width:70%;
-  -ms-overflow-style: none;
-  scroll-snap-type: x mandatory;
-  padding-top: 10px;
-  position: relative;
-  justify-content: center; 
-  margin: 0 auto; 
-
+	display: none;
+	overflow: auto;
+	gap: 30px;
+	width: 70%;
+	-ms-overflow-style: none;
+	scroll-snap-type: x mandatory;
+	padding-top: 10px;
+	position: relative;
+	justify-content: center;
+	margin: 0 auto;
 }
 
 .ta-item-container::-webkit-scrollbar {
-  display: none;
+	display: none;
 }
 
 .ta-item-card {
-  display: flex;
-  flex-direction: column;
-  max-width: 270px;
-  border: 1px solid rgba(224, 219, 210, 1);
-  border-radius: 8px;
-  background-color: #fff;
-  padding-bottom: 18px;
-  font-weight: 400;
-  position: relative;
-  scroll-snap-align: start;
-  min-width: 250px;
+	display: flex;
+	flex-direction: column;
+	max-width: 270px;
+	border: 1px solid rgba(224, 219, 210, 1);
+	border-radius: 8px;
+	background-color: #fff;
+	padding-bottom: 18px;
+	font-weight: 400;
+	position: relative;
+	scroll-snap-align: start;
+	min-width: 250px;
 }
 
 .ta-item-image {
-  width: 100%;
-  aspect-ratio: 1;
-  object-fit: cover;
-  object-position: center;
+	width: 100%;
+	aspect-ratio: 1;
+	object-fit: cover;
+	object-position: center;
 }
 
 .ta-item-details {
-  display: flex;
-  flex-direction: column;
-  margin: 36px 0 0 20px;
+	display: flex;
+	flex-direction: column;
+	margin: 36px 0 0 20px;
 }
 
 .ta-item-name {
-  font-size: 20px;
-  color: #383230;
-  letter-spacing: -0.4px;
-  font-weight: 500px;
+	font-size: 20px;
+	color: #383230;
+	letter-spacing: -0.4px;
+	font-weight: 500px;
 }
 
 .ta-item-info {
-  font-size: 13px;
-  color: #8c8c8c;
-  margin-top: 5px;
+	font-size: 13px;
+	color: #8c8c8c;
+	margin-top: 5px;
 }
 
 .ta-item-details-info {
-  display: flex;
-  gap: 50px;
+	display: flex;
+	gap: 50px;
 }
 
 .ta-item-description {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  aspect-ratio: 1;
-  height: 0px;
-  overflow: hidden;
-  background-color: #474747;
-  opacity: 80%;
-  z-index: 2;
-  transition-duration: 500ms;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  word-wrap: break-word;
-  color: white;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	aspect-ratio: 1;
+	height: 0px;
+	overflow: hidden;
+	background-color: #474747;
+	opacity: 80%;
+	z-index: 2;
+	transition-duration: 500ms;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	word-wrap: break-word;
+	color: white;
 }
 
 .ta-item-image-container:hover .ta-item-description {
-  height: 250px;
+	height: 250px;
 }
 
 .play-button-container {
-  background-color: #81c8a2;
-  display: flex;
-  gap: 30px;
-  font-size: 20px;
-  color: #fff;
-  font-weight: 700;
-  justify-content: space-between;
-  height: 35px;
-  align-items: center;
-  padding: 0px 5px;
-  cursor: pointer;
-  transition-duration: 200ms;
+	background-color: #81c8a2;
+	display: flex;
+	gap: 30px;
+	font-size: 20px;
+	color: #fff;
+	font-weight: 700;
+	justify-content: space-between;
+	height: 35px;
+	align-items: center;
+	padding: 0px 5px;
+	cursor: pointer;
+	transition-duration: 200ms;
 }
 
 .play-button-container:hover {
-  background-color: #5e9d7a;
+	background-color: #5e9d7a;
 }
 
 .next-step-container {
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  padding: 0 20px;
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+	padding: 0 20px;
 }
 
 .next-step-text {
-  text-decoration: none;
-  color: #383230;
-  transition-duration: 200ms;
+	text-decoration: none;
+	color: #383230;
+	transition-duration: 200ms;
 }
 
 .next-step-text:hover {
-  text-shadow: 0px -1px 1px #8c8c8c;
+	text-shadow: 0px -1px 1px #8c8c8c;
 }
 
 .next-step-text:active {
-  color: #383230;
+	color: #383230;
 }
 
 .detail-page-link {
-  color: #81c8a2;
-  margin-top: 9px;
-  font: 400 11px Inter, sans-serif;
+	color: #81c8a2;
+	margin-top: 9px;
+	font: 400 11px Inter, sans-serif;
 }
 
 .loading-container {
-  height: 300px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
+	height: 300px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
 }
 
 .spinner {
-  animation: rotator 1.4s linear infinite;
+	animation: rotator 1.4s linear infinite;
 }
 
-@keyframes rotator {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(270deg);
-  }
+@
+keyframes rotator { 0% {
+	transform: rotate(0deg);
 }
 
+100
+
+
+
+
+
+
+
+
+
+
+%
+{
+transform
+
+
+
+
+
+
+
+
+
+
+:
+
+
+
+
+
+
+
+
+
+
+rotate
+
+
+
+
+
+
+
+
+(
+
+
+
+
+
+
+
+
+
+
+270deg
+
+
+
+
+
+
+
+
+
+
+)
+
+
+
+
+
+
+
+
+;
+}
+}
 .path {
-  stroke-dasharray: 187;
-  stroke-dashoffset: 0;
-  transform-origin: center;
-  animation: dash 1.4s ease-in-out infinite, colors 5.6s ease-in-out infinite;
+	stroke-dasharray: 187;
+	stroke-dashoffset: 0;
+	transform-origin: center;
+	animation: dash 1.4s ease-in-out infinite, colors 5.6s ease-in-out
+		infinite;
 }
 
-@keyframes colors {
-  0%,
-  100% {
-    stroke: #81c8a2;
-  }
+@
+keyframes colors { 0%, 100% {
+	stroke: #81c8a2;
 }
 
-@keyframes dash {
-  0% {
-    stroke-dashoffset: 187;
-  }
-  50% {
-    stroke-dashoffset: 46.75;
-    transform: rotate(135deg);
-  }
-  100% {
-    stroke-dashoffset: 187;
-    transform: rotate(450deg);
-  }
+}
+@
+keyframes dash { 0% {
+	stroke-dashoffset: 187;
 }
 
+50
+
+
+
+
+
+
+
+
+
+
+%
+{
+stroke-dashoffset
+
+
+
+
+
+
+
+
+
+
+:
+
+
+
+
+
+
+
+
+
+
+46
+
+
+
+
+
+
+
+
+.75
+
+
+
+
+
+
+
+
+;
+transform
+
+
+
+
+
+
+
+
+
+
+:
+
+
+
+
+
+
+
+
+
+
+rotate
+
+
+
+
+
+
+
+
+(
+
+
+
+
+
+
+
+
+
+
+135deg
+
+
+
+
+
+
+
+
+
+
+)
+
+
+
+
+
+
+
+
+;
+}
+100
+
+
+
+
+
+
+
+
+
+
+%
+{
+stroke-dashoffset
+
+
+
+
+
+
+
+
+
+
+:
+
+
+
+
+
+
+
+
+
+
+187
+
+
+
+
+
+
+
+
+;
+transform
+
+
+
+
+
+
+
+
+
+
+:
+
+
+
+
+
+
+
+
+
+
+rotate
+
+
+
+
+
+
+
+
+(
+
+
+
+
+
+
+
+
+
+
+450deg
+
+
+
+
+
+
+
+
+
+
+)
+
+
+
+
+
+
+
+
+;
+}
+}
 
 /* 추천 */
 /* 옷 추천 탭 */
 .recommendation-section {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin: 0 auto;
-    width: 80%;
-    align-self: start;
-    margin-top: 50px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	margin: 0 auto;
+	width: 80%;
+	align-self: start;
+	margin-top: 50px;
 }
 
 .recommendation-header {
-    align-self: start;
-    display: flex;
-    gap: 20px;
-    padding: 0 20px;
+	align-self: start;
+	display: flex;
+	gap: 20px;
+	padding: 0 20px;
 }
 
 .recommendation-title {
-    flex: 1;
-    font: 400 24px/28px Inter, sans-serif;
+	flex: 1;
+	font: 400 24px/28px Inter, sans-serif;
 }
 
 .recommendation-accent {
-    color: #81c8a2;
+	color: #81c8a2;
 }
 
 .recommendation-tabs {
-    display: flex;
-    gap: 14px;
-    font-size: 16px;
-    color: #3b3d40;
-    font-weight: 600;
-    line-height: 175%;
-    align-items: center;
+	display: flex;
+	gap: 14px;
+	font-size: 16px;
+	color: #3b3d40;
+	font-weight: 600;
+	line-height: 175%;
+	align-items: center;
 }
 
-@media (max-width: 991px) {
-    .recommendation-tabs {
-        white-space: initial;
-    }
+@media ( max-width : 991px) {
+	.recommendation-tabs {
+		white-space: initial;
+	}
 }
 
 .recommendation-tab {
-    border-bottom: solid #d5f1e2;
-    border-bottom-width: 0px;
-    transition-duration: 0.1s;
-    text-decoration: none;
+	border-bottom: solid #d5f1e2;
+	border-bottom-width: 0px;
+	transition-duration: 0.1s;
+	text-decoration: none;
 }
 
 .recommendation-tab:hover {
-    border-bottom-width: 3px;
-    cursor: pointer;
+	border-bottom-width: 3px;
+	cursor: pointer;
 }
 
 .recommendation-divider {
-    border-bottom: 1px solid rgba(206, 206, 206, 1);
-    margin-top: 11px;
-    width: 100%;
+	border-bottom: 1px solid rgba(206, 206, 206, 1);
+	margin-top: 11px;
+	width: 100%;
 }
 
-@media (max-width: 991px) {
-    .recommendation-divider {
-        max-width: 100%;
-    }
+@media ( max-width : 991px) {
+	.recommendation-divider {
+		max-width: 100%;
+	}
 }
 
 .ta-item-container {
-    /*perspective: 1000px;*/
-    display: flex;
-    overflow: auto;
-    gap: 30px;
-    width: 80%;
-    justify-content: center;
-    margin: 0 auto;
-    -ms-overflow-style: none;
-    scroll-snap-type: x mandatory;
-    padding-top: 10px;
-    position: relative;
+	/*perspective: 1000px;*/
+	display: flex;
+	overflow: auto;
+	gap: 30px;
+	width: 80%;
+	justify-content: center;
+	margin: 0 auto;
+	-ms-overflow-style: none;
+	scroll-snap-type: x mandatory;
+	padding-top: 10px;
+	position: relative;
 }
 
 .ta-item-container::-webkit-scrollbar {
-    display: none;
+	display: none;
 }
 
 .ta-item-card {
-    display: flex;
-    flex-direction: column;
-    max-width: 270px;
-    border: 1px solid #ededed;
-    border-radius: 8px;
-    background-color: #fff;
-    padding-bottom: 18px;
-    font-weight: 400;
-    position: relative;
-    scroll-snap-align: start;
-    min-width: 250px;
-    text-decoration: none;
+	display: flex;
+	flex-direction: column;
+	max-width: 270px;
+	border: 1px solid #ededed;
+	border-radius: 8px;
+	background-color: #fff;
+	padding-bottom: 18px;
+	font-weight: 400;
+	position: relative;
+	scroll-snap-align: start;
+	min-width: 250px;
+	text-decoration: none;
 }
 
 .ta-item-image {
-    width: 100%;
-    aspect-ratio: 1;
-    object-fit: cover;
-    object-position: center;
+	width: 100%;
+	aspect-ratio: 1;
+	object-fit: cover;
+	object-position: center;
 }
 
 .ta-item-details {
-    display: flex;
-    flex-direction: column;
-    margin: 36px 0 0 20px;
+	display: flex;
+	flex-direction: column;
+	margin: 36px 0 0 20px;
 }
 
 .ta-item-name {
-    font: 20px;
-    color: #383230;
-    letter-spacing: -0.4px;
-    font-weight: 500px;
+	font: 20px;
+	color: #383230;
+	letter-spacing: -0.4px;
+	font-weight: 500px;
 }
 
 .ta-item-info {
-    font: 12px;
-    color: #8c8c8c;
-    margin-top: 5px;
+	font: 12px;
+	color: #8c8c8c;
+	margin-top: 5px;
 }
 
-section.ta-item-container.fashion-man,
-section.ta-item-container.fashion-women {
-    display: none;
+section.ta-item-container.fashion-man, section.ta-item-container.fashion-women
+	{
+	display: none;
 }
 
 .ta-item-details-info {
-    display: flex;
-    gap: 50px;
+	display: flex;
+	gap: 50px;
 }
 
 .ta-item-description {
-    position: absolute;
-    top: 0; /* Align top edge with the parent container */
-    left: 0; /* Align left edge with the parent container */
-    width: 100%; /* Match the width of the parent container */
-    aspect-ratio: 1;
-    height: 0px; /* Auto height to maintain aspect ratio, or set a fixed height */
-    overflow: hidden;
-    background-color: #474747; /* Solid white background */
-    opacity: 60%;
-    z-index: 2; /* Ensures it covers the image beneath it */
-    transition-duration: 500ms;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    word-wrap: break-word;
-    color: white;
+	position: absolute;
+	top: 0; /* Align top edge with the parent container */
+	left: 0; /* Align left edge with the parent container */
+	width: 100%; /* Match the width of the parent container */
+	aspect-ratio: 1;
+	height: 0px;
+	/* Auto height to maintain aspect ratio, or set a fixed height */
+	overflow: hidden;
+	background-color: #474747; /* Solid white background */
+	opacity: 60%;
+	z-index: 2; /* Ensures it covers the image beneath it */
+	transition-duration: 500ms;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	word-wrap: break-word;
+	color: white;
 }
 
 .ta-item-image-container:hover .ta-item-description {
-    height: 270px;
+	height: 270px;
 }
 
 .play-button-container {
-    background-color: #81c8a2;
-    display: flex;
-    gap: 30px;
-    font-size: 20px;
-    color: #fff;
-    font-weight: 700;
-    justify-content: space-between;
-
-    height: 35px;
-    align-items: center;
-    padding: 0px 5px;
-    cursor: pointer;
-
-    transition-duration: 200ms;
+	background-color: #81c8a2;
+	display: flex;
+	gap: 30px;
+	font-size: 20px;
+	color: #fff;
+	font-weight: 700;
+	justify-content: space-between;
+	height: 35px;
+	align-items: center;
+	padding: 0px 5px;
+	cursor: pointer;
+	transition-duration: 200ms;
 }
 
-@media (max-width: 991px) {
-    .play-button-container {
-        white-space: initial;
-    }
+@media ( max-width : 991px) {
+	.play-button-container {
+		white-space: initial;
+	}
 }
 
 .play-button-container:hover {
-    background-color: #5e9d7a;
+	background-color: #5e9d7a;
 }
 
 .play-button-icon {
-    width: 14px;
-    fill: #fff;
+	width: 14px;
+	fill: #fff;
 }
 
 .next-step-container {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    padding: 0 20px;
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+	padding: 0 20px;
 }
 
-/* .next-step-button {
-    display: flex;
-    gap: 8px;
-    font-size: 16px;
-    color: #505967;
-    font-weight: 600;
-    padding: 0 1px;
-  }
-
-  @media (max-width: 991px) {
-    .next-step-button {
-      white-space: initial;
-    }
-  }*/
-
 .next-step-text {
-    text-decoration: none;
-    color: #383230;
-    transition-duration: 200ms;
+	text-decoration: none;
+	color: #383230;
+	transition-duration: 200ms;
 }
 
 .next-step-text:hover {
-    text-shadow: 0px -1px 1px #8c8c8c;
+	text-shadow: 0px -1px 1px #8c8c8c;
 }
+
 .next-step-text:active {
-    color: #383230;
+	color: #383230;
 }
 
 .next-step-icon {
-    width: 12px;
-    fill: #575757;
-    align-self: start;
+	width: 12px;
+	fill: #575757;
+	align-self: start;
 }
 
 .detail-page-link {
-    color: #81c8a2;
-    margin-top: 9px;
-    font: 400 11px Inter, sans-serif;
+	color: #81c8a2;
+	margin-top: 9px;
+	font: 400 11px Inter, sans-serif;
 }
 
 /* 옷 추천 탭 */
 .bottom-buttons-section {
-    display: flex;
-    width: 1280px;
-    justify-content: space-between;
+	display: flex;
+	width: 1280px;
+	justify-content: space-between;
 }
-
-
-
 </style>
 
 
-<div class = "wall" style = "height: 120px;"> </div>
+
+
+<div class="wall" style="height: 120px;"></div>
+
 
 <div class="my-plan-detail">
 	<div class="detail-box">
@@ -899,7 +1186,7 @@ section.ta-item-container.fashion-women {
 						<div class="destination">하와이</div>
 						<div class="trip-date">2024-04-15 ~ 2024-04-24</div>
 					</div>
-					
+
 					<a class="calendar-btn" href="/">캘린더 보기</a>
 				</div>
 				<img
@@ -911,7 +1198,11 @@ section.ta-item-container.fashion-women {
 				<div class="my-plan-title">연차쓰고 이번 휴가 달려</div>
 				<div class="reg-date-title">나의 일정 등록일</div>
 				<div class="reg-date">2024-04-11</div>
-				<div class="my-plan-comment">마이일정 설명을 작성해주세요. 마이일정 설명을 작성해주세요. 마이일정 설명을 작성해주세요.마이일정 설명을 작성해주세요.마이일정 설명을 작성해주세요.마이일정 설명을 작성해주세요.마이일정 설명을 작성해주세요.마이일정 설명을 작성해주세요.마이일정 설명을 작성해주세요.마이일정 설명을 작성해주세요.마이일정 설명을 작성해주세요.마이일정 설명을 작성해주세요.마이일정 설명을 작성해주세요.마이일정 설명을 작성해주세요.</div>
+				<div class="my-plan-comment">마이일정 설명을 작성해주세요. 마이일정 설명을 작성해주세요.
+					마이일정 설명을 작성해주세요.마이일정 설명을 작성해주세요.마이일정 설명을 작성해주세요.마이일정 설명을
+					작성해주세요.마이일정 설명을 작성해주세요.마이일정 설명을 작성해주세요.마이일정 설명을 작성해주세요.마이일정 설명을
+					작성해주세요.마이일정 설명을 작성해주세요.마이일정 설명을 작성해주세요.마이일정 설명을 작성해주세요.마이일정 설명을
+					작성해주세요.</div>
 
 			</div>
 
@@ -926,8 +1217,8 @@ section.ta-item-container.fashion-women {
 					</div>
 					<div class="mint-line"></div>
 					<div class="btns">
-						<a href="#" class="modify-btn">수정</a>
-						<a href="#" class="delete-btn">삭제</a>
+						<a href="#" class="modify-btn create-button">수정</a> <a href="#"
+							class="delete-btn">삭제</a>
 					</div>
 				</div>
 				<div class="div-15">
@@ -959,151 +1250,161 @@ section.ta-item-container.fashion-women {
 					</div>
 				</div>
 				<div class="explanation-tip">설명</div>
-				<div class="explanation">나는 지금 당장 떠나고싶어 내일 학원은 안가고싶고 당장 여권챙기자 ~ 안녕 나는 튀튀.. 는 뻥이고 지금 나는 피그마 구현중이고 너무 배고프고 졸리고 하하하하와이
-					~~~~~ ...더보기</div>
+				<div class="explanation">나는 지금 당장 떠나고싶어 내일 학원은 안가고싶고 당장 여권챙기자
+					~ 안녕 나는 튀튀.. 는 뻥이고 지금 나는 피그마 구현중이고 너무 배고프고 졸리고 하하하하와이 ~~~~~ ...더보기</div>
 			</div>
 		</div>
 	</div>
 </div>
 
-<div class ="weather-section">
-
-Weather API 
-
-</div>
+<div class="weather-section">Weather API</div>
 
 <!-- 스타일 추천 -->
 <div class="fashion-recommendation-main">
-  <div class="section-container mt-100">
-    <section class="recommendation-section">
-      <header class="recommendation-header">
-        <h2 class="recommendation-title">
-          <span>날씨에 알맞는</span>
-          <span class="recommendation-accent">옷 추천</span>
-        </h2>
-        <nav class="recommendation-tabs">
-          <div class="recommendation-tab fashion-all">전체</div>
-          <div class="recommendation-tab fashion-women">여성</div>
-          <div class="recommendation-tab fashion-man">남성</div>
-        </nav>
-      </header>
-      <div class="recommendation-divider"></div>
-    </section>
+	<div class="section-container mt-100">
+		<section class="recommendation-section">
+			<header class="recommendation-header">
+				<h2 class="recommendation-title">
+					<span>날씨에 알맞는</span> <span class="recommendation-accent">옷
+						추천</span>
+				</h2>
+				<nav class="recommendation-tabs">
+					<div class="recommendation-tab fashion-all">전체</div>
+					<div class="recommendation-tab fashion-women">여성</div>
+					<div class="recommendation-tab fashion-man">남성</div>
+				</nav>
+			</header>
+			<div class="recommendation-divider"></div>
+		</section>
 
-  </div>
-  <div class="section-container">
-    <div class="loading-container">
-      <svg class="spinner" width="65px" height="65px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
-        <circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
+	</div>
+	<div class="section-container">
+		<div class="loading-container">
+			<svg class="spinner" width="65px" height="65px" viewBox="0 0 66 66"
+				xmlns="http://www.w3.org/2000/svg">
+        <circle class="path" fill="none" stroke-width="6"
+					stroke-linecap="round" cx="33" cy="33" r="30"></circle>
       </svg>
-      <p>지금 ai가 날씨에 맞는 옷을 찾아주는 중입니다.</p>
-    </div>
+			<p>지금 ai가 날씨에 맞는 옷을 찾아주는 중입니다.</p>
+		</div>
 
-    <section class="ta-item-container fashion-all"></section>
-    <section class="ta-item-container fashion-women"></section>
-    <section class="ta-item-container fashion-man"></section>
+		<section class="ta-item-container fashion-all"></section>
+		<section class="ta-item-container fashion-women"></section>
+		<section class="ta-item-container fashion-man"></section>
 
-  </div>
+	</div>
 </div>
 
 <!-- 장소 추천 -->
 <div class="place-recommendation-main">
-    <a class="section-container ">
-        <section class="recommendation-section ">
-            <header class="recommendation-header">
-                <h2 class="recommendation-title">
-                    <span>장소 </span>
-                    <span class="recommendation-accent">추천</span>
-                </h2>
-                <nav class="recommendation-tabs">
-                    <a href="/" class="recommendation-tab dining">맛집</a>
-                    <a href="/" class="recommendation-tab tour">관광</a>
-                    <a href="/" class="recommendation-tab shopping">쇼핑</a>
+	<a class="section-container">
+		<section class="recommendation-section">
+			<header class="recommendation-header">
+				<h2 class="recommendation-title">
+					<span>장소 </span><span class="recommendation-accent">추천</span>
+				</h2>
+				<nav class="recommendation-tabs">
+					<a href="/" class="recommendation-tab dining">맛집</a> <a href="/"
+						class="recommendation-tab tour">관광</a> <a href="/"
+						class="recommendation-tab shopping">쇼핑</a>
 
-                </nav>
-            </header>
-            <div class="recommendation-divider"></div>
-        </section>
+				</nav>
+			</header>
+			<div class="recommendation-divider"></div>
+		</section>
+	</a>
+</div>
+<div class="section-container">
+	<section class="ta-item-container fashion-all">
 
-        </div>
-        <div class="section-container">
-            <section class="ta-item-container fashion-all">
+		<a href="/myPlan/placeDetail" class="ta-item-card">
+			<div class="ta-item-image-container">
+				<img
+					src="https://images.unsplash.com/photo-1660495396534-c56f48502cc5?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+					alt="Fashion Image" class="ta-item-image" loading="lazy" />
+				<div class="ta-item-description">Click</div>
+			</div>
 
-                <a href="../myPlan/placeDetail" class="ta-item-card">
-                    <div class="ta-item-image-container">
-                        <img src="https://images.unsplash.com/photo-1660495396534-c56f48502cc5?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Fashion Image" class="ta-item-image" loading="lazy" />
-                        <div class="ta-item-description">Click</div>
-                    </div>
+			<div class="ta-item-details">
+				<h3 class="ta-item-name">Restaurant Name</h3>
+				<div class="ta-item-details-info">
+					<p class="ta-item-info">Address St. Honolulu, Hawaii</p>
+				</div>
+			</div>
+		</a>
+		<a href="/myPlan/placeDetail" class="ta-item-card">
+			<div class="ta-item-image-container">
+				<img
+					src="https://images.unsplash.com/photo-1562785561-d88a65a2679e?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+					alt="Fashion Image" class="ta-item-image" loading="lazy" />
+				<div class="ta-item-description">Click</div>
+			</div>
 
-                    <div class="ta-item-details">
-                        <h3 class="ta-item-name">Restaurant Name</h3>
-                        <div class="ta-item-details-info">
-                            <p class="ta-item-info">Address St. Honolulu, Hawaii</p>
-                        </div>
-                    </div>
-                    </article>
+			<div class="ta-item-details">
 
-                    <a href="../myPlan/placeDetail" class="ta-item-card">
-                        <div class="ta-item-image-container">
-                            <img src="https://images.unsplash.com/photo-1562785561-d88a65a2679e?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Fashion Image" class="ta-item-image" loading="lazy" />
-                            <div class="ta-item-description">Click</div>
-                        </div>
+				<h3 class="ta-item-name">Restaurant Name</h3>
+				<div class="ta-item-details-info">
+					<p class="ta-item-info">Address St. Honolulu, Hawaii</p>
+				</div>
+			</div>
+		</a>
+		<a href="/myPlan/placeDetail" class="ta-item-card">
+			<div class="ta-item-image-container">
+				<img
+					src="https://images.unsplash.com/photo-1533193773788-92826ee86674?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+					alt="Fashion Image" class="ta-item-image" loading="lazy" />
+				<div class="ta-item-description">Click</div>
+			</div>
 
-                        <div class="ta-item-details">
+			<div class="ta-item-details">
 
-                            <h3 class="ta-item-name">Restaurant Name</h3>
-                            <div class="ta-item-details-info">
-                                <p class="ta-item-info">Address St. Honolulu, Hawaii</p>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="../myPlan/placeDetail" class="ta-item-card">
-                        <div class="ta-item-image-container">
-                            <img src="https://images.unsplash.com/photo-1533193773788-92826ee86674?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Fashion Image" class="ta-item-image" loading="lazy" />
-                            <div class="ta-item-description">Click</div>
-                        </div>
+				<h3 class="ta-item-name">Restaurant Name</h3>
+				<div class="ta-item-details-info">
+					<p class="ta-item-info">Address St. Honolulu, Hawaii</p>
+				</div>
+			</div>
+		</a>
+		<a href="/myPlan/placeDetail" class="ta-item-card">
+			<div class="ta-item-image-container">
+				<img
+					src="https://images.unsplash.com/photo-1484980972926-edee96e0960d?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+					alt="Fashion Image" class="ta-item-image" loading="lazy" />
+				<div class="ta-item-description">Click</div>
+			</div>
 
-                        <div class="ta-item-details">
+			<div class="ta-item-details">
 
-                            <h3 class="ta-item-name">Restaurant Name</h3>
-                            <div class="ta-item-details-info">
-                                <p class="ta-item-info">Address St. Honolulu, Hawaii</p>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="../myPlan/placeDetail" class="ta-item-card">
-                        <div class="ta-item-image-container">
-                            <img src="https://images.unsplash.com/photo-1484980972926-edee96e0960d?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Fashion Image" class="ta-item-image" loading="lazy" />
-                            <div class="ta-item-description">Click</div>
-                        </div>
+				<h3 class="ta-item-name">Restaurant Name</h3>
+				<div class="ta-item-details-info">
+					<p class="ta-item-info">Address St. Honolulu, Hawaii</p>
+				</div>
+			</div>
+		</a>
+		<a href="/myPlan/placeDetail" class="ta-item-card">
+			<div class="ta-item-image-container">
+				<img
+					src="https://images.unsplash.com/photo-1677517497394-87d635cf7e10?q=80&w=2050&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+					alt="Fashion Image" class="ta-item-image" loading="lazy" />
+				<div class="ta-item-description">Click</div>
+			</div>
 
-                        <div class="ta-item-details">
+			<div class="ta-item-details">
 
-                            <h3 class="ta-item-name">Restaurant Name</h3>
-                            <div class="ta-item-details-info">
-                                <p class="ta-item-info">Address St. Honolulu, Hawaii</p>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="../myPlan/placeDetail" class="ta-item-card">
-                        <div class="ta-item-image-container">
-                            <img src="https://images.unsplash.com/photo-1677517497394-87d635cf7e10?q=80&w=2050&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Fashion Image" class="ta-item-image" loading="lazy" />
-                            <div class="ta-item-description">Click</div>
-                        </div>
-
-                        <div class="ta-item-details">
-
-                            <h3 class="ta-item-name">Restaurant Name</h3>
-                            <div class="ta-item-details-info">
-                                <p class="ta-item-info">Address St. Honolulu, Hawaii</p>
-                            </div>
-                        </div>
-                    </a>
-            </section>
-        </div>
+				<h3 class="ta-item-name">Restaurant Name</h3>
+				<div class="ta-item-details-info">
+					<p class="ta-item-info">Address St. Honolulu, Hawaii</p>
+				</div>
+			</div>
+		</a>
+	</section>
 </div>
 
-<div class = "wall" style = "height: 120px;"> </div>
+
+
+
+
+<div class="wall" style="height: 120px;"></div>
+
 
 <script>
 
@@ -1351,8 +1652,3 @@ fashions = [
 
 
 </script>
-
-
-
-
-
