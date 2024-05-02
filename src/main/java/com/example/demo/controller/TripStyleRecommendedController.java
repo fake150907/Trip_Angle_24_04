@@ -35,10 +35,8 @@ public class TripStyleRecommendedController {
 	@Autowired
 	private TripStyleRecommendedService tripStyleRecommendedService;
 
-
-
 	// 액션 메서드
-
+	
 	@GetMapping("/usr/styleRecommended/create")
 	public String styleRecommended(HttpServletRequest req, Model model, @RequestParam(defaultValue = "1") int travelScheduleId) {
 

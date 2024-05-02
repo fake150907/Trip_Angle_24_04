@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.demo.repository.TravelScheduleRepository;
 import com.example.demo.vo.TravelSchedule;
+import com.example.demo.vo.regionInfoTips;
 
 @Service
 public class TravelScheduleService {
@@ -28,6 +29,11 @@ public class TravelScheduleService {
 
 		travelScheduleRepository.insertTravelSchedule(title, content, checkInDate, checkOutDate,
 				loginedMemberId, regionId);
+	}
+
+	public regionInfoTips getTravelScheduleId(int regionId) {
+		
+		return travelScheduleRepository.getTravelScheduleId(regionId);
 	}
 
 }
