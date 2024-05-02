@@ -7,13 +7,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.service.TravelScheduleService;
 import com.example.demo.vo.Rq;
-import com.example.demo.vo.TravelSchedule;
 
 import jakarta.servlet.http.HttpServletRequest;
 
 @Controller
-public class travelScheduleController {
-	
+public class TravelScheduleController {
+
 	@Autowired
 	private TravelScheduleService travelScheduleService;
 

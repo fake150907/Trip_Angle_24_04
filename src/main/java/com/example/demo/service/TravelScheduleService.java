@@ -30,10 +30,4 @@ public class TravelScheduleService {
 		travelScheduleRepository.insertTravelSchedule(title, content, checkInDate, checkOutDate,
 				loginedMemberId, regionId);
 	}
-
-	public regionInfoTips getTravelScheduleId(int regionId) {
-		
-		return travelScheduleRepository.getTravelScheduleId(regionId);
-	}
-
 }

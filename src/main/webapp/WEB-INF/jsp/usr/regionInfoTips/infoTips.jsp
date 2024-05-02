@@ -492,34 +492,38 @@
 			<div class="HoneyTipsPageContainer">
 				<div class="OsakaInfo">OSAKA</div>
 				<div class="div-2">
+
 					<div class="language-box">
 						<div class="InfoItem language-text">사용 언어</div>
 						<div class="InfoItem language">${RegionInfoTips.getLanguage()}</div>
 					</div>
+
 					<div class="currency-box">
 						<div class="InfoItem currency-text">환율</div>
 						<div class="InfoItem currency">${RegionInfoTips.getRate() }</div>
 					</div>
+
 					<div class="voltage-box">
 						<div class="InfoItem voltage-text">전압</div>
 						<div class="InfoItem voltage">${RegionInfoTips.getVoltage()}</div>
 					</div>
+
 					<div class="transportation-box">
 						<div class="InfoItem transportation-text">팁</div>
 						<div class="InfoItem transportation">${RegionInfoTips.getTips() }</div>
 					</div>
+
 					<div class="time-difference-box">
 						<div class="InfoItem time-difference-text">시차</div>
 						<div class="InfoItem time-difference">${RegionInfoTips.getTimeDifference() }</div>
 					</div>
-					<div class="ScheduleButton2">일정 만들기</div>
+
+					<button class="ScheduleButton2">일정 만들기</button>
+
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
-
-
-
 
 <%@ include file="../common/foot.jspf"%>
