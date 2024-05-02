@@ -23,4 +23,11 @@ public class TravelScheduleService {
 		return travelScheduleRepository.getTravelScheduleById(travleScheduleId);
 	}
 
+	public void insertTravelSchedule(String title, String content, String checkInDate, String checkOutDate,
+			int loginedMemberId, int regionId) {
+
+		travelScheduleRepository.insertTravelSchedule(title, content, checkInDate, checkOutDate,
+				loginedMemberId, regionId);
+	}
+
 }

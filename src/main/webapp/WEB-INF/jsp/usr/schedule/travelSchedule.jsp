@@ -38,120 +38,21 @@
 @import
 	url("https://fonts.googleapis.com/css?family=Raleway:400,300,600");
 
-/*   #calendar-details .check-in, #calendar-details .check-out, #calendar-details .arrow {  */
-/*     float: left;    */
-/*      white-space: nowrap;     */
-/*       width: 39.3333333333%;   */
-/*       margin-left: 4%;     */
-/*   }  */
-
-/*   #calendar-details h5 {   */
-/*     font-size: 1.8rem;   */
-/*     margin-bottom: 0;   */
-/*   }   */
-
-/* #calendar-details .check-in { */
-/*   text-align: right; */
-/*   margin-left: 0; */
-/* } */
-
-/*  #calendar-details .arrow {  */
-/*    width: 13.3333333333%; */
-/*    margin-top: 0.5em;  */
-/*    font-size: 2em;  */
-/*    line-height: 1em;  */
-/*    text-align: center;  */
-/*     }  */
-
-/* #calendar-details .arrow:before { */
-/*   display: inline-block; */
-/*   content: "→"; */
-/* } */
-
-/*  .ui-datepicker * { */
-/*    -webkit-user-select: none;  */
-/*       -moz-user-select: none;  */
-/*        -ms-user-select: none;  */
-/*            user-select: none;  */
-/*    outline: 0;  */
-/*  }  */
+/* 제이쿼리 datepicker 시작 */
 .ui-datepicker.ui-datepicker-multi {
 	width: 100% !important;
 	max-width: 24em;
 	margin: auto;
 }
 
-.ui-datepicker.ui-datepicker-multi .ui-datepicker-group {
-	/*    width: 100%;  */
-	
-}
-
-.ui-datepicker.ui-datepicker-multi.ui-datepicker-multi-2 {
-	/*    max-width: 50em;  */
-	
-}
-
-.ui-datepicker.ui-datepicker-multi.ui-datepicker-multi-2 .ui-datepicker-group
-	{
-	/*   width: 45%; */
-	
-}
-
-.ui-datepicker.ui-datepicker-multi.ui-datepicker-multi-2 .ui-datepicker-group.ui-datepicker-group-first
-	{
-	/*   padding-right: 5%; */
-	
-}
-
-.ui-datepicker.ui-datepicker-multi.ui-datepicker-multi-2 .ui-datepicker-group.ui-datepicker-group-last
-	{
-	/*   padding-left: 5%; */
-	
-}
-
-.ui-datepicker.ui-datepicker-multi.ui-datepicker-multi-3 {
-	/*   max-width: 70em; */
-	
-}
-
-.ui-datepicker.ui-datepicker-multi.ui-datepicker-multi-3 .ui-datepicker-group
-	{
-	/*   width: 30%; */
-	
-}
-
-.ui-datepicker.ui-datepicker-multi.ui-datepicker-multi-3 .ui-datepicker-group.ui-datepicker-group-middle
-	{
-	/*    padding: 0 3.33%;  */
-	
-}
-
-.ui-datepicker td a, .ui-datepicker td span {
-	/*      border: 1px solid #fff;    */
-	/*     border-radius: 0.5em;   */
-	/*     background-color: black; */
-	/*   text-align: center; */
-	/*   width: 2em; */
-	
-}
-
 .ui-datepicker td a.ui-state-active, .ui-datepicker td span.ui-state-active
 	{
 	background-color: #D5F1E2;
-	/*    color: #fff;  */
-	/* border: solid black 5px; */
 	border-radius: 5px;
-}
-
-.ui-datepicker td a.ui-state-hover, .ui-datepicker td span.ui-state-hover
-	{
-	/*    border-color: #1EAEDB;  */
-	
 }
 
 .ui-datepicker td.ui-datepicker-reserved a, .ui-datepicker td.ui-datepicker-reserved span
 	{
-	/*    background-color: #CECECE; */
 	background-color: rgba(222, 222, 222, 0.5); /*까만색(0,0,0) 20% 불투명도 */
 	color: #696969;
 	border-radius: 5px;
@@ -162,21 +63,11 @@
 	.ui-datepicker td.ui-datepicker-reserved.ui-datepicker-checkout a,
 	.ui-datepicker td.ui-datepicker-reserved.ui-datepicker-checkout span {
 	background-color: #D5F1E2;
-	/*    border-color: #D5F1E2;   */
-	/*    color: #fff;  */
 	color: black;
 	border-radius: 5px;
 }
 
-.ui-datepicker .ui-datepicker-today a:not(.ui-state-hover),
-	.ui-datepicker .ui-datepicker-today span:not(.ui-state-hover) {
-	/*     border-color: #11DFC7;  */
-	/*     color: #11DFC7;   */
-	
-}
-
 .ui-datepicker .ui-datepicker-prev, .ui-datepicker .ui-datepicker-next {
-	/*   border: 1px solid #fff; */
 	border-radius: 0.5em;
 	text-align: center;
 	text-indent: 0;
@@ -190,7 +81,6 @@
 
 .ui-datepicker .ui-datepicker-prev.ui-state-hover, .ui-datepicker .ui-datepicker-next.ui-state-hover
 	{
-	/*   border-color: #1EAEDB; */
 	top: 2px;
 }
 
@@ -270,6 +160,7 @@ show {
 		opacity:1;
 	}
 }
+/* 제이쿼리 datepicker 끝 */
 
 /* 데이트피커 한국분이 만든 UI */
 .ui-widget-header {
@@ -446,20 +337,8 @@ show {
 	background-color: #eee;
 }
 
-.container {
-	/*   position: absolute; */
-	/* display:block; */
-	/*  top:100px; */
-	
-}
-
 #calendar {
-	/*  position: absolute; */
-	/*  left: 500px; */
 	margin: 50px;
-	/* font-family: 'Pretendard-Regular'; */
-	/* font-weight: 400; */
-	/* font-style: normal; */
 }
 
 * {
@@ -473,26 +352,15 @@ header {
 
 .logo {
 	font-size: 30px;
-	/* align-content: center; */
-	/* align-items: center; */
 	padding-bottom: 20px;
-	/* margin: 10px; */
 }
 
 a {
 	color: black;
 }
 
-.ui-datepicker-current-day {
-	/*  padding:20px; */
-	/*  margin: 20px; */
-	
-}
 
 .ui-state-default {
-	/*  padding: 20px; */
-	/*  margin: 10px;  */
-	/*  width: 30px; */
 	height: 35px;
 	align-content: center;
 	align-items: center;
@@ -507,14 +375,19 @@ a {
 	font-weight: 400;
 	font-style: normal;
 }
+/* 데이트피커 한국분이 만든 UI 끝*/
+
+
+/* 헤더 fixed로 인해 요소 겹치지 않게 헤더 크기만큼 div 높이 생성 */
 
 .wall {
 	height: 90px;
 }
 
+/* 도시명, 여행기간 텍스트 시작 */
+
 .div {
  	display: flex;
-	/*     max-width: 289px; */
 	flex-direction: column;
 	align-items: center;
 	color: #3b3d40;
@@ -550,11 +423,11 @@ a {
 	font: 14px Pretendard, sans-serif;
 }
 
+/* 도시명, 여행기간 텍스트 끝 */
+
+
+
 .button-flex {
-	/* width: 70%; */
-	/*  display: flex; */
-	/*  justify-content: flex-end; */
-	/*  flex-direction: column-reverse; */
 	width: 750px;
 	display: block;
 	margin-left: auto;
@@ -562,11 +435,8 @@ a {
 }
 
 .create-button {
-	/* margin-left: 65%; */
-	/* position: absolute; */
 	display: block;
 	margin-left: auto;
-	/* margin-right: auto; */
 	background-color: #D5F1E2;
 	border: white;
 	font: 14px Pretendard, sans-serif;
