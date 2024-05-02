@@ -1,14 +1,9 @@
 package com.example.demo.repository;
 
-import java.util.List;
-
-import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
 
-import com.example.demo.vo.Article;
 import com.example.demo.vo.TravelSchedule;
 
 @Mapper
@@ -22,5 +17,19 @@ public interface TravelScheduleRepository {
 				WHERE TR.id = #{id}
 			""")
 	public TravelSchedule getTravelScheduleById(int id);
+
+	@Insert("""
+				INSERT INTO travelSchedule
+				SET regDate = NOW(),
+				updateDate = NOW(),
+				`name` = #{title},
+				`description` = #{content},
+				startDate = #{checkInDate},
+				endDate = #{checkOutDate},
+				regionId = #{regionId},
+				memberId = #{loginedMemberId}
+		""")
+	public void insertTravelSchedule(String title, String content, String checkInDate, String checkOutDate,
+			int loginedMemberId, int regionId);
 
 }
