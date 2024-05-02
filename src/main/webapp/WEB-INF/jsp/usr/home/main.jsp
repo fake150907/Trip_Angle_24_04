@@ -95,7 +95,7 @@ header {
 /* ///////////  로고 통통튀는 애니메이션 효과 CSS ////////////*/
 
 /* @keyframes waviy { */
-/*   0%, 40%, 100% { */
+/*   0%, 40%, 100% { a*/
 /*     transform: translateY(0); */
 /*   } */
 /*   20% { */
@@ -152,6 +152,8 @@ transform: translateY(-20px);
 	color: white;
 	z-index: 999;
 }
+
+
 
 /* 반응형 텍스트 크기 조정 */
 @media ( max-width : 991px) {
