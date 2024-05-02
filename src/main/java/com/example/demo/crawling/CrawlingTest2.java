@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,6 +14,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 record RegionInfoTips(String information, String voltage, String language, String climate, String timeDifference,
 		String rate, String tips, int regionId) {
@@ -42,11 +45,12 @@ public class CrawlingTest2 {
 					regionCrawlingDto.getNaverRegionCord());
 			driver.get(url);
 
-			try {
-				Thread.sleep(1000);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
+//			try {
+//				Thread.sleep(1000);
+//			} catch (InterruptedException e) {
+//				e.printStackTrace();
+//			}
+			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
 			// 여행정보 리스트 상단 제목
 			List<WebElement> informNames = driver.findElements(By.className("item_name__rmJh2"));
@@ -94,11 +98,14 @@ public class CrawlingTest2 {
 					regionCrawlingDto.getNaverRegionCord());
 			driver.get(url);
 
-			try {
-				Thread.sleep(1000);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
+//			try {
+//				Thread.sleep(1000);
+//			} catch (InterruptedException e) {
+//				e.printStackTrace();
+//			}
+//			
+			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+			wait.until(ExpectedConditions.presenceOfElementLocated((By.className("commonGeoInfo_desc__wekZv"))));
 
 			WebElement regioninformation = driver.findElement(By.className("commonGeoInfo_desc__wekZv"));
 
