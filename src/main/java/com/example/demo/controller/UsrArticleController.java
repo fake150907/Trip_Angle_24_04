@@ -15,11 +15,13 @@ import org.springframework.web.multipart.MultipartRequest;
 import com.example.demo.service.ArticleService;
 import com.example.demo.service.BoardService;
 import com.example.demo.service.GenFileService;
+import com.example.demo.service.MemberService;
 import com.example.demo.service.ReactionPointService;
 import com.example.demo.service.ReplyService;
 import com.example.demo.util.Ut;
 import com.example.demo.vo.Article;
 import com.example.demo.vo.Board;
+import com.example.demo.vo.Member;
 import com.example.demo.vo.Reply;
 import com.example.demo.vo.ResultData;
 import com.example.demo.vo.Rq;
@@ -46,49 +48,68 @@ public class UsrArticleController {
 
 	@Autowired
 	private ReactionPointService reactionPointService;
+	
+	@Autowired
+	private MemberService memberService;
 
 	public UsrArticleController() {
 
 	}
 
 	// 액션 메서드
-
 	@RequestMapping("/usr/article/list")
 	public String showList(HttpServletRequest req, Model model, @RequestParam(defaultValue = "1") int boardId,
-			@RequestParam(defaultValue = "1") int page,
-			@RequestParam(defaultValue = "title,body") String searchKeywordTypeCode,
-			@RequestParam(defaultValue = "") String searchKeyword) {
+	                       @RequestParam(defaultValue = "1") int page,
+	                       @RequestParam(defaultValue = "title,body") String searchKeywordTypeCode,
+	                       @RequestParam(defaultValue = "") String searchKeyword) {
 
-		Rq rq = (Rq) req.getAttribute("rq");
+	    Rq rq = (Rq) req.getAttribute("rq");
 
-		Board board = boardService.getBoardById(boardId);
+	    // 현재 로그인한 회원이 있는지 확인
+	    Member member = null;
+	    if (rq.getLoginedMember() != null) {
+	        // 로그인한 회원이 있다면 해당 회원 정보를 가져옴
+	        member = memberService.getMemberByLoginId(rq.getLoginedMember().getLoginId());
+	    }
 
-		int articlesCount = articleService.getArticlesCount(boardId, searchKeywordTypeCode, searchKeyword);
+	    // 게시판 정보 조회
+	    Board board = boardService.getBoardById(boardId);
 
-		if (board == null) {
-			return rq.historyBackOnView("존재하지 않는 게시판입니다.");
-		}
+	    // 게시글 수 조회
+	    int articlesCount = articleService.getArticlesCount(boardId, searchKeywordTypeCode, searchKeyword);
 
-		// 한페이지에 글 10개씩이야
-		// 글 20개 -> 2 page
-		// 글 24개 -> 3 page
-		int itemsInAPage = 10;
+	    // 게시판이 존재하지 않는 경우
+	    if (board == null) {
+	        return rq.historyBackOnView("존재하지 않는 게시판입니다.");
+	    }
 
-		int pagesCount = (int) Math.ceil(articlesCount / (double) itemsInAPage);
+	    // 한 페이지에 표시될 게시글 수
+	    int itemsInAPage = 10;
 
-		List<Article> articles = articleService.getForPrintArticles(boardId, itemsInAPage, page, searchKeywordTypeCode,
-				searchKeyword);
+	    // 전체 페이지 수 계산
+	    int pagesCount = (int) Math.ceil(articlesCount / (double) itemsInAPage);
 
-		model.addAttribute("board", board);
-		model.addAttribute("boardId", boardId);
-		model.addAttribute("page", page);
-		model.addAttribute("pagesCount", pagesCount);
-		model.addAttribute("searchKeywordTypeCode", searchKeywordTypeCode);
-		model.addAttribute("searchKeyword", searchKeyword);
-		model.addAttribute("articlesCount", articlesCount);
-		model.addAttribute("articles", articles);
+	    // 해당 페이지에 표시될 게시글 리스트 조회
+	    List<Article> articles = articleService.getForPrintArticles(boardId, itemsInAPage, page, searchKeywordTypeCode,
+	            searchKeyword);
 
-		return "usr/article/list";
+	    // 모델에 속성 추가
+	    model.addAttribute("board", board);
+	    model.addAttribute("boardId", boardId);
+	    model.addAttribute("page", page);
+	    model.addAttribute("pagesCount", pagesCount);
+	    model.addAttribute("searchKeywordTypeCode", searchKeywordTypeCode);
+	    model.addAttribute("searchKeyword", searchKeyword);
+	    model.addAttribute("articlesCount", articlesCount);
+	    model.addAttribute("articles", articles);
+	    model.addAttribute("member", member); // null이 될 수 있음에 유의
+	    // 로그인한 회원이 있다면 로그인 아이디도 추가
+	    if (rq.getLoginedMember() != null) {
+	        model.addAttribute("loginId", rq.getLoginedMember().getLoginId());
+	    }
+
+	    // 페이지 반환
+	    return "usr/article/list";
 	}
 
 	@RequestMapping("/usr/article/detail")
