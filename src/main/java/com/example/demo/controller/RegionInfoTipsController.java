@@ -6,25 +6,22 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.example.demo.service.TravelScheduleService;
+import com.example.demo.service.RegionInfoTipsService;
 import com.example.demo.vo.regionInfoTips;
 
 @Controller
-public class TipInfoController {
+public class RegionInfoTipsController {
 	
 	@Autowired
-	private TravelScheduleService travelScheduleService;
+	private RegionInfoTipsService regionInfoTipsService;
 
-	@RequestMapping("/usr/tipInfo/information")
+	@RequestMapping("/usr/regionInfoTips/infoTips")
 	public String showinformation(Model model, @RequestParam(defaultValue = "0") int regionId) {
 
-		regionInfoTips RegionInfoTips = travelScheduleService.getTravelScheduleId(regionId);
-
+		regionInfoTips RegionInfoTips = regionInfoTipsService.getRegionInfoTipsId(regionId);
 		
 		model.addAttribute("RegionInfoTips", RegionInfoTips);
 
-
-		return "/usr/tipInfo/information";
+		return "/usr/regionInfoTips/infoTips";
 	}
-
 }
