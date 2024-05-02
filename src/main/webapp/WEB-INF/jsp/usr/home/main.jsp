@@ -4,17 +4,18 @@
 <%@ include file="../common/head.jspf"%>
 
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="jquery.mousewheel.min.js"></script>
-<script src="script.js"></script>
+<!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
+<!-- <script src="jquery.mousewheel.min.js"></script> -->
+<!-- <script src="script.js"></script> -->
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Pattaya&display=swap" rel="stylesheet">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link
 	href="https://fonts.googleapis.com/css2?family=Hi+Melody&family=Nanum+Brush+Script&family=Nanum+Pen+Script&family=Pattaya&display=swap"
 	rel="stylesheet">
+
+
 
 
 
@@ -711,7 +712,6 @@ transform: translateY(-20px);
 }
 
 .korean-name {
-	font-family: 'KyoboHandwriting2023wsa';
 	font-weight: 500;
 	font-size: 25px;
 	color: #3b3d40;
@@ -719,24 +719,12 @@ transform: translateY(-20px);
 }
 
 .name {
-	font-family: 'KyoboHandwriting2023wsa';
-	font-size: 25px;
+	font-family: 'Urbanist';
+	font-size: 20px;
 	margin-top: 95%;
 	font-weight: 500px;
 }
 
-.name {
-	text-shadow: 1px 1px rgba(0, 0, 0, 0.04), 2px 2px rgba(0, 0, 0, 0.04),
-		3px 3px rgba(0, 0, 0, 0.04), 4px 4px rgba(0, 0, 0, 0.04), 0.125rem
-		0.125rem rgba(0, 0, 0, 0.04), 6px 6px rgba(0, 0, 0, 0.04), 7px 7px
-		rgba(0, 0, 0, 0.04), 8px 8px rgba(0, 0, 0, 0.04), 9px 9px
-		rgba(0, 0, 0, 0.04), 0.3125rem 0.3125rem rgba(0, 0, 0, 0.04), 11px
-		11px rgba(0, 0, 0, 0.04), 12px 12px rgba(0, 0, 0, 0.04), 13px 13px
-		rgba(0, 0, 0, 0.04), 14px 14px rgba(0, 0, 0, 0.04), 0.625rem 0.625rem
-		rgba(0, 0, 0, 0.04), 16px 16px rgba(0, 0, 0, 0.04), 17px 17px
-		rgba(0, 0, 0, 0.04), 18px 18px rgba(0, 0, 0, 0.04), 19px 19px
-		rgba(0, 0, 0, 0.04), 1.25rem 1.25rem rgba(0, 0, 0, 0.04);
-}
 
 .mint-line {
 	display: block;
