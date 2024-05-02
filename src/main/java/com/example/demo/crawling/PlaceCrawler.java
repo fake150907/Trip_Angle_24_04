@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -65,8 +66,8 @@ public class PlaceCrawler {
 		                placeElement.click(); // 매장 요소 클릭
 		                //Thread.sleep(3000); // 대기시간 (필요시 조정)
 		                WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-		                wait.until(ExpectedConditions.presenceOfElementLocated(By.className("MarkerInfo_anchor__jZpzS")));
-		                WebElement markerInfoElement = driver.findElement(By.className("MarkerInfo_anchor__jZpzS")); // "명소정보상세보기" 버튼
+		                WebElement markerInfoElement = wait.until(ExpectedConditions.presenceOfElementLocated(By.className("MarkerInfo_anchor__jZpzS")));
+//		                WebElement markerInfoElement = driver.findElement(By.className("MarkerInfo_anchor__jZpzS")); // "명소정보상세보기" 버튼
 		                //markerInfoElement.click(); // 명소정보상세보기 버튼 클릭하여 원하는 작업 수행
 		                String naverSpotCord = markerInfoElement.getAttribute("href");
 		                naverSpotCord = naverSpotCord.substring(34,46);
@@ -78,6 +79,8 @@ public class PlaceCrawler {
 		                placeElements = driver.findElements(By.className("pc_button__YaxSv"));
 		                i--; // 다음 요소를 다시 확인하기 위해 인덱스를 하나 줄임
 		            } catch(IndexOutOfBoundsException e) {
+		            	
+		            } catch(NoSuchElementException e) {
 		            	
 		            }
 		        }
