@@ -867,22 +867,22 @@ transform: translateY(-20px);
 							Thanks to the project
 							<span style="font-weight: 500; font-style: italic; color: rgba(129, 200, 162, 1);"> TripAngle</span>
 							, we've had the pleasure of exchanging ideas and inspirations,
-							</br>
+							<br>
 							and exploring boundless creative avenues through collaborative efforts.
-							</br>
+							<br>
 							Below, you'll find additional personal information about each of our team members.
-							</br>
+							<br>
 							Feel free to reach out to us anytime!
 						</div>
 
 						<div class="message2">
 							<span style="font-weight: 500; font-style: italic; color: rgba(129, 200, 162, 1);"> TripAngle </span>
 							프로젝트를 통해 우리는 다양한 아이디어와 영감을 공유하고,
-							</br>
+							<br>
 							협력을 통해 개개인의 무한한 창의적 가능성을 발견할 수 있었습니다.
-							</br>
+							<br>
 							아래에서 이 프로젝트를 함께한 팀원을 확인하실 수 있으니
-							</br>
+							<br>
 							언제든지 연락 주시길 바랍니다!
 						</div>
 
@@ -897,12 +897,12 @@ transform: translateY(-20px);
 							<div class="back">
 								<h2 class="korean-name">서명원</h2>
 								<div class="mint-line"></div>
-								</br>
+								<br>
 								<p>010-4495-0000</p>
 								<!--           <p>010-4495-8592</p> -->
 								<!--           <button class="button btn btn-sm"> text message</button> -->
-								<!--           </br> -->
-								</br>
+								<!--           <br> -->
+								<br>
 								<p>insamjoo300@gmail.com</p>
 								<button class="button btn btn-sm" onclick="writeEmailToMyeongwon()">send e-mail</button>
 
@@ -917,12 +917,12 @@ transform: translateY(-20px);
 							<div class="back">
 								<h2 class="korean-name">장윤린</h2>
 								<div class="mint-line"></div>
-								</br>
+								<br>
 								<p>010-4249-0000</p>
 								<!--           <p>010-4249-0977</p> -->
 								<!--           <button class="button btn btn-sm">text message</button> -->
-								<!--           </br> -->
-								</br>
+								<!--           <br> -->
+								<br>
 								<p>yunlinit@gmail.com</p>
 								<button class="button btn btn-sm" onclick="writeEmailToYunlin()">send e-mail</button>
 							</div>
@@ -937,12 +937,12 @@ transform: translateY(-20px);
 							<div class="back">
 								<h2 class="korean-name">윤가연</h2>
 								<div class="mint-line"></div>
-								</br>
+								<br>
 								<p>010-5408-0000</p>
 								<!--           <p>010-5408-4893</p> -->
 								<!--           <button class="button btn btn-sm">text message</button> -->
-								<!--           </br> -->
-								</br>
+								<!--           <br> -->
+								<br>
 								<p>yungayeon223gmail.com</p>
 								<button class="button btn btn-sm" onclick="writeEmailToGayeon()">send e-mail</button>
 							</div>
@@ -956,12 +956,12 @@ transform: translateY(-20px);
 							<div class="back">
 								<h2 class="korean-name">신규섭</h2>
 								<div class="mint-line"></div>
-								</br>
+								<br>
 								<p>010-7752-0000</p>
 								<!--           <p>010-7752-8687</p> -->
 								<!--           <button class="button btn btn-sm" >text message</button> -->
-								<!--           </br> -->
-								</br>
+								<!--           <br> -->
+								<br>
 								<p>tlstlsrbrb11@gmail.com</p>
 								<button class="button btn btn-sm" onclick="writeEmailToGyusub()">send e-mail</button>
 							</div>
