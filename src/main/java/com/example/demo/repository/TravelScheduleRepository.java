@@ -5,6 +5,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
 import com.example.demo.vo.TravelSchedule;
+import com.example.demo.vo.regionInfoTips;
 
 @Mapper
 public interface TravelScheduleRepository {
@@ -31,5 +32,12 @@ public interface TravelScheduleRepository {
 		""")
 	public void insertTravelSchedule(String title, String content, String checkInDate, String checkOutDate,
 			int loginedMemberId, int regionId);
+
+	
+	@Select("""
+			SELECT * FROM regionInfoTips
+			WHERE regionId = #{regionId}
+			""")
+	public regionInfoTips getTravelScheduleId(int regionId);
 
 }

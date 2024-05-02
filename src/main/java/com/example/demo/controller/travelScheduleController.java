@@ -26,13 +26,12 @@ public class travelScheduleController {
 	@RequestMapping("/usr/schedule/ticketing")
 	// 파라미터로 도시 id 받아야함
 	public String travelSchedule(HttpServletRequest req, String title, String content, String checkInDate, String checkOutDate, @RequestParam(defaultValue = "1") int regionId) {
-		
+
 		Rq rq = (Rq) req.getAttribute("rq");
-		
+
 		travelScheduleService.insertTravelSchedule(title, content, checkInDate,
 				checkOutDate, rq.getLoginedMemberId(), regionId);
 
 		return "/usr/schedule/ticketing";
 	}
-
 }
