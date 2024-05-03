@@ -27,6 +27,7 @@ CREATE TABLE `travelSchedule` (
 	`memberId`	INT(10)	UNSIGNED NOT NULL	COMMENT 'member의 id'
 );
 
+
 CREATE TABLE `member` (
 	`id`	INT(10)	NOT NULL	COMMENT 'member의 id',
 	`regDate`	DATETIME	NULL	COMMENT '가입날짜',
