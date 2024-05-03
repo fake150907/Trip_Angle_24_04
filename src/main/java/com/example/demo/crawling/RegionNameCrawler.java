@@ -27,6 +27,32 @@ public class RegionNameCrawler {
 
 	public static String WEB_DRIVER_ID = "webdriver.chrome.driver";
 	public static String WEB_DRIVER_PATH = "C:/work/chromedriver.exe";
+	
+	public List<TabListDTO> getTabList() throws SQLException, ClassNotFoundException{
+		List<TabListDTO> tabList = new ArrayList<>();
+		url = "jdbc:mysql://127.0.0.1:3306/Trip_Angle_24_04?useUnicode=true&characterEncoding=utf8&autoReconnect=true&serverTimezone=Asia/Seoul&useOldAliasMetadataBehavior=true&zeroDateTimeBehavior=convertToNull";
+		Connection conn = DriverManager.getConnection(url, "root", "");
+		conn.setAutoCommit(false);
+		conn.prepareStatement(url);
+
+		String getTabListSql = "SELECT * FROM TABLIST";
+		PreparedStatement pstmt = conn.prepareStatement(getTabListSql);
+		ResultSet rs = pstmt.executeQuery();
+		while(rs.next()) {
+			int id = rs.getInt(1);
+			String regDate = rs.getString(2);
+			String updateDate = rs.getString(3);
+			String themeName = rs.getString(4);
+			tabList.add(new TabListDTO(id, regDate, updateDate, themeName));
+		}
+		rs.close();
+		pstmt.close();
+		conn.close();
+		
+		return tabList;
+
+		
+	}
 
 	public List<RegionCrawlingDto> crawling(Integer crawlingLimit)
 			throws AWTException, SQLException, ClassNotFoundException {

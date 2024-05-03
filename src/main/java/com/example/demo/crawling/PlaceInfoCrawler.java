@@ -35,7 +35,7 @@ public class PlaceInfoCrawler {
 
 		driver.manage().window().maximize();
 
-		url = "https://travel.naver.com/overseas/GRATN6691018/poi/summary";
+		url = "https://travel.naver.com/overseas/GRATN4126654/poi/summary";
 		driver.get(url);
 
 		Thread.sleep(3000);
@@ -158,7 +158,7 @@ public class PlaceInfoCrawler {
 					} else if (placeNameElements.get(j).getText().equals("가격")) {
 
 						WebElement priceElement = driver.findElement(By.className("home_menu__FtSCQ"));
-
+						
 						price = priceElement.getText();
 						System.out.println("price:" + price);
 
@@ -199,7 +199,7 @@ public class PlaceInfoCrawler {
 		// 크롤링이 끝난 후에는 WebDriver를 종료
 		// driver.quit();
 		PlaceInfoDto place = new PlaceInfoDto(name, address, phoneNum, facilities, operatingTime, grade, imgUrl1,
-				imgUrl2, imgUrl3, imgUrl4, imgUrl5, reviewCount, price);
+				imgUrl2, imgUrl3, imgUrl4, imgUrl5, reviewCount,price);
 
 		url = "jdbc:mysql://127.0.0.1:3306/Trip_Angle_24_04?useUnicode=true&characterEncoding=utf8&autoReconnect=true&serverTimezone=Asia/Seoul&useOldAliasMetadataBehavior=true&zeroDateTimeBehavior=convertToNull";
 		Connection conn = DriverManager.getConnection(url, "root", "");

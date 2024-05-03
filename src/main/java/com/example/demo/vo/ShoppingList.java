@@ -21,7 +21,7 @@ public class ShoppingList {
 		this.imageUrl = imageUrl;
 		this.scheduleId = scheduleId;
 	}
-	
+
 	
 	
 	

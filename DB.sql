@@ -147,26 +147,30 @@ CREATE TABLE `recommendRegion` (
 
 CREATE TABLE `tabList` (
 	`id`	INT(10)	NOT NULL	COMMENT '테마별 추천 장소 리스트 id',
-	`themeName`	CHAR(50)	NULL	COMMENT '테마명',
-	`themeBody`	CHAR(100)	NULL	COMMENT '테마별 설명'
+	`regDate`	DATETIME	NULL,
+	`updateDate`	DATETIME	NULL,
+	`themeName`	CHAR(50)	NULL	COMMENT '테마명'
 );
 
 CREATE TABLE `recommendSpot` (
 	`id`	INT(10)	NOT NULL	COMMENT '추천 장소 id',
 	`regDate`	DATETIME	NULL,
 	`updateDate`	DATETIME	NULL,
-	`groceryName`	CHAR(50)	NULL	COMMENT '가게명',
-	`grade`	INT(20)	NULL	COMMENT '평점',
+	`groceryName`	CHAR(100)	NULL	COMMENT '가게명',
+	`grade`	INT(30)	NULL	COMMENT '평점',
 	`reviewCount`	CHAR(100)	NULL	COMMENT '리뷰 갯수',
-	`facilities` CHAR(100)	NULL	COMMENT '시설 정보',
-	`address`	CHAR(50)	NULL	COMMENT '주소',
-	`operatingTime`	CHAR(100)	NULL	COMMENT '운영 시간',
+	`facilities` TEXT	NULL	COMMENT '시설 정보',
+	`address`	TEXT	NULL	COMMENT '주소',
+	`operatingTime`	TEXT	NULL	COMMENT '운영 시간',
 	`phoneNumber`	CHAR(100)	NULL	COMMENT '전화번호',
 	`imageUrl1`	TEXT	NULL,
 	`imageUrl2`	TEXT	NULL,
 	`imageUrl3`	TEXT	NULL,
 	`imageUrl4`	TEXT	NULL,
-	`imageUrl5`	TEXT	NULL
+	`imageUrl5`	TEXT	NULL,
+	`naverSpotCord`	CHAR(50)	NULL	COMMENT '네이버 여행 장소 코드',
+	`tabId` INT(10)	UNSIGNED NOT NULL,
+	`regionId` INT(10)	UNSIGNED NOT NULL
 );
 
 CREATE TABLE `regionSymbolicWord` (
@@ -360,6 +364,21 @@ ALTER TABLE `recommendSpotReview` ADD CONSTRAINT `FK_member_TO_recommendSpotRevi
 REFERENCES `member` (
 	`id`
 );
+
+ALTER TABLE `recommendSpot` ADD CONSTRAINT `FK_tabList_TO_recommendSpot_1` FOREIGN KEY (
+	`tabId`
+)
+REFERENCES `tabList` (
+	`id`
+);
+
+ALTER TABLE `recommendSpot` ADD CONSTRAINT `FK_region_TO_recommendSpot_1` FOREIGN KEY (
+	`regionId`
+)
+REFERENCES `region` (
+	`id`
+);
+
 */
 
 ########### TEST DATA ############
@@ -396,7 +415,7 @@ INSERT INTO `member`
 SET regDate = NOW(),
 updateDate = NOW(),
 loginId = 'admin',
-loginPw = 'admin',
+loginPw = SHA2('admin', 256),
 `authLevel` = 7,
 `name` = '관리자',
 nickname = '관리자',
@@ -408,7 +427,7 @@ INSERT INTO `member`
 SET regDate = NOW(),
 updateDate = NOW(),
 loginId = 'test1',
-loginPw = 'test1',
+loginPw = SHA2('test1', 256),
 `name` = '회원1',
 nickname = '회원1',
 cellphoneNum = '01043214321',
@@ -419,7 +438,7 @@ INSERT INTO `member`
 SET regDate = NOW(),
 updateDate = NOW(),
 loginId = 'test2',
-loginPw = 'test2',
+loginPw = SHA2('test2', 256),
 `name` = '회원2',
 nickname = '회원2',
 cellphoneNum = '01056785678',
@@ -649,3 +668,14 @@ SELECT *
 	FROM board
 	WHERE id = 1
 	AND delStatus = 0;
+
+
+INSERT INTO `tabList` (regDate, updateDate, themeName) values(
+	NOW(),NOW(),'관광'
+);
+INSERT INTO `tabList` (regDate, updateDate, themeName) values(
+	NOW(),NOW(),'맛집'
+);
+INSERT INTO `tabList` (regDate, updateDate, themeName) values(
+	NOW(),NOW(),'쇼핑'
+);

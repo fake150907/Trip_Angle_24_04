@@ -476,17 +476,13 @@
 	<div class="TipInformationPage">
 		<div class="column-2">
 			<div class="InfoItemContainer">
-				<div class="OsakaInfo">OSAKA</div>
-				<div class="country-city-text">일본 오사카</div>
-				<div class="country-city">일본 오사카는 일본의 중부 서쪽에 위치한 도시로, 현대적인 도시와
-					전통적인 일본 문화가 공존하는 곳입니다. 오사카는 맛집이 많고 음식 다양한 것으로 유명합니다. 돈키호테와 같은 대형 쇼핑
-					몰과 전통 시장들이 함께 있어 쇼핑하기에 좋은 도시이기도 합니다. 또한, 오사카성, 우메다 스카이 빌딩, 도톤보리 등의
-					명소가 있어 여행객들에게 인기가 많습니다. 관광 명소 뿐만 아니라, 교토나 나라 등 주변 관광지와 접근성이 좋아 일본을
-					여행하는 분들에게 좋은 출발점이기도 합니다.</div>
+			
+				<div class="OsakaInfo">OSAKA</div>  <!-- ${countryName} 들어가야함--> 
+				<div class="country-city-text">국가명 도시명</div> <!-- ${regionName} 들어가야함--> 
+				
+				<div class="country-city">${RegionInfoTips.getInformation()}</div>
 				<div class="climate-text">기후</div>
-				<div class="climate">오사카의 기후는 온습한 기후로, 여름에는 무더운 날씨가 이어지고, 겨울에는
-					비교적 추운 기운이 느껴집니다. 봄과 가을은 기온이 쾌적하며 여행하기 좋은 계절로 알려져 있습니다. 비가 많이 내리는
-					편이며, 특히 여름철에는 열대성 폭염이 올라오기도 합니다.</div>
+				<div class="climate">${RegionInfoTips.getClimate()}</div>
 				<div class="ScheduleButton">일정 만들기</div>
 			</div>
 		</div>
@@ -496,38 +492,38 @@
 			<div class="HoneyTipsPageContainer">
 				<div class="OsakaInfo">OSAKA</div>
 				<div class="div-2">
+
 					<div class="language-box">
 						<div class="InfoItem language-text">사용 언어</div>
-						<div class="InfoItem language">일본어</div>
+						<div class="InfoItem language">${RegionInfoTips.getLanguage()}</div>
 					</div>
+
 					<div class="currency-box">
-						<div class="InfoItem currency-text">사용 화폐</div>
-						<div class="InfoItem currency">가상화폐</div>
+						<div class="InfoItem currency-text">환율</div>
+						<div class="InfoItem currency">${RegionInfoTips.getRate() }</div>
 					</div>
+
 					<div class="voltage-box">
 						<div class="InfoItem voltage-text">전압</div>
-						<div class="InfoItem voltage">피카츄 백만볼트</div>
+						<div class="InfoItem voltage">${RegionInfoTips.getVoltage()}</div>
 					</div>
+
 					<div class="transportation-box">
-						<div class="InfoItem transportation-text">주요 대중교통</div>
-						<div class="InfoItem transportation">전용기</div>
+						<div class="InfoItem transportation-text">팁</div>
+						<div class="InfoItem transportation">${RegionInfoTips.getTips() }</div>
 					</div>
+
 					<div class="time-difference-box">
 						<div class="InfoItem time-difference-text">시차</div>
-						<div class="InfoItem time-difference">별로 안남</div>
+						<div class="InfoItem time-difference">${RegionInfoTips.getTimeDifference() }</div>
 					</div>
-					<div class="significant-box">
-						<div class="InfoItem significant-text">특이사항</div>
-						<div class="InfoItem significant">일식 존맛</div>
-					</div>
-					<div class="ScheduleButton2">일정 만들기</div>
+
+					<button class="ScheduleButton2">일정 만들기</button>
+
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
-
-
-
 
 <%@ include file="../common/foot.jspf"%>
