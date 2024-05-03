@@ -9,14 +9,14 @@ public class AllInitCrawler {
     	CrawlingTest2 crawlingTest2 = new CrawlingTest2();
     	RegionNameCrawler regionCrawling = new RegionNameCrawler();
     	PlaceCrawler placeCrawling = new PlaceCrawler();
-    	//PlaceInfoCrawler placeInfoCrawling = new PlaceInfoCrawler();
+    	PlaceInfoCrawlerForAllInit placeInfoCrawling = new PlaceInfoCrawlerForAllInit();
     	
     	List<RegionCrawlingDto> regionList = null;
     	List<TabListDTO> tabList = null;
     	List<PlaceInfoDto> placeInfoList = null;
     	
     	try {
-			regionList = regionCrawling.crawling(100);
+			regionList = regionCrawling.crawling(null);
 			tabList = regionCrawling.getTabList();
 			
 			System.out.println("여행 국가 및 도시정보 입력");
@@ -60,23 +60,23 @@ public class AllInitCrawler {
     	
     	System.out.println(placeInfoList);
     	
-//    	if(placeInfoCrawling != null) {
-//	    	try {
-//				placeInfoCrawling.crawlPlaces(placeInfoList);
-//			} catch (ClassNotFoundException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			} catch (InterruptedException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			} catch (AWTException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			} catch (SQLException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
-//    	}
+    	if(placeInfoList != null) {
+	    	try {
+	    		placeInfoCrawling.crawlPlaces(placeInfoList);
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (AWTException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+    	}
     	
     	
     	

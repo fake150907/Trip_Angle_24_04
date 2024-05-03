@@ -64,6 +64,7 @@ public class PlaceCrawler {
 		            try {
 		                WebElement placeElement = placeElements.get(i); // i번째 매장 요소
 		                placeElement.click(); // 매장 요소 클릭
+		                Thread.sleep(500);
 		                //Thread.sleep(3000); // 대기시간 (필요시 조정)
 		                WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		                WebElement markerInfoElement = wait.until(ExpectedConditions.presenceOfElementLocated(By.className("MarkerInfo_anchor__jZpzS")));
