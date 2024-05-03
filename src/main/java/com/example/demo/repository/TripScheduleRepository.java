@@ -18,13 +18,14 @@ public interface TripScheduleRepository {
 				WHERE TR.id = #{id}
 			""")
 	public TripSchedule getTripScheduleById(int id);
+	
 
 	@Insert("""
 				INSERT INTO tripSchedule
 				SET regDate = NOW(),
 				updateDate = NOW(),
-				`name` = #{title},
-				`description` = #{content},
+				`title` = #{title},
+				`content` = #{content},
 				startDate = #{checkInDate},
 				endDate = #{checkOutDate},
 				regionId = #{regionId},

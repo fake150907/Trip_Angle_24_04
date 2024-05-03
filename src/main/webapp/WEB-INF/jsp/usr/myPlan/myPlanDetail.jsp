@@ -93,7 +93,7 @@ $(document).ready(function() {
 }
 
 .reg-date-title {
-	font-size: 12px;
+	font-size: 11px;
 	margin-left: 3px;
 	margin-bottom: 5px;
 	color: #3b3d40;
@@ -101,15 +101,15 @@ $(document).ready(function() {
 }
 
 .reg-date {
-	font-size: 16px;
+	font-size: 12px;
 	margin-left: 3px;
 	margin-bottom: 20px;
 	color: #3b3d40;
 	font-weight: 600;
 }
 
-.my-plan-comment {
-	font-size: 14px;
+.my-plan-content {
+	font-size: 17px;
 	margin-left: 3px;
 	color: #3b3d40;
 	font-weight: 500;
@@ -624,9 +624,17 @@ keyframes rotator { 0% {
 
 
 
+
+
+
+
 %
 {
 transform
+
+
+
+
 
 
 
@@ -648,6 +656,10 @@ transform
 
 
 
+
+
+
+
 rotate
 
 
@@ -657,7 +669,15 @@ rotate
 
 
 
+
+
+
+
 (
+
+
+
+
 
 
 
@@ -679,7 +699,15 @@ rotate
 
 
 
+
+
+
+
 )
+
+
+
+
 
 
 
@@ -721,9 +749,17 @@ keyframes dash { 0% {
 
 
 
+
+
+
+
 %
 {
 stroke-dashoffset
+
+
+
+
 
 
 
@@ -745,6 +781,10 @@ stroke-dashoffset
 
 
 
+
+
+
+
 46
 
 
@@ -754,7 +794,15 @@ stroke-dashoffset
 
 
 
+
+
+
+
 .75
+
+
+
+
 
 
 
@@ -775,7 +823,15 @@ transform
 
 
 
+
+
+
+
 :
+
+
+
+
 
 
 
@@ -795,7 +851,15 @@ rotate
 
 
 
+
+
+
+
 (
+
+
+
+
 
 
 
@@ -817,7 +881,15 @@ rotate
 
 
 
+
+
+
+
 )
+
+
+
+
 
 
 
@@ -829,6 +901,10 @@ rotate
 ;
 }
 100
+
+
+
+
 
 
 
@@ -852,6 +928,10 @@ stroke-dashoffset
 
 
 
+
+
+
+
 :
 
 
@@ -863,7 +943,15 @@ stroke-dashoffset
 
 
 
+
+
+
+
 187
+
+
+
+
 
 
 
@@ -884,7 +972,15 @@ transform
 
 
 
+
+
+
+
 :
+
+
+
+
 
 
 
@@ -904,7 +1000,15 @@ rotate
 
 
 
+
+
+
+
 (
+
+
+
+
 
 
 
@@ -926,7 +1030,15 @@ rotate
 
 
 
+
+
+
+
 )
+
+
+
+
 
 
 
@@ -1195,14 +1307,10 @@ section.ta-item-container.fashion-man, section.ta-item-container.fashion-women
 			</div>
 
 			<div class="plan-box">
-				<div class="my-plan-title">연차쓰고 이번 휴가 달려</div>
+				<div class="my-plan-title">${tripSchedule.title}</div>
 				<div class="reg-date-title">나의 일정 등록일</div>
-				<div class="reg-date">2024-04-11</div>
-				<div class="my-plan-comment">마이일정 설명을 작성해주세요. 마이일정 설명을 작성해주세요.
-					마이일정 설명을 작성해주세요.마이일정 설명을 작성해주세요.마이일정 설명을 작성해주세요.마이일정 설명을
-					작성해주세요.마이일정 설명을 작성해주세요.마이일정 설명을 작성해주세요.마이일정 설명을 작성해주세요.마이일정 설명을
-					작성해주세요.마이일정 설명을 작성해주세요.마이일정 설명을 작성해주세요.마이일정 설명을 작성해주세요.마이일정 설명을
-					작성해주세요.</div>
+				<div class="reg-date">${tripSchedule.regDate}</div>
+				<div class="my-plan-content">${tripSchedule.content}</div>
 
 			</div>
 
@@ -1331,8 +1439,7 @@ section.ta-item-container.fashion-man, section.ta-item-container.fashion-women
 					<p class="ta-item-info">Address St. Honolulu, Hawaii</p>
 				</div>
 			</div>
-		</a>
-		<a href="/myPlan/placeDetail" class="ta-item-card">
+		</a> <a href="/myPlan/placeDetail" class="ta-item-card">
 			<div class="ta-item-image-container">
 				<img
 					src="https://images.unsplash.com/photo-1562785561-d88a65a2679e?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
@@ -1347,8 +1454,7 @@ section.ta-item-container.fashion-man, section.ta-item-container.fashion-women
 					<p class="ta-item-info">Address St. Honolulu, Hawaii</p>
 				</div>
 			</div>
-		</a>
-		<a href="/myPlan/placeDetail" class="ta-item-card">
+		</a> <a href="/myPlan/placeDetail" class="ta-item-card">
 			<div class="ta-item-image-container">
 				<img
 					src="https://images.unsplash.com/photo-1533193773788-92826ee86674?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
@@ -1363,8 +1469,7 @@ section.ta-item-container.fashion-man, section.ta-item-container.fashion-women
 					<p class="ta-item-info">Address St. Honolulu, Hawaii</p>
 				</div>
 			</div>
-		</a>
-		<a href="/myPlan/placeDetail" class="ta-item-card">
+		</a> <a href="/myPlan/placeDetail" class="ta-item-card">
 			<div class="ta-item-image-container">
 				<img
 					src="https://images.unsplash.com/photo-1484980972926-edee96e0960d?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
@@ -1379,8 +1484,7 @@ section.ta-item-container.fashion-man, section.ta-item-container.fashion-women
 					<p class="ta-item-info">Address St. Honolulu, Hawaii</p>
 				</div>
 			</div>
-		</a>
-		<a href="/myPlan/placeDetail" class="ta-item-card">
+		</a> <a href="/myPlan/placeDetail" class="ta-item-card">
 			<div class="ta-item-image-container">
 				<img
 					src="https://images.unsplash.com/photo-1677517497394-87d635cf7e10?q=80&w=2050&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"

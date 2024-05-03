@@ -14,12 +14,12 @@ CREATE TABLE `article` (
 	`boardId`	INT(10)	UNSIGNED NOT NULL
 );
 
-CREATE TABLE `travelSchedule` (
+CREATE TABLE `tripSchedule` (
 	`id`	INT(10)	NOT NULL,
 	`regDate`	DATETIME	NULL,
 	`updateDate`	DATETIME	NULL,
-	`name`	CHAR(100)	NULL,
-	`description`	TEXT	NULL,
+	`title`	CHAR(100)	NULL,
+	`content`	TEXT	NULL,
 	`startDate`	DATE	NULL,
 	`endDate`	DATE	NULL,
 	`step`	INT(2)	NULL,
@@ -245,7 +245,7 @@ CREATE TABLE `planCalendar`(
 
 ## 주키 추가
 ALTER TABLE `article` MODIFY `id`  INT(10) UNSIGNED NOT NULL AUTO_INCREMENT, ADD PRIMARY KEY (`id`);
-ALTER TABLE `travelSchedule` MODIFY `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT, ADD PRIMARY KEY (`id`);
+ALTER TABLE `tripSchedule` MODIFY `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT, ADD PRIMARY KEY (`id`);
 ALTER TABLE `member` MODIFY `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT, ADD PRIMARY KEY (`id`);
 ALTER TABLE `genFile` MODIFY `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT, ADD PRIMARY KEY (`id`);
 ALTER TABLE `regionInfoTips` MODIFY `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT, ADD PRIMARY KEY (`id`);
@@ -281,14 +281,14 @@ REFERENCES `board` (
 	`id`
 );
 
-ALTER TABLE `travelSchedule` ADD CONSTRAINT `FK_region_TO_travelSchedule_1` FOREIGN KEY (
+ALTER TABLE `tripSchedule` ADD CONSTRAINT `FK_region_TO_tripSchedule_1` FOREIGN KEY (
 	`regionId`
 )
 REFERENCES `region` (
 	`id`
 );
 
-ALTER TABLE `travelSchedule` ADD CONSTRAINT `FK_member_TO_travelSchedule_1` FOREIGN KEY (
+ALTER TABLE `tripSchedule` ADD CONSTRAINT `FK_member_TO_tripSchedule_1` FOREIGN KEY (
 	`memberId`
 )
 REFERENCES `member` (
@@ -309,24 +309,24 @@ REFERENCES `country` (
 	`id`
 );
 
-ALTER TABLE `weather` ADD CONSTRAINT `FK_travelSchedule_TO_weather_1` FOREIGN KEY (
+ALTER TABLE `weather` ADD CONSTRAINT `FK_tripSchedule_TO_weather_1` FOREIGN KEY (
 	`scheduleId`
 )
-REFERENCES `travelSchedule` (
+REFERENCES `tripSchedule` (
 	`id`
 );
 
-ALTER TABLE `fashion` ADD CONSTRAINT `FK_travelSchedule_TO_fashion_1` FOREIGN KEY (
+ALTER TABLE `fashion` ADD CONSTRAINT `FK_tripSchedule_TO_fashion_1` FOREIGN KEY (
 	`scheduleId`
 )
-REFERENCES `travelSchedule` (
+REFERENCES `tripSchedule` (
 	`id`
 );
 
 ALTER TABLE `shoppingList` ADD CONSTRAINT `FK_region_TO_shoppingList_1` FOREIGN KEY (
 	`scheduleId`
 )
-REFERENCES `travelSchedule` (
+REFERENCES `tripSchedule` (
 	`id`
 );
 
@@ -652,7 +652,7 @@ SELECT * FROM article;
 SELECT * FROM board;
 
 
-INSERT INTO TRAVELSCHEDULE(regDate, updateDate, `name`, `description`, startDate, endDate, regionId, memberId)
+INSERT INTO TRIPSCHEDULE(regDate, updateDate, `title`, `content`, startDate, endDate, regionId, memberId)
 VALUES(NOW(), NOW(), "여행 일기", "오늘은 밥이 맛있다.", "2024-05-05", "2024-05-10", 1, 1);
 
 
@@ -675,15 +675,18 @@ INSERT INTO `tabList` (regDate, updateDate, themeName) VALUES(
 ####20개 크롤링 insert문
 
 
-insert  into `country`(`id`,`regDate`,`updateDate`,`name`) values 
+
+INSERT  INTO `country`(`id`,`regDate`,`updateDate`,`name`) VALUES 
 (1,'2024-05-03 17:22:37','2024-05-03 17:22:37','그리스'),
 (2,'2024-05-03 17:22:37','2024-05-03 17:22:37','네덜란드'),
 (3,'2024-05-03 17:22:37','2024-05-03 17:22:37','노르웨이'),
 (4,'2024-05-03 17:22:37','2024-05-03 17:22:37','덴마크'),
 (5,'2024-05-03 17:22:37','2024-05-03 17:22:37','독일');
 
-insert  into `recommendSpot`(`id`,`regDate`,`updateDate`,`groceryName`,`grade`,`price`,`reviewCount`,`facilities`,`address`,`phoneNumber`,`imageUrl1`,`imageUrl2`,`imageUrl3`,`imageUrl4`,`imageUrl5`,`naverSpotCord`,`tabId`,`regionId`) values 
-(1,'2024-05-03 17:26:18','2024-05-03 17:26:18','리틀 베니스',5,'','참여 7,191명','','Mitropoleos Georgouli, Mykonos Town Greece','','https://search.pstatic.net/common?src=http%3A%2F%2Fmedia-cdn.tripadvisor.com%2Fmedia%2Fphoto-o%2F1b%2Fe0%2Fa0%2F0e%2Fphoto0jpg.jpg&type=f520_288_travelsearch','https://search.pstatic.net/common?src=https%3A%2F%2Fdbscthumb-phinf.pstatic.net%2F5885_000_12%2F20201229163221632_I97AR1HBR.jpg%2Ffb345_32_i1.jpg%3Ftype%3Dw540_fst&type=f520_288_travelsearch','https://search.pstatic.net/common?src=https%3A%2F%2Fdbscthumb-phinf.pstatic.net%2F5885_000_12%2F20201229163227691_9AECSG0IG.jpg%2Ffb345_32_i2.jpg%3Ftype%3Dw540_fst&type=f520_288_travelsearch','https://search.pstatic.net/common?src=http%3A%2F%2Fmedia-cdn.tripadvisor.com%2Fmedia%2Fphoto-o%2F1b%2Ff3%2F71%2Fb5%2Fphoto2jpg.jpg&type=f520_288_travelsearch','https://search.pstatic.net/common?src=http%3A%2F%2Fmedia-cdn.tripadvisor.com%2Fmedia%2Fphoto-o%2F1b%2Ff3%2F71%2Fb4%2Fphoto1jpg.jpg&type=f520_288_travelsearch','GRJMK519760/',1,1),
+
+INSERT  INTO `recommendSpot`(`id`,`regDate`,`updateDate`,`groceryName`,`grade`,`price`,`reviewCount`,`facilities`,`address`,`phoneNumber`,`imageUrl1`,`imageUrl2`,`imageUrl3`,`imageUrl4`,`imageUrl5`,`naverSpotCord`,`tabId`,`regionId`) VALUES 
+(1,'2024-05-03 17:26:18','2024-05-03 17:26:18','리틀 베니스',5,'','참여 7,191명','','Mitropoleos Georgouli, Mykonos Town Greece','','https://search.pstatic.net/common?src=http%3A%2F%2Fmedia-cdn.tripadvisor.com%2Fmedia%2Fphoto-o%2F1b%2Fe0%2Fa0%2F0e%2Fphoto0jpg.jpg&type=f520_288_
+search','https://search.pstatic.net/common?src=https%3A%2F%2Fdbscthumb-phinf.pstatic.net%2F5885_000_12%2F20201229163221632_I97AR1HBR.jpg%2Ffb345_32_i1.jpg%3Ftype%3Dw540_fst&type=f520_288_travelsearch','https://search.pstatic.net/common?src=https%3A%2F%2Fdbscthumb-phinf.pstatic.net%2F5885_000_12%2F20201229163227691_9AECSG0IG.jpg%2Ffb345_32_i2.jpg%3Ftype%3Dw540_fst&type=f520_288_travelsearch','https://search.pstatic.net/common?src=http%3A%2F%2Fmedia-cdn.tripadvisor.com%2Fmedia%2Fphoto-o%2F1b%2Ff3%2F71%2Fb5%2Fphoto2jpg.jpg&type=f520_288_travelsearch','https://search.pstatic.net/common?src=http%3A%2F%2Fmedia-cdn.tripadvisor.com%2Fmedia%2Fphoto-o%2F1b%2Ff3%2F71%2Fb4%2Fphoto1jpg.jpg&type=f520_288_travelsearch','GRJMK519760/',1,1),
 (2,'2024-05-03 17:26:19','2024-05-03 17:26:19','플라티스 기아로스 비치',4,'','참여 2,543명','','Mykonos, Platys Gialos 846 00 Greece','','https://search.pstatic.net/common?src=https%3A%2F%2Fdbscthumb-phinf.pstatic.net%2F5885_000_12%2F20201229163248429_K0F9CL7E3.jpg%2Ffb345_34_i1.jpg%3Ftype%3Dw540_fst&type=f520_288_travelsearch','https://search.pstatic.net/common?src=https%3A%2F%2Fdbscthumb-phinf.pstatic.net%2F5885_000_12%2F20201229163249869_I8WUCJO7L.jpg%2Ffb345_34_i2.jpg%3Ftype%3Dw540_fst&type=f520_288_travelsearch','https://search.pstatic.net/common?src=http%3A%2F%2Fmedia-cdn.tripadvisor.com%2Fmedia%2Fphoto-o%2F1b%2Ff0%2F81%2F17%2Fta-img-20200905-094831.jpg&type=f520_288_travelsearch','https://search.pstatic.net/common?src=http%3A%2F%2Fmedia-cdn.tripadvisor.com%2Fmedia%2Fphoto-o%2F1b%2Fe7%2F53%2Fec%2F20200830-180705-largejpg.jpg&type=f520_288_travelsearch','https://search.pstatic.net/common?src=http%3A%2F%2Fmedia-cdn.tripadvisor.com%2Fmedia%2Fphoto-o%2F1b%2Fe7%2F53%2Feb%2F20200830-180848-largejpg.jpg&type=f520_288_travelsearch','GRJMK2445564',1,1),
 (3,'2024-05-03 17:26:20','2024-05-03 17:26:20','미코노스 섬 풍차지구',4,'','참여 3,336명','','Alefkadras, Mykonos Town 846 00 Greece','','https://search.pstatic.net/common?src=https%3A%2F%2Fdbscthumb-phinf.pstatic.net%2F5885_000_12%2F20201229163235463_ITWCPHPRH.jpg%2Ffb345_33_i1.jpg%3Ftype%3Dw540_fst&type=f520_288_travelsearch','https://search.pstatic.net/common?src=https%3A%2F%2Fdbscthumb-phinf.pstatic.net%2F5885_000_12%2F20201229163246798_QX2IDFUAG.jpg%2Ffb345_33_i2.jpg%3Ftype%3Dw540_fst&type=f520_288_travelsearch','https://search.pstatic.net/common?src=http%3A%2F%2Fmedia-cdn.tripadvisor.com%2Fmedia%2Fphoto-o%2F1b%2Fec%2F0a%2F35%2Fimg-20100101-025454-largejpg.jpg&type=f520_288_travelsearch','https://search.pstatic.net/common?src=http%3A%2F%2Fmedia-cdn.tripadvisor.com%2Fmedia%2Fphoto-o%2F1b%2Fec%2F0a%2F34%2Fimg-20100101-025449-largejpg.jpg&type=f520_288_travelsearch','https://search.pstatic.net/common?src=http%3A%2F%2Fmedia-cdn.tripadvisor.com%2Fmedia%2Fphoto-o%2F1b%2Fe7%2F55%2Fb0%2Fwindmills.jpg&type=f520_288_travelsearch','GRJMK669289/',1,1),
 (4,'2024-05-03 17:26:21','2024-05-03 17:26:21','엘리아 해변',5,'','참여 2,480명','','Elia 84600 Greece','','https://search.pstatic.net/common?src=https%3A%2F%2Fdbscthumb-phinf.pstatic.net%2F5885_000_12%2F20201229163332129_QFARFOBIV.jpg%2Ffb345_38_i1.jpg%3Ftype%3Dw540_fst&type=f520_288_travelsearch','https://search.pstatic.net/common?src=https%3A%2F%2Fdbscthumb-phinf.pstatic.net%2F5885_000_12%2F20201229163341982_YS5XYKSBY.jpg%2Ffb345_38_i2.jpg%3Ftype%3Dw540_fst&type=f520_288_travelsearch','https://search.pstatic.net/common?src=http%3A%2F%2Fmedia-cdn.tripadvisor.com%2Fmedia%2Fphoto-o%2F1b%2Fe4%2F4d%2F27%2Fphoto0jpg.jpg&type=f520_288_travelsearch','https://search.pstatic.net/common?src=http%3A%2F%2Fmedia-cdn.tripadvisor.com%2Fmedia%2Fphoto-o%2F1b%2Fd8%2F6f%2F9d%2Felia-beach.jpg&type=f520_288_travelsearch','https://search.pstatic.net/common?src=http%3A%2F%2Fmedia-cdn.tripadvisor.com%2Fmedia%2Fphoto-o%2F1b%2Fd8%2F6f%2F9c%2Felia-beach.jpg&type=f520_288_travelsearch','GRJMK1752025',1,1),
@@ -955,7 +958,8 @@ insert  into `recommendSpot`(`id`,`regDate`,`updateDate`,`groceryName`,`grade`,`
 
 
 
-insert  into `region`(`id`,`regDate`,`updateDate`,`name`,`naverRegionCord`,`imageUrl`,`englishName`,`countryId`) values 
+
+INSERT  INTO `region`(`id`,`regDate`,`updateDate`,`name`,`naverRegionCord`,`imageUrl`,`englishName`,`countryId`) VALUES 
 (1,'2024-05-03 17:22:37','2024-05-03 17:22:37','미코노스 섬','GRJMK189430','https://search.pstatic.net/common?src=https%3A%2F%2Fdbscthumb-phinf.pstatic.net%2F5885_000_12%2F20201229162821179_SUXE5C25W.jpg%2Ffb345_3_i1.jpg%3Ftype%3Dw540_fst&type=f520_288_travelsearch','Mykonos',1),
 (2,'2024-05-03 17:22:37','2024-05-03 17:22:37','산토리니','GRATN189433','https://search.pstatic.net/common?src=https%3A%2F%2Fdbscthumb-phinf.pstatic.net%2F5885_000_12%2F20201229162116699_Y15JPAMDG.jpg%2Ffb344_3_i1.jpg%3Ftype%3Dw540_fst&type=f520_288_travelsearch','Santorini',1),
 (3,'2024-05-03 17:22:37','2024-05-03 17:22:37','아테네','GRCHI189400','https://search.pstatic.net/common?src=https%3A%2F%2Fdbscthumb-phinf.pstatic.net%2F5885_000_12%2F20201229160501475_893QSWYFX.jpg%2Ffb343_3_i1.jpg%3Ftype%3Dw540_fst&type=f520_288_travelsearch','Athens',1),
@@ -977,7 +981,8 @@ insert  into `region`(`id`,`regDate`,`updateDate`,`name`,`naverRegionCord`,`imag
 (19,'2024-05-03 17:22:37','2024-05-03 17:22:37','라이프치히','DELEJ187400','https://search.pstatic.net/common?src=https%3A%2F%2Fdbscthumb-phinf.pstatic.net%2F5885_000_9%2F20201015132232220_YHHZH7OYQ.jpg%2Ffb214_3_i1.jpg%3Ftype%3Dw540_fst&type=f520_288_travelsearch','Leipzig',5),
 (20,'2024-05-03 17:22:37','2024-05-03 17:22:37','로텐부르크 오프데어 타우버','DEROT187319','https://search.pstatic.net/common?src=https%3A%2F%2Fdbscthumb-phinf.pstatic.net%2F5885_000_8%2F20201015113800253_CZZTBI78X.jpg%2Ffb184_3_i1.jpg%3Ftype%3Dw540_fst&type=f520_288_travelsearch','Rothenburg',5);
 
-insert  into `regionInfoTips`(`id`,`information`,`Voltage`,`language`,`climate`,`timeDifference`,`rate`,`tips`,`regionId`) values 
+
+INSERT  INTO `regionInfoTips`(`id`,`information`,`Voltage`,`language`,`climate`,`timeDifference`,`rate`,`tips`,`regionId`) VALUES 
 (1,'그리스 신화의 아폴로의 손자 뮈코노스에서 기원한 섬','230 V','그리스어','초성수기 기간 전이나 후인 5~6월이나 9월 초에 여행을 계획하는 것을 추천한다.\n4월부터 점차 따뜻해지며, 여행성수기 5~9월의 평균 최고 기온은 26.8도로 여행하기 적당하다.','6시간 느림','1,463.73원','5~10%',1),
 (2,'화산 작용으로 형성된 아름다운 풍경과 화려한 밤 문화로 유럽 최고의 관광지로 손꼽힌다.','230 V','그리스어','초성수기 기간 전이나 후인 5~6월이나 9월 초에 여행을 계획하는 것을 추천한다.\n반건조 기후로, 여행성수기 5~9월은 덥고 건조하지만 평균 최고 기온은 26.8도로 여행하기 적당하다.','6시간 느림','1,463.73원','5~10%',2),
 (3,'오래된 역사를 자랑하는 도시로, 그리스의 수도이자 최대 도시다.','230 V','그리스어','초성수기 기간 전이나 후인 5~6월이나 9월 초에 여행을 계획하는 것을 추천한다.\n가장 더운 8월 아테네는 35도까지 올라가나 우리나라 보다는 습도가 낮아 강한 자외선에 대한 대처만 한다면 여행하기에 나쁘지 않다.','6시간 느림','1,463.73원','5~10%',3),
@@ -998,3 +1003,18 @@ insert  into `regionInfoTips`(`id`,`information`,`Voltage`,`language`,`climate`,
 (18,'엘베강의 피렌체','230 V','독일어','여름 한낮은 매우 덥고. 반대로 겨울은 춥고 습하며 흐리다.\n최근 들어 유럽의 이상고온 현상으로 7, 8월 여름에는 한낮 기온이 30도 넘는 것은 기본으로 매우 덥다. 반대로 겨울은 춥고 습하며 흐린 날이 반복된다.','7시간 느림','1,463.80원','5~10%',18),
 (19,'독일의 작은 파리','230 V','독일어','여름 한낮은 매우 덥고. 반대로 겨울은 춥고 습하며 흐리다.\n최근 들어 유럽의 이상고온 현상으로 7, 8월 여름에는 한낮 기온이 30도 넘는 것은 기본으로 매우 덥다. 반대로 겨울은 춥고 습하며 흐린 날이 반복된다.','7시간 느림','1,463.80원','5~10%',19),
 (20,'도시 전체를 둘러싸고 있는 성벽들과 중세 시대의 흔적들을 하나하나 찾아보는 재미가 있다.','230 V','독일어','여름 한낮은 매우 덥고. 반대로 겨울은 춥고 습하며 흐리다.\n최근 들어 유럽의 이상고온 현상으로 7, 8월 여름에는 한낮 기온이 30도 넘는 것은 기본으로 매우 덥다. 반대로 겨울은 춥고 습하며 흐린 날이 반복된다.','7시간 느림','1,463.80원','5~10%',20);
+
+
+
+SELECT TR.*, RE.name AS 'extra__regionName', RE.imageUrl AS 'extra__regionImageUrl', RE.englishName AS 'extra__regionEnglishName', CO.name AS 'extra__contryName' 
+FROM TRIPSCHEDULE TR INNER JOIN REGION RE ON TR.regionId = RE.id 
+INNER JOIN COUNTRY CO ON RE.countryId = CO.id
+WHERE TR.id = 2;
+
+
+SELECT * FROM tripSchedule;
+
+
+SELECT * FROM regionInfoTips;
+
+

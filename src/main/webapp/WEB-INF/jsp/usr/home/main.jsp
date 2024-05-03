@@ -768,7 +768,7 @@ transform: translateY(-20px);
 						<source src="https://videos.pexels.com/video-files/1550080/1550080-uhd_3840_2160_30fps.mp4">
 					</video>
 
-					<div class="text">여행을 듣다, 여행을 입다</div>
+					<div class="text">여행의 온도를 걸치다</div>
 
 					<a href="#" id="wavy-tripangle" class="wavy-tripangle">
 						<span style="--i: 1">T</span>
@@ -796,7 +796,7 @@ transform: translateY(-20px);
 							<div class="comment">
 								TripAngle로 나만의 여행을
 								<br />
-								음악과 패션을 통해 감각적으로 계획해보세요
+								여행지의 날씨에 맞게 스타일링하여 감각적으로 계획해보세요
 							</div>
 						</div>
 						<div class="search-area">

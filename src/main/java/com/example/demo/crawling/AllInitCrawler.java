@@ -16,6 +16,7 @@ public class AllInitCrawler {
     	List<PlaceInfoDto> placeInfoList = null;
     	
     	try {
+
 			regionList = regionCrawling.crawling(20);
 			tabList = regionCrawling.getTabList();
 			

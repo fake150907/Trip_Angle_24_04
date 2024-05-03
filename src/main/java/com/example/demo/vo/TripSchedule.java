@@ -11,8 +11,8 @@ public class TripSchedule {
 	private int id;
 	private String regDate;
 	private String updateDate;
-	private String name;
-	private String description;
+	private String title;
+	private String content;
 	private String startDate;
 	private String endDate;
 	private Integer step;
