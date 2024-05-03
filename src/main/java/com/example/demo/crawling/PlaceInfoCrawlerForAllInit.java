@@ -27,7 +27,7 @@ public class PlaceInfoCrawlerForAllInit {
 		PlaceInfoCrawlerForAllInit.driver = driver;
 	}
 
-	public static void crawlPlaces() throws InterruptedException, AWTException, SQLException, ClassNotFoundException {
+	public void crawlPlaces(List<PlaceInfoDto> placeInfoList) throws InterruptedException, AWTException, SQLException, ClassNotFoundException {
 		System.setProperty(WEB_DRIVER_ID, WEB_DRIVER_PATH);
 
 		ChromeOptions options = new ChromeOptions();
@@ -35,16 +35,22 @@ public class PlaceInfoCrawlerForAllInit {
 		driver = new ChromeDriver(options);
 
 		driver.manage().window().maximize();
+		
+		url = "jdbc:mysql://127.0.0.1:3306/Trip_Angle_24_04?useUnicode=true&characterEncoding=utf8&autoReconnect=true&serverTimezone=Asia/Seoul&useOldAliasMetadataBehavior=true&zeroDateTimeBehavior=convertToNull";
+		Connection conn = DriverManager.getConnection(url, "root", "");
+		conn.setAutoCommit(false);
+		conn.prepareStatement(url);
+		
+		for (PlaceInfoDto placeInfo : placeInfoList) {
+		    url = String.format("https://travel.naver.com/overseas/%s/poi/summary", placeInfo.getNaverSpotCord());
+		    driver.get(url);
 
-		url = "https://travel.naver.com/overseas/GRATN4126654/poi/summary";
-		driver.get(url);
+    		//Thread.sleep(3000);
+		    driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
-		//Thread.sleep(3000);
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-
-		// 시간 상세보기 탭 선택
-		// 시간
-		String operatingTime = "";
+     		// 시간 상세보기 탭 선택
+	    	// 시간
+//		String operatingTime = "";
 //		try {
 //			WebElement button = driver.findElement(By.className("home_expand__xUbeG"));
 //
@@ -145,107 +151,103 @@ public class PlaceInfoCrawlerForAllInit {
 		}
 
 		List<WebElement> placeNameElements = driver.findElements(By.className("home_subject__9A834"));
+		
+
 
 		for (int i = 0; i < placeNameElements.size(); i++) {
-			try {
-
-				List<WebElement> placeElements = driver.findElements(By.className("home_cont__dmB3R"));
-
-				for (int j = 0; j < placeElements.size(); j++) {
-					System.out.println("요소 이름2:" + placeNameElements.get(j).getText());
-					System.out.println("이름2:" + placeElements.get(j).getText());
-
-					if (placeNameElements.get(j).getText().equals("주소")) {
-//						address = placeElements.get(j).findElement(By.xpath("./*[1]")).getText();
-						address = placeElements.get(j).findElement(By.xpath("./*[1]")).getText();
-						System.out.println("address:" + address);
-
-					} else if (placeNameElements.get(j).getText().equals("가격")) {
-
-						WebElement priceElement = driver.findElement(By.className("home_menu__FtSCQ"));
-						
-						price = priceElement.getText();
-						System.out.println("price:" + price);
-
-					} else if (placeNameElements.get(j).getText().equals("전화")) {
-//						phoneNum = placeElements.get(j).findElement(By.xpath("./*[1]")).getText();
-						phoneNum = placeElements.get(j).getText();
-						System.out.println("phoneNum:" + phoneNum);
-
-					} else if (placeNameElements.get(j).getText().equals("시설")) {
-
-//						facilities = placeElements.get(j).findElement(By.xpath("./*[1]")).getText();
-						facilities = placeElements.get(j).getText();
-						System.out.println("facilities:" + facilities);
+				try {
+	
+					List<WebElement> placeElements = driver.findElements(By.className("home_cont__dmB3R"));
+	
+					for (int j = 0; j < placeElements.size(); j++) {
+						System.out.println("요소 이름2:" + placeNameElements.get(j).getText());
+						System.out.println("이름2:" + placeElements.get(j).getText());
+	
+						if (placeNameElements.get(j).getText().equals("주소")) {
+	//						address = placeElements.get(j).findElement(By.xpath("./*[1]")).getText();
+							address = placeElements.get(j).findElement(By.xpath("./*[1]")).getText();
+							System.out.println("address:" + address);
+	
+						} else if (placeNameElements.get(j).getText().equals("가격")) {
+	
+							WebElement priceElement = driver.findElement(By.className("home_menu__FtSCQ"));
+							
+							price = priceElement.getText();
+							System.out.println("price:" + price);
+	
+						} else if (placeNameElements.get(j).getText().equals("전화")) {
+	//						phoneNum = placeElements.get(j).findElement(By.xpath("./*[1]")).getText();
+							phoneNum = placeElements.get(j).getText();
+							System.out.println("phoneNum:" + phoneNum);
+	
+						} else if (placeNameElements.get(j).getText().equals("시설")) {
+	
+	//						facilities = placeElements.get(j).findElement(By.xpath("./*[1]")).getText();
+							facilities = placeElements.get(j).getText();
+							System.out.println("facilities:" + facilities);
+						}
 					}
+	
+				} catch (Exception e) {
+					System.out.println("그딴건 없어");
+	
 				}
-
-			} catch (Exception e) {
-				System.out.println("그딴건 없어");
-
+	
 			}
-
+	
+			// 리뷰 갯수 가져오기
+			url = "https://travel.naver.com/overseas/GRATN6691018/poi/review/ta";
+			driver.get(url);
+	
+			String reviewCount = null;
+	
+			try {
+				WebElement reviewCountElement = driver.findElement(By.className("review_participant__lhOeG"));
+				reviewCount = reviewCountElement.getText();
+			} catch (Exception ex) {
+				reviewCount = null;
+			}
+	
+			String placeInsertSql = "INSERT INTO recommendSpot (regDate, updateDate, groceryName, address, phoneNumber,facilities,grade,imageUrl1,imageUrl2,imageUrl3,imageUrl4,imageUrl5,reviewCount, naverSpotCord, tabId, regionId,price) VALUES (NOW(), NOW(), ?, ?, ? ,?, ?, ?,?,?,?,?,?,?,?,?,?)";
+			// 크롤링이 끝난 후에는 WebDriver를 종료
+			// driver.quit();
+			PlaceInfoDto place = new PlaceInfoDto(name, address, phoneNum, facilities, grade, imgUrl1,
+					imgUrl2, imgUrl3, imgUrl4, imgUrl5, reviewCount,price);
+	
+			PreparedStatement pstmt = conn.prepareStatement(placeInsertSql, PreparedStatement.RETURN_GENERATED_KEYS);
+			pstmt.setString(1, place.getName());
+			pstmt.setString(2, place.getAddress());
+			//pstmt.setString(3, place.getOperatingTime());
+			pstmt.setString(3, place.getPhoneNum());
+			pstmt.setString(4, place.getFacilities());
+			pstmt.setString(5, place.getGrade());
+			pstmt.setString(6, place.getImgUrl1());
+			pstmt.setString(7, place.getImgUrl2());
+			pstmt.setString(8, place.getImgUrl3());
+			pstmt.setString(9, place.getImgUrl4());
+			pstmt.setString(10, place.getImgUrl5());
+			pstmt.setString(11, place.getReviewCount());
+			pstmt.setString(12, placeInfo.getNaverSpotCord());
+			pstmt.setInt(13, placeInfo.getTabId());
+			pstmt.setInt(14, placeInfo.getRegionId());
+			pstmt.setString(15, place.getPrice());
+	
+	
+			pstmt.executeUpdate();
+			ResultSet rs = pstmt.getGeneratedKeys();
+			rs.next();
+	
+			pstmt.close();
 		}
-
-		// 리뷰 갯수 가져오기
-		url = "https://travel.naver.com/overseas/GRATN6691018/poi/review/ta";
-		driver.get(url);
-
-		String reviewCount = null;
-
-		try {
-			WebElement reviewCountElement = driver.findElement(By.className("review_participant__lhOeG"));
-			reviewCount = reviewCountElement.getText();
-		} catch (Exception ex) {
-			reviewCount = null;
-		}
-
-		String placeInsertSql = "INSERT INTO recommendSpot (regDate, updateDate, groceryName, address,operatingTime,phoneNumber,facilities,grade,imageUrl1,imageUrl2,imageUrl3,imageUrl4,imageUrl5,reviewCount, naverSpotCord, tabId, regionId,price) VALUES (NOW(), NOW(), ?, ?, ? ,?, ?, ?,?,?,?,?,?,?,?,?,?,?)";
-		// 크롤링이 끝난 후에는 WebDriver를 종료
-		// driver.quit();
-		PlaceInfoDto place = new PlaceInfoDto(name, address, phoneNum, facilities, operatingTime, grade, imgUrl1,
-				imgUrl2, imgUrl3, imgUrl4, imgUrl5, reviewCount,price);
-
-		url = "jdbc:mysql://127.0.0.1:3306/Trip_Angle_24_04?useUnicode=true&characterEncoding=utf8&autoReconnect=true&serverTimezone=Asia/Seoul&useOldAliasMetadataBehavior=true&zeroDateTimeBehavior=convertToNull";
-		Connection conn = DriverManager.getConnection(url, "root", "");
-		conn.setAutoCommit(false);
-		conn.prepareStatement(url);
-
-		PreparedStatement pstmt = conn.prepareStatement(placeInsertSql, PreparedStatement.RETURN_GENERATED_KEYS);
-		pstmt.setString(1, place.getName());
-		pstmt.setString(2, place.getAddress());
-		pstmt.setString(3, place.getOperatingTime());
-		pstmt.setString(4, place.getPhoneNum());
-		pstmt.setString(5, place.getFacilities());
-		pstmt.setString(6, place.getGrade());
-		pstmt.setString(7, place.getImgUrl1());
-		pstmt.setString(8, place.getImgUrl2());
-		pstmt.setString(9, place.getImgUrl3());
-		pstmt.setString(10, place.getImgUrl4());
-		pstmt.setString(11, place.getImgUrl5());
-		pstmt.setString(12, place.getReviewCount());
-		pstmt.setString(13, "임시");
-		pstmt.setInt(14, 1);
-		pstmt.setInt(15, 1);
-		pstmt.setInt(16, 0);
-
-
-		pstmt.executeUpdate();
-		ResultSet rs = pstmt.getGeneratedKeys();
-		rs.next();
-
-		pstmt.close();
 
 		conn.commit();
 		conn.close();
 		driver.close();
-		
-		System.out.println(place.toString());
 
 	}
 
 	public static void main(String[] args)
 			throws InterruptedException, AWTException, SQLException, ClassNotFoundException {
-		crawlPlaces();
+		//crawlPlaces();
 	}
 }

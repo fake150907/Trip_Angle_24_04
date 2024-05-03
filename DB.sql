@@ -128,10 +128,10 @@ CREATE TABLE `region` (
 	`id`	INT(10)	NOT NULL,
 	`regDate`	DATETIME	NULL,
 	`updateDate`	DATETIME	NULL,
-	`name`	VARCHAR(30)	NULL,
+	`name`	VARCHAR(50)	NULL,
 	`naverRegionCord`	CHAR(20)	NULL,
 	`imageUrl`	TEXT	NULL,
-	`englishName`	VARCHAR(30)	NULL,
+	`englishName`	TEXT	NULL,
 	`countryId`	INT(10)	UNSIGNED NOT NULL
 );
 
@@ -147,8 +147,9 @@ CREATE TABLE `recommendRegion` (
 
 CREATE TABLE `tabList` (
 	`id`	INT(10)	NOT NULL	COMMENT '테마별 추천 장소 리스트 id',
-	`themeName`	CHAR(50)	NULL	COMMENT '테마명',
-	`themeBody`	CHAR(100)	NULL	COMMENT '테마별 설명'
+	`regDate`	DATETIME	NULL,
+	`updateDate`	DATETIME	NULL,
+	`themeName`	CHAR(50)	NULL	COMMENT '테마명'
 );
 
 CREATE TABLE `recommendSpot` (
@@ -161,7 +162,7 @@ CREATE TABLE `recommendSpot` (
 	`reviewCount`	CHAR(100)	NULL	COMMENT '리뷰 갯수',
 	`facilities` CHAR(100)	NULL	COMMENT '시설 정보',
 	`address`	CHAR(100)	NULL	COMMENT '주소',
-	`operatingTime`	CHAR(100)	NULL	COMMENT '운영 시간',
+	##`operatingTime`	CHAR(100)	NULL	COMMENT '운영 시간',
 	`phoneNumber`	CHAR(100)	NULL	COMMENT '전화번호',
 	`imageUrl1`	TEXT	NULL,
 	`imageUrl2`	TEXT	NULL,
@@ -659,3 +660,13 @@ SELECT *
 	FROM board
 	WHERE id = 1
 	AND delStatus = 0;
+
+INSERT INTO `tabList` (regDate, updateDate, themeName) VALUES(
+	NOW(),NOW(),'관광'
+);
+INSERT INTO `tabList` (regDate, updateDate, themeName) VALUES(
+	NOW(),NOW(),'맛집'
+);
+INSERT INTO `tabList` (regDate, updateDate, themeName) VALUES(
+	NOW(),NOW(),'쇼핑'
+);
