@@ -327,9 +327,12 @@ transform: translateY(-20px);
   top: 120%;
   left: 0%;
   max-height: 230px;
-  overflow: scroll;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  
+/*   -ms-overflow-style: none; */
+/*   scrollbar-width: none; */
+
 }
 
 @media (max-width: 991px) {
@@ -340,6 +343,20 @@ transform: translateY(-20px);
     align-items: center; /* 세로 가운데 정렬 */
   }
 }
+
+
+.search-list::-webkit-scrollbar {
+  width: 20px;
+}
+ 
+.search-list::-webkit-scrollbar-thumb {
+  background: #ddd; 
+}
+
+.search-list::-webkit-scrollbar-track {
+  background: #666; 
+}
+
 
 .search-item {
   width: 100%;
@@ -871,7 +888,7 @@ transform: translateY(-20px);
 						</div>
 						<div class="search-area">
 							<div class="search-box">
-								<input type="text" class="search-input" style="border: none;" placeholder="떠나고 싶은 여행지를 알려주세요!">
+								<input type="text" class="search-input" style="border: none;" placeholder="떠나고 싶은 여행지를 알려주세요!" >
 								<a href="/" class="search-btn">
 									<img
 										src="https://cdn.builder.io/api/v1/image/assets/TEMP/9d1bcbb2b727b63e8a9b71f8ed09c2fbb0673fbc7961acc79bf133cb2367d88c?apiKey=725f06f0daeb4ab382150ea4b4cf3550&"
@@ -883,14 +900,14 @@ transform: translateY(-20px);
 							
 							<div class="search-list">
 							
-							  <c:forEach var="region" items="${regions }">
-					              <div class="search-item">
-					                <div class="country-region-name">
-					                  <p class="country-name">${region.name }</p>
-					                  <p class="region-name">${region.extra__countryName }</p>
-					                </div>
-					              </div>
-				              </c:forEach>
+<%-- 							  <c:forEach var="region" items="${regions }"> --%>
+<!-- 					              <div class="search-item"> -->
+<!-- 					                <div class="country-region-name"> -->
+<%-- 					                  <p class="country-name">${region.name }</p> --%>
+<%-- 					                  <p class="region-name">${region.extra__countryName }</p> --%>
+<!-- 					                </div> -->
+<!-- 					              </div> -->
+<%-- 				              </c:forEach> --%>
 				              
 				           </div>
               
@@ -1171,6 +1188,141 @@ transform: translateY(-20px);
 		}
 	});
 	
+	</script>
+	
+	<script>
+	let isFocused = false;
+
+	
+
+	// Wait for the document to finish loading
+	document.addEventListener("DOMContentLoaded", function() {
+	    // Set up the interval to trigger the event listener every 0.2 seconds
+	        let searchInput = document.querySelector('.search-input');
+	        searchInput.addEventListener("keyup", showSearchList);
+	        
+	        searchInput.addEventListener("focus", () => {
+	            if (!isFocused) {
+	                showSearchList();
+	            }
+	            isFocused = true;
+	        });
+	        
+	        searchInput.addEventListener("blur", () => {
+	            isFocused = false;
+	            let searchListElement = document.querySelector('.search-list');
+	            searchListElement.innerHTML = '';
+	        });
+
+	});
+
+
+	
+	
+	var regionsJson = <%= request.getAttribute("regionsJson") %>;
+	console.log(regionsJson);
+	
+	
+	function showSearchList(){
+		
+		let regionsJsonCopy = [];
+		let searchInputValue = document.querySelector('.search-input').value;
+		// Select all elements with the class "search-list"
+		let searchListElement = document.querySelector('.search-list');
+
+		
+		
+		
+		
+		
+		if(!searchInputValue){
+			regionsJsonCopy = deepCopyArrayOfObjects(regionsJson);
+		}else{
+			regionsJson.forEach(region => {
+			    // region의 name이나 extra__countryName이 검색어로 시작하는지 확인
+			    if (region.name.startsWith(searchInputValue) || region.extra__countryName.startsWith(searchInputValue)) {
+			        // 시작하는 경우 matchedRegions 배열에 추가
+			        regionsJsonCopy.push(region);
+			    }
+			});
+
+		}
+
+		console.log(regionsJsonCopy);
+		
+		// Loop through each selected element and remove them
+		searchListElement.innerHTML = '';
+		
+		regionsJsonCopy.forEach(region => {
+			// search-item을 담을 div 요소 생성
+			var searchItemDiv = document.createElement("div");
+			searchItemDiv.classList.add("search-item");
+
+			// country-region-name을 담을 div 요소 생성
+			var countryRegionNameDiv = document.createElement("div");
+			countryRegionNameDiv.classList.add("country-region-name");
+
+			// country-name을 담을 p 요소 생성
+			var countryNameP = document.createElement("p");
+			countryNameP.classList.add("country-name");
+			countryNameP.textContent = region.name; // region.name 값 설정
+
+			// region-name을 담을 p 요소 생성
+			var regionNameP = document.createElement("p");
+			regionNameP.classList.add("region-name");
+			regionNameP.textContent = region.extra__countryName; // region.extra__countryName 값 설정
+
+			// country-name과 region-name을 country-region-name에 추가
+			countryRegionNameDiv.appendChild(countryNameP);
+			countryRegionNameDiv.appendChild(regionNameP);
+
+			// country-region-name을 search-item에 추가
+			searchItemDiv.appendChild(countryRegionNameDiv);
+
+			// search-item을 부모 요소에 추가
+			searchListElement.appendChild(searchItemDiv);
+		})
+		
+		
+		
+	}
+
+	
+	function deepCopyArrayOfObjects(arr) {
+	    var copy = [];
+
+	    for (var i = 0; i < arr.length; i++) {
+	        // Check if the element is an object or array
+	        if (typeof arr[i] === 'object' && arr[i] !== null) {
+	            // If it's an object, deep copy it
+	            copy[i] = deepCopyObject(arr[i]);
+	        } else {
+	            // If it's a primitive type, directly assign the value
+	            copy[i] = arr[i];
+	        }
+	    }
+
+	    return copy;
+	}
+
+	function deepCopyObject(obj) {
+	    var copy = {};
+
+	    for (var key in obj) {
+	        if (obj.hasOwnProperty(key)) {
+	            // Check if the property is an object or array
+	            if (typeof obj[key] === 'object' && obj[key] !== null) {
+	                // If it's an object, deep copy it
+	                copy[key] = deepCopyObject(obj[key]);
+	            } else {
+	                // If it's a primitive type, directly assign the value
+	                copy[key] = obj[key];
+	            }
+	        }
+	    }
+
+	    return copy;
+	}
 
 </script>
 
