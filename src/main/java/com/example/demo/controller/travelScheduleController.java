@@ -4,7 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class travelScheduleConteroller {
+public class travelScheduleController {
 
 	@RequestMapping("/usr/schedule/travelSchedule")
 	public String showMyPlanList() {

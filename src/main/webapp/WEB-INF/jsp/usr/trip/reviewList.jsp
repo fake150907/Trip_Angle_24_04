@@ -17,8 +17,9 @@
 	justify-content: center; /* Horizontally center the container */
 	flex-wrap: wrap;
 	/* Allow items to wrap if they exceed container width */
-	margin-top: 150px;
-	margin-right: 110px;
+	margin-top: 180px;
+	margin-right: 20px;
+	border: 1px solid red;
 }
 
 .trip-review-box {
@@ -159,10 +160,10 @@
 	width: 200px;
 	height: 53px;
 	margin-top: 100px;
-	margin-left: 20px;
+	margin-left: 150px;
 	position: relative;
 	display: flex;
-	position: relative /* Added position relative */
+	border: 1px solid pink;
 }
 
 @media ( max-width : 991px) {
@@ -176,7 +177,7 @@
 	width: 215.60px;
 	height: 53px;
 	text-align: center;
-	color: #959595;
+	color: black;
 	font-size: 19.38px;
 	font-family: Inter;
 	font-weight: bold;
@@ -187,22 +188,13 @@
 
 .TabContent1::after {
 	content: "";
-	width: 0;
+	width: 200px;
 	height: 3px;
 	position: absolute;
 	bottom: 0;
 	left: 50%;
 	transform: translateX(-50%); /* Center the bar */
 	background-color: #D5F1E2;
-	transition: width 0.3s ease; /* Added transition properties */
-}
-
-.InfoLabel1:hover .TabContent1::after {
-	width: 100%;
-}
-
-.InfoLabel1:hover .TabContent1 {
-	color: black;
 }
 </style>
 <div class="trip-review-list-page">

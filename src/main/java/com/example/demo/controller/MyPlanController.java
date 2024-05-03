@@ -25,5 +25,12 @@ public class MyPlanController {
 
 		return "/usr/myPlan/myPlanDetail";
 	}
+	@RequestMapping("/usr/myPlan/myPlanCalendar")
+	public String showCalendar() {
+		
+		return "/usr/myPlan/myPlanCalendar";
+	}
+	
+	
 
 }

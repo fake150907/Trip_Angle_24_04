@@ -8,9 +8,6 @@
 
 
 <style>
-
-
-
 .my-plan-detail {
 	width: 70%;
 	display: flex;
