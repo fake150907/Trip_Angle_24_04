@@ -35,7 +35,7 @@ public class PlaceInfoCrawler {
 
 		driver.manage().window().maximize();
 
-		url = "https://travel.naver.com/overseas/GRATN3178955/poi/summary";
+		url = "https://travel.naver.com/overseas/GRATN4126654/poi/summary";
 		driver.get(url);
 
 		Thread.sleep(3000);
@@ -47,15 +47,15 @@ public class PlaceInfoCrawler {
 //			WebElement button = driver.findElement(By.className("home_expand__xUbeG"));
 //
 //			button.click();
-////			List<WebElement> elements = driver.findElements(By.xpath("//p"));
+//			List<WebElement> elements = driver.findElements(By.xpath("//p"));
 //			WebElement element = driver.findElement(By.className("home_times__GoPm9"));
-////			StringBuilder operatingTimeBuilder = new StringBuilder();
-////			for (int j = 0; j < elements.size(); j++) {
-////				String DATETIME = elements.get(j).getText();
-////				String temp = DATETIME + "; ";
-////				operatingTimeBuilder.append(temp);
-////			}
-////			operatingTime = operatingTimeBuilder.toString();
+//			StringBuilder operatingTimeBuilder = new StringBuilder();
+//			for (int j = 0; j < elements.size(); j++) {
+//				String DATETIME = elements.get(j).getText();
+//				String temp = DATETIME + "; ";
+//				operatingTimeBuilder.append(temp);
+//			}
+//			operatingTime = operatingTimeBuilder.toString();
 //			operatingTime = element.getText();
 //
 //		} catch (Exception ex) {
@@ -125,8 +125,7 @@ public class PlaceInfoCrawler {
 		String address = "";
 		// 유적지 가격
 		String price = "";
-		// 시간
-		String operatingTime = "";
+
 		// 시설 정보
 		String facilities = "";
 		// 번호
@@ -159,7 +158,7 @@ public class PlaceInfoCrawler {
 					} else if (placeNameElements.get(j).getText().equals("가격")) {
 
 						WebElement priceElement = driver.findElement(By.className("home_menu__FtSCQ"));
-
+						
 						price = priceElement.getText();
 						System.out.println("price:" + price);
 
@@ -196,11 +195,11 @@ public class PlaceInfoCrawler {
 			reviewCount = null;
 		}
 
-		String placeInsertSql = "INSERT INTO recommendSpot (regDate, updateDate, groceryName, address,operatingTime,phoneNumber,facilities,grade,imageUrl1,imageUrl2,imageUrl3,imageUrl4,imageUrl5,reviewCount,price) VALUES (NOW(), NOW(), ?, ?, ? ,?, ?, ?,?,?,?,?,?,?,?)";
+		String placeInsertSql = "INSERT INTO recommendSpot (regDate, updateDate, groceryName, address,phoneNumber,facilities,grade,imageUrl1,imageUrl2,imageUrl3,imageUrl4,imageUrl5,reviewCount,price) VALUES (NOW(), NOW(), ?, ?, ? ,?, ?, ?,?,?,?,?,?,?)";
 		// 크롤링이 끝난 후에는 WebDriver를 종료
 		// driver.quit();
-		PlaceInfoDto place = new PlaceInfoDto(name, address, phoneNum, facilities, operatingTime, grade, imgUrl1,
-				imgUrl2, imgUrl3, imgUrl4, imgUrl5, reviewCount, price);
+		PlaceInfoDto place = new PlaceInfoDto(name, address, phoneNum, facilities, grade, imgUrl1,
+				imgUrl2, imgUrl3, imgUrl4, imgUrl5, reviewCount,price);
 
 		url = "jdbc:mysql://127.0.0.1:3306/Trip_Angle_24_04?useUnicode=true&characterEncoding=utf8&autoReconnect=true&serverTimezone=Asia/Seoul&useOldAliasMetadataBehavior=true&zeroDateTimeBehavior=convertToNull";
 		Connection conn = DriverManager.getConnection(url, "root", "");
@@ -210,17 +209,16 @@ public class PlaceInfoCrawler {
 		PreparedStatement pstmt = conn.prepareStatement(placeInsertSql, PreparedStatement.RETURN_GENERATED_KEYS);
 		pstmt.setString(1, place.getName());
 		pstmt.setString(2, place.getAddress());
-		pstmt.setString(3, place.getOperatingTime());
-		pstmt.setString(4, place.getPhoneNum());
-		pstmt.setString(5, place.getFacilities());
-		pstmt.setString(6, place.getGrade());
-		pstmt.setString(7, place.getImgUrl1());
-		pstmt.setString(8, place.getImgUrl2());
-		pstmt.setString(9, place.getImgUrl3());
-		pstmt.setString(10, place.getImgUrl4());
-		pstmt.setString(11, place.getImgUrl5());
-		pstmt.setString(12, place.getReviewCount());
-		pstmt.setString(13, place.getPrice());
+		pstmt.setString(3, place.getPhoneNum());
+		pstmt.setString(4, place.getFacilities());
+		pstmt.setString(5, place.getGrade());
+		pstmt.setString(6, place.getImgUrl1());
+		pstmt.setString(7, place.getImgUrl2());
+		pstmt.setString(8, place.getImgUrl3());
+		pstmt.setString(9, place.getImgUrl4());
+		pstmt.setString(10, place.getImgUrl5());
+		pstmt.setString(11, place.getReviewCount());
+		pstmt.setString(12, place.getPrice());
 
 		pstmt.executeUpdate();
 		ResultSet rs = pstmt.getGeneratedKeys();
