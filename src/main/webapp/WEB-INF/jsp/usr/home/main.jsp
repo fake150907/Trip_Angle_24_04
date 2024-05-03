@@ -274,29 +274,116 @@ transform: translateY(-20px);
 	}
 }
 
-.search-box {
-	justify-content: flex-end;
-	border-radius: 50px;
-	background-color: white;
-	display: flex;
-	gap: 20px;
-	align-self: stretch;
-	font-size: 16px;
-	color: #3b3d40;
-	font-weight: 600;
-	width: 100%;
-	margin: auto 0;
-	padding: 12px 38px;
+
+.search-area {
+  display: flex;
+  flex-direction: column;
+  line-height: normal;
+  width: 39%;
+  margin-right: 85px;
+  position: relative;
 }
 
-@media ( max-width : 991px) {
-	.search-box {
-		margin-top: 40px;
-		padding: 0 20px;
-		display: flex;
-		justify-content: center; /* 가로 가운데 정렬 */
-		align-items: center; /* 세로 가운데 정렬 */
-	}
+/* 미디어 쿼리를 사용하여 화면 크기가 작을 때 가운데 정렬 */
+@media (max-width: 991px) {
+  .search-area {
+    width: 100%; /* 너비를 100%로 설정하여 가로로 채웁니다. */
+    display: flex;
+    justify-content: center; /* 수평 가운데 정렬 */
+  }
+}
+
+@media (max-width: 991px , min-width : 200px) {
+  .column-2 {
+    width: 100%;
+  }
+}
+
+.search-box {
+  justify-content: flex-end;
+  border-radius: 50px;
+  background-color: white;
+  display: flex;
+  gap: 20px;
+  align-self: stretch;
+  font-size: 16px;
+  color: #3b3d40;
+  font-weight: 600;
+  width: 100%;
+  margin: auto 0;
+  padding: 12px 38px;
+}
+
+.search-list {
+  display: flex;
+  flex-direction: column;
+  align-self: stretch;
+  font-size: 16px;
+
+  font-weight: 600;
+  width: 100%;
+
+  position: absolute;
+  top: 120%;
+  left: 0%;
+  max-height: 230px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  
+/*   -ms-overflow-style: none; */
+/*   scrollbar-width: none; */
+
+}
+
+@media (max-width: 991px) {
+  .search-box {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center; /* 가로 가운데 정렬 */
+    align-items: center; /* 세로 가운데 정렬 */
+  }
+}
+
+
+.search-list::-webkit-scrollbar {
+  width: 20px;
+}
+ 
+.search-list::-webkit-scrollbar-thumb {
+  background: #ddd; 
+}
+
+.search-list::-webkit-scrollbar-track {
+  background: #666; 
+}
+
+
+.search-item {
+  width: 100%;
+  opacity: 0.8;
+  cursor: pointer;
+  background-color: white;
+  transition-duration: 0.5s;
+}
+
+.search-item:hover {
+  background-color: #d5f1e2;
+  opacity: 1;
+}
+
+.country-region-name {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-items: center;
+  padding: 5px 10px;
+}
+.country-name {
+  font-weight: 900;
+}
+.region-name {
+  font-weight: 200;
+  margin-top: -1px;
 }
 
 .search-input {
@@ -801,13 +888,30 @@ transform: translateY(-20px);
 						</div>
 						<div class="search-area">
 							<div class="search-box">
-								<input type="text" class="search-input" style="border: none;" placeholder="떠나고 싶은 여행지를 알려주세요!">
+								<input type="text" class="search-input" style="border: none;" placeholder="떠나고 싶은 여행지를 알려주세요!" >
 								<a href="/" class="search-btn">
 									<img
 										src="https://cdn.builder.io/api/v1/image/assets/TEMP/9d1bcbb2b727b63e8a9b71f8ed09c2fbb0673fbc7961acc79bf133cb2367d88c?apiKey=725f06f0daeb4ab382150ea4b4cf3550&"
 										alt="검색">
 								</a>
 							</div>
+							
+							
+							
+							<div class="search-list">
+							
+<%-- 							  <c:forEach var="region" items="${regions }"> --%>
+<!-- 					              <div class="search-item"> -->
+<!-- 					                <div class="country-region-name"> -->
+<%-- 					                  <p class="country-name">${region.name }</p> --%>
+<%-- 					                  <p class="region-name">${region.extra__countryName }</p> --%>
+<!-- 					                </div> -->
+<!-- 					              </div> -->
+<%-- 				              </c:forEach> --%>
+				              
+				           </div>
+              
+              
 						</div>
 					</div>
 				</div>
@@ -1065,6 +1169,7 @@ transform: translateY(-20px);
             }
         });
     });
+    
 </script>
 
 
@@ -1082,6 +1187,143 @@ transform: translateY(-20px);
 			header.style.backgroundColor = 'transparent'; // 헤더의 배경색을 투명으로 변경
 		}
 	});
+	
+	</script>
+	
+	<script>
+	let isFocused = false;
+
+	
+
+	// Wait for the document to finish loading
+	document.addEventListener("DOMContentLoaded", function() {
+	    // Set up the interval to trigger the event listener every 0.2 seconds
+	        let searchInput = document.querySelector('.search-input');
+	        searchInput.addEventListener("keyup", showSearchList);
+	        
+	        searchInput.addEventListener("focus", () => {
+	            if (!isFocused) {
+	                showSearchList();
+	            }
+	            isFocused = true;
+	        });
+	        
+	        searchInput.addEventListener("blur", () => {
+	            isFocused = false;
+	            let searchListElement = document.querySelector('.search-list');
+	            searchListElement.innerHTML = '';
+	        });
+
+	});
+
+
+	
+	
+	var regionsJson = <%= request.getAttribute("regionsJson") %>;
+	console.log(regionsJson);
+	
+	
+	function showSearchList(){
+		
+		let regionsJsonCopy = [];
+		let searchInputValue = document.querySelector('.search-input').value;
+		// Select all elements with the class "search-list"
+		let searchListElement = document.querySelector('.search-list');
+
+		
+		
+		
+		
+		
+		if(!searchInputValue){
+			regionsJsonCopy = deepCopyArrayOfObjects(regionsJson);
+		}else{
+			regionsJson.forEach(region => {
+			    // region의 name이나 extra__countryName이 검색어로 시작하는지 확인
+			    if (region.name.startsWith(searchInputValue) || region.extra__countryName.startsWith(searchInputValue)) {
+			        // 시작하는 경우 matchedRegions 배열에 추가
+			        regionsJsonCopy.push(region);
+			    }
+			});
+
+		}
+
+		console.log(regionsJsonCopy);
+		
+		// Loop through each selected element and remove them
+		searchListElement.innerHTML = '';
+		
+		regionsJsonCopy.forEach(region => {
+			// search-item을 담을 div 요소 생성
+			var searchItemDiv = document.createElement("div");
+			searchItemDiv.classList.add("search-item");
+
+			// country-region-name을 담을 div 요소 생성
+			var countryRegionNameDiv = document.createElement("div");
+			countryRegionNameDiv.classList.add("country-region-name");
+
+			// country-name을 담을 p 요소 생성
+			var countryNameP = document.createElement("p");
+			countryNameP.classList.add("country-name");
+			countryNameP.textContent = region.name; // region.name 값 설정
+
+			// region-name을 담을 p 요소 생성
+			var regionNameP = document.createElement("p");
+			regionNameP.classList.add("region-name");
+			regionNameP.textContent = region.extra__countryName; // region.extra__countryName 값 설정
+
+			// country-name과 region-name을 country-region-name에 추가
+			countryRegionNameDiv.appendChild(countryNameP);
+			countryRegionNameDiv.appendChild(regionNameP);
+
+			// country-region-name을 search-item에 추가
+			searchItemDiv.appendChild(countryRegionNameDiv);
+
+			// search-item을 부모 요소에 추가
+			searchListElement.appendChild(searchItemDiv);
+		})
+		
+		
+		
+	}
+
+	
+	function deepCopyArrayOfObjects(arr) {
+	    var copy = [];
+
+	    for (var i = 0; i < arr.length; i++) {
+	        // Check if the element is an object or array
+	        if (typeof arr[i] === 'object' && arr[i] !== null) {
+	            // If it's an object, deep copy it
+	            copy[i] = deepCopyObject(arr[i]);
+	        } else {
+	            // If it's a primitive type, directly assign the value
+	            copy[i] = arr[i];
+	        }
+	    }
+
+	    return copy;
+	}
+
+	function deepCopyObject(obj) {
+	    var copy = {};
+
+	    for (var key in obj) {
+	        if (obj.hasOwnProperty(key)) {
+	            // Check if the property is an object or array
+	            if (typeof obj[key] === 'object' && obj[key] !== null) {
+	                // If it's an object, deep copy it
+	                copy[key] = deepCopyObject(obj[key]);
+	            } else {
+	                // If it's a primitive type, directly assign the value
+	                copy[key] = obj[key];
+	            }
+	        }
+	    }
+
+	    return copy;
+	}
+
 </script>
 
 
