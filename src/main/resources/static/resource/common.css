@@ -36,12 +36,13 @@
 	font-family: 'LotteMartDream', sans-serif;
 }
 
-
 @font-face {
-    font-family: 'Pretendard-Regular';
-    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
-    font-weight: 400;
-    font-style: normal;
+	font-family: 'Pretendard-Regular';
+	src:
+		url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff')
+		format('woff');
+	font-weight: 400;
+	font-style: normal;
 }
 
 /* @font-face { */
@@ -50,7 +51,6 @@
 /*     font-weight: normal; */
 /*     font-style: normal; */
 /* } */
-
 html>body {
 	font-family: 'Pretendard-Regular', sans-serif;
 }
@@ -75,8 +75,6 @@ header>div>ul>li {
 	margin-right: 30px;
 }
 
-
-
 /* 테이블 */
 .table-box-1 th, .table-box-1 td {
 	border: 1px solid rgb(192, 192, 192)(28, 128, 128);
@@ -88,8 +86,6 @@ header>div>ul>li {
 
 /* 기본 네비게이션 2차 메뉴 스타일 */
 header>div>ul>li>ul {
-    display: none;
-    position: absolute;
+	display: none;
+	position: absolute;
 }
-
-

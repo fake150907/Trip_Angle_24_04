@@ -345,7 +345,7 @@
 				<div class="airPlane-ticketing-box">
 					<div class="airPlane-ticketing-text">항공권 예매하러 가기</div>
 					<div class="airPlane-ticketing-explain">보다 편리하게 항공권을 예매해보세요.</div>
-					<a href="https://www.skyscanner.co.kr/"> <img
+					<a href="https://www.skyscanner.co.kr/" target='_blank'> <img
 						srcset="https://velog.velcdn.com/images/fake150907/post/de0e3a94-e894-415d-bc02-e8991022efec/image.png"
 						class="airPlane-ticketing-img" /></a>
 				</div>
@@ -359,7 +359,7 @@
 				<div class="lodging-ticketing-box">
 					<div class="lodging-ticketing-text">숙소 예약하러 가기</div>
 					<div class="lodging-ticketing-explain">합리적인 가격의 멋진 숙소를 찾아보세요.</div>
-					<a
+					<a target='_blank'
 						href="https://www.booking.com/index.ko.html?aid=2311236;label=ko-kr-booking-desktop-7KDVySvzJqtRopnHc_axVAS652828999093:pl:ta:p1:p2:ac:ap:neg:fi:tikwd-334108349:lp1009880:li:dec:dm;ws=&gad_source=1&gclid=Cj0KCQjwir2xBhC_ARIsAMTXk851OkKTozqKLKBn2CduqfiAzzMhRoI8da_8l0kDXRKPYUqW8ckkhOwaAl_iEALw_wcB">
 						<img
 						src="https://velog.velcdn.com/images/fake150907/post/9b5995ca-7aa4-414a-bbf3-c550862846cf/image.png"
