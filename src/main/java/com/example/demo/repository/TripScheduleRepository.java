@@ -4,23 +4,23 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
-import com.example.demo.vo.TravelSchedule;
+import com.example.demo.vo.TripSchedule;
 import com.example.demo.vo.regionInfoTips;
 
 @Mapper
-public interface TravelScheduleRepository {
+public interface TripScheduleRepository {
 
 
 	@Select("""
 				SELECT TR.*, RE.name AS 'extra__regionName', RE.imageUrl AS 'extra__regionImageUrl', RE.englishName AS 'extra__regionEnglishName', CO.name AS 'extra__contryName' 
-				FROM TRAVELSCHEDULE TR INNER JOIN REGION RE ON TR.regionId = RE.id 
+				FROM TRIPSCHEDULE TR INNER JOIN REGION RE ON TR.regionId = RE.id 
 				INNER JOIN COUNTRY CO ON RE.countryId = CO.id
 				WHERE TR.id = #{id}
 			""")
-	public TravelSchedule getTravelScheduleById(int id);
+	public TripSchedule getTripScheduleById(int id);
 
 	@Insert("""
-				INSERT INTO travelSchedule
+				INSERT INTO tripSchedule
 				SET regDate = NOW(),
 				updateDate = NOW(),
 				`name` = #{title},
@@ -30,7 +30,7 @@ public interface TravelScheduleRepository {
 				regionId = #{regionId},
 				memberId = #{loginedMemberId}
 		""")
-	public void insertTravelSchedule(String title, String content, String checkInDate, String checkOutDate,
+	public void insertTripSchedule(String title, String content, String checkInDate, String checkOutDate,
 			int loginedMemberId, int regionId);
 
 }
