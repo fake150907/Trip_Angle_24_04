@@ -1,14 +1,13 @@
 package com.example.demo.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.example.demo.service.RegionInfoTipsService;
 import com.example.demo.service.TripScheduleService;
-import com.example.demo.vo.ResultData;
+import com.example.demo.vo.RegionInfoTips;
 import com.example.demo.vo.TripSchedule;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -18,6 +17,9 @@ public class MyPlanController {
 
 	@Autowired
 	private TripScheduleService tripScheduleService;
+	
+	@Autowired
+	private RegionInfoTipsService regionInfoTipsService;
 
 	@RequestMapping("/usr/myPlan/myPlanList")
 	public String showMyPlanList() {
@@ -32,11 +34,16 @@ public class MyPlanController {
 	}
 
 	@RequestMapping("/usr/myPlan/myPlanDetail")
-	public String showPlanDetail(HttpServletRequest req, Model model, int id) {
+	public String showPlanDetail(HttpServletRequest req, Model model, int id, int regionId) {
 		
 		TripSchedule tripSchedule = tripScheduleService.getTripScheduleById(id);
 		
+		RegionInfoTips regionInfoTips = regionInfoTipsService.getRegionInfoTipsId(regionId);
+		
 		model.addAttribute("tripSchedule", tripSchedule);
+		model.addAttribute("regionInfoTips", regionInfoTips);
+		
+		System.out.println(regionInfoTips);
 
 		return "/usr/myPlan/myPlanDetail";
 	}

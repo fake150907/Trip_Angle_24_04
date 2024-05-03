@@ -333,7 +333,7 @@ $(document).ready(function() {
 .temperature {
 	color: #3b3d40;
 	margin-top: 12px;
-	font: 600 20px/140% Pretendard, sans-serif;
+	font: 600 14px/140% Pretendard, sans-serif;
 }
 
 .honey-tip2 {
@@ -389,7 +389,7 @@ $(document).ready(function() {
 .explanation {
 	color: #3b3d40;
 	margin-top: 9px;
-	font: 500 14px/17px Pretendard, sans-serif;
+	font: 600 14px/17px Pretendard, sans-serif;
 }
 
 /* 날씨 섹션 */
@@ -415,11 +415,6 @@ $(document).ready(function() {
 	margin-top: 50px;
 }
 
-/* 	width: 80%; */
-/* 	display: flex; */
-/* 	justify-content: center; */
-/* 	margin: 0 auto; /* Add this to center the container itself */
-* /
 
 .recommendation-header {
 	display: flex;
@@ -1339,27 +1334,26 @@ section.ta-item-container.fashion-man, section.ta-item-container.fashion-women
 								꿀팁 </span>
 						</div>
 						<div class="language-tip">사용 언어</div>
-						<div class="language">일본어</div>
-						<div class="currency-tip">사용 화폐</div>
-						<div class="currency">가상화폐</div>
+						<div class="language">${regionInfoTips.language }</div>
+						<div class="currency-tip">환율</div>
+						<div class="currency">${regionInfoTips.rate }</div>
 						<div class="volt-tip">전압</div>
-						<div class="volt">피카츄 백만볼트</div>
+						<div class="volt">${regionInfoTips.voltage }</div>
 						<div class="temperature-tip">기후</div>
-						<div class="temperature">겁나더움</div>
+						<div class="temperature">${regionInfoTips.climate }</div>
 					</div>
 					<div class="honey-tip2">
-						<div class="transportation-tip">주요 대중교통</div>
-						<div class="transportation">전용기</div>
+						<div class="transportation-tip">팁</div>
+						<div class="transportation">${regionInfoTips.tips }</div>
 						<div class="timedifference-tip">시차</div>
-						<div class="timedifference">별로안남</div>
-						<div class="remark-tip">특이사항</div>
-						<div class="remark">일식 존맛</div>
+						<div class="timedifference">${regionInfoTips.timeDifference }</div>
+<!-- 						<div class="remark-tip">설명</div> -->
+<%-- 						<div class="remark">${regionInfoTips.information }</div> --%>
 
 					</div>
 				</div>
 				<div class="explanation-tip">설명</div>
-				<div class="explanation">나는 지금 당장 떠나고싶어 내일 학원은 안가고싶고 당장 여권챙기자
-					~ 안녕 나는 튀튀.. 는 뻥이고 지금 나는 피그마 구현중이고 너무 배고프고 졸리고 하하하하와이 ~~~~~ ...더보기</div>
+				<div class="explanation">${regionInfoTips.information }</div>
 			</div>
 		</div>
 	</div>

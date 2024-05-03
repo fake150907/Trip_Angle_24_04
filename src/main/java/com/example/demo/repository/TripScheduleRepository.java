@@ -5,7 +5,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
 import com.example.demo.vo.TripSchedule;
-import com.example.demo.vo.regionInfoTips;
+import com.example.demo.vo.RegionInfoTips;
 
 @Mapper
 public interface TripScheduleRepository {

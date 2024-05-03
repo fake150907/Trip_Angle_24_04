@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.service.RegionInfoTipsService;
-import com.example.demo.vo.regionInfoTips;
+import com.example.demo.vo.RegionInfoTips;
 
 @Controller
 public class RegionInfoTipsController {
@@ -18,7 +18,7 @@ public class RegionInfoTipsController {
 	@RequestMapping("/usr/regionInfoTips/infoTips")
 	public String showinformation(Model model, @RequestParam(defaultValue = "0") int regionId) {
 
-		regionInfoTips RegionInfoTips = regionInfoTipsService.getRegionInfoTipsId(regionId);
+		RegionInfoTips RegionInfoTips = regionInfoTipsService.getRegionInfoTipsId(regionId);
 		
 		model.addAttribute("RegionInfoTips", RegionInfoTips);
 
