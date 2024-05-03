@@ -54,8 +54,7 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Suranna&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap"
 	rel="stylesheet">
-<<<<<<< HEAD
-=======
+
 
 </head>
 
@@ -108,7 +107,6 @@
 	</header>
 </div>
 
->>>>>>> ec7d7594674981235d88ee7d104c2a949c0d20eb
 <style>
 /* 헤더가 고정 위치로 설정될 수 있도록 수정 */
 .header-container {

@@ -16,7 +16,7 @@ public class AllInitCrawler {
     	List<PlaceInfoDto> placeInfoList = null;
     	
     	try {
-			regionList = regionCrawling.crawling(100);
+			regionList = regionCrawling.crawling(2);
 			tabList = regionCrawling.getTabList();
 			
 			System.out.println("여행 국가 및 도시정보 입력");
