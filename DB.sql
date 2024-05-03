@@ -675,12 +675,14 @@ INSERT INTO `tabList` (regDate, updateDate, themeName) VALUES(
 ####20개 크롤링 insert문
 
 
+
 INSERT  INTO `country`(`id`,`regDate`,`updateDate`,`name`) VALUES 
 (1,'2024-05-03 17:22:37','2024-05-03 17:22:37','그리스'),
 (2,'2024-05-03 17:22:37','2024-05-03 17:22:37','네덜란드'),
 (3,'2024-05-03 17:22:37','2024-05-03 17:22:37','노르웨이'),
 (4,'2024-05-03 17:22:37','2024-05-03 17:22:37','덴마크'),
 (5,'2024-05-03 17:22:37','2024-05-03 17:22:37','독일');
+
 
 INSERT  INTO `recommendSpot`(`id`,`regDate`,`updateDate`,`groceryName`,`grade`,`price`,`reviewCount`,`facilities`,`address`,`phoneNumber`,`imageUrl1`,`imageUrl2`,`imageUrl3`,`imageUrl4`,`imageUrl5`,`naverSpotCord`,`tabId`,`regionId`) VALUES 
 (1,'2024-05-03 17:26:18','2024-05-03 17:26:18','리틀 베니스',5,'','참여 7,191명','','Mitropoleos Georgouli, Mykonos Town Greece','','https://search.pstatic.net/common?src=http%3A%2F%2Fmedia-cdn.tripadvisor.com%2Fmedia%2Fphoto-o%2F1b%2Fe0%2Fa0%2F0e%2Fphoto0jpg.jpg&type=f520_288_
@@ -956,6 +958,7 @@ search','https://search.pstatic.net/common?src=https%3A%2F%2Fdbscthumb-phinf.pst
 
 
 
+
 INSERT  INTO `region`(`id`,`regDate`,`updateDate`,`name`,`naverRegionCord`,`imageUrl`,`englishName`,`countryId`) VALUES 
 (1,'2024-05-03 17:22:37','2024-05-03 17:22:37','미코노스 섬','GRJMK189430','https://search.pstatic.net/common?src=https%3A%2F%2Fdbscthumb-phinf.pstatic.net%2F5885_000_12%2F20201229162821179_SUXE5C25W.jpg%2Ffb345_3_i1.jpg%3Ftype%3Dw540_fst&type=f520_288_travelsearch','Mykonos',1),
 (2,'2024-05-03 17:22:37','2024-05-03 17:22:37','산토리니','GRATN189433','https://search.pstatic.net/common?src=https%3A%2F%2Fdbscthumb-phinf.pstatic.net%2F5885_000_12%2F20201229162116699_Y15JPAMDG.jpg%2Ffb344_3_i1.jpg%3Ftype%3Dw540_fst&type=f520_288_travelsearch','Santorini',1),
@@ -977,6 +980,7 @@ INSERT  INTO `region`(`id`,`regDate`,`updateDate`,`name`,`naverRegionCord`,`imag
 (18,'2024-05-03 17:22:37','2024-05-03 17:22:37','드레스덴','DEDRS187399','https://search.pstatic.net/common?src=https%3A%2F%2Fdbscthumb-phinf.pstatic.net%2F5885_000_9%2F20201015131915040_F7AEEW474.jpg%2Ffb211_3_i1.jpg%3Ftype%3Dw540_fst&type=f520_288_travelsearch','Dresden',5),
 (19,'2024-05-03 17:22:37','2024-05-03 17:22:37','라이프치히','DELEJ187400','https://search.pstatic.net/common?src=https%3A%2F%2Fdbscthumb-phinf.pstatic.net%2F5885_000_9%2F20201015132232220_YHHZH7OYQ.jpg%2Ffb214_3_i1.jpg%3Ftype%3Dw540_fst&type=f520_288_travelsearch','Leipzig',5),
 (20,'2024-05-03 17:22:37','2024-05-03 17:22:37','로텐부르크 오프데어 타우버','DEROT187319','https://search.pstatic.net/common?src=https%3A%2F%2Fdbscthumb-phinf.pstatic.net%2F5885_000_8%2F20201015113800253_CZZTBI78X.jpg%2Ffb184_3_i1.jpg%3Ftype%3Dw540_fst&type=f520_288_travelsearch','Rothenburg',5);
+
 
 INSERT  INTO `regionInfoTips`(`id`,`information`,`Voltage`,`language`,`climate`,`timeDifference`,`rate`,`tips`,`regionId`) VALUES 
 (1,'그리스 신화의 아폴로의 손자 뮈코노스에서 기원한 섬','230 V','그리스어','초성수기 기간 전이나 후인 5~6월이나 9월 초에 여행을 계획하는 것을 추천한다.\n4월부터 점차 따뜻해지며, 여행성수기 5~9월의 평균 최고 기온은 26.8도로 여행하기 적당하다.','6시간 느림','1,463.73원','5~10%',1),
@@ -1012,4 +1016,5 @@ SELECT * FROM tripSchedule;
 
 
 SELECT * FROM regionInfoTips;
+
 
