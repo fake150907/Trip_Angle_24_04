@@ -5,7 +5,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
 import com.example.demo.vo.TripSchedule;
-import com.example.demo.vo.regionInfoTips;
+import com.example.demo.vo.RegionInfoTips;
 
 @Mapper
 public interface TripScheduleRepository {
@@ -18,13 +18,14 @@ public interface TripScheduleRepository {
 				WHERE TR.id = #{id}
 			""")
 	public TripSchedule getTripScheduleById(int id);
+	
 
 	@Insert("""
 				INSERT INTO tripSchedule
 				SET regDate = NOW(),
 				updateDate = NOW(),
-				`name` = #{title},
-				`description` = #{content},
+				`title` = #{title},
+				`content` = #{content},
 				startDate = #{checkInDate},
 				endDate = #{checkOutDate},
 				regionId = #{regionId},

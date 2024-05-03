@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.demo.repository.TripScheduleRepository;
 import com.example.demo.vo.TripSchedule;
-import com.example.demo.vo.regionInfoTips;
+import com.example.demo.vo.RegionInfoTips;
 
 @Service
 public class TripScheduleService {
