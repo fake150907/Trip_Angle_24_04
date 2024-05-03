@@ -110,6 +110,9 @@ public class RegionNameCrawler {
 					By.cssSelector("div.searchbox_home_panel__Kn11B > div.searchbox_home_PanelItem__fH6Nu > a"));
 			for (WebElement countryButton : countryButtons) {
 				String countryName = countryButton.getText().trim();
+				if(countryName.equals("쿠바")) {
+					continue;
+				}
 				countryButton.click();
 				try {
 					Thread.sleep(500);
@@ -148,6 +151,7 @@ public class RegionNameCrawler {
 		for (RegionCrawlingDto region : regionList) {
 			String url = String.format("https://travel.naver.com/overseas/%s/city/summary", region.naverRegionCord);
 			driver.get(url);
+			System.out.println(region.getRegionName());
 
 			wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 			wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".topImages_thumb__fhc1R")));

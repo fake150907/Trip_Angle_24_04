@@ -15,7 +15,7 @@ public class PlaceInfoDto {
 	private String address;
 	private String grade;
 	private String facilities;
-	private String operatingTime;
+	//private String operatingTime;
 	private String phoneNum;
 	private String reviewCount;
 	private String price;
@@ -30,7 +30,7 @@ public class PlaceInfoDto {
 	private int tabId;
 	private int regionId;
 
-	public PlaceInfoDto(String name, String address, String phoneNum, String facilities, String operatingTime,
+	public PlaceInfoDto(String name, String address, String phoneNum, String facilities, 
 			String grade, String imgUrl1, String imgUrl2, String imgUrl3, String imgUrl4, String imgUrl5,
 			String reviewCount, String price) {
 		super();
@@ -38,7 +38,6 @@ public class PlaceInfoDto {
 		this.address = address;
 		this.facilities = facilities;
 		this.phoneNum = phoneNum;
-		this.operatingTime = operatingTime;
 		this.grade = grade;
 		this.imgUrl1 = imgUrl1;
 		this.imgUrl2 = imgUrl2;
