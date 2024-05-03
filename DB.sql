@@ -14,14 +14,14 @@ CREATE TABLE `article` (
 	`boardId`	INT(10)	UNSIGNED NOT NULL
 );
 
-CREATE TABLE `travelSchedule` (
+CREATE TABLE `tripSchedule` (
 	`id`	INT(10)	NOT NULL,
 	`regDate`	DATETIME	NULL,
 	`updateDate`	DATETIME	NULL,
 	`name`	CHAR(100)	NULL,
 	`description`	TEXT	NULL,
-	`startDate`	DATE	NULL,
-	`endDate`	DATE	NULL,
+	`startDate`	DATETIME	NULL,
+	`endDate`	DATETIME	NULL,
 	`step`	INT(2)	NULL,
 	`regionId`	INT(10)	UNSIGNED NOT NULL,
 	`memberId`	INT(10)	UNSIGNED NOT NULL	COMMENT 'member의 id'
@@ -94,9 +94,9 @@ CREATE TABLE `weather` (
 	`id`	INT(10)	NOT NULL,
 	`regDate`	DATETIME	NULL,
 	`updateDate`	DATETIME	NULL,
-	`day`	DATE	NULL,
-	`minTemp`	INT(3)	NULL,
-	`maxTemp`	INT(3)	NULL,
+	`day`	DATETIME	NULL,
+	`minTemp`	DECIMAL(5,2)	NULL,
+	`maxTemp`	DECIMAL(5,2)	NULL,
 	`humidity`	INT(3)	NULL,
 	`icon`	CHAR(3)	NULL,
 	`scheduleId`	INT(10)	UNSIGNED NOT NULL
@@ -104,14 +104,13 @@ CREATE TABLE `weather` (
 
 CREATE TABLE `fashion` (
 	`id`	INT(10)	NOT NULL,
-	`regDate`	DATETIME	NULL,
+	`regData`	DATETIME	NULL,
 	`updateDate`	DATETIME	NULL,
 	`name`	VARCHAR(100)	NULL,
 	`brand`	VARCHAR(50)	NULL,
 	`imageUrl`	TEXT	NULL,
 	`gender`	TINYINT(1)	NULL,
-	`scheduleId`	INT(10)	UNSIGNED NOT NULL,
-	`description`	TEXT	NULL
+	`scheduleId`	INT(10)	UNSIGNED NOT NULL
 );
 
 CREATE TABLE `shoppingList` (
@@ -121,7 +120,7 @@ CREATE TABLE `shoppingList` (
 	`name`	VARCHAR(30)	NULL,
 	`description`	TEXT	NULL,
 	`imageUrl`	TEXT	NULL,
-	`scheduleId`	INT(10)	NOT NULL
+	`regionId`	INT(10)	UNSIGNED NOT NULL
 );
 
 CREATE TABLE `region` (
@@ -131,7 +130,6 @@ CREATE TABLE `region` (
 	`name`	VARCHAR(30)	NULL,
 	`naverRegionCord`	CHAR(20)	NULL,
 	`imageUrl`	TEXT	NULL,
-	`englishName`	VARCHAR(30)	NULL,
 	`countryId`	INT(10)	UNSIGNED NOT NULL
 );
 
@@ -147,30 +145,18 @@ CREATE TABLE `recommendRegion` (
 
 CREATE TABLE `tabList` (
 	`id`	INT(10)	NOT NULL	COMMENT '테마별 추천 장소 리스트 id',
-	`regDate`	DATETIME	NULL,
-	`updateDate`	DATETIME	NULL,
-	`themeName`	CHAR(50)	NULL	COMMENT '테마명'
+	`themeName`	CHAR(50)	NULL	COMMENT '테마명',
+	`themeBody`	CHAR(100)	NULL	COMMENT '테마별 설명'
 );
 
 CREATE TABLE `recommendSpot` (
 	`id`	INT(10)	NOT NULL	COMMENT '추천 장소 id',
-	`regDate`	DATETIME	NULL,
-	`updateDate`	DATETIME	NULL,
-	`groceryName`	CHAR(100)	NULL	COMMENT '가게명',
-	`grade`	INT(30)	NULL	COMMENT '평점',
-	`reviewCount`	CHAR(100)	NULL	COMMENT '리뷰 갯수',
-	`facilities` TEXT	NULL	COMMENT '시설 정보',
-	`address`	TEXT	NULL	COMMENT '주소',
-	`operatingTime`	TEXT	NULL	COMMENT '운영 시간',
-	`phoneNumber`	CHAR(100)	NULL	COMMENT '전화번호',
-	`imageUrl1`	TEXT	NULL,
-	`imageUrl2`	TEXT	NULL,
-	`imageUrl3`	TEXT	NULL,
-	`imageUrl4`	TEXT	NULL,
-	`imageUrl5`	TEXT	NULL,
-	`naverSpotCord`	CHAR(50)	NULL	COMMENT '네이버 여행 장소 코드',
-	`tabId` INT(10)	UNSIGNED NOT NULL,
-	`regionId` INT(10)	UNSIGNED NOT NULL
+	`groceryName`	CHAR(50)	NULL	COMMENT '가게명',
+	`grade`	INT(20)	NULL	COMMENT '평점',
+	`reviewCount`	INT(100)	NULL	COMMENT '리뷰 갯수',
+	`address`	CHAR(50)	NULL	COMMENT '주소',
+	`operatingTime`	TIME	NULL	COMMENT '운영 시간',
+	`phoneNumber`	CHAR(100)	NULL	COMMENT '전화번호'
 );
 
 CREATE TABLE `regionSymbolicWord` (
@@ -196,8 +182,8 @@ CREATE TABLE `board` (
 	`updateDate`	DATETIME	NULL	COMMENT '수정날짜',
 	`code`	CHAR(50)	NULL	COMMENT '제목',
 	`name`	TEXT	NULL	COMMENT '내용',
-	delStatus TINYINT(1) UNSIGNED NOT NULL DEFAULT 0 COMMENT '삭제 여부 (0=삭제 전, 1=삭제 후)',
-    delDate DATETIME COMMENT '삭제 날짜'
+	`delStatus`	TINYINT(1)	NULL,
+	`delDate`	DATETIME	NULL
 );
 
 CREATE TABLE `reactionPoint` (
@@ -238,7 +224,7 @@ CREATE TABLE `recommendSpotReview` (
 
 ## 주키 추가
 ALTER TABLE `article` MODIFY `id`  INT(10) UNSIGNED NOT NULL AUTO_INCREMENT, ADD PRIMARY KEY (`id`);
-ALTER TABLE `travelSchedule` MODIFY `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT, ADD PRIMARY KEY (`id`);
+ALTER TABLE `tripSchedule` MODIFY `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT, ADD PRIMARY KEY (`id`);
 ALTER TABLE `member` MODIFY `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT, ADD PRIMARY KEY (`id`);
 ALTER TABLE `genFile` MODIFY `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT, ADD PRIMARY KEY (`id`);
 ALTER TABLE `regionInfoTips` MODIFY `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT, ADD PRIMARY KEY (`id`);
@@ -274,14 +260,14 @@ REFERENCES `board` (
 	`id`
 );
 
-ALTER TABLE `travelSchedule` ADD CONSTRAINT `FK_region_TO_travelSchedule_1` FOREIGN KEY (
+ALTER TABLE `tripSchedule` ADD CONSTRAINT `FK_region_TO_tripSchedule_1` FOREIGN KEY (
 	`regionId`
 )
 REFERENCES `region` (
 	`id`
 );
 
-ALTER TABLE `travelSchedule` ADD CONSTRAINT `FK_member_TO_travelSchedule_1` FOREIGN KEY (
+ALTER TABLE `tripSchedule` ADD CONSTRAINT `FK_member_TO_tripSchedule_1` FOREIGN KEY (
 	`memberId`
 )
 REFERENCES `member` (
@@ -302,24 +288,24 @@ REFERENCES `country` (
 	`id`
 );
 
-ALTER TABLE `weather` ADD CONSTRAINT `FK_travelSchedule_TO_weather_1` FOREIGN KEY (
+ALTER TABLE `weather` ADD CONSTRAINT `FK_tripSchedule_TO_weather_1` FOREIGN KEY (
 	`scheduleId`
 )
-REFERENCES `travelSchedule` (
+REFERENCES `tripSchedule` (
 	`id`
 );
 
-ALTER TABLE `fashion` ADD CONSTRAINT `FK_travelSchedule_TO_fashion_1` FOREIGN KEY (
+ALTER TABLE `fashion` ADD CONSTRAINT `FK_tripSchedule_TO_fashion_1` FOREIGN KEY (
 	`scheduleId`
 )
-REFERENCES `travelSchedule` (
+REFERENCES `tripSchedule` (
 	`id`
 );
 
 ALTER TABLE `shoppingList` ADD CONSTRAINT `FK_region_TO_shoppingList_1` FOREIGN KEY (
-	`scheduleId`
+	`regionId`
 )
-REFERENCES `travelSchedule` (
+REFERENCES `region` (
 	`id`
 );
 
@@ -364,21 +350,6 @@ ALTER TABLE `recommendSpotReview` ADD CONSTRAINT `FK_member_TO_recommendSpotRevi
 REFERENCES `member` (
 	`id`
 );
-
-ALTER TABLE `recommendSpot` ADD CONSTRAINT `FK_tabList_TO_recommendSpot_1` FOREIGN KEY (
-	`tabId`
-)
-REFERENCES `tabList` (
-	`id`
-);
-
-ALTER TABLE `recommendSpot` ADD CONSTRAINT `FK_region_TO_recommendSpot_1` FOREIGN KEY (
-	`regionId`
-)
-REFERENCES `region` (
-	`id`
-);
-
 */
 
 ########### TEST DATA ############
@@ -415,7 +386,7 @@ INSERT INTO `member`
 SET regDate = NOW(),
 updateDate = NOW(),
 loginId = 'admin',
-loginPw = SHA2('admin', 256),
+loginPw = 'admin',
 `authLevel` = 7,
 `name` = '관리자',
 nickname = '관리자',
@@ -427,7 +398,7 @@ INSERT INTO `member`
 SET regDate = NOW(),
 updateDate = NOW(),
 loginId = 'test1',
-loginPw = SHA2('test1', 256),
+loginPw = 'test1',
 `name` = '회원1',
 nickname = '회원1',
 cellphoneNum = '01043214321',
@@ -438,7 +409,7 @@ INSERT INTO `member`
 SET regDate = NOW(),
 updateDate = NOW(),
 loginId = 'test2',
-loginPw = SHA2('test2', 256),
+loginPw = 'test2',
 `name` = '회원2',
 nickname = '회원2',
 cellphoneNum = '01056785678',
@@ -652,30 +623,10 @@ SET R.goodReactionPoint = RP_SUM.goodReactionPoint,
 R.badReactionPoint = RP_SUM.badReactionPoint;
 
 
+SELECT * FROM tripSchedule;
 
-########################################################################################
+SELECT * FROM regionInfoTips;
 
 SELECT * FROM article;
 
 SELECT * FROM board;
-
-
-INSERT INTO TRAVELSCHEDULE(regDate, updateDate, `name`, `description`, startDate, endDate, regionId, memberId)
-VALUES(NOW(), NOW(), "여행 일기", "오늘은 밥이 맛있다.", "2024-05-05", "2024-05-10", 1, 1);
-
-
-SELECT *
-	FROM board
-	WHERE id = 1
-	AND delStatus = 0;
-
-
-INSERT INTO `tabList` (regDate, updateDate, themeName) values(
-	NOW(),NOW(),'관광'
-);
-INSERT INTO `tabList` (regDate, updateDate, themeName) values(
-	NOW(),NOW(),'맛집'
-);
-INSERT INTO `tabList` (regDate, updateDate, themeName) values(
-	NOW(),NOW(),'쇼핑'
-);

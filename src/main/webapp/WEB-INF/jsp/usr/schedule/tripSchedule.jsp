@@ -747,7 +747,7 @@ $.datepicker.setDefaults({
 		<div class="modal-schedule-region">오사카</div>
 		<div id="checkDateModal"></div>
 <!-- 달력 CSS로 input 포커싱 색상이 바뀌지않아 태그로 직접 변경 -->
-<form action="/usr/schedule/ticketing" method="post">
+<form action="/usr/schedule/ticketing" method="get">
 <input name="title" class="focus:outline-none focus:ring-1 focus:ring-green-100 focus:border-transparent schedule-title" placeholder="일정명을 입력해주세요." style="border-color: #ededed;" type="text" />
     <input name="content" class="focus:outline-none focus:ring-1 focus:ring-green-100 focus:border-transparent schedule-content" placeholder="내용을 작성해주세요." style="border-color: #ededed;" type="text" />
 	<input type="hidden" id="checkInDateInput" name="checkInDate">
