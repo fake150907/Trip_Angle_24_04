@@ -19,7 +19,7 @@
 	/* Allow items to wrap if they exceed container width */
 	margin-top: 180px;
 	margin-right: 20px;
-	border: 1px solid red;
+	position: absolute;
 }
 
 .trip-review-box {
@@ -160,10 +160,11 @@
 	width: 200px;
 	height: 53px;
 	margin-top: 100px;
-	margin-left: 150px;
+	margin-left: 145px;
 	position: relative;
+	left: -4.3%;
+	top: 0;
 	display: flex;
-	border: 1px solid pink;
 }
 
 @media ( max-width : 991px) {

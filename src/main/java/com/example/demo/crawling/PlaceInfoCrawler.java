@@ -35,32 +35,32 @@ public class PlaceInfoCrawler {
 
 		driver.manage().window().maximize();
 
-		url = "https://travel.naver.com/overseas/GRATN4126654/poi/summary";
+		url = "https://travel.naver.com/overseas/GRATN3178955/poi/summary";
 		driver.get(url);
 
 		Thread.sleep(3000);
 
 		// 시간 상세보기 탭 선택
 		// 시간
-		String operatingTime = "";
-		try {
-			WebElement button = driver.findElement(By.className("home_expand__xUbeG"));
-
-			button.click();
-//			List<WebElement> elements = driver.findElements(By.xpath("//p"));
-			WebElement element = driver.findElement(By.className("home_times__GoPm9"));
-//			StringBuilder operatingTimeBuilder = new StringBuilder();
-//			for (int j = 0; j < elements.size(); j++) {
-//				String DATETIME = elements.get(j).getText();
-//				String temp = DATETIME + "; ";
-//				operatingTimeBuilder.append(temp);
-//			}
-//			operatingTime = operatingTimeBuilder.toString();
-			operatingTime = element.getText();
-
-		} catch (Exception ex) {
-			operatingTime = null;
-		}
+//		String operatingTime = "";
+//		try {
+//			WebElement button = driver.findElement(By.className("home_expand__xUbeG"));
+//
+//			button.click();
+////			List<WebElement> elements = driver.findElements(By.xpath("//p"));
+//			WebElement element = driver.findElement(By.className("home_times__GoPm9"));
+////			StringBuilder operatingTimeBuilder = new StringBuilder();
+////			for (int j = 0; j < elements.size(); j++) {
+////				String DATETIME = elements.get(j).getText();
+////				String temp = DATETIME + "; ";
+////				operatingTimeBuilder.append(temp);
+////			}
+////			operatingTime = operatingTimeBuilder.toString();
+//			operatingTime = element.getText();
+//
+//		} catch (Exception ex) {
+//			operatingTime = null;
+//		}
 
 		// 가게 이름
 		String name;
@@ -125,7 +125,8 @@ public class PlaceInfoCrawler {
 		String address = "";
 		// 유적지 가격
 		String price = "";
-
+		// 시간
+		String operatingTime = "";
 		// 시설 정보
 		String facilities = "";
 		// 번호
@@ -158,7 +159,7 @@ public class PlaceInfoCrawler {
 					} else if (placeNameElements.get(j).getText().equals("가격")) {
 
 						WebElement priceElement = driver.findElement(By.className("home_menu__FtSCQ"));
-						
+
 						price = priceElement.getText();
 						System.out.println("price:" + price);
 
@@ -199,7 +200,7 @@ public class PlaceInfoCrawler {
 		// 크롤링이 끝난 후에는 WebDriver를 종료
 		// driver.quit();
 		PlaceInfoDto place = new PlaceInfoDto(name, address, phoneNum, facilities, operatingTime, grade, imgUrl1,
-				imgUrl2, imgUrl3, imgUrl4, imgUrl5, reviewCount,price);
+				imgUrl2, imgUrl3, imgUrl4, imgUrl5, reviewCount, price);
 
 		url = "jdbc:mysql://127.0.0.1:3306/Trip_Angle_24_04?useUnicode=true&characterEncoding=utf8&autoReconnect=true&serverTimezone=Asia/Seoul&useOldAliasMetadataBehavior=true&zeroDateTimeBehavior=convertToNull";
 		Connection conn = DriverManager.getConnection(url, "root", "");
