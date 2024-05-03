@@ -7,14 +7,14 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class regionInfoTips {
+public class RegionInfoTips {
 	private int id;
 	private String information;
-	private String Voltage;
+	private String voltage;
 	private String language;
 	private String climate;
 	private String rate;
 	private String tips;
 	private int regionId;
-	private String TimeDifference;
+	private String timeDifference;
 }
