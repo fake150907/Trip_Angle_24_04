@@ -469,7 +469,7 @@
 				</div>
 			</div>
 			<img class="OsakaImage"
-				src="https://velog.velcdn.com/images/fake150907/post/1e16874d-8b4e-41ba-a863-a04ea355831b/image.jpg"
+				src=${region.imageUrl}
 				alt="오사카 이미지">
 		</div>
 	</div>
@@ -477,8 +477,8 @@
 		<div class="column-2">
 			<div class="InfoItemContainer">
 			
-				<div class="OsakaInfo">OSAKA</div>  <!-- ${countryName} 들어가야함--> 
-				<div class="country-city-text">국가명 도시명</div> <!-- ${regionName} 들어가야함--> 
+				<div class="OsakaInfo">${region.englishName}</div>  <!-- ${countryName} 들어가야함--> 
+				<div class="country-city-text">${region.extra__countryName} ${region.name}</div> <!-- ${regionName} 들어가야함--> 
 				
 				<div class="country-city">${RegionInfoTips.getInformation()}</div>
 				<div class="climate-text">기후</div>
@@ -490,7 +490,7 @@
 	<div class="HoneyTipsPage">
 		<div class="column-3">
 			<div class="HoneyTipsPageContainer">
-				<div class="OsakaInfo">OSAKA</div>
+				<div class="OsakaInfo">${region.englishName}</div>
 				<div class="div-2">
 
 					<div class="language-box">

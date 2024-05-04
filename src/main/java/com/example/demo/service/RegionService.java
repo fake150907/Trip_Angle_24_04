@@ -7,9 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.repository.RegionRepository;
-import com.example.demo.repository.TravelScheduleRepository;
 import com.example.demo.vo.Region;
-import com.example.demo.vo.TravelSchedule;
+ 
 
 @Service
 public class RegionService {
@@ -24,5 +23,10 @@ public class RegionService {
 	public List<Region> getRegionList() {
 
 		return regionRepository.getRegionList();
+	}
+
+	public Region getRegionById(int regionId) {
+		// TODO Auto-generated method stub
+		return regionRepository.getRegionById(regionId);
 	}
 }

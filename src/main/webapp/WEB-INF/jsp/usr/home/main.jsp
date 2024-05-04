@@ -315,7 +315,7 @@ transform: translateY(-20px);
 }
 
 .search-list {
-  display: flex;
+/*   display: flex; */
   flex-direction: column;
   align-self: stretch;
   font-size: 16px;
@@ -898,7 +898,7 @@ transform: translateY(-20px);
 							
 							
 							
-							<div class="search-list">
+							<div class="search-list flex">
 							
 <%-- 							  <c:forEach var="region" items="${regions }"> --%>
 <!-- 					              <div class="search-item"> -->
@@ -1204,6 +1204,8 @@ transform: translateY(-20px);
 	        searchInput.addEventListener("focus", () => {
 	            if (!isFocused) {
 	                showSearchList();
+		            element.classList.add("flex");
+		            element.classList.remove("hidden");
 	            }
 	            isFocused = true;
 	        });
@@ -1211,7 +1213,8 @@ transform: translateY(-20px);
 	        searchInput.addEventListener("blur", () => {
 	            isFocused = false;
 	            let searchListElement = document.querySelector('.search-list');
-	            searchListElement.innerHTML = '';
+	            element.classList.add("hidden");
+	            element.classList.remove("flex");
 	        });
 
 	});
@@ -1248,7 +1251,6 @@ transform: translateY(-20px);
 
 		}
 
-		console.log(regionsJsonCopy);
 		
 		// Loop through each selected element and remove them
 		searchListElement.innerHTML = '';
@@ -1257,10 +1259,22 @@ transform: translateY(-20px);
 			// search-item을 담을 div 요소 생성
 			var searchItemDiv = document.createElement("div");
 			searchItemDiv.classList.add("search-item");
+// 			searchItemDiv.href="/usr/regionInfoTips/infoTips?regionId="+region.id;
+// 			searchItemDiv.target='_blank' 
+			searchItemDiv.addEventListener("click", function() {
+			    // Redirect to "/usr/regionInfoTips/infoTips?regionId=0"
+			    console.log()
+			    window.location.href = "/usr/regionInfoTips/infoTips?regionId="+region.id;
+			});
 
 			// country-region-name을 담을 div 요소 생성
 			var countryRegionNameDiv = document.createElement("div");
 			countryRegionNameDiv.classList.add("country-region-name");
+			countryRegionNameDiv.addEventListener("click", function() {
+			    // Redirect to "/usr/regionInfoTips/infoTips?regionId=0"
+			    console.log("2")
+			    window.location.href = "/usr/regionInfoTips/infoTips?regionId="+region.id;
+			});
 
 			// country-name을 담을 p 요소 생성
 			var countryNameP = document.createElement("p");
