@@ -16,5 +16,8 @@ public interface RegionRepository {
 
 	@Select("SELECT RE.*, CO.NAME AS extra__countryName FROM REGION RE INNER JOIN COUNTRY CO ON RE.COUNTRYID = CO.ID")
 	public List<Region> getRegionList();
+	
+	@Select("SELECT RE.*, CO.NAME AS extra__countryName FROM REGION RE INNER JOIN COUNTRY CO ON RE.COUNTRYID = CO.ID WHERE RE.ID=#{regionId}")
+	public Region getRegionById(int regionId);
 
 }
