@@ -93,7 +93,7 @@ $(document).ready(function() {
 }
 
 .reg-date-title {
-	font-size: 12px;
+	font-size: 11px;
 	margin-left: 3px;
 	margin-bottom: 5px;
 	color: #3b3d40;
@@ -101,15 +101,15 @@ $(document).ready(function() {
 }
 
 .reg-date {
-	font-size: 16px;
+	font-size: 12px;
 	margin-left: 3px;
 	margin-bottom: 20px;
 	color: #3b3d40;
 	font-weight: 600;
 }
 
-.my-plan-comment {
-	font-size: 14px;
+.my-plan-content {
+	font-size: 17px;
 	margin-left: 3px;
 	color: #3b3d40;
 	font-weight: 500;
@@ -333,7 +333,7 @@ $(document).ready(function() {
 .temperature {
 	color: #3b3d40;
 	margin-top: 12px;
-	font: 600 20px/140% Pretendard, sans-serif;
+	font: 600 14px/140% Pretendard, sans-serif;
 }
 
 .honey-tip2 {
@@ -389,7 +389,7 @@ $(document).ready(function() {
 .explanation {
 	color: #3b3d40;
 	margin-top: 9px;
-	font: 500 14px/17px Pretendard, sans-serif;
+	font: 600 14px/17px Pretendard, sans-serif;
 }
 
 /* 날씨 섹션 */
@@ -415,11 +415,6 @@ $(document).ready(function() {
 	margin-top: 50px;
 }
 
-/* 	width: 80%; */
-/* 	display: flex; */
-/* 	justify-content: center; */
-/* 	margin: 0 auto; /* Add this to center the container itself */
-* /
 
 .recommendation-header {
 	display: flex;
@@ -624,9 +619,17 @@ keyframes rotator { 0% {
 
 
 
+
+
+
+
 %
 {
 transform
+
+
+
+
 
 
 
@@ -648,6 +651,10 @@ transform
 
 
 
+
+
+
+
 rotate
 
 
@@ -657,7 +664,15 @@ rotate
 
 
 
+
+
+
+
 (
+
+
+
+
 
 
 
@@ -679,7 +694,15 @@ rotate
 
 
 
+
+
+
+
 )
+
+
+
+
 
 
 
@@ -721,9 +744,17 @@ keyframes dash { 0% {
 
 
 
+
+
+
+
 %
 {
 stroke-dashoffset
+
+
+
+
 
 
 
@@ -745,6 +776,10 @@ stroke-dashoffset
 
 
 
+
+
+
+
 46
 
 
@@ -754,7 +789,15 @@ stroke-dashoffset
 
 
 
+
+
+
+
 .75
+
+
+
+
 
 
 
@@ -775,7 +818,15 @@ transform
 
 
 
+
+
+
+
 :
+
+
+
+
 
 
 
@@ -795,7 +846,15 @@ rotate
 
 
 
+
+
+
+
 (
+
+
+
+
 
 
 
@@ -817,7 +876,15 @@ rotate
 
 
 
+
+
+
+
 )
+
+
+
+
 
 
 
@@ -829,6 +896,10 @@ rotate
 ;
 }
 100
+
+
+
+
 
 
 
@@ -852,6 +923,10 @@ stroke-dashoffset
 
 
 
+
+
+
+
 :
 
 
@@ -863,7 +938,15 @@ stroke-dashoffset
 
 
 
+
+
+
+
 187
+
+
+
+
 
 
 
@@ -884,7 +967,15 @@ transform
 
 
 
+
+
+
+
 :
+
+
+
+
 
 
 
@@ -904,7 +995,15 @@ rotate
 
 
 
+
+
+
+
 (
+
+
+
+
 
 
 
@@ -926,7 +1025,15 @@ rotate
 
 
 
+
+
+
+
 )
+
+
+
+
 
 
 
@@ -1195,14 +1302,10 @@ section.ta-item-container.fashion-man, section.ta-item-container.fashion-women
 			</div>
 
 			<div class="plan-box">
-				<div class="my-plan-title">연차쓰고 이번 휴가 달려</div>
+				<div class="my-plan-title">${tripSchedule.title}</div>
 				<div class="reg-date-title">나의 일정 등록일</div>
-				<div class="reg-date">2024-04-11</div>
-				<div class="my-plan-comment">마이일정 설명을 작성해주세요. 마이일정 설명을 작성해주세요.
-					마이일정 설명을 작성해주세요.마이일정 설명을 작성해주세요.마이일정 설명을 작성해주세요.마이일정 설명을
-					작성해주세요.마이일정 설명을 작성해주세요.마이일정 설명을 작성해주세요.마이일정 설명을 작성해주세요.마이일정 설명을
-					작성해주세요.마이일정 설명을 작성해주세요.마이일정 설명을 작성해주세요.마이일정 설명을 작성해주세요.마이일정 설명을
-					작성해주세요.</div>
+				<div class="reg-date">${tripSchedule.regDate}</div>
+				<div class="my-plan-content">${tripSchedule.content}</div>
 
 			</div>
 
@@ -1231,27 +1334,26 @@ section.ta-item-container.fashion-man, section.ta-item-container.fashion-women
 								꿀팁 </span>
 						</div>
 						<div class="language-tip">사용 언어</div>
-						<div class="language">일본어</div>
-						<div class="currency-tip">사용 화폐</div>
-						<div class="currency">가상화폐</div>
+						<div class="language">${regionInfoTips.language }</div>
+						<div class="currency-tip">환율</div>
+						<div class="currency">${regionInfoTips.rate }</div>
 						<div class="volt-tip">전압</div>
-						<div class="volt">피카츄 백만볼트</div>
+						<div class="volt">${regionInfoTips.voltage }</div>
 						<div class="temperature-tip">기후</div>
-						<div class="temperature">겁나더움</div>
+						<div class="temperature">${regionInfoTips.climate }</div>
 					</div>
 					<div class="honey-tip2">
-						<div class="transportation-tip">주요 대중교통</div>
-						<div class="transportation">전용기</div>
+						<div class="transportation-tip">팁</div>
+						<div class="transportation">${regionInfoTips.tips }</div>
 						<div class="timedifference-tip">시차</div>
-						<div class="timedifference">별로안남</div>
-						<div class="remark-tip">특이사항</div>
-						<div class="remark">일식 존맛</div>
+						<div class="timedifference">${regionInfoTips.timeDifference }</div>
+<!-- 						<div class="remark-tip">설명</div> -->
+<%-- 						<div class="remark">${regionInfoTips.information }</div> --%>
 
 					</div>
 				</div>
 				<div class="explanation-tip">설명</div>
-				<div class="explanation">나는 지금 당장 떠나고싶어 내일 학원은 안가고싶고 당장 여권챙기자
-					~ 안녕 나는 튀튀.. 는 뻥이고 지금 나는 피그마 구현중이고 너무 배고프고 졸리고 하하하하와이 ~~~~~ ...더보기</div>
+				<div class="explanation">${regionInfoTips.information }</div>
 			</div>
 		</div>
 	</div>
@@ -1331,8 +1433,7 @@ section.ta-item-container.fashion-man, section.ta-item-container.fashion-women
 					<p class="ta-item-info">Address St. Honolulu, Hawaii</p>
 				</div>
 			</div>
-		</a>
-		<a href="/myPlan/placeDetail" class="ta-item-card">
+		</a> <a href="/myPlan/placeDetail" class="ta-item-card">
 			<div class="ta-item-image-container">
 				<img
 					src="https://images.unsplash.com/photo-1562785561-d88a65a2679e?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
@@ -1347,8 +1448,7 @@ section.ta-item-container.fashion-man, section.ta-item-container.fashion-women
 					<p class="ta-item-info">Address St. Honolulu, Hawaii</p>
 				</div>
 			</div>
-		</a>
-		<a href="/myPlan/placeDetail" class="ta-item-card">
+		</a> <a href="/myPlan/placeDetail" class="ta-item-card">
 			<div class="ta-item-image-container">
 				<img
 					src="https://images.unsplash.com/photo-1533193773788-92826ee86674?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
@@ -1363,8 +1463,7 @@ section.ta-item-container.fashion-man, section.ta-item-container.fashion-women
 					<p class="ta-item-info">Address St. Honolulu, Hawaii</p>
 				</div>
 			</div>
-		</a>
-		<a href="/myPlan/placeDetail" class="ta-item-card">
+		</a> <a href="/myPlan/placeDetail" class="ta-item-card">
 			<div class="ta-item-image-container">
 				<img
 					src="https://images.unsplash.com/photo-1484980972926-edee96e0960d?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
@@ -1379,8 +1478,7 @@ section.ta-item-container.fashion-man, section.ta-item-container.fashion-women
 					<p class="ta-item-info">Address St. Honolulu, Hawaii</p>
 				</div>
 			</div>
-		</a>
-		<a href="/myPlan/placeDetail" class="ta-item-card">
+		</a> <a href="/myPlan/placeDetail" class="ta-item-card">
 			<div class="ta-item-image-container">
 				<img
 					src="https://images.unsplash.com/photo-1677517497394-87d635cf7e10?q=80&w=2050&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"

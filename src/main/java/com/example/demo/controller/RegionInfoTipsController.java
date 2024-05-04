@@ -11,7 +11,7 @@ import com.example.demo.service.RegionService;
 import com.example.demo.util.Ut;
 import com.example.demo.vo.Region;
 import com.example.demo.vo.Rq;
-import com.example.demo.vo.regionInfoTips;
+import com.example.demo.vo.RegionInfoTips;
 
 import jakarta.servlet.http.HttpServletRequest;
 
@@ -27,7 +27,7 @@ public class RegionInfoTipsController {
 	public String showinformation(HttpServletRequest req, Model model, @RequestParam(defaultValue = "0") int regionId) {
 		 Rq rq = (Rq) req.getAttribute("rq");
 
-		regionInfoTips RegionInfoTips = regionInfoTipsService.getRegionInfoTipsId(regionId);
+		RegionInfoTips RegionInfoTips = regionInfoTipsService.getRegionInfoTipsId(regionId);
 		Region region = regionService.getRegionById(regionId);
 		
 		if(Ut.isEmpty(region)) {
