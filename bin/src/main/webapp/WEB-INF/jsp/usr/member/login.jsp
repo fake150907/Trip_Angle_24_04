@@ -43,12 +43,12 @@
 
 						</div>
 
-						<div class="spotify-wrapper">
-							<a class="spotify-btn" href="/"> <img
-								src="https://velog.velcdn.com/images/yunlinit/post/9169e991-187d-44b4-ab8f-a8223651ad66/image.png"
-								alt="Spotify로 시작하기">
-							</a>
-						</div>
+<!-- 						<div class="spotify-wrapper"> -->
+<!-- 							<a class="spotify-btn" href="/"> <img -->
+<!-- 								src="https://velog.velcdn.com/images/yunlinit/post/9169e991-187d-44b4-ab8f-a8223651ad66/image.png" -->
+<!-- 								alt="Spotify로 시작하기"> -->
+<!-- 							</a> -->
+<!-- 						</div> -->
 
 					</div>
 				</section>
@@ -116,7 +116,7 @@
 
 .Rectangle6 {
 	width: 500px;
-	height: 350px;
+	height: 300px;
 	left: 0px;
 	top: 0px;
 	position: absolute;
@@ -152,7 +152,7 @@
 	height: 39px;
 	position: absolute;
 	left: 40%;
-	bottom: 22%;
+	bottom: 10%;
 	background-color: #d5f1e2;
 }
 
@@ -161,7 +161,7 @@
 	height: 39px;
 	position: absolute;
 	left: 40%;
-	bottom: 22%;
+	bottom: 10%;
 	background-color: #ededed;
 	border: solid #ededed;
 }
