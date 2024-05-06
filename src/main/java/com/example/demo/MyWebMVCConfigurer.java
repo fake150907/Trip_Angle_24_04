@@ -81,6 +81,11 @@ public class MyWebMVCConfigurer implements WebMvcConfigurer {
 		ir.addPathPatterns("/usr/reactionPoint/doGoodReaction");
 		ir.addPathPatterns("/usr/reactionPoint/doBadReaction");
 
+		// 캘린더 관련
+		ir.addPathPatterns("/usr/myPlan/myPlanCalendar");
+		ir.addPathPatterns("/usr/myPlan/saveCalendarData");
+		ir.addPathPatterns("/usr/myPlan/deleteCalendarData");
+
 		ir = registry.addInterceptor(needLogoutInterceptor);
 		ir.addPathPatterns("/usr/member/login");
 		ir.addPathPatterns("/usr/member/doLogin");
