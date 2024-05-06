@@ -239,8 +239,15 @@ CREATE TABLE `recommendSpotReview` (
 	`memberId`	INT(10)	UNSIGNED NOT NULL	COMMENT 'member의 id'
 );
 
-CREATE TABLE `planCalendar`(
-	    id INT(10) UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT
+CREATE TABLE `calendarData`(
+	 `id` INT(10) UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	 `regDate`	DATETIME	NULL	COMMENT '작성날짜',
+     `updateDate`	DATETIME	NULL	COMMENT '수정날짜',
+     `memberId`	INT(10)	UNSIGNED NOT NULL	COMMENT 'member의 id',
+	 `title` CHAR(100)	NOT NULL,
+	 `start` CHAR(100)	NOT NULL,
+	 `end`  CHAR(100)	NOT NULL,
+	 `allDay` INT(5) NOT NULL
 );
 
 ## 주키 추가
