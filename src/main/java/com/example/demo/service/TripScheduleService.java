@@ -1,15 +1,15 @@
 package com.example.demo.service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.repository.TripScheduleRepository;
-import com.example.demo.vo.TripSchedule;
 import com.example.demo.vo.CalendarData;
-import com.example.demo.vo.Member;
-import com.example.demo.vo.RegionInfoTips;
+import com.example.demo.vo.TripSchedule;
 
 @Service
 public class TripScheduleService {
@@ -29,8 +29,11 @@ public class TripScheduleService {
 
 	public void insertTripSchedule(String title, String content, String checkInDate, String checkOutDate,
 			int loginedMemberId, int regionId) {
-
-		tripScheduleRepository.insertTripSchedule(title, content, checkInDate, checkOutDate, loginedMemberId, regionId);
+		
+		Map<String, Object> map = new HashMap<>();
+		
+		tripScheduleRepository.insertTripSchedule(title, content, checkInDate, checkOutDate, loginedMemberId, regionId, map);
+	
 	}
 
 	public void addCalendarData(CalendarData calendarData, int loginedMemberId) {
@@ -44,5 +47,10 @@ public class TripScheduleService {
 	public List<CalendarData> getCalendarDatas(int loginedMemberId) {
 
 		return tripScheduleRepository.getCalendarDatas(loginedMemberId);
+	}
+
+	public List<TripSchedule> getForPrintTripSchedules(int memberId) {
+		
+		return tripScheduleRepository.getForPrintTripSchedules(memberId);
 	}
 }

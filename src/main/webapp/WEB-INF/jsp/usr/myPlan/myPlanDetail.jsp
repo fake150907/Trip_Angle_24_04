@@ -1290,7 +1290,7 @@ section.ta-item-container.fashion-man, section.ta-item-container.fashion-women
 			<div class="div-2">
 				<div class="div-3">
 					<div class="div-4">
-						<div class="destination">하와이</div>
+						<div class="destination">${tripSchedule.extra__regionName}</div>
 						<div class="trip-date">2024-04-15 ~ 2024-04-24</div>
 					</div>
 

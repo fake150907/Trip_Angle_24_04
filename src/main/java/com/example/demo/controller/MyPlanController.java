@@ -7,7 +7,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.demo.service.RegionInfoTipsService;
@@ -31,15 +30,19 @@ public class MyPlanController {
 	private RegionInfoTipsService regionInfoTipsService;
 
 	@RequestMapping("/usr/myPlan/myPlanList")
-	public String showMyPlanList() {
+	public String showMyPlanList(HttpServletRequest req, Model model) {
+
+
+		Rq rq = (Rq) req.getAttribute("rq");
+
+		int memberId = rq.getLoginedMemberId();
+
+		List<TripSchedule> tripSchedules = tripScheduleService.getForPrintTripSchedules(memberId);
+
+
+		model.addAttribute("tripSchedules", tripSchedules);
 
 		return "/usr/myPlan/myPlanList";
-	}
-
-	@RequestMapping("/usr/myPlan/placeDetail")
-	public String showPlaceDetail() {
-
-		return "/usr/myPlan/placeDetail";
 	}
 
 	@RequestMapping("/usr/myPlan/myPlanDetail")
@@ -55,6 +58,12 @@ public class MyPlanController {
 		System.out.println(regionInfoTips);
 
 		return "/usr/myPlan/myPlanDetail";
+	}
+
+	@RequestMapping("/usr/myPlan/placeDetail")
+	public String showPlaceDetail() {
+
+		return "/usr/myPlan/placeDetail";
 	}
 
 	@RequestMapping("/usr/myPlan/myPlanCalendar")

@@ -1,12 +1,13 @@
 package com.example.demo.repository;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Select;
-
 import com.example.demo.vo.CalendarData;
 import com.example.demo.vo.TripSchedule;
 
@@ -22,18 +23,33 @@ public interface TripScheduleRepository {
 	public TripSchedule getTripScheduleById(int id);
 
 	@Insert("""
-					INSERT INTO tripSchedule
-					SET regDate = NOW(),
-					updateDate = NOW(),
-					`title` = #{title},
-					`content` = #{content},
-					startDate = #{checkInDate},
-					endDate = #{checkOutDate},
-					regionId = #{regionId},
-					memberId = #{loginedMemberId}
+			      INSERT INTO tripSchedule
+			      SET regDate = NOW(),
+			      updateDate = NOW(),
+			      `title` = #{title},
+			      `content` = #{content},
+			      startDate = #{checkInDate},
+			      endDate = #{checkOutDate},
+			      regionId = #{regionId},
+			      memberId = #{loginedMemberId}
 			""")
+	@Options(useGeneratedKeys = true, keyProperty = "map.id")
 	public void insertTripSchedule(String title, String content, String checkInDate, String checkOutDate,
-			int loginedMemberId, int regionId);
+			int loginedMemberId, int regionId, Map<String, Object> map);
+	
+
+	@Select("""
+			SELECT TS.id, TS.regDate, TS.title, TS.content, TS.regionId, R.name AS 'extra__regionName', TS.startDate, TS.endDate, TS.memberId, R.englishName AS 'extra__regionEnglishName', C.name AS 'extra__contryName' 
+			FROM tripSchedule AS TS 
+			INNER JOIN region AS R ON TS.regionId = R.id
+			INNER JOIN country AS C ON R.countryId = C.id
+			WHERE TS.memberId = #{memberId}
+			GROUP BY TS.id
+			ORDER BY TS.updateDate DESC;
+		
+			""")
+	public List<TripSchedule> getForPrintTripSchedules(int memberId);
+	
 
 	@Insert("""
 			INSERT INTO calendarData
