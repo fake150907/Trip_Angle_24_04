@@ -3,7 +3,24 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="pageTitle" value="TRIP REVIEW LIST"></c:set>
 <%@ include file="../common/head.jspf"%>
+<!-- 변수 -->
+<script>
+	const params = {};
+	params.id = parseInt('${param.id}');
+	params.memberId = parseInt('${loginedMemberId}');
 
+	console.log(params);
+	console.log(params.memberId);
+
+	var isAlreadyAddGoodRp = $
+	{
+		isAlreadyAddGoodRp
+	};
+	var isAlreadyAddBadRp = $
+	{
+		isAlreadyAddBadRp
+	};
+</script>
 <style>
 .trip-review-list-page {
 	display: flex;
@@ -64,6 +81,7 @@
 		white-space: initial;
 	}
 }
+
 .trip-review-information-box {
 	display: flex;
 	align-items: start;
@@ -208,12 +226,9 @@
 				<%
 				}
 				%>
-				<a href="detail?id=${review.id }">
+				<a href="reviewDetail?id=${review.id }">
 					<div class="trip-review-box">
-						<%-- <img src="${rq.getImgUri(review.id,relTypeCode)}"
-							class="trip-review-thumbnail" /> --%>
-						<img
-							src="https://velog.velcdn.com/images/fake150907/post/610545eb-1a33-45ed-961a-df84f459b696/image.jpg"
+						<img src="${rq.getImgUri(review.id,relTypeCode)}"
 							class="trip-review-thumbnail" />
 						<div class="trip-review-information-box">
 							<img
