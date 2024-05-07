@@ -230,6 +230,8 @@ public class UsrArticleController {
 	public String doWrite(HttpServletRequest req, int boardId, String title, String body, String replaceUri,
 			MultipartRequest multipartRequest) {
 
+		System.err.println(boardId);
+
 		Rq rq = (Rq) req.getAttribute("rq");
 
 		if (Ut.isNullOrEmpty(title)) {
@@ -292,7 +294,7 @@ public class UsrArticleController {
 		}
 
 		return Ut.jsReplace(loginedMemberCanModifyRd.getResultCode(), loginedMemberCanModifyRd.getMsg(),
-				"../article/detail?id=" + id);
+				"/usr/tripReview/reviewDetail?id=" + id);
 	}
 
 	// 로그인 체크 -> 유무 체크 -> 권한 체크 -> 삭제

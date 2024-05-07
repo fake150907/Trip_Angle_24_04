@@ -1,498 +1,453 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <c:set var="pageTitle" value="TIPINFORMATION PAGE"></c:set>
 <%@ include file="../common/head.jspf"%>
-<script src="/resource/keys.js" ></script>
+<script src="/resource/keys.js"></script>
 <style>
-    .weather-widget {
-        display: flex;
-        flex-direction: column;
-        margin: 0 auto;
-        padding: 41px 20px;
-        width: 25%;
-        overflow: auto;
-        height: 640px;
-        -ms-overflow-style: none;
-        /* IE and Edge */
-        scrollbar-width: none;
-        /* Firefox */
-    }
-
-    .weather-widget ::-webkit-scrollbar {
-        display: none;
-    }
-
-    .weather-header {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .weather-title {
-        display: flex;
-        font-size: 15px;
-        color: #3b3d40;
-    }
-
-    .weather-icon {
-        font-family: SF Pro Display, sans-serif;
-        font-weight: 500;
-    }
-
-    .weather-text {
-        font-family: Inter, sans-serif;
-        font-weight: 400;
-    }
-
-
-
-    .forecast-item {
-        display: flex;
-        padding-top: 3px;
-        padding-bottom: 3px;
-        white-space: nowrap;
-        justify-items: end;
-        align-items: baseline;
-
-        gap: 30px;
-
-        border-bottom: #c8c8c8 1px solid;
-
-    }
-
-    @media (max-width: 991px) {
-        .forecast-item {
-            white-space: initial;
-        }
-    }
-
-    .forecast-day {
-        color: #3b3d40;
-        margin: auto 0;
-        font-size: 22px;
-        font-weight: 500;
-    }
-
-    .forecast-temps {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        font-size: 15px;
-        font-weight: 0;
-        color: #3b3d40;
-        justify-content: baseline;
-
-    }
-
-    @media (max-width: 991px) {
-        .forecast-temps {
-            white-space: initial;
-        }
-    }
-
-    .forecast-icon {
-        object-fit: auto;
-        width: 40px;
-        margin-bottom: -10px;
-    }
-
-    .forecast-low {
-        margin-top: 12px;
-        color: #1279C2;
-        font-size: 22px;
-        font-weight: 500;
-        display: block;
-        width: 40px;
-    }
-
-    .forecast-high {
-        margin-top: 12px;
-        color: #DC2B89;
-        font-size: 22px;
-        font-weight: 500;
-
-    }
-
-    .forecast-precipitation {
-        color: rgb(92, 165, 204);
-        font-size: 18px;
-    }
-
-    .forecast-item-alt {
-        display: flex;
-        margin-top: 15px;
-        gap: 15px;
-    }
-
-    .forecast-temps-alt {
-        display: flex;
-        align-items: start;
-        gap: 17px;
-        font-size: 22px;
-        color: #3b3d40;
-        font-weight: 500;
-        white-space: nowrap;
-        justify-content: space-between;
-        flex: 1;
-    }
-
-    @media (max-width: 991px) {
-        .forecast-temps-alt {
-            white-space: initial;
-        }
-    }
-
-    .forecast-day-alt {
-        margin-top: 12px;
-    }
-
-    .forecast-icon-alt {
-        object-fit: auto;
-        object-position: center;
-        width: 25px;
-        fill: #fff;
-    }
-
-    .forecast-low-alt {
-        margin-top: 12px;
-    }
-
-    .forecast-high-container-alt {
-        align-self: start;
-        display: flex;
-        margin-top: 12px;
-        gap: 7px;
-        flex: 1;
-    }
-
-    .forecast-high-alt {
-        color: #3b3d40;
-    }
-
-    .forecast-precipitation-alt {
-        color: #81cffa;
-        align-self: start;
-        margin-left: 69px;
-    }
-
-    @media (max-width: 991px) {
-        .forecast-precipitation-alt {
-            margin-left: 10px;
-        }
-    }
-
-
-    .top-section {
-        display: flex;
-        width: 1280px;
-        border-radius: 10px;
-        overflow: hidden;
-        border: solid #c8c8c8 1px;
-
-
-    }
-
-    .section-container {
-        display: flex;
-        justify-content: center;
-    }
-
-    .mt-100 {
-        margin-top: 100px;
-    }
-
-
-
-    .region-widget {
-        display: flex;
-        flex-direction: column;
-        overflow: hidden;
-        position: relative;
-        min-height: 640px;
-        flex-grow: 1;
-        font-size: 48px;
-        color: #fff;
-        font-weight: 400;
-        white-space: nowrap;
-        justify-content: center;
-    }
-
-    @media (max-width: 991px) {
-        .region-widget {
-            max-width: 100%;
-            font-size: 40px;
-            white-space: initial;
-        }
-    }
-
-
-
-    .region-img {
-        position: absolute;
-        inset: 0;
-        height: 100%;
-        width: 100%;
-        object-fit: cover;
-        object-position: center;
-    }
-
-    .country-name-box {
-        position: relative;
-        text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-        height: 100%;
-        background-color: rgba(32, 33, 36, 0.4);
-        align-items: center;
-        justify-content: center;
-
-    }
-
-    .country-region-name {
-        width: 100%;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-        align-items: center;
-        justify-content: center;
-        line-height: 1;
-    }
-
-
-
-    .region-name {
-        font-size: 24px;
-        color: #fff;
-        font-weight: 100;
-    }
-
-    /* 옷 추천 탭 */
-    .recommendation-section {
-        display: flex;
-        flex-direction: column;
-        width: 1280px;
-    }
-
-    .recommendation-header {
-        align-self: start;
-        display: flex;
-        gap: 20px;
-        padding: 0 20px;
-    }
-
-    .recommendation-title {
-        flex: 1;
-        font: 400 24px/28px Inter, sans-serif;
-    }
-
-    .recommendation-accent {
-        color: #81c8a2;
-    }
-
-    .recommendation-tabs {
-        display: none;
-        gap: 14px;
-        font-size: 16px;
-        color: #3b3d40;
-        font-weight: 600;
-        line-height: 175%;
-        align-items: center;
-    }
-
-    @media (max-width: 991px) {
-        .recommendation-tabs {
-            white-space: initial;
-        }
-    }
-
-    .recommendation-tab {
-        border-bottom: solid #D5F1E2;
-        border-bottom-width: 0px;
-        transition-duration: 0.1s;
-        cursor: pointer;
-
-    }
-
-
-    .recommendation-tab:hover {
-        border-bottom-width: 3px;
-
-    }
-
-    .active-recommendation-tab {
-        border-bottom-width: 3px;
-    }
-
-
-    .recommendation-divider {
-        border-bottom: 1px solid rgba(206, 206, 206, 1);
-        margin-top: 11px;
-        width: 100%;
-    }
-
-    @media (max-width: 991px) {
-        .recommendation-divider {
-            max-width: 100%;
-        }
-    }
-
-
-
-
-    .ta-item-container {
-        /*perspective: 1000px;*/
-
-        display: none;
-        overflow: auto;
-
-        gap: 30px;
-        width: 1280px;
-        -ms-overflow-style: none;
-        scroll-snap-type: x mandatory;
-        padding-top: 10px;
-        ;
-        position: relative;
-
-    }
-
-
-    .ta-item-container::-webkit-scrollbar {
-        display: none;
-    }
-
-
-
-    .ta-item-card {
-        display: flex;
-        flex-direction: column;
-        max-width: 270px;
-        border: 1px solid rgba(224, 219, 210, 1);
-        border-radius: 8px;
-        background-color: #fff;
-        padding-bottom: 18px;
-        font-weight: 400;
-        position: relative;
-        scroll-snap-align: start;
-        min-width: 250px;
-/*         padding: 2px; */
-    }
-
-    .ta-item-image {
-        width: 100%;
-        border-radius: 8px; 
-        aspect-ratio: 1;
-        object-fit: cover;
-        object-position: center;
-    }
-
-
-
-    .ta-item-details {
-        display: flex;
-        flex-direction: column;
-        margin: 36px 0 0 20px;
-    }
-
-    .ta-item-name {
-        font: 20px;
-        color: #383230;
-        letter-spacing: -0.4px;
-        font-weight: 500px;
-    }
-
-    .ta-item-info {
-        font: 12px;
-        color: #8c8c8c;
-        margin-top: 5px;
-    }
-
-
-
-    .ta-item-details-info {
-        display: flex;
-        gap: 50px;
-
-    }
-
-    .ta-item-description {
-
-        position: absolute;
-        top: 0;
-        /* Align top edge with the parent container */
-        left: 0;
-        /* Align left edge with the parent container */
-        width: 100%;
-        /* Match the width of the parent container */
-        aspect-ratio: 1;
-        height: 0px;
-        /* Auto height to maintain aspect ratio, or set a fixed height */
-        overflow: hidden;
-        background-color: #474747;
-        /* Solid white background */
-        opacity: 80%;
-        z-index: 2;
-        /* Ensures it covers the image beneath it */
-        transition-duration: 500ms;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        word-wrap: break-word;
-        color: white;
-
-
-    }
-
-
-
-    .ta-item-image-container:hover .ta-item-description {
-        height: 250px;
-    }
-
-    /* .shopping-list .ta-item-image-container:hover .ta-item-description {
+.weather-widget {
+	display: flex;
+	flex-direction: column;
+	margin: 0 auto;
+	padding: 41px 20px;
+	width: 25%;
+	overflow: auto;
+	height: 640px;
+	-ms-overflow-style: none;
+	/* IE and Edge */
+	scrollbar-width: none;
+	/* Firefox */
+}
+
+.weather-widget ::-webkit-scrollbar {
+	display: none;
+}
+
+.weather-header {
+	display: flex;
+	flex-direction: column;
+}
+
+.weather-title {
+	display: flex;
+	font-size: 15px;
+	color: #3b3d40;
+}
+
+.weather-icon {
+	font-family: SF Pro Display, sans-serif;
+	font-weight: 500;
+}
+
+.weather-text {
+	font-family: Inter, sans-serif;
+	font-weight: 400;
+}
+
+.forecast-item {
+	display: flex;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	white-space: nowrap;
+	justify-items: end;
+	align-items: baseline;
+	gap: 30px;
+	border-bottom: #c8c8c8 1px solid;
+}
+
+@media ( max-width : 991px) {
+	.forecast-item {
+		white-space: initial;
+	}
+}
+
+.forecast-day {
+	color: #3b3d40;
+	margin: auto 0;
+	font-size: 22px;
+	font-weight: 500;
+}
+
+.forecast-temps {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	font-size: 15px;
+	font-weight: 0;
+	color: #3b3d40;
+	justify-content: baseline;
+}
+
+@media ( max-width : 991px) {
+	.forecast-temps {
+		white-space: initial;
+	}
+}
+
+.forecast-icon {
+	object-fit: auto;
+	width: 40px;
+	margin-bottom: -10px;
+}
+
+.forecast-low {
+	margin-top: 12px;
+	color: #1279C2;
+	font-size: 22px;
+	font-weight: 500;
+	display: block;
+	width: 40px;
+}
+
+.forecast-high {
+	margin-top: 12px;
+	color: #DC2B89;
+	font-size: 22px;
+	font-weight: 500;
+}
+
+.forecast-precipitation {
+	color: rgb(92, 165, 204);
+	font-size: 18px;
+}
+
+.forecast-item-alt {
+	display: flex;
+	margin-top: 15px;
+	gap: 15px;
+}
+
+.forecast-temps-alt {
+	display: flex;
+	align-items: start;
+	gap: 17px;
+	font-size: 22px;
+	color: #3b3d40;
+	font-weight: 500;
+	white-space: nowrap;
+	justify-content: space-between;
+	flex: 1;
+}
+
+@media ( max-width : 991px) {
+	.forecast-temps-alt {
+		white-space: initial;
+	}
+}
+
+.forecast-day-alt {
+	margin-top: 12px;
+}
+
+.forecast-icon-alt {
+	object-fit: auto;
+	object-position: center;
+	width: 25px;
+	fill: #fff;
+}
+
+.forecast-low-alt {
+	margin-top: 12px;
+}
+
+.forecast-high-container-alt {
+	align-self: start;
+	display: flex;
+	margin-top: 12px;
+	gap: 7px;
+	flex: 1;
+}
+
+.forecast-high-alt {
+	color: #3b3d40;
+}
+
+.forecast-precipitation-alt {
+	color: #81cffa;
+	align-self: start;
+	margin-left: 69px;
+}
+
+@media ( max-width : 991px) {
+	.forecast-precipitation-alt {
+		margin-left: 10px;
+	}
+}
+
+.top-section {
+	display: flex;
+	width: 1280px;
+	border-radius: 10px;
+	overflow: hidden;
+	border: solid #c8c8c8 1px;
+}
+
+.section-container {
+	display: flex;
+	justify-content: center;
+}
+
+.mt-100 {
+	margin-top: 100px;
+}
+
+.region-widget {
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+	position: relative;
+	min-height: 640px;
+	flex-grow: 1;
+	font-size: 48px;
+	color: #fff;
+	font-weight: 400;
+	white-space: nowrap;
+	justify-content: center;
+}
+
+@media ( max-width : 991px) {
+	.region-widget {
+		max-width: 100%;
+		font-size: 40px;
+		white-space: initial;
+	}
+}
+
+.region-img {
+	position: absolute;
+	inset: 0;
+	height: 100%;
+	width: 100%;
+	object-fit: cover;
+	object-position: center;
+}
+
+.country-name-box {
+	position: relative;
+	text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+	height: 100%;
+	background-color: rgba(32, 33, 36, 0.4);
+	align-items: center;
+	justify-content: center;
+}
+
+.country-region-name {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	align-items: center;
+	justify-content: center;
+	line-height: 1;
+}
+
+.region-name {
+	font-size: 24px;
+	color: #fff;
+	font-weight: 100;
+}
+
+/* 옷 추천 탭 */
+.recommendation-section {
+	display: flex;
+	flex-direction: column;
+	width: 1280px;
+}
+
+.recommendation-header {
+	align-self: start;
+	display: flex;
+	gap: 20px;
+	padding: 0 20px;
+}
+
+.recommendation-title {
+	flex: 1;
+	font: 400 24px/28px Inter, sans-serif;
+}
+
+.recommendation-accent {
+	color: #81c8a2;
+}
+
+.recommendation-tabs {
+	display: none;
+	gap: 14px;
+	font-size: 16px;
+	color: #3b3d40;
+	font-weight: 600;
+	line-height: 175%;
+	align-items: center;
+}
+
+@media ( max-width : 991px) {
+	.recommendation-tabs {
+		white-space: initial;
+	}
+}
+
+.recommendation-tab {
+	border-bottom: solid #D5F1E2;
+	border-bottom-width: 0px;
+	transition-duration: 0.1s;
+	cursor: pointer;
+}
+
+.recommendation-tab:hover {
+	border-bottom-width: 3px;
+}
+
+.active-recommendation-tab {
+	border-bottom-width: 3px;
+}
+
+.recommendation-divider {
+	border-bottom: 1px solid rgba(206, 206, 206, 1);
+	margin-top: 11px;
+	width: 100%;
+}
+
+@media ( max-width : 991px) {
+	.recommendation-divider {
+		max-width: 100%;
+	}
+}
+
+.ta-item-container {
+	/*perspective: 1000px;*/
+	display: none;
+	overflow: auto;
+	gap: 30px;
+	width: 1280px;
+	-ms-overflow-style: none;
+	scroll-snap-type: x mandatory;
+	padding-top: 10px;;
+	position: relative;
+}
+
+.ta-item-container::-webkit-scrollbar {
+	display: none;
+}
+
+.ta-item-card {
+	display: flex;
+	flex-direction: column;
+	max-width: 270px;
+	border: 1px solid rgba(224, 219, 210, 1);
+	border-radius: 8px;
+	background-color: #fff;
+	padding-bottom: 18px;
+	font-weight: 400;
+	position: relative;
+	scroll-snap-align: start;
+	min-width: 250px;
+	/*         padding: 2px; */
+}
+
+.ta-item-image {
+	width: 100%;
+	border-radius: 8px;
+	aspect-ratio: 1;
+	object-fit: cover;
+	object-position: center;
+}
+
+.ta-item-details {
+	display: flex;
+	flex-direction: column;
+	margin: 36px 0 0 20px;
+}
+
+.ta-item-name {
+	font: 20px;
+	color: #383230;
+	letter-spacing: -0.4px;
+	font-weight: 500px;
+}
+
+.ta-item-info {
+	font: 12px;
+	color: #8c8c8c;
+	margin-top: 5px;
+}
+
+.ta-item-details-info {
+	display: flex;
+	gap: 50px;
+}
+
+.ta-item-description {
+	position: absolute;
+	top: 0;
+	/* Align top edge with the parent container */
+	left: 0;
+	/* Align left edge with the parent container */
+	width: 100%;
+	/* Match the width of the parent container */
+	aspect-ratio: 1;
+	height: 0px;
+	/* Auto height to maintain aspect ratio, or set a fixed height */
+	overflow: hidden;
+	background-color: #474747;
+	/* Solid white background */
+	opacity: 80%;
+	z-index: 2;
+	/* Ensures it covers the image beneath it */
+	transition-duration: 500ms;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	word-wrap: break-word;
+	color: white;
+}
+
+.ta-item-image-container:hover .ta-item-description {
+	height: 250px;
+}
+
+/* .shopping-list .ta-item-image-container:hover .ta-item-description {
     height: 250px;
   } */
+.play-button-container {
+	background-color: #81c8a2;
+	display: flex;
+	gap: 30px;
+	font-size: 20px;
+	color: #fff;
+	font-weight: 700;
+	justify-content: space-between;
+	height: 35px;
+	align-items: center;
+	padding: 0px 5px;
+	cursor: pointer;
+	transition-duration: 200ms;
+}
 
-    .play-button-container {
-        background-color: #81c8a2;
-        display: flex;
-        gap: 30px;
-        font-size: 20px;
-        color: #fff;
-        font-weight: 700;
-        justify-content: space-between;
+@media ( max-width : 991px) {
+	.play-button-container {
+		white-space: initial;
+	}
+}
 
-        height: 35px;
-        align-items: center;
-        padding: 0px 5px;
-        cursor: pointer;
+.play-button-container:hover {
+	background-color: #5e9d7a
+}
 
-        transition-duration: 200ms;
+.play-button-icon {
+	width: 14px;
+	fill: #fff;
+}
 
-    }
+.next-step-container {
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+	padding: 0 20px;
+}
 
-    @media (max-width: 991px) {
-        .play-button-container {
-            white-space: initial;
-        }
-    }
-
-    .play-button-container:hover {
-        background-color: #5e9d7a
-    }
-
-
-    .play-button-icon {
-        width: 14px;
-        fill: #fff;
-    }
-
-    .next-step-container {
-        display: flex;
-        flex-direction: column;
-        text-align: center;
-        padding: 0 20px;
-    }
-
-    /* .next-step-button {
+/* .next-step-button {
     display: flex;
     gap: 8px;
     font-size: 16px;
@@ -506,126 +461,197 @@
       white-space: initial;
     }
   }*/
+.next-step-text {
+	text-decoration: none;
+	color: #383230;
+	transition-duration: 200ms;
+}
 
-    .next-step-text {
-        text-decoration: none;
-        color: #383230;
-        transition-duration: 200ms;
-    }
+.next-step-text:hover {
+	text-shadow: 0px -1px 1px #8c8c8c
+}
 
-    .next-step-text:hover {
-        text-shadow: 0px -1px 1px #8c8c8c
-    }
+.next-step-text:active {
+	color: #383230;
+}
 
-    .next-step-text:active {
-        color: #383230;
-    }
+.next-step-icon {
+	width: 12px;
+	fill: #575757;
+	align-self: start;
+}
 
-    .next-step-icon {
-        width: 12px;
-        fill: #575757;
-        align-self: start;
-    }
+.detail-page-link {
+	color: #81c8a2;
+	margin-top: 9px;
+	font: 400 11px Inter, sans-serif;
+}
 
-    .detail-page-link {
-        color: #81c8a2;
-        margin-top: 9px;
-        font: 400 11px Inter, sans-serif;
-    }
+/* 옷 추천 탭 */
+.bottom-buttons-section {
+	display: flex;
+	width: 1280px;
+	justify-content: space-between;
+}
+
+.loading-container {
+	height: 300px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+}
+
+.spinner {
+	animation: rotator 1.4s linear infinite;
+}
+
+@
+keyframes rotator { 0% {
+	transform: rotate(0deg);
+}
+
+100
 
 
-    /* 옷 추천 탭 */
-    .bottom-buttons-section {
-        display: flex;
-        width: 1280px;
-        justify-content: space-between;
-    }
+%
+{
+transform
 
 
+:
 
 
+rotate
+(
 
 
-    .loading-container {
-        height: 300px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-    }
+270deg
 
-    .spinner {
-        animation: rotator 1.4s linear infinite;
-    }
 
-    @keyframes rotator {
-        0% {
-            transform: rotate(0deg);
-        }
+)
+;
 
-        100% {
-            transform: rotate(270deg);
-        }
-    }
 
-    .path {
-        stroke-dasharray: 187;
-        stroke-dashoffset: 0;
-        transform-origin: center;
-        animation: dash 1.4s ease-in-out infinite, colors 5.6s ease-in-out infinite;
-    }
+}
+}
+.path {
+	stroke-dasharray: 187;
+	stroke-dashoffset: 0;
+	transform-origin: center;
+	animation: dash 1.4s ease-in-out infinite, colors 5.6s ease-in-out
+		infinite;
+}
 
-    @keyframes colors {
+@
+keyframes colors { 0%, 100% {
+	stroke: #81c8a2;
+}
 
-        0%,
-        100% {
-            stroke: #81c8a2;
-        }
-    }
+}
+@
+keyframes dash { 0% {
+	stroke-dashoffset: 187;
+}
 
-    @keyframes dash {
-        0% {
-            stroke-dashoffset: 187;
-        }
+50
 
-        50% {
-            stroke-dashoffset: 46.75;
-            transform: rotate(135deg);
-        }
 
-        100% {
-            stroke-dashoffset: 187;
-            transform: rotate(450deg);
-        }
-    }
-    .wall{
-    height:90px;}
+%
+{
+stroke-dashoffset
+
+
+:
+
+
+46
+.75
+;
+
+
+transform
+
+
+:
+
+
+rotate
+(
+
+
+135deg
+
+
+)
+;
+
+
+}
+100
+
+
+%
+{
+stroke-dashoffset
+
+
+:
+
+
+187
+;
+
+
+transform
+
+
+:
+
+
+rotate
+(
+
+
+450deg
+
+
+)
+;
+
+
+}
+}
+.wall {
+	height: 90px;
+}
 </style>
-    <div class="wall"></div> 
-    <div class="section-container">
-        <section class="top-section">
-            <div class="region-widget">
-                <img loading="lazy"
-                    srcset="${tripSchedule.extra__regionImageUrl }"
-                    class="region-img" />
-                <div class="country-name-box">
+<div class="wall"></div>
+<div class="section-container">
+	<section class="top-section">
+		<div class="region-widget">
+			<img loading="lazy" srcset="${tripSchedule.extra__regionImageUrl }"
+				class="region-img" />
+			<div class="country-name-box">
 
-                    <span class="country-region-name"> ${tripSchedule.extra__contryName}<br>
-                        <span class="region-name">${tripSchedule.extra__regionName}</span>
-                    </span>
+				<span class="country-region-name">
+					${tripSchedule.extra__contryName} <br> <span
+					class="region-name">${tripSchedule.extra__regionName}</span>
+				</span>
 
-                </div>
+			</div>
 
-            </div>
+		</div>
 
-            <div class="weather-widget">
-                <header class="weather-header">
-                    <h2 class="weather-title">
-                        <span class="weather-icon"><i class="fa-solid fa-calendar"></i>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                        <span class="weather-text">일정 기준 날씨</span>
-                    </h2>
-                </header>
-                <!--
+		<div class="weather-widget">
+			<header class="weather-header">
+				<h2 class="weather-title">
+					<span class="weather-icon"> <i class="fa-solid fa-calendar"></i>
+						&nbsp;&nbsp;&nbsp;&nbsp;
+					</span> <span class="weather-text">일정 기준 날씨</span>
+				</h2>
+			</header>
+			<!--
                 <div class="forecast-item">
                     <time class="forecast-day">24/04/26</time>
 
@@ -653,86 +679,88 @@
                     <span class="forecast-high">27°</span>
                 </div>
             -->
+	</section>
+</div>
 
-        </section>
-    </div>
+<main class="fashion-recommendation-main">
 
-    <main class="fashion-recommendation-main">
-
-        <div class="section-container mt-100">
-            <section class="recommendation-section">
-                <header class="recommendation-header">
-                    <h2 class="recommendation-title">
-                        <span>날씨에 알맞는</span>
-                        <span class="recommendation-accent">옷 추천</span>
-                    </h2>
-                    <nav class="recommendation-tabs">
-                        <div class="recommendation-tab fashion-all">전체</div>
-                        <div class="recommendation-tab fashion-women">여성</div>
-                        <div class="recommendation-tab fashion-man">남성</div>
-                    </nav>
-                </header>
-                <div class="recommendation-divider"></div>
-            </section>
-
+	<div class="section-container mt-100">
+		<section class="recommendation-section">
+			<header class="recommendation-header">
+				<h2 class="recommendation-title">
+					<span>날씨에 알맞는</span> <span class="recommendation-accent">옷
+						추천</span>
+				</h2>
+				<nav class="recommendation-tabs">
+					<div class="recommendation-tab fashion-all">전체</div>
+					<div class="recommendation-tab fashion-women">여성</div>
+					<div class="recommendation-tab fashion-man">남성</div>
+				</nav>
+			</header>
+			<div class="recommendation-divider"></div>
+		</section>
 
 
 
-        </div>
-        <div class="section-container">
-            <div class="loading-container">
-                <svg class="spinner" width="65px" height="65px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
-                    <circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30">
+
+	</div>
+	<div class="section-container">
+		<div class="loading-container">
+			<svg class="spinner" width="65px" height="65px" viewBox="0 0 66 66"
+				xmlns="http://www.w3.org/2000/svg">
+                    <circle class="path" fill="none" stroke-width="6"
+					stroke-linecap="round" cx="33" cy="33" r="30">
                     </circle>
                 </svg>
-                <p>지금 ai가 날씨에 맞는 옷을 찾아주는 중입니다.</p>
-            </div>
+			<p>지금 ai가 날씨에 맞는 옷을 찾아주는 중입니다.</p>
+		</div>
 
 
-            <section class="ta-item-container fashion-all"></section>
-            <section class="ta-item-container fashion-women"></section>
-            <section class="ta-item-container fashion-man"></section>
+		<section class="ta-item-container fashion-all"></section>
+		<section class="ta-item-container fashion-women"></section>
+		<section class="ta-item-container fashion-man"></section>
 
 
-        </div>
+	</div>
 
 
-    </main>
+</main>
 
 
-    <main class="shoppinglist-recommendation-main mt-100">
+<main class="shoppinglist-recommendation-main mt-100">
 
-        <div class="section-container ">
-            <section class="recommendation-section ">
-                <header class="recommendation-header">
-                    <h2 class="recommendation-title">
-                        <span>쇼핑 추천 </span>
-                        <span class="recommendation-accent">리스트</span>
-                    </h2>
-                </header>
-                <div class="recommendation-divider"></div>
-            </section>
-
+	<div class="section-container ">
+		<section class="recommendation-section ">
+			<header class="recommendation-header">
+				<h2 class="recommendation-title">
+					<span>쇼핑 추천 </span> <span class="recommendation-accent">리스트</span>
+				</h2>
+			</header>
+			<div class="recommendation-divider"></div>
+		</section>
 
 
 
-        </div>
 
-        <div class="section-container">
+	</div>
 
-            <div class="loading-container">
-                <svg class="spinner" width="65px" height="65px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
-                    <circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30">
+	<div class="section-container">
+
+		<div class="loading-container">
+			<svg class="spinner" width="65px" height="65px" viewBox="0 0 66 66"
+				xmlns="http://www.w3.org/2000/svg">
+                    <circle class="path" fill="none" stroke-width="6"
+					stroke-linecap="round" cx="33" cy="33" r="30">
                     </circle>
                 </svg>
-                <p>지금 ai가 해당 도시의 쇼핑리스트를 찾고 있습니다.</p>
-            </div>
+			<p>지금 ai가 해당 도시의 쇼핑리스트를 찾고 있습니다.</p>
+		</div>
 
 
 
-            <section class="ta-item-container shopping-list">
+		<section class="ta-item-container shopping-list">
 
-                <!-- <article class="ta-item-card">
+			<!-- <article class="ta-item-card">
                     <div class="ta-item-image-container">
                         <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/38d76435c2a51d38ef2a5a261e37f9c408d0757e5903b27e3802d58ffc484113?apiKey=54ecc9e8d5c2403588119db4a1abe99e&" alt="Fashion Image" class="ta-item-image" loading="lazy" />
                         <div class="ta-item-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam non aliquet metus. Suspendisse potenti. Suspendisse potenti. Donec accumsan eros et rhoncus imperdiet. Duis laoreet lobortis pulvinar. Ut efficitur at ipsum ac porttitor. Vestibulum a porttitor lectus. Nulla facilisi. Mauris a tortor in sapien luctus aliquet. Cras ultricies velit non nunc.</div>
@@ -750,37 +778,38 @@
 
 
 
-            </section>
+		</section>
 
 
-        </div>
+	</div>
 
 
-    </main>
+</main>
 
 
-    <div class="section-container mt-100">
-        <section class="bottom-buttons-section">
-            <section class="play-button-container">
-                <span class="play-button-text">PLAY</span>
-                <span class="play-button-text">▶</span>
+<div class="section-container mt-100">
+	<section class="bottom-buttons-section">
+		<section class="play-button-container">
+			<span class="play-button-text">PLAY</span> <span
+				class="play-button-text">▶</span>
 
-            </section>
-            <section class="next-step-container">
-                <a href="#" class="next-step-text"
-                 onclick='doCreateFormSubmit(event)'>다음단계 &gt;&gt;</a>
-                <p class="detail-page-link">상세 페이지로 이동</p>
-            </section>
-        </section>
-    </div>
-    
+		</section>
+		<section class="next-step-container">
+			<a href="#" class="next-step-text"
+				onclick='doCreateFormSubmit(event)'>다음단계 &gt;&gt;</a>
+			<p class="detail-page-link">상세 페이지로 이동</p>
+		</section>
+	</section>
+</div>
 
-    <form id="doCreateForm" action="/usr/styleRecommended/doCreate" method="post">
-        <input type="hidden" id="id" name="id" value="${id}">
-	    <input type="hidden" id="weatherDatas" name="weatherDatas">
-	    <input type="hidden" id="fashionDatas" name="fashionDatas">
-	    <input type="hidden" id="shoppingListDatas" name="shoppingListDatas">
-    </form>
+
+<form id="doCreateForm" action="/usr/styleRecommended/doCreate"
+	method="post">
+	<input type="hidden" id="id" name="id" value="${id}"> <input
+		type="hidden" id="weatherDatas" name="weatherDatas"> <input
+		type="hidden" id="fashionDatas" name="fashionDatas"> <input
+		type="hidden" id="shoppingListDatas" name="shoppingListDatas">
+</form>
 
 <script>
 
