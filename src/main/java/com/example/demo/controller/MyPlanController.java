@@ -10,13 +10,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.demo.crawling.PlaceInfoDto;
+import com.example.demo.service.FashionService;
 import com.example.demo.service.PlaceInfoService;
 import com.example.demo.service.RegionInfoTipsService;
+import com.example.demo.service.ShoppingListService;
 import com.example.demo.service.TripScheduleService;
+import com.example.demo.service.WeatherService;
 import com.example.demo.vo.CalendarData;
+import com.example.demo.vo.Fashion;
 import com.example.demo.vo.RegionInfoTips;
 import com.example.demo.vo.Rq;
+import com.example.demo.vo.ShoppingList;
 import com.example.demo.vo.TripSchedule;
+import com.example.demo.vo.Weather;
 
 import jakarta.servlet.http.HttpServletRequest;
 
@@ -33,6 +39,15 @@ public class MyPlanController {
 
 	@Autowired
 	private PlaceInfoService placeInfoService;
+	
+	@Autowired
+	private WeatherService weatherService;
+	
+	@Autowired
+	private FashionService fashionService;
+	
+	@Autowired
+	private ShoppingListService shoppingListService;
 
 	@RequestMapping("/usr/myPlan/myPlanList")
 	public String showMyPlanList(HttpServletRequest req, Model model) {
@@ -66,6 +81,19 @@ public class MyPlanController {
 		Rq rq = (Rq) req.getAttribute("rq");
 
 		TripSchedule tripSchedule = tripScheduleService.getTripScheduleById(id);
+		
+		if (tripSchedule == null) {
+			return rq.historyBackOnView("존재하지 않는 일정 입니다.");
+		}
+		
+		if (tripSchedule.getMemberId() != rq.getLoginedMemberId()) {
+			return rq.historyBackOnView("일정의 작성자만 접근할 수 있습니다.");
+		}
+		
+		
+		if (tripSchedule.getStep() < 2) {
+			return rq.historyBackOnView("잘못된 접근 입니다. 일정의 진행사항과 요청이 일치하지 않습니다.");
+		}
 
 		RegionInfoTips regionInfoTips = regionInfoTipsService.getRegionInfoTipsId(regionId);
 
@@ -76,10 +104,18 @@ public class MyPlanController {
 		List<PlaceInfoDto> placeInfoList1 = placeInfoService.getplaceInfoList(tabId1, regionId); // 관광placeList
 		List<PlaceInfoDto> placeInfoList2 = placeInfoService.getplaceInfoList(tabId2, regionId); // 맛집placeList
 		List<PlaceInfoDto> placeInfoList3 = placeInfoService.getplaceInfoList(tabId3, regionId); // 쇼핑placeList
+		
+		
+		List <Weather> weathers = weatherService.getWeathersFromScheduleId(id);
+		List <Fashion> fashions = fashionService.getFashionsFromScheduleId(id);
+		List <ShoppingList> shoppingLists = shoppingListService.getShoppingListsFromScheduleId(id);
+		
 
 		for (PlaceInfoDto placeInfoDto : placeInfoList1) {
 			System.err.println("ImgUrl1" + placeInfoDto.getImageUrl1());
 		}
+		
+		tripScheduleService.updateStepById(id);
 
 		model.addAttribute("tripSchedule", tripSchedule);
 		model.addAttribute("regionInfoTips", regionInfoTips);
@@ -87,6 +123,10 @@ public class MyPlanController {
 		model.addAttribute("placeInfoList1", placeInfoList1);
 		model.addAttribute("placeInfoList2", placeInfoList2);
 		model.addAttribute("placeInfoList3", placeInfoList3);
+		
+		model.addAttribute("weathers", weathers);
+		model.addAttribute("fashions", fashions);
+		model.addAttribute("shoppingLists", shoppingLists);
 
 		System.out.println(regionInfoTips);
 
