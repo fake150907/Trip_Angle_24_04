@@ -209,7 +209,7 @@ public class PlaceInfoCrawler {
 		PreparedStatement pstmt = conn.prepareStatement(placeInsertSql, PreparedStatement.RETURN_GENERATED_KEYS);
 		pstmt.setString(1, place.getName());
 		pstmt.setString(2, place.getAddress());
-		pstmt.setString(3, place.getPhoneNum());
+		pstmt.setString(3, place.getPhoneNumber());
 		pstmt.setString(4, place.getFacilities());
 		pstmt.setString(5, place.getGrade());
 		pstmt.setString(6, place.getImageUrl1());
