@@ -54,7 +54,7 @@
 .InfoLabel1, .InfoLabel2 {
 	width: 200px;
 	height: 53px;
- 	left: 137px; 
+	left: 137px;
 	top: 127px;
 	position: absolute;
 	top: 20%;
@@ -68,7 +68,7 @@
 }
 
 .InfoLabel1:hover, .InfoLabel2:hover {
- cursor: pointer; 
+	cursor: pointer;
 }
 
 .InfoLabel1 {
@@ -98,7 +98,7 @@
 }
 
 .TabContent2::after {
- 	left: 5px; 
+	left: 5px;
 }
 
 .TabContent1, .TabContent2 {
@@ -325,7 +325,7 @@
 	flex-direction: column;
 	color: #000;
 	font-weight: 500;
- 	padding: 0 20px; 
+	padding: 0 20px;
 }
 
 .InfoItem {
@@ -472,65 +472,64 @@
 					<span class="TabContent2">꿀팁</span>
 				</div>
 			</div>
-			<img class="OsakaImage"
-				src=${region.imageUrl}
+			<img class="OsakaImage" src=${region.imageUrl }
 				alt="오사카 이미지">
 		</div>
 	</div>
 	<form action="/usr/schedule/tripSchedule">
-	<input type="hidden" value="${region.getId() }" name="regionId" />
-	<div class="TipInformationPage">
-		<div class="column-2">
-			<div class="InfoItemContainer">
-			
-				<div class="OsakaInfo">${region.englishName}</div>
-				<div class="country-city-text">${region.extra__countryName} ${region.name}</div>
-				
-				<div class="country-city">${RegionInfoTips.getInformation()}</div>
-				<div class="climate-text">기후</div>
-				<div class="climate">${RegionInfoTips.getClimate()}</div>
-				<button class="ScheduleButton">일정 만들기</button>
-			</div>
-		</div>
-	</div>
-	<div class="HoneyTipsPage">
-		<div class="column-3">
-			<div class="HoneyTipsPageContainer">
-				<div class="OsakaInfo">${region.englishName}</div>
-				<div class="div-2">
+		<input type="hidden" value="${region.getId() }" name="regionId" />
+		<div class="TipInformationPage">
+			<div class="column-2">
+				<div class="InfoItemContainer">
 
-					<div class="language-box">
-						<div class="InfoItem language-text">사용 언어</div>
-						<div class="InfoItem language">${RegionInfoTips.getLanguage()}</div>
-					</div>
+					<div class="OsakaInfo">${region.englishName}</div>
+					<div class="country-city-text">${region.extra__countryName}
+						${region.name}</div>
 
-					<div class="currency-box">
-						<div class="InfoItem currency-text">환율</div>
-						<div class="InfoItem currency">${RegionInfoTips.getRate() }</div>
-					</div>
-
-					<div class="voltage-box">
-						<div class="InfoItem voltage-text">전압</div>
-						<div class="InfoItem voltage">${RegionInfoTips.getVoltage()}</div>
-					</div>
-
-					<div class="transportation-box">
-						<div class="InfoItem transportation-text">팁</div>
-						<div class="InfoItem transportation">${RegionInfoTips.getTips() }</div>
-					</div>
-
-					<div class="time-difference-box">
-						<div class="InfoItem time-difference-text">시차</div>
-						<div class="InfoItem time-difference">${RegionInfoTips.getTimeDifference() }</div>
-					</div>
-					
-					<button class="ScheduleButton2">일정 만들기
-					</button>
-
+					<div class="country-city">${RegionInfoTips.getInformation()}</div>
+					<div class="climate-text">기후</div>
+					<div class="climate">${RegionInfoTips.getClimate()}</div>
+					<button class="ScheduleButton">일정 만들기</button>
 				</div>
 			</div>
 		</div>
-	</div>
+		<div class="HoneyTipsPage">
+			<div class="column-3">
+				<div class="HoneyTipsPageContainer">
+					<div class="OsakaInfo">${region.englishName}</div>
+					<div class="div-2">
+
+						<div class="language-box">
+							<div class="InfoItem language-text">사용 언어</div>
+							<div class="InfoItem language">${RegionInfoTips.getLanguage()}</div>
+						</div>
+
+						<div class="currency-box">
+							<div class="InfoItem currency-text">환율</div>
+							<div class="InfoItem currency">${RegionInfoTips.getRate() }</div>
+						</div>
+
+						<div class="voltage-box">
+							<div class="InfoItem voltage-text">전압</div>
+							<div class="InfoItem voltage">${RegionInfoTips.getVoltage()}</div>
+						</div>
+
+						<div class="transportation-box">
+							<div class="InfoItem transportation-text">팁</div>
+							<div class="InfoItem transportation">${RegionInfoTips.getTips() }</div>
+						</div>
+
+						<div class="time-difference-box">
+							<div class="InfoItem time-difference-text">시차</div>
+							<div class="InfoItem time-difference">${RegionInfoTips.getTimeDifference() }</div>
+						</div>
+
+						<button class="ScheduleButton2">일정 만들기</button>
+
+					</div>
+				</div>
+			</div>
+		</div>
 	</form>
 </div>
 
