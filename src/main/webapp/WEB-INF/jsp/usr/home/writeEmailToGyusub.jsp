@@ -7,21 +7,17 @@
 <script data-cfasync="false" type="text/javascript"
 		src="https://cdn.rawgit.com/dwyl/html-form-send-email-via-google-script-without-server/master/form-submission-handler.js"></script>
 
-
-
 <style>
 .backBtn {
 	color: #a9a9a9;
 }
 </style>
 
-
-
 <section class="mt-8 text-xl px-4">
     <h1 style="text-align: center; font-size: 25; margin-top: 100px; font-weight: 600;">신규섭에게 이메일 보내기</h1>
     <div class="mx-auto">
-        <form class="gform" method="POST" data-email="yunlinit@gmail.com"
-            action="https://script.google.com/macros/s/AKfycbxkZTwkACh8C2St2dGm8mxtr3Yuj91yE1f92s-gEhghKd0kle5RHSEXSTuwGjPdZwlmxA/exec">
+        <form class="gform" method="POST" data-email="tlstlsrbrb11@gmail.com"
+            action="https://script.google.com/macros/s/AKfycbxp8VaWQPwHKZRlcG9d8xqbXhP25ghwzxtrK2lZ5fPsj2u6OEarml8KviGhl3KuZs-D/exec">
            
 
             <table class="write-box table-box-1 mx-auto mt-10" border="1">
