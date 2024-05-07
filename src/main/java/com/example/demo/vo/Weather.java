@@ -26,5 +26,14 @@ public class Weather {
 		this.scheduleId = scheduleId;
 	}
 	
+	public String pullIconPath() {
+		return "https://openweathermap.org/img/wn/" + icon + "@2x.png";
+	}
+	
+	public String shortenDay() {
+		String dayWithoutFirstTwoString = day.substring(2);
+		return dayWithoutFirstTwoString.replace("-", "/");
+	}
+	
 	
 }

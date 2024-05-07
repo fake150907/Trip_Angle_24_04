@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Select;
 
 import com.example.demo.vo.Fashion;
 import com.example.demo.vo.Weather;
@@ -22,4 +23,11 @@ public interface FashionRepository {
 	    "</script>"
 	})
 	public void writeFashionList(List<Fashion> fashions);
+
+
+	@Select(
+			"""
+			SELECT * FROM Fashion WHERE scheduleId = ${scheduleId}	
+			""")
+	public List<Fashion> getFashionsFromScheduleId(int scheduleId);
 }
