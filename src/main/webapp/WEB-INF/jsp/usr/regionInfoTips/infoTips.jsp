@@ -43,8 +43,8 @@
 
 .Tab {
 	width: 224px;
-	left: 400px;
-	top: 70px;
+	left: 520px;
+	top: 120px;
 	position: absolute;
 	justify-content: space-between;
 	align-items: center;
@@ -52,7 +52,7 @@
 }
 
 .InfoLabel1, .InfoLabel2 {
-	width: 130px;
+	width: 200px;
 	height: 53px;
 	left: 137px;
 	top: 127px;
@@ -67,8 +67,12 @@
 	word-wrap: break-word;
 }
 
+.InfoLabel1:hover, .InfoLabel2:hover {
+	cursor: pointer;
+}
+
 .InfoLabel1 {
-	left: -106%;
+	left: -110%;
 }
 
 .InfoLabel2 {
@@ -90,11 +94,11 @@
 }
 
 .TabContent1::after {
-	left: 12px;
+	left: 0.1px;
 }
 
 .TabContent2::after {
-	left: 42px;
+	left: 5px;
 }
 
 .TabContent1, .TabContent2 {
@@ -253,8 +257,8 @@
 
 .country-city {
 	margin-top: 21px;
-	font: 400 15px/28px Inter, sans-serif;
-	font-weight: 500;
+	font: 400 15px/28px Pretendard, sans-serif;
+	font-weight: 400;
 }
 
 @media ( max-width : 991px) {
@@ -277,8 +281,8 @@
 
 .climate {
 	margin-top: 21px;
-	font: 400 15px/28px Inter, sans-serif;
-	font-weight: 500;
+	font: 400 15px/28px Pretendard, sans-serif;
+	font-weight: 400;
 }
 
 @media ( max-width : 991px) {
@@ -296,7 +300,7 @@
 	text-align: center;
 	justify-content: center;
 	padding: 13px 15px;
-	font: 16px Pretendard, sans-serif;
+	font: 400 16px Pretendard, sans-serif;
 }
 
 @media ( max-width : 991px) {
@@ -351,7 +355,6 @@
 	position: relative;
 	width: 900px;
 	height: 450px;
-	width: 900px;
 }
 
 .language-box, .currency-box, .voltage-box, .transportation-box,
@@ -447,14 +450,15 @@
 	font-weight: 500;
 	text-decoration: none; /* Remove underline from links */
 	border-radius: 5px;
-	width: 100px;
-	height: 40px;
+	width: 103.16px;
+	height: 45px;
 	position: absolute;
-	left: 65%;
-	top: 80%;
+	left: 70.5%;
+	top: 71%;
 	background: #D5F1E2;
 	border-radius: 5px;
 	background: #D5F1E2;
+	font: 400 16px Pretendard, sans-serif;
 }
 </style>
 <div class="informationPage">
@@ -468,62 +472,65 @@
 					<span class="TabContent2">꿀팁</span>
 				</div>
 			</div>
-			<img class="OsakaImage"
-				src=${region.imageUrl}
+			<img class="OsakaImage" src=${region.imageUrl }
 				alt="오사카 이미지">
 		</div>
 	</div>
-	<div class="TipInformationPage">
-		<div class="column-2">
-			<div class="InfoItemContainer">
-			
-				<div class="OsakaInfo">${region.englishName}</div>  <!-- ${countryName} 들어가야함--> 
-				<div class="country-city-text">${region.extra__countryName} ${region.name}</div> <!-- ${regionName} 들어가야함--> 
-				
-				<div class="country-city">${RegionInfoTips.getInformation()}</div>
-				<div class="climate-text">기후</div>
-				<div class="climate">${RegionInfoTips.getClimate()}</div>
-				<div class="ScheduleButton">일정 만들기</div>
-			</div>
-		</div>
-	</div>
-	<div class="HoneyTipsPage">
-		<div class="column-3">
-			<div class="HoneyTipsPageContainer">
-				<div class="OsakaInfo">${region.englishName}</div>
-				<div class="div-2">
+	<form action="/usr/schedule/tripSchedule">
+		<input type="hidden" value="${region.getId() }" name="regionId" />
+		<div class="TipInformationPage">
+			<div class="column-2">
+				<div class="InfoItemContainer">
 
-					<div class="language-box">
-						<div class="InfoItem language-text">사용 언어</div>
-						<div class="InfoItem language">${RegionInfoTips.getLanguage()}</div>
-					</div>
+					<div class="OsakaInfo">${region.englishName}</div>
+					<div class="country-city-text">${region.extra__countryName}
+						${region.name}</div>
 
-					<div class="currency-box">
-						<div class="InfoItem currency-text">환율</div>
-						<div class="InfoItem currency">${RegionInfoTips.getRate() }</div>
-					</div>
-
-					<div class="voltage-box">
-						<div class="InfoItem voltage-text">전압</div>
-						<div class="InfoItem voltage">${RegionInfoTips.getVoltage()}</div>
-					</div>
-
-					<div class="transportation-box">
-						<div class="InfoItem transportation-text">팁</div>
-						<div class="InfoItem transportation">${RegionInfoTips.getTips() }</div>
-					</div>
-
-					<div class="time-difference-box">
-						<div class="InfoItem time-difference-text">시차</div>
-						<div class="InfoItem time-difference">${RegionInfoTips.getTimeDifference() }</div>
-					</div>
-
-					<button class="ScheduleButton2">일정 만들기</button>
-
+					<div class="country-city">${RegionInfoTips.getInformation()}</div>
+					<div class="climate-text">기후</div>
+					<div class="climate">${RegionInfoTips.getClimate()}</div>
+					<button class="ScheduleButton">일정 만들기</button>
 				</div>
 			</div>
 		</div>
-	</div>
+		<div class="HoneyTipsPage">
+			<div class="column-3">
+				<div class="HoneyTipsPageContainer">
+					<div class="OsakaInfo">${region.englishName}</div>
+					<div class="div-2">
+
+						<div class="language-box">
+							<div class="InfoItem language-text">사용 언어</div>
+							<div class="InfoItem language">${RegionInfoTips.getLanguage()}</div>
+						</div>
+
+						<div class="currency-box">
+							<div class="InfoItem currency-text">환율</div>
+							<div class="InfoItem currency">${RegionInfoTips.getRate() }</div>
+						</div>
+
+						<div class="voltage-box">
+							<div class="InfoItem voltage-text">전압</div>
+							<div class="InfoItem voltage">${RegionInfoTips.getVoltage()}</div>
+						</div>
+
+						<div class="transportation-box">
+							<div class="InfoItem transportation-text">팁</div>
+							<div class="InfoItem transportation">${RegionInfoTips.getTips() }</div>
+						</div>
+
+						<div class="time-difference-box">
+							<div class="InfoItem time-difference-text">시차</div>
+							<div class="InfoItem time-difference">${RegionInfoTips.getTimeDifference() }</div>
+						</div>
+
+						<button class="ScheduleButton2">일정 만들기</button>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
 </div>
 
 <%@ include file="../common/foot.jspf"%>

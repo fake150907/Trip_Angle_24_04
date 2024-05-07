@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="pageTitle" value="추천 장소 상세보기"></c:set>
 <%@ include file="../common/head.jspf"%>
@@ -168,38 +169,28 @@ function doModifyPlaceReview(placeReviewId) {
 	<div class="place-detail-page">
 		<div class="detail-imgs">
 			<div class="place-img-box-big li">
-				<a href="${place.placeImgUrl1}">
-					<img class="big-img"
-						src="${place.placeImgUrl1} https://images.unsplash.com/photo-1484980972926-edee96e0960d?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-						alt="이미지1" />
+				<a href="${place.imageUrl1}">
+					<img class="big-img" src="${place.imageUrl1}" alt="이미지1" />
 				</a>
 			</div>
 			<div class="place-img-box1 li">
-				<a href="${place.placeImgUrl2}">
-					<img class="sm-img1"
-						src="${place.placeImgUrl2} https://images.unsplash.com/photo-1660495396534-c56f48502cc5?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-						alt=" 이미지2" />
+				<a href="${place.imageUrl2}">
+					<img class="sm-img1" src="${place.imageUrl2}" alt=" 이미지2" />
 				</a>
 			</div>
 			<div class="place-img-box2 li">
-				<a href="${place.placeImgUrl3}">
-					<img class="sm-img2"
-						src="${place.placeImgUrl3} https://images.unsplash.com/photo-1562785561-d88a65a2679e?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-						alt="이미지3" />
+				<a href="${place.imageUrl3}">
+					<img class="sm-img2" src="${place.imageUrl3}" alt="이미지3" />
 				</a>
 			</div>
 			<div class="place-img-box3 li">
-				<a href="${place.placeImgUrl4}">
-					<img class="sm-img3"
-						src="${place.placeImgUrl4} https://images.unsplash.com/photo-1533193773788-92826ee86674?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-						alt="이미지4" />
+				<a href="${place.imageUrl4}">
+					<img class="sm-img3" src="${place.imageUrl4}" alt="이미지4" />
 				</a>
 			</div>
 			<div class="place-img-box4 li">
-				<a href="${place.placeImgUrl5}">
-					<img class="sm-img4"
-						src="${place.placeImgUrl5} https://images.unsplash.com/photo-1677517497394-87d635cf7e10?q=80&w=2050&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-						alt="이미지5" />
+				<a href="${place.imageUrl5}">
+					<img class="sm-img4" src="${place.imageUrl5}" alt="이미지5" />
 				</a>
 			</div>
 		</div>
@@ -215,37 +206,26 @@ function doModifyPlaceReview(placeReviewId) {
 		<!-- 카페 정보 -->
 		<div class="place-info">
 			<div class="place-name">Whowho Restaurant ${place.name}</div>
-			<div class="place-address">Somewhere Ave. Honolulu, Hawaii ${place.address}</div>
+			<div class="place-address">Somewhere Ave. Honolulu, Hawaii
+				${place.address}</div>
 			<div class="place-phone">+1-608-335-1396 ${place.phoneNum}</div>
-			<div class="place-businessHours"> 매일 12:00 - 22:00
-				<script>
-            		// ${place.businessHours}를 세미콜론으로 분할하여 배열로 만듭니다.
-            var businessHoursArray = "${place.businessHours}".split(';');
-
-            		// 분할된 각 시간대를 화면에 표시합니다.
-            businessHoursArray.forEach(function(hour) {
-                document.write('<div>' + hour + '</div>');
-            });
-            
-            console.log('${place.businessHours}');
-       			</script>
-			</div>
 			<div class="like-count">
-				<button class="material-symbols-outlined thumb_up" id="likeButton" onclick="doPlaceScrap(${param.id})">
-				
-					thumb_up</button>
-				<div class="placeScrapCount" id="scrapCount">4.5 ${place.placeScrapCount}</div>
+				<button class="material-symbols-outlined thumb_up" id="likeButton"
+					onclick="doPlaceScrap(${param.id})">thumb_up</button>
+
 			</div>
 			<div class="review-count">
 				<div class="review-badge">리뷰</div>
-				<div class="review-count-num">3 ${placeReviewsCount}</div>
+				<div class="review-count-num">3 ${place.reviewCount}</div>
 			</div>
 
-			<span class="material-symbols-outlined clock-circle" style="color: #a9a9a9"> schedule </span> <span
-				class="material-symbols-outlined phone" style="color: #a9a9a9"> call </span> <span
-				class="material-symbols-outlined store" style="color: #a9a9a9"> storefront </span>
+			<span class="material-symbols-outlined clock-circle"
+				style="color: #a9a9a9"> schedule </span>
+			<span class="material-symbols-outlined phone" style="color: #a9a9a9">
+				call </span>
+			<span class="material-symbols-outlined store" style="color: #a9a9a9">
+				storefront </span>
 
-			<p class="hashtag">${place.hashtag}</p>
 		</div>
 
 
@@ -367,15 +347,19 @@ function doModifyPlaceReview(placeReviewId) {
 						<div class="review-input-area">
 
 							<form action="../placeReview/doWrite" method="POST">
-								<input type="hidden" name="placeId" value="${place.id }" /> <input type="text" autocomplete="off"
-									placeholder="리뷰를 남겨주세요" name="body" class="review-input-box input input-bordered input-md w-full " />
+								<input type="hidden" name="placeId" value="${place.id }" />
+								<input type="text" autocomplete="off" placeholder="리뷰를 남겨주세요"
+									name="body"
+									class="review-input-box input input-bordered input-md w-full " />
 								<!-- 								<button class="review-write-btn btn btn-sm">등록</button> -->
-								<input class="review-write-btn btn btn-sm" type="submit" value="등록" />
+								<input class="review-write-btn btn btn-sm" type="submit"
+									value="등록" />
 							</form>
 						</div>
 					</c:if>
 					<c:if test="${!rq.isLogined() }">
-						<a href="${rq.loginUri }" style="text-decoration: underline; font-weight: 600;">로그인</a> 후 이용해주세요.
+						<a href="${rq.loginUri }"
+							style="text-decoration: underline; font-weight: 600;">로그인</a> 후 이용해주세요.
 				</c:if>
 				</div>
 
@@ -386,7 +370,8 @@ function doModifyPlaceReview(placeReviewId) {
 					<c:forEach var="placeReview" items="${placeReviews }">
 						<div class="show-review-box">
 							<div class="user-nickname 리뷰작성자">${placeReview.extra__writer }
-								<div id="reviewRegDate-${placeReview.id }" style="font-size: 11px; font-weight: 300; color: #a9a9a9;">${placeReview.regDate.substring(0,10) }</div>
+								<div id="reviewRegDate-${placeReview.id }"
+									style="font-size: 11px; font-weight: 300; color: #a9a9a9;">${placeReview.regDate.substring(0,10) }</div>
 							</div>
 
 
@@ -395,7 +380,8 @@ function doModifyPlaceReview(placeReviewId) {
 								<form method="POST" id="modify-form-${placeReview.id }"
 									style="display: none; position: absolute; top: 20px; left: 0; width: 100%; z-index: 1;"
 									action="/usr/placeReview/doModify">
-									<input style="width: 1110px; height: 35px; margin-top: -17px;" type="text" value="${placeReview.body }"
+									<input style="width: 1110px; height: 35px; margin-top: -17px;"
+										type="text" value="${placeReview.body }"
 										name="placeReview-text-${placeReview.id }" />
 								</form>
 							</div>
@@ -404,15 +390,18 @@ function doModifyPlaceReview(placeReviewId) {
 							<div class="mod-del-btns"
 								style="font-weight: 500; color: #a9a9a9; margin-top: 89px; margin-left: 17px; font-size: 11px;">
 								<c:if test="${placeReview.userCanModify }">
-									<button onclick="toggleModifybtn('${placeReview.id}');" id="modify-btn-${placeReview.id }"
+									<button onclick="toggleModifybtn('${placeReview.id}');"
+										id="modify-btn-${placeReview.id }"
 										style="white-space: nowrap;">수정</button>
-									<button onclick="doModifyPlaceReview('${placeReview.id}');" style="white-space: nowrap; display: none;"
+									<button onclick="doModifyPlaceReview('${placeReview.id}');"
+										style="white-space: nowrap; display: none;"
 										id="save-btn-${placeReview.id }">저장</button>
 
 								</c:if>
 
 								<c:if test="${placeReview.userCanDelete }">
-									<a style="white-space: nowrap; margin-left: 10px;" onclick="if(confirm('정말 삭제하시겠습니까?') == false) return false;"
+									<a style="white-space: nowrap; margin-left: 10px;"
+										onclick="if(confirm('정말 삭제하시겠습니까?') == false) return false;"
 										href="../placeReview/doDelete?id=${placeReview.id }">삭제</a>
 								</c:if>
 							</div>
@@ -441,11 +430,21 @@ function doModifyPlaceReview(placeReviewId) {
 	</button>
 	<div class="slide__container">
 		<ul class="slides">
-			<li><img src="" alt="이미지1"></li>
-			<li><img src="" alt="이미지2"></li>
-			<li><img src="" alt="이미지3"></li>
-			<li><img src="" alt="이미지4"></li>
-			<li><img src="" alt="이미지5"></li>
+			<li>
+				<img src="" alt="이미지1">
+			</li>
+			<li>
+				<img src="" alt="이미지2">
+			</li>
+			<li>
+				<img src="" alt="이미지3">
+			</li>
+			<li>
+				<img src="" alt="이미지4">
+			</li>
+			<li>
+				<img src="" alt="이미지5">
+			</li>
 		</ul>
 	</div>
 </div>

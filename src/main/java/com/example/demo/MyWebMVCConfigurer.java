@@ -80,11 +80,22 @@ public class MyWebMVCConfigurer implements WebMvcConfigurer {
 //		좋아요 관련
 		ir.addPathPatterns("/usr/reactionPoint/doGoodReaction");
 		ir.addPathPatterns("/usr/reactionPoint/doBadReaction");
-
+		
+		
+		// 일정 관련
+		ir.addPathPatterns("/usr/schedule/tripSchedule");
+		ir.addPathPatterns("/usr/schedule/ticketing");
+		
+		
 		// 캘린더 관련
 		ir.addPathPatterns("/usr/myPlan/myPlanCalendar");
 		ir.addPathPatterns("/usr/myPlan/saveCalendarData");
 		ir.addPathPatterns("/usr/myPlan/deleteCalendarData");
+		
+		//일정 관련
+		ir.addPathPatterns("/usr/styleRecommended/create");
+		ir.addPathPatterns("/usr/styleRecommended/doCreate");
+		
 
 		ir = registry.addInterceptor(needLogoutInterceptor);
 		ir.addPathPatterns("/usr/member/login");
@@ -95,6 +106,9 @@ public class MyWebMVCConfigurer implements WebMvcConfigurer {
 		ir.addPathPatterns("/usr/member/doFindLoginId");
 		ir.addPathPatterns("/usr/member/findLoginPw");
 		ir.addPathPatterns("/usr/member/doFindLoginPw");
+		
+		
+		
 	}
 
 }

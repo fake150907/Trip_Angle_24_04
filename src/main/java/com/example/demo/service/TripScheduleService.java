@@ -22,15 +22,14 @@ public class TripScheduleService {
 
 	}
 
-	public TripSchedule getTripScheduleById(int travleScheduleId) {
+	public TripSchedule getTripScheduleById(int id) {
 
-		return tripScheduleRepository.getTripScheduleById(travleScheduleId);
+		return tripScheduleRepository.getTripScheduleById(id);
 	}
 
-	public void insertTripSchedule(String title, String content, String checkInDate, String checkOutDate,
-			int loginedMemberId, int regionId) {
+public void insertTripSchedule(String title, String content, String checkInDate, String checkOutDate,
+			int loginedMemberId, int regionId, Map<String, Object> map) {
 		
-		Map<String, Object> map = new HashMap<>();
 		
 		tripScheduleRepository.insertTripSchedule(title, content, checkInDate, checkOutDate, loginedMemberId, regionId, map);
 	
@@ -49,8 +48,15 @@ public class TripScheduleService {
 		return tripScheduleRepository.getCalendarDatas(loginedMemberId);
 	}
 
+
 	public List<TripSchedule> getForPrintTripSchedules(int memberId) {
 		
 		return tripScheduleRepository.getForPrintTripSchedules(memberId);
+
+    
+    
+	public void updateStepById(int id) {
+		tripScheduleRepository.updateStepById(id);
+
 	}
 }

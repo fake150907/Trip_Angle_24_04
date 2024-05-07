@@ -8,6 +8,7 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 import com.example.demo.vo.CalendarData;
 import com.example.demo.vo.TripSchedule;
 
@@ -22,21 +23,6 @@ public interface TripScheduleRepository {
 			""")
 	public TripSchedule getTripScheduleById(int id);
 
-	@Insert("""
-			      INSERT INTO tripSchedule
-			      SET regDate = NOW(),
-			      updateDate = NOW(),
-			      `title` = #{title},
-			      `content` = #{content},
-			      startDate = #{checkInDate},
-			      endDate = #{checkOutDate},
-			      regionId = #{regionId},
-			      memberId = #{loginedMemberId}
-			""")
-	@Options(useGeneratedKeys = true, keyProperty = "map.id")
-	public void insertTripSchedule(String title, String content, String checkInDate, String checkOutDate,
-			int loginedMemberId, int regionId, Map<String, Object> map);
-	
 
 	@Select("""
 			SELECT TS.id, TS.regDate, TS.title, TS.content, TS.regionId, R.name AS 'extra__regionName', TS.startDate, TS.endDate, TS.memberId, R.englishName AS 'extra__regionEnglishName', C.name AS 'extra__contryName' 
@@ -49,6 +35,24 @@ public interface TripScheduleRepository {
 		
 			""")
 	public List<TripSchedule> getForPrintTripSchedules(int memberId);
+	
+
+
+@Insert("""
+					INSERT INTO tripSchedule
+					SET regDate = NOW(),
+					updateDate = NOW(),
+					`title` = #{title},
+					`content` = #{content},
+					startDate = #{checkInDate},
+					endDate = #{checkOutDate},
+					regionId = #{regionId},
+					memberId = #{loginedMemberId},
+					step = 0
+			""")
+	@Options(useGeneratedKeys=true, keyProperty="map.id")
+	public void insertTripSchedule(String title, String content, String checkInDate, String checkOutDate,
+			int loginedMemberId, int regionId, Map<String, Object> map);
 	
 
 	@Insert("""
@@ -75,5 +79,10 @@ public interface TripScheduleRepository {
 			WHERE `memberId` = #{loginedMemberId}
 			""")
 	public List<CalendarData> getCalendarDatas(int loginedMemberId);
+
+	@Update("""
+			UPDATE  TRIPSCHEDULE SET STEP=STEP+1, UPDATEDATE=NOW() WHERE id = #{id}
+		""")
+	public void updateStepById(int id);
 
 }
