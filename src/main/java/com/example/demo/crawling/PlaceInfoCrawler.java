@@ -158,7 +158,7 @@ public class PlaceInfoCrawler {
 					} else if (placeNameElements.get(j).getText().equals("가격")) {
 
 						WebElement priceElement = driver.findElement(By.className("home_menu__FtSCQ"));
-						
+
 						price = priceElement.getText();
 						System.out.println("price:" + price);
 
@@ -198,8 +198,8 @@ public class PlaceInfoCrawler {
 		String placeInsertSql = "INSERT INTO recommendSpot (regDate, updateDate, groceryName, address,phoneNumber,facilities,grade,imageUrl1,imageUrl2,imageUrl3,imageUrl4,imageUrl5,reviewCount,price) VALUES (NOW(), NOW(), ?, ?, ? ,?, ?, ?,?,?,?,?,?,?)";
 		// 크롤링이 끝난 후에는 WebDriver를 종료
 		// driver.quit();
-		PlaceInfoDto place = new PlaceInfoDto(name, address, phoneNum, facilities, grade, imgUrl1,
-				imgUrl2, imgUrl3, imgUrl4, imgUrl5, reviewCount,price);
+		PlaceInfoDto place = new PlaceInfoDto(name, address, phoneNum, facilities, grade, imgUrl1, imgUrl2, imgUrl3,
+				imgUrl4, imgUrl5, reviewCount, price);
 
 		url = "jdbc:mysql://127.0.0.1:3306/Trip_Angle_24_04?useUnicode=true&characterEncoding=utf8&autoReconnect=true&serverTimezone=Asia/Seoul&useOldAliasMetadataBehavior=true&zeroDateTimeBehavior=convertToNull";
 		Connection conn = DriverManager.getConnection(url, "root", "");
@@ -212,11 +212,11 @@ public class PlaceInfoCrawler {
 		pstmt.setString(3, place.getPhoneNum());
 		pstmt.setString(4, place.getFacilities());
 		pstmt.setString(5, place.getGrade());
-		pstmt.setString(6, place.getImgUrl1());
-		pstmt.setString(7, place.getImgUrl2());
-		pstmt.setString(8, place.getImgUrl3());
-		pstmt.setString(9, place.getImgUrl4());
-		pstmt.setString(10, place.getImgUrl5());
+		pstmt.setString(6, place.getImageUrl1());
+		pstmt.setString(7, place.getImageUrl2());
+		pstmt.setString(8, place.getImageUrl3());
+		pstmt.setString(9, place.getImageUrl4());
+		pstmt.setString(10, place.getImageUrl5());
 		pstmt.setString(11, place.getReviewCount());
 		pstmt.setString(12, place.getPrice());
 

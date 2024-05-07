@@ -118,7 +118,7 @@ CREATE TABLE `shoppingList` (
 	`id`	INT(10)	NOT NULL,
 	`regDate`	DATETIME	NULL,
 	`updateDate`	DATETIME	NULL,
-	`name`	VARCHAR(100)	NULL,
+	`name`	VARCHAR(30)	NULL,
 	`description`	TEXT	NULL,
 	`imageUrl`	TEXT	NULL,
 	`scheduleId`	INT(10)	NOT NULL
@@ -156,7 +156,7 @@ CREATE TABLE `recommendSpot` (
 	`id`	INT(10)	NOT NULL	COMMENT '추천 장소 id',
 	`regDate`	DATETIME	NULL,
 	`updateDate`	DATETIME	NULL,
-	`groceryName`	TEXT	NULL	COMMENT '가게명',
+	`name`	TEXT	NULL	COMMENT '가게명',
 	`grade`	INT(20)	NULL	COMMENT '평점',
 	`price`	CHAR(100)	NULL	COMMENT '리뷰 갯수',
 	`reviewCount`	CHAR(100)	NULL	COMMENT '리뷰 갯수',
@@ -175,6 +175,12 @@ CREATE TABLE `recommendSpot` (
 );
 
 SELECT * FROM `recommendSpot`;
+
+UPDATE `recommendSpot`
+SET imageUrl1 = 'https://search.pstatic.net/common?src=http%3A%2F%2Fmedia-cdn.tripadvisor.com%2Fmedia%2Fphoto-o%2F1b%2Fe0%2Fa0%2F0e%2Fphoto0jpg.jpg&type=f520_288_travelsearch'
+WHERE tabId = 1
+AND regionId = 1
+AND id = 1;
 
 CREATE TABLE `regionSymbolicWord` (
 	`id`	INT(10)	NOT NULL,
@@ -426,7 +432,7 @@ INSERT INTO `member`
 SET regDate = NOW(),
 updateDate = NOW(),
 loginId = 'test1',
-loginPw =  (SHA2('test1', 256)),
+loginPw = 'test1',
 `name` = '회원1',
 nickname = '회원1',
 cellphoneNum = '01043214321',
@@ -437,7 +443,7 @@ INSERT INTO `member`
 SET regDate = NOW(),
 updateDate = NOW(),
 loginId = 'test2',
-loginPw = (SHA2('test2', 256)),
+loginPw = 'test2',
 `name` = '회원2',
 nickname = '회원2',
 cellphoneNum = '01056785678',
@@ -691,7 +697,7 @@ INSERT  INTO `country`(`id`,`regDate`,`updateDate`,`name`) VALUES
 (5,'2024-05-03 17:22:37','2024-05-03 17:22:37','독일');
 
 
-INSERT  INTO `recommendSpot`(`id`,`regDate`,`updateDate`,`groceryName`,`grade`,`price`,`reviewCount`,`facilities`,`address`,`phoneNumber`,`imageUrl1`,`imageUrl2`,`imageUrl3`,`imageUrl4`,`imageUrl5`,`naverSpotCord`,`tabId`,`regionId`) VALUES 
+INSERT  INTO `recommendSpot`(`id`,`regDate`,`updateDate`,`name`,`grade`,`price`,`reviewCount`,`facilities`,`address`,`phoneNumber`,`imageUrl1`,`imageUrl2`,`imageUrl3`,`imageUrl4`,`imageUrl5`,`naverSpotCord`,`tabId`,`regionId`) VALUES 
 (1,'2024-05-03 17:26:18','2024-05-03 17:26:18','리틀 베니스',5,'','참여 7,191명','','Mitropoleos Georgouli, Mykonos Town Greece','','https://search.pstatic.net/common?src=http%3A%2F%2Fmedia-cdn.tripadvisor.com%2Fmedia%2Fphoto-o%2F1b%2Fe0%2Fa0%2F0e%2Fphoto0jpg.jpg&type=f520_288_
 search','https://search.pstatic.net/common?src=https%3A%2F%2Fdbscthumb-phinf.pstatic.net%2F5885_000_12%2F20201229163221632_I97AR1HBR.jpg%2Ffb345_32_i1.jpg%3Ftype%3Dw540_fst&type=f520_288_travelsearch','https://search.pstatic.net/common?src=https%3A%2F%2Fdbscthumb-phinf.pstatic.net%2F5885_000_12%2F20201229163227691_9AECSG0IG.jpg%2Ffb345_32_i2.jpg%3Ftype%3Dw540_fst&type=f520_288_travelsearch','https://search.pstatic.net/common?src=http%3A%2F%2Fmedia-cdn.tripadvisor.com%2Fmedia%2Fphoto-o%2F1b%2Ff3%2F71%2Fb5%2Fphoto2jpg.jpg&type=f520_288_travelsearch','https://search.pstatic.net/common?src=http%3A%2F%2Fmedia-cdn.tripadvisor.com%2Fmedia%2Fphoto-o%2F1b%2Ff3%2F71%2Fb4%2Fphoto1jpg.jpg&type=f520_288_travelsearch','GRJMK519760/',1,1),
 (2,'2024-05-03 17:26:19','2024-05-03 17:26:19','플라티스 기아로스 비치',4,'','참여 2,543명','','Mykonos, Platys Gialos 846 00 Greece','','https://search.pstatic.net/common?src=https%3A%2F%2Fdbscthumb-phinf.pstatic.net%2F5885_000_12%2F20201229163248429_K0F9CL7E3.jpg%2Ffb345_34_i1.jpg%3Ftype%3Dw540_fst&type=f520_288_travelsearch','https://search.pstatic.net/common?src=https%3A%2F%2Fdbscthumb-phinf.pstatic.net%2F5885_000_12%2F20201229163249869_I8WUCJO7L.jpg%2Ffb345_34_i2.jpg%3Ftype%3Dw540_fst&type=f520_288_travelsearch','https://search.pstatic.net/common?src=http%3A%2F%2Fmedia-cdn.tripadvisor.com%2Fmedia%2Fphoto-o%2F1b%2Ff0%2F81%2F17%2Fta-img-20200905-094831.jpg&type=f520_288_travelsearch','https://search.pstatic.net/common?src=http%3A%2F%2Fmedia-cdn.tripadvisor.com%2Fmedia%2Fphoto-o%2F1b%2Fe7%2F53%2Fec%2F20200830-180705-largejpg.jpg&type=f520_288_travelsearch','https://search.pstatic.net/common?src=http%3A%2F%2Fmedia-cdn.tripadvisor.com%2Fmedia%2Fphoto-o%2F1b%2Fe7%2F53%2Feb%2F20200830-180848-largejpg.jpg&type=f520_288_travelsearch','GRJMK2445564',1,1),

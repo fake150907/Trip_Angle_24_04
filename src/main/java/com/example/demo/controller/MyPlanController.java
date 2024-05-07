@@ -7,9 +7,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.example.demo.crawling.PlaceInfoDto;
+import com.example.demo.service.PlaceInfoService;
 import com.example.demo.service.RegionInfoTipsService;
 import com.example.demo.service.TripScheduleService;
 import com.example.demo.vo.CalendarData;
@@ -30,6 +31,9 @@ public class MyPlanController {
 	@Autowired
 	private RegionInfoTipsService regionInfoTipsService;
 
+	@Autowired
+	private PlaceInfoService placeInfoService;
+
 	@RequestMapping("/usr/myPlan/myPlanList")
 	public String showMyPlanList() {
 
@@ -37,20 +41,38 @@ public class MyPlanController {
 	}
 
 	@RequestMapping("/usr/myPlan/placeDetail")
-	public String showPlaceDetail() {
+	public String showPlaceDetail(HttpServletRequest req, Model model, int id) {
+		Rq rq = (Rq) req.getAttribute("rq");
 
 		return "/usr/myPlan/placeDetail";
 	}
 
 	@RequestMapping("/usr/myPlan/myPlanDetail")
 	public String showPlanDetail(HttpServletRequest req, Model model, int id, int regionId) {
+		Rq rq = (Rq) req.getAttribute("rq");
 
 		TripSchedule tripSchedule = tripScheduleService.getTripScheduleById(id);
 
 		RegionInfoTips regionInfoTips = regionInfoTipsService.getRegionInfoTipsId(regionId);
 
+		int tabId1 = 1; // 관광tabId
+		int tabId2 = 2; // 맛집tabId
+		int tabId3 = 3; // 쇼핑tabId
+
+		List<PlaceInfoDto> placeInfoList1 = placeInfoService.getplaceInfoList(tabId1, regionId); // 관광placeList
+		List<PlaceInfoDto> placeInfoList2 = placeInfoService.getplaceInfoList(tabId2, regionId); // 맛집placeList
+		List<PlaceInfoDto> placeInfoList3 = placeInfoService.getplaceInfoList(tabId3, regionId); // 쇼핑placeList
+
+		for (PlaceInfoDto placeInfoDto : placeInfoList1) {
+			System.err.println("ImgUrl1" + placeInfoDto.getImageUrl1());
+		}
+
 		model.addAttribute("tripSchedule", tripSchedule);
 		model.addAttribute("regionInfoTips", regionInfoTips);
+
+		model.addAttribute("placeInfoList1", placeInfoList1);
+		model.addAttribute("placeInfoList2", placeInfoList2);
+		model.addAttribute("placeInfoList3", placeInfoList3);
 
 		System.out.println(regionInfoTips);
 

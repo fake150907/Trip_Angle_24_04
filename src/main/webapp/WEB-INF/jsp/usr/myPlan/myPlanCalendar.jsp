@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="pageTitle" value="TRIP REVIEW LIST"></c:set>
 <%@ include file="../common/head.jspf"%>
@@ -50,10 +51,10 @@
 				calendar.unselect();
 			},
 			eventClick : function(arg) {
+				var calendarDataId = parseInt(arg.event.id);
 				if (confirm('일정을 삭제하시겠습니까?')) {
 					arg.event.remove();
-					var calendarDataId = parseInt(arg.event.id);
-					console.log(typeof calendarDataId);
+
 					// Ajax 호출
 					$.ajax({
 						url : '/usr/myPlan/deleteCalendarData', // 서버의 URL
@@ -101,7 +102,7 @@ body {
 #calendar {
 	max-width: 1100px;
 	margin: 0 auto;
-	margin-top: 200px;
+	margin-top: 100px;
 }
 
 .fc-event-title {
@@ -120,9 +121,29 @@ body {
 	border-color: #d5f1e2;
 	color: #d5f1e2;
 }
+
+.btn {
+	margin-top: 50px;
+	background-color: #d5f1e2;
+	border-color: #d5f1e2;
+	background-color: #d5f1e2;
+}
+
+.btn:hover {
+	background-color: #ededed;
+	border-color: #ededed;
+	color: black;
+}
 </style>
 
-<div class="calendar" id='calendar'></div>
+<div class="calendar" id='calendar'>
+	<button class="btn btn-outline" type="button" onclick="history.back();">
+		<img class="history_back_img"
+			src="https://velog.velcdn.com/images/fake150907/post/2d6415a7-d5b6-4673-8cd9-83e781b2945a/image.svg"
+			alt="" />
+		<div class="history_back_text">내 일정으로 돌아가기</div>
+	</button>
+</div>
 
 
 <%@ include file="../common/foot.jspf"%>
