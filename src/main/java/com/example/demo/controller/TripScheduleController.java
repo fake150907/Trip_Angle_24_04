@@ -50,8 +50,6 @@ public class TripScheduleController {
 
 	@RequestMapping("/usr/schedule/ticketing")
 	public String tripSchedule(HttpServletRequest req, String title, String content, String checkInDate, String checkOutDate, @RequestParam(defaultValue = "0") int regionId, Model model) {
-		
-
 
 		Rq rq = (Rq) req.getAttribute("rq");
 		
