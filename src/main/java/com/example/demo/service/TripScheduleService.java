@@ -1,6 +1,5 @@
 package com.example.demo.service;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -59,4 +58,10 @@ public void insertTripSchedule(String title, String content, String checkInDate,
 		tripScheduleRepository.updateStepById(id);
 
 	}
+
+	public void deleteMyPlanDetail(int id) {
+		tripScheduleRepository.deleteMyPlanDetail(id);
+	}
+	
+
 }

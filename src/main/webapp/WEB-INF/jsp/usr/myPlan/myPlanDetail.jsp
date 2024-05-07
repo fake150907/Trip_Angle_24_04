@@ -976,9 +976,13 @@ keyframes rotator { 0% {
 
 
 
+
+
 %
 {
 transform
+
+
 
 
 
@@ -1176,6 +1180,8 @@ transform
 
 
 
+
+
 rotate
 
 
@@ -1273,7 +1279,11 @@ rotate
 
 
 
+
+
 (
+
+
 
 
 
@@ -1471,7 +1481,11 @@ rotate
 
 
 
+
+
 )
+
+
 
 
 
@@ -1689,9 +1703,13 @@ keyframes dash { 0% {
 
 
 
+
+
 %
 {
 stroke-dashoffset
+
+
 
 
 
@@ -1889,6 +1907,8 @@ stroke-dashoffset
 
 
 
+
+
 46
 
 
@@ -1986,7 +2006,11 @@ stroke-dashoffset
 
 
 
+
+
 .75
+
+
 
 
 
@@ -2183,7 +2207,11 @@ transform
 
 
 
+
+
 :
+
+
 
 
 
@@ -2379,7 +2407,11 @@ rotate
 
 
 
+
+
 (
+
+
 
 
 
@@ -2577,7 +2609,11 @@ rotate
 
 
 
+
+
 )
+
+
 
 
 
@@ -2677,6 +2713,8 @@ rotate
 ;
 }
 100
+
+
 
 
 
@@ -2876,6 +2914,8 @@ stroke-dashoffset
 
 
 
+
+
 :
 
 
@@ -2975,7 +3015,11 @@ stroke-dashoffset
 
 
 
+
+
 187
+
+
 
 
 
@@ -3172,7 +3216,11 @@ transform
 
 
 
+
+
 :
+
+
 
 
 
@@ -3368,7 +3416,11 @@ rotate
 
 
 
+
+
 (
+
+
 
 
 
@@ -3566,7 +3618,11 @@ rotate
 
 
 
+
+
 )
+
+
 
 
 
@@ -3943,24 +3999,24 @@ section.ta-item-container.fashion-man, section.ta-item-container.fashion-women
 				<div class="member-title-box">
 					<div class="member-title">
 						<span
-							style="font-family: Pretendard, -apple-system, Roboto, Helvetica, sans-serif; font-weight: 500; color: rgba(129, 200, 162, 1);">angler1</span>
-						님의
-						<br>
-						나의 일정 상세페이지
+							style="font-family: Pretendard, -apple-system, Roboto, Helvetica, sans-serif; font-weight: 500; color: rgba(129, 200, 162, 1);">${rq.loginedMember.nickname }</span>
+						님의 <br> 나의 일정 상세페이지
 					</div>
 					<div class="mint-line"></div>
+
+
 					<div class="btns">
-						<a href="#" class="modify-btn create-button">수정</a>
-						<a href="#" class="delete-btn">삭제</a>
+						<a href="../myPlan/doDelete?id=${tripSchedule.id }" class="delete-btn">일정 삭제</a>
 					</div>
+					
+					
 				</div>
 				<div class="div-15">
 					<div class="honey-tip1">
 						<div class="honey-tip-title">
 							<span
 								style="font-family: Pretendard, -apple-system, Roboto, Helvetica, sans-serif; font-weight: 500; color: rgba(105, 105, 105, 1);">
-								여행 </span>
-							<span
+								여행 </span> <span
 								style="font-family: Pretendard, -apple-system, Roboto, Helvetica, sans-serif; font-weight: 500; color: rgba(129, 200, 162, 1);">
 								꿀팁 </span>
 						</div>
@@ -3998,8 +4054,8 @@ section.ta-item-container.fashion-man, section.ta-item-container.fashion-women
 		<section class="recommendation-section">
 			<header class="recommendation-header">
 				<h2 class="recommendation-title">
-					<span>날씨에 알맞는</span>
-					<span class="recommendation-accent">옷 추천</span>
+					<span>날씨에 알맞는</span> <span class="recommendation-accent">옷
+						추천</span>
 				</h2>
 				<nav class="recommendation-tabs">
 					<div class="recommendation-tab fashion-all">전체</div>
@@ -4034,13 +4090,12 @@ section.ta-item-container.fashion-man, section.ta-item-container.fashion-women
 		<section class="recommendation-section">
 			<header class="recommendation-header">
 				<h2 class="recommendation-title">
-					<span>장소 </span>
-					<span class="recommendation-accent">추천</span>
+					<span>장소 </span> <span class="recommendation-accent">추천</span>
 				</h2>
 				<div class="recommendation-tabs">
-					<span class="recommendation-tab tour">관광</span>
-					<span class="recommendation-tab dining">맛집</span>
-					<span class="recommendation-tab shopping">쇼핑</span>
+					<span class="recommendation-tab tour">관광</span> <span
+						class="recommendation-tab dining">맛집</span> <span
+						class="recommendation-tab shopping">쇼핑</span>
 				</div>
 			</header>
 			<div class="recommendation-divider"></div>
@@ -4053,18 +4108,15 @@ section.ta-item-container.fashion-man, section.ta-item-container.fashion-women
 		<section class="ta-item-container fashion-all">
 			<c:forEach var="place" items="${placeInfoList1}">
 				<a href="/usr/myPlan/placeDetail?id=${place.id}"
-					class="ta-item-card">
-					<span class="ta-item-image-container">
+					class="ta-item-card"> <span class="ta-item-image-container">
 						<img src="${place.imageUrl1 }" alt="Fashion Image"
-							class="ta-item-image" />
-						<span class="ta-item-description"> Click </span>
+						class="ta-item-image" /> <span class="ta-item-description">
+							Click </span>
+				</span> <span class="ta-item-details"> <span class="ta-item-name">${place.name }</span>
+						<span class="ta-item-details-info"> <span
+							class="ta-item-info">${place.address }</span>
 					</span>
-					<span class="ta-item-details">
-						<span class="ta-item-name">${place.name }</span>
-						<span class="ta-item-details-info">
-							<span class="ta-item-info">${place.address }</span>
-						</span>
-					</span>
+				</span>
 				</a>
 			</c:forEach>
 		</section>
@@ -4073,18 +4125,15 @@ section.ta-item-container.fashion-man, section.ta-item-container.fashion-women
 		<section class="ta-item-container fashion-all">
 			<c:forEach var="place" items="${placeInfoList2}">
 				<a href="/usr/myPlan/placeDetail?id=${place.id}"
-					class="ta-item-card">
-					<span class="ta-item-image-container">
+					class="ta-item-card"> <span class="ta-item-image-container">
 						<img src="${place.imageUrl1 }" alt="Fashion Image"
-							class="ta-item-image" />
-						<span class="ta-item-description"> Click </span>
+						class="ta-item-image" /> <span class="ta-item-description">
+							Click </span>
+				</span> <span class="ta-item-details"> <span class="ta-item-name">${place.name }</span>
+						<span class="ta-item-details-info"> <span
+							class="ta-item-info">${place.address }</span>
 					</span>
-					<span class="ta-item-details">
-						<span class="ta-item-name">${place.name }</span>
-						<span class="ta-item-details-info">
-							<span class="ta-item-info">${place.address }</span>
-						</span>
-					</span>
+				</span>
 				</a>
 			</c:forEach>
 		</section>
@@ -4093,18 +4142,15 @@ section.ta-item-container.fashion-man, section.ta-item-container.fashion-women
 		<section class="ta-item-container fashion-all">
 			<c:forEach var="place" items="${placeInfoList3}">
 				<a href="/usr/myPlan/placeDetail?id=${place.id}"
-					class="ta-item-card">
-					<span class="ta-item-image-container">
+					class="ta-item-card"> <span class="ta-item-image-container">
 						<img src="${place.imageUrl1 }" alt="Fashion Image"
-							class="ta-item-image" />
-						<span class="ta-item-description"> Click </span>
+						class="ta-item-image" /> <span class="ta-item-description">
+							Click </span>
+				</span> <span class="ta-item-details"> <span class="ta-item-name">${place.name }</span>
+						<span class="ta-item-details-info"> <span
+							class="ta-item-info">${place.address }</span>
 					</span>
-					<span class="ta-item-details">
-						<span class="ta-item-name">${place.name }</span>
-						<span class="ta-item-details-info">
-							<span class="ta-item-info">${place.address }</span>
-						</span>
-					</span>
+				</span>
 				</a>
 			</c:forEach>
 		</section>

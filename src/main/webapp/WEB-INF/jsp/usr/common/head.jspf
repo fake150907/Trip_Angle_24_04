@@ -58,7 +58,6 @@
 
 </head>
 
-
 <style>
 /* 헤더가 고정 위치로 설정될 수 있도록 수정 */
 .header-container {
@@ -140,7 +139,7 @@
 					<a class="articleList-btn header-btns " href="../article/list?boardId=1&page=1">공지사항</a>
 				</li>
 				<li>
-					<a class="login-btn header-btns" href="/usr/tripReview/reviewList">여행 후기</a>
+					<a class="login-btn header-btns" href="../tripReview/reviewList">여행 후기</a>
 				</li>
 				<c:if test="${!rq.isLogined() }">
 					<li></li>
@@ -155,7 +154,7 @@
 				</c:if>
 				<c:if test="${rq.isLogined() }">
 					<li>
-						<a class="write-btns header-btns " href="../article/write">후기 작성</a>
+						<a class="write-btns header-btns " href="../tripReview/reviewWrite">후기 작성</a>
 					</li>
 
 					<li>
