@@ -260,5 +260,43 @@ public class UsrArticleController {
 		return Ut.jsReplace(loginedMemberCanDeleteRd.getResultCode(), loginedMemberCanDeleteRd.getMsg(),
 				"../article/list");
 	}
+	
+	// 트립앵글 리뷰 리스트
+	@RequestMapping("/usr/tripReview/reviewList")
+	public String showTripReviewList() {
+
+		return "/usr/tripReview/reviewList";
+	}
+
+	//트립앵글 리뷰 디테일
+	@RequestMapping("/usr/tripReview/reviewDetail")
+	public String showTripReviewDetail(HttpServletRequest req, Model model, int id) {
+
+		Rq rq = (Rq) req.getAttribute("rq");
+
+		Article article = articleService.getForPrintArticle(rq.getLoginedMemberId(), id);
+		ResultData usersReactionRd = reactionPointService.usersReaction(rq.getLoginedMemberId(), "article", id);
+
+		if (usersReactionRd.isSuccess()) {
+			model.addAttribute("userCanMakeReaction", usersReactionRd.isSuccess());
+		}
+
+		List<Reply> replies = replyService.getForPrintReplies(rq.getLoginedMemberId(), "article", id);
+
+		int repliesCount = replies.size();
+
+		String relTypeCode = "article";
+
+		model.addAttribute("article", article);
+		model.addAttribute("replies", replies);
+		model.addAttribute("repliesCount", repliesCount);
+		model.addAttribute("relTypeCode", relTypeCode);
+		model.addAttribute("isAlreadyAddGoodRp",
+				reactionPointService.isAlreadyAddGoodRp(rq.getLoginedMemberId(), id, "article"));
+		model.addAttribute("isAlreadyAddBadRp",
+				reactionPointService.isAlreadyAddBadRp(rq.getLoginedMemberId(), id, "article"));
+		
+		return "/usr/tripReview/reviewDetail";
+	}
 
 }
