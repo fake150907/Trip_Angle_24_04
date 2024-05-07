@@ -19,4 +19,8 @@ public class PlaceInfoService {
 		return placeInfoRepository.getplaceInfoList(tabId, regionId);
 	}
 
+	public PlaceInfoDto getPlaceInfo(int id) {
+		return placeInfoRepository.getPlaceInfo(id);
+	}
+
 }
