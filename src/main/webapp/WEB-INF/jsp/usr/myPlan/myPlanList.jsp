@@ -8,7 +8,7 @@
 <!-- 페이지제목 -->
 <div class="page-title">
 	<div class="result">
-		'${rq.loginedMember.nickname }'님의 나의 일정  
+		'${rq.loginedMember.nickname }'님의 나의 일정
 		<div class="mint-line"></div>
 	</div>
 </div>
@@ -25,127 +25,36 @@
 <section class="my-plan-list-page">
 
 
-
-
 	<section class="my-plan-list">
+		<!-- 찜한 카페목록 -->
+		<div class="search-result plan-list" id="search-result">
+			<c:forEach var="tripSchedule" items="${tripSchedules}">
 
-		<a href="myPlanDetail?id=${myPlan.id}" class="linkbox１">
-			<div class="content-info-box content-1">
-				<div class="my-plan-img-box">
-					<img src="https://images.unsplash.com/photo-1551918120-9739cb430c6d?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-						alt="마이 일정 이미지" />
-				</div>
-				<div class="name-regdate">
-					<div class="my-plan-name">연차쓰고 이번 휴가 달려</div>
-					<p class="regdate">마이일정 등록일 : 2024-04-11</p>
-				</div>
-				<div class="div line"></div>
+				<a href="myPlanDetail?id=${tripSchedule.id}&regionId=${tripSchedule.regionId}" class="linkbox１">
+					<div class="content-info-box content-1">
+						<div class="my-plan-img-box">
+							<img
+								src="https://images.unsplash.com/photo-1551918120-9739cb430c6d?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+								alt="마이 일정 이미지" />
+						</div>
+						<div class="name-regdate">
+							<div class="my-plan-name">${tripSchedule.title}</div>
+							<p class="regdate">마이일정 등록일 : ${tripSchedule.regDate}</p>
+						</div>
+						<div class="div line"></div>
 
-				<div class="destination-schedule">
-					<div class="my-destination">하와이</div>
-					<p class="my-schedule">2024-04-15 ~ 2024-04-24</p>
-				</div>
+						<div class="destination-schedule">
+							<div class="my-destination">${tripSchedule.extra__regionName}</div>
+							<p class="my-schedule">${tripSchedule.startDate} ~ ${tripSchedule.endDate}</p>
+						</div>
 
-			</div>
-	</div>
-	</a> <a href="myPlanDetail?id=${myPlan.id}" class="linkbox１">
-		<div class="content-info-box content-2" style="top: 50px;">
-			<div class="my-plan-img-box">
-				<img
-					src="https://images.unsplash.com/photo-1551918120-9739cb430c6d?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-					alt="마이 일정 이미지" />
-			</div>
-			<div class="name-regdate">
-				<div class="my-plan-name">연차쓰고 이번 휴가 달려</div>
-				<p class="regdate">마이일정 등록일 : 2024-04-11</p>
-			</div>
-			<div class="div line"></div>
-
-			<div class="destination-schedule">
-				<div class="my-destination">하와이</div>
-				<p class="my-schedule">2024-04-15 ~ 2024-04-24</p>
-			</div>
-
+					</div>
+				</a>
+			</c:forEach>
 		</div>
-	</a> <a href="myPlanDetail?id=${myPlan.id}" class="linkbox１">
-		<div class="content-info-box content-3" style="top: 100px;">
-			<div class="my-plan-img-box">
-				<img
-					src="https://images.unsplash.com/photo-1551918120-9739cb430c6d?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-					alt="마이 일정 이미지" />
-			</div>
-			<div class="name-regdate">
-				<div class="my-plan-name">연차쓰고 이번 휴가 달려</div>
-				<p class="regdate">마이일정 등록일 : 2024-04-11</p>
-			</div>
-			<div class="div line"></div>
+	</section>
 
-			<div class="destination-schedule">
-				<div class="my-destination">하와이</div>
-				<p class="my-schedule">2024-04-15 ~ 2024-04-24</p>
-			</div>
 
-		</div>
-	</a> <a href="myPlanDetail?id=${myPlan.id}" class="linkbox１">
-		<div class="content-info-box content-4" style="top: 150px;">
-			<div class="my-plan-img-box">
-				<img
-					src="https://images.unsplash.com/photo-1551918120-9739cb430c6d?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-					alt="마이 일정 이미지" />
-			</div>
-			<div class="name-regdate">
-				<div class="my-plan-name">연차쓰고 이번 휴가 달려</div>
-				<p class="regdate">마이일정 등록일 : 2024-04-11</p>
-			</div>
-			<div class="div line"></div>
-
-			<div class="destination-schedule">
-				<div class="my-destination">하와이</div>
-				<p class="my-schedule">2024-04-15 ~ 2024-04-24</p>
-			</div>
-
-		</div>
-	</a> <a href="myPlanDetail?id=${myPlan.id}" class="linkbox１">
-		<div class="content-info-box content-5" style="top: 200px;">
-			<div class="my-plan-img-box">
-				<img
-					src="https://images.unsplash.com/photo-1551918120-9739cb430c6d?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-					alt="마이 일정 이미지" />
-			</div>
-			<div class="name-regdate">
-				<div class="my-plan-name">연차쓰고 이번 휴가 달려</div>
-				<p class="regdate">마이일정 등록일 : 2024-04-11</p>
-			</div>
-			<div class="div line"></div>
-
-			<div class="destination-schedule">
-				<div class="my-destination">하와이</div>
-				<p class="my-schedule">2024-04-15 ~ 2024-04-24</p>
-			</div>
-
-		</div>
-	</a> <a href="myPlanDetail?id=${myPlan.id}" class="linkbox１">
-		<div class="content-info-box content-6" style="top: 250px;">
-			<div class="my-plan-img-box">
-				<img
-					src="https://images.unsplash.com/photo-1551918120-9739cb430c6d?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-					alt="마이 일정 이미지" />
-			</div>
-			<div class="name-regdate">
-				<div class="my-plan-name">연차쓰고 이번 휴가 달려</div>
-				<p class="regdate">마이일정 등록일 : 2024-04-11</p>
-			</div>
-			<div class="div line"></div>
-
-			<div class="destination-schedule">
-				<div class="my-destination">하와이</div>
-				<p class="my-schedule">2024-04-15 ~ 2024-04-24</p>
-			</div>
-
-		</div>
-	</a>
-	
-	
 
 </section>
 
@@ -165,7 +74,6 @@
 	margin-left: 66%;
 }
 
-
 .page-title {
 	position: relative;
 	top: 100px;
@@ -177,8 +85,7 @@
 }
 
 .result {
-margin-left: 31%;
-
+	margin-left: 31%;
 }
 
 .mint-line {
@@ -189,29 +96,24 @@ margin-left: 31%;
 	margin-left: 0;
 }
 
-/* 카페검색결과 */
+/* 나의일정리스트 */
 .my-plan-list-page {
 	display: flex;
 	justify-content: center; /* 좌우 중앙 정렬 */
-	margin-top: 150px;
+ 	margin-top: 150px; 
 	margin-bottom: 100px;
 }
-</style>
 
 
-
-<!-- 검색결과 css -->
-
-<style>
 .my-plan-list {
 	position: absolute;
-	/* 	margin-left: 430px; */
 }
 
 .content-info-box {
 	position: relative;
 	width: 750px;
 	height: 247px;
+	margin-bottom: 80px; 
 }
 
 .content-info-box .name-regdate {
@@ -284,7 +186,7 @@ margin-left: 31%;
 	line-height: normal;
 }
 
-/* 카페 리스트 이미지 hover 하면 이미지 확대 효과 */
+/* 리스트 이미지 hover 하면 이미지 확대 효과 */
 .content-info-box .my-plan-img-box {
 	position: relative; /* 상대적 위치 설정 */
 	width: 467px;

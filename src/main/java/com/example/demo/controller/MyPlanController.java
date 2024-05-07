@@ -35,10 +35,20 @@ public class MyPlanController {
 	private PlaceInfoService placeInfoService;
 
 	@RequestMapping("/usr/myPlan/myPlanList")
-	public String showMyPlanList() {
+	public String showMyPlanList(HttpServletRequest req, Model model) {
+
+
+		Rq rq = (Rq) req.getAttribute("rq");
+
+		int memberId = rq.getLoginedMemberId();
+
+		List<TripSchedule> tripSchedules = tripScheduleService.getForPrintTripSchedules(memberId);
+
+		model.addAttribute("tripSchedules", tripSchedules);
 
 		return "/usr/myPlan/myPlanList";
 	}
+
 
 	@RequestMapping("/usr/myPlan/placeDetail")
 	public String showPlaceDetail(HttpServletRequest req, Model model, int id) {

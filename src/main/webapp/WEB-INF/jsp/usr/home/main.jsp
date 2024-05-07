@@ -504,7 +504,7 @@ transform: translateY(-20px);
 	color: #fff;
 	padding: 80px 14px 40px;
 	background-image:
-		url("https://velog.velcdn.com/images/yunlinit/post/995800fa-cbf0-4dfd-9b9d-846e9bb31b56/image.png");
+		url("https://velog.velcdn.com/images/yunlinit/post/c7f6de86-9665-48f8-8761-21e891ff6532/image.jpg");
 	background-size: cover; /* 배경 이미지를 요소에 맞게 채우기 */
 	border-radius: 10px;
 }
@@ -555,7 +555,7 @@ transform: translateY(-20px);
 	color: #fff;
 	padding: 80px 14px 38px;
 	background-image:
-		url("https://velog.velcdn.com/images/yunlinit/post/d9b5ca6f-79fa-4b55-9cb7-b66d6a2bdea4/image.png");
+		url("https://velog.velcdn.com/images/yunlinit/post/9a996b5c-ab8e-4528-b437-7bb7dc254480/image.jpg");
 	background-size: cover; /* 배경 이미지를 요소에 맞게 채우기 */
 	border-radius: 10px;
 }
@@ -607,7 +607,7 @@ transform: translateY(-20px);
 	color: #fff;
 	padding: 80px 14px 40px;
 	background-image:
-		url("https://velog.velcdn.com/images/yunlinit/post/7741f6b1-9c7d-40e2-b8b9-c6398de90082/image.png");
+		url("https://velog.velcdn.com/images/yunlinit/post/83e60ced-f543-4e2e-9f44-04109e4c0fdb/image.jpg");
 	background-size: cover; /* 배경 이미지를 요소에 맞게 채우기 */
 	border-radius: 10px;
 }
@@ -930,19 +930,19 @@ transform: translateY(-20px);
 							<div class="trip-box">
 								<div class="trip-box-img">
 									<div class="div-7 trip-title">Trip</div>
-									<div class="div-8 trip-comment">감각적인 여행을 위해 여행지의 기온과 분위기를 고려하여 맞춤형 스타일링과 특별한 음악을 제공합니다.</div>
+									<div class="div-8 trip-comment">감각적인 여행을 위해 여행지의 기온과 분위기를 고려하여 맞춤형 여행 일정을 제공합니다.</div>
 								</div>
 							</div>
 							<div class="style-box">
 								<div class="style-box-img">
 									<div class="style-title">Style</div>
-									<div class="style-comment">전 세계의 다양한 여행지에 대한 최신 날씨 정보를 제공하고, 그에 맞는 스타일링 팁을 제시합니다.</div>
+									<div class="style-comment">전 세계의 다양한 여행지의 기온에 맞는 스타일링 팁을 제시합니다.</div>
 								</div>
 							</div>
 							<div class="music-box">
 								<div class="music-box-img">
-									<div class="music-title">Music</div>
-									<div class="music-comment">여행을 더욱 특별하게 만들기 위해 여행지와 어울리는 특별한 플레이리스트를 제공합니다.</div>
+									<div class="music-title">Weather</div>
+									<div class="music-comment">여행을 더욱 특별하게 만들기 위해 여행 날짜 별 기온과 날씨 정보를 제공합니다.</div>
 								</div>
 							</div>
 						</div>
