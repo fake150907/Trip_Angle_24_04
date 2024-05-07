@@ -39,7 +39,7 @@
 	<h1 style="text-align: center; font-size: 25; margin-top: 100px; font-weight: 600;">여행 후기 작성</h1>
 	<div class="mx-auto">
 <%-- 		<div>${currentId }</div> --%>
-		<form action="../article/doWrite" method="POST" onsubmit="ArticleWrite__submit(this); return false;"
+		<form action="../tripReview/doReviewWrite" method="POST" onsubmit="ArticleWrite__submit(this); return false;"
 			enctype="multipart/form-data">
 			<input type="hidden" name=">${currentId }">
 			<input type="hidden" name="body">
