@@ -64,7 +64,6 @@
 		white-space: initial;
 	}
 }
-
 .trip-review-information-box {
 	display: flex;
 	align-items: start;
@@ -187,7 +186,6 @@
 	margin-top: 850px;
 }
 </style>
-
 <div class="trip-review-list-page">
 	<div class="Tab">
 		<div class="InfoLabel1">
