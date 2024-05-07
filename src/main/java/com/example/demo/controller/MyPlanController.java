@@ -141,9 +141,14 @@ public class MyPlanController {
 		Rq rq = (Rq) req.getAttribute("rq");
 
 		TripSchedule tripSchedule = tripScheduleService.getTripScheduleById(id);
+		
 
 		if (tripSchedule == null) {
 			return Ut.jsHistoryBack("F-1", Ut.f("%d번 일정은 존재하지 않습니다", id));
+		}
+		
+		if (tripSchedule.getMemberId() != rq.getLoginedMemberId()) {
+			return Ut.jsHistoryBack("F-2", "일정의 작성자만 접근할 수 있습니다");
 		}
 
 		tripScheduleService.deleteMyPlanDetail(id);
