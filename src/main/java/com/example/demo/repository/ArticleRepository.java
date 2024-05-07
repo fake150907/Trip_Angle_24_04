@@ -211,4 +211,33 @@ public interface ArticleRepository {
 			""")
 	public int getCurrentArticleId();
 
+	@Select("""
+			<script>
+			SELECT A.*, M.nickname AS extra__writer, IFNULL(COUNT(R.id),0) AS extra__repliesCnt
+			FROM article AS A
+			INNER JOIN `member` AS M
+			ON A.memberId = M.id
+			LEFT JOIN `reply` AS R
+			ON A.id = R.relId
+			WHERE 1
+			<if test="boardId != 0">
+				AND A.boardId = #{boardId}
+			</if>
+			GROUP BY A.id
+			ORDER BY A.id DESC
+			<if test="limitFrom >= 0 ">
+				LIMIT #{limitFrom}, #{limitTake}
+			</if>
+			</script>
+			""")
+	public List<Article> getForPrintTripReviewList(int boardId, int limitFrom, int limitTake);
+
+	@Select("""
+			SELECT COUNT(*) AS cnt
+			FROM article AS A
+			WHERE 1
+			AND boardId = #{boardId}
+			""")
+	public int getReviewCount(int boardId);
+
 }

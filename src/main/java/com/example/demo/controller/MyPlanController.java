@@ -37,7 +37,6 @@ public class MyPlanController {
 	@RequestMapping("/usr/myPlan/myPlanList")
 	public String showMyPlanList(HttpServletRequest req, Model model) {
 
-
 		Rq rq = (Rq) req.getAttribute("rq");
 
 		int memberId = rq.getLoginedMemberId();
@@ -48,7 +47,6 @@ public class MyPlanController {
 
 		return "/usr/myPlan/myPlanList";
 	}
-
 
 	@RequestMapping("/usr/myPlan/placeDetail")
 	public String showPlaceDetail(HttpServletRequest req, Model model, int id) {
