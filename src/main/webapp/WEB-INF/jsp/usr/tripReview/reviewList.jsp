@@ -65,6 +65,7 @@
 	align-self: center;
 	border-top-left-radius: 9.3px;
 	border-top-right-radius: 9.3px;
+	object-fit: cover;
 }
 
 .trip-review-hashTag-box {

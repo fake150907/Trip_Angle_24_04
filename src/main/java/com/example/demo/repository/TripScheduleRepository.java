@@ -31,7 +31,7 @@ public interface TripScheduleRepository {
 			INNER JOIN country AS C ON R.countryId = C.id
 			WHERE TS.memberId = #{memberId}
 			GROUP BY TS.id
-			ORDER BY TS.updateDate DESC;
+			ORDER BY TS.startDate;
 		
 			""")
 	public List<TripSchedule> getForPrintTripSchedules(int memberId);
