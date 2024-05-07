@@ -448,8 +448,6 @@ loginPw = SHA2('test2', 256),
 nickname = '회원2',
 cellphoneNum = '01056785678',
 email = 'abcdef@gmail.com';
-
-
 UPDATE article
 SET memberId = 2
 WHERE id IN (1,2);
@@ -664,10 +662,31 @@ SELECT * FROM article;
 
 SELECT * FROM board;
 
-
+# tripSchedule TD 생성
 INSERT INTO TRIPSCHEDULE(regDate, updateDate, `title`, `content`, startDate, endDate, regionId, memberId)
-VALUES(NOW(), NOW(), "여행 일기", "오늘은 밥이 맛있다.", "2024-05-05", "2024-05-10", 1, 1);
+VALUES(NOW(), NOW(), "나의 여행계획", "오늘은 맛있는 로컬 식당을 가자. 냠냠.", "2024-05-05", "2024-05-10", 1, 2);
 
+# tripSchedule TD 생성
+INSERT INTO TRIPSCHEDULE(regDate, updateDate, `title`, `content`, startDate, endDate, regionId, memberId)
+VALUES(NOW(), NOW(), "여행가자", "열심히 일했으니까 놀자~", "2024-06-05", "2024-06-10", 2, 2);
+
+# tripSchedule TD 생성
+INSERT INTO TRIPSCHEDULE(regDate, updateDate, `title`, `content`, startDate, endDate, regionId, memberId)
+VALUES(NOW(), NOW(), "또 여행", "여행 너무 좋앙~", "2024-07-05", "2024-07-10", 3, 2);
+
+# tripSchedule TD 생성
+INSERT INTO TRIPSCHEDULE(regDate, updateDate, `title`, `content`, startDate, endDate, regionId, memberId)
+VALUES(NOW(), NOW(), "탕진 각", "ㅋㅋㅋ이제 파산각인가", "2024-08-05", "2024-08-10", 4, 2);
+
+
+
+SELECT TS.id, TS.regDate, TS.title, TS.content, TS.regionId, R.name AS 'extra__regionName', TS.startDate, TS.endDate, TS.memberId, R.englishName AS 'extra__regionEnglishName', C.name AS 'extra__contryName' 
+FROM tripSchedule AS TS 
+INNER JOIN region AS R ON TS.regionId = R.id
+INNER JOIN country AS C ON R.countryId = C.id
+WHERE TS.memberId = 2
+GROUP BY TS.id
+ORDER BY TS.updateDate DESC;
 
 SELECT *
 	FROM board
@@ -1016,13 +1035,6 @@ INSERT  INTO `regionInfoTips`(`id`,`information`,`Voltage`,`language`,`climate`,
 (18,'엘베강의 피렌체','230 V','독일어','여름 한낮은 매우 덥고. 반대로 겨울은 춥고 습하며 흐리다.\n최근 들어 유럽의 이상고온 현상으로 7, 8월 여름에는 한낮 기온이 30도 넘는 것은 기본으로 매우 덥다. 반대로 겨울은 춥고 습하며 흐린 날이 반복된다.','7시간 느림','1,463.80원','5~10%',18),
 (19,'독일의 작은 파리','230 V','독일어','여름 한낮은 매우 덥고. 반대로 겨울은 춥고 습하며 흐리다.\n최근 들어 유럽의 이상고온 현상으로 7, 8월 여름에는 한낮 기온이 30도 넘는 것은 기본으로 매우 덥다. 반대로 겨울은 춥고 습하며 흐린 날이 반복된다.','7시간 느림','1,463.80원','5~10%',19),
 (20,'도시 전체를 둘러싸고 있는 성벽들과 중세 시대의 흔적들을 하나하나 찾아보는 재미가 있다.','230 V','독일어','여름 한낮은 매우 덥고. 반대로 겨울은 춥고 습하며 흐리다.\n최근 들어 유럽의 이상고온 현상으로 7, 8월 여름에는 한낮 기온이 30도 넘는 것은 기본으로 매우 덥다. 반대로 겨울은 춥고 습하며 흐린 날이 반복된다.','7시간 느림','1,463.80원','5~10%',20);
-
-
-
-SELECT TR.*, RE.name AS 'extra__regionName', RE.imageUrl AS 'extra__regionImageUrl', RE.englishName AS 'extra__regionEnglishName', CO.name AS 'extra__contryName' 
-FROM TRIPSCHEDULE TR INNER JOIN REGION RE ON TR.regionId = RE.id 
-INNER JOIN COUNTRY CO ON RE.countryId = CO.id
-WHERE TR.id = 2;
 
 
 SELECT * FROM tripSchedule;

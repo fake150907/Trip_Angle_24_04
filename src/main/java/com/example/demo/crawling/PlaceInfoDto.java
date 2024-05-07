@@ -16,7 +16,7 @@ public class PlaceInfoDto {
 	private String grade;
 	private String facilities;
 	// private String operatingTime;
-	private String phoneNum;
+	private String phoneNumber;
 	private String reviewCount;
 	private String price;
 
@@ -36,7 +36,7 @@ public class PlaceInfoDto {
 		this.name = name;
 		this.address = address;
 		this.facilities = facilities;
-		this.phoneNum = phoneNum;
+		this.phoneNumber = phoneNum;
 		this.grade = grade;
 		this.imageUrl1 = imgUrl1;
 		this.imageUrl2 = imgUrl2;
