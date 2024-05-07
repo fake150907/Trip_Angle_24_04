@@ -319,16 +319,18 @@ transform: translateY(-20px);
   flex-direction: column;
   align-self: stretch;
   font-size: 16px;
-
+  
   font-weight: 600;
-  width: 100%;
+  width: 91%;
 
   position: absolute;
   top: 120%;
-  left: 0%;
+  left: 4.7%;
   max-height: 230px;
   overflow-y: scroll;
   overflow-x: hidden;
+  
+/*    background-color: #fff;  */
   
 /*   -ms-overflow-style: none; */
 /*   scrollbar-width: none; */
@@ -344,17 +346,24 @@ transform: translateY(-20px);
   }
 }
 
-
+/* 스크롤바 전체 */
 .search-list::-webkit-scrollbar {
   width: 20px;
 }
  
+/*  스크롤 바 */
 .search-list::-webkit-scrollbar-thumb {
-  background: #ddd; 
+  background: #d5f1e2; 
+  border-radius: 10px;
+  border: solid 1px white;
 }
 
+/* 스크롤 배경 */
 .search-list::-webkit-scrollbar-track {
-  background: #666; 
+/*   background: white;  */
+background-color:rgba(255, 255, 255, 0.7);/
+/*   background-color:transparent; */
+/*   opacity: 0.7; */
 }
 
 

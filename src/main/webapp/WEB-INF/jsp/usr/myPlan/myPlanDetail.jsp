@@ -969,8 +969,10 @@ $(document).ready(function() {
 		</div>
 
 
+
 	</c:forEach>
 </div>
+
 
 <!-- 스타일 추천 -->
 <div class="fashion-recommendation-main">
