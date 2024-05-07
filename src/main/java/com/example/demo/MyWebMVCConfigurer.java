@@ -85,6 +85,11 @@ public class MyWebMVCConfigurer implements WebMvcConfigurer {
 		ir.addPathPatterns("/usr/myPlan/myPlanCalendar");
 		ir.addPathPatterns("/usr/myPlan/saveCalendarData");
 		ir.addPathPatterns("/usr/myPlan/deleteCalendarData");
+		
+		//일정 관련
+		ir.addPathPatterns("/usr/styleRecommended/create");
+		ir.addPathPatterns("/usr/styleRecommended/doCreate");
+		
 
 		ir = registry.addInterceptor(needLogoutInterceptor);
 		ir.addPathPatterns("/usr/member/login");
