@@ -38,10 +38,14 @@ public class TripStyleRecommendedController {
 	// 액션 메서드
 	
 	@GetMapping("/usr/styleRecommended/create")
-	public String styleRecommended(HttpServletRequest req, Model model, @RequestParam(defaultValue = "1") int id) {
+	public String styleRecommended(HttpServletRequest req, Model model, @RequestParam(defaultValue = "0") Integer id) {
 
 		Rq rq = (Rq) req.getAttribute("rq");
-
+		
+		if(id==0) {
+			return rq.historyBackOnView("id를 입력해주세요");    	
+		}
+		
 		TripSchedule tripSchedule = tripScheduleService.getTripScheduleById(id);
 		
 
@@ -73,7 +77,7 @@ public class TripStyleRecommendedController {
 	
 	
 	@PostMapping("/usr/styleRecommended/doCreate")
-	public String styleRecommendedDoCreate(String weatherDatas, String fashionDatas, String shoppingListDatas, Integer id, HttpServletRequest req) {
+	public String styleRecommendedDoCreate(String weatherDatas, String fashionDatas, String shoppingListDatas, @RequestParam(defaultValue = "0") Integer id, HttpServletRequest req) {
 		//todo 일정id가 일치하는지 확인 로직 추가 필요. (로그인기능 문제 없는거 확인 후 추가할 것)
 		
 		ObjectMapper mapper = new ObjectMapper();
@@ -83,8 +87,8 @@ public class TripStyleRecommendedController {
 		
 		TripSchedule tripSchedule = tripScheduleService.getTripScheduleById(id);
 		
-		if(id == null) {
-        	return rq.historyBackOnView("잘못된 접근입니다. 여행 일정 id가 없습니다.");
+		if(id==0) {
+			return rq.historyBackOnView("잘못된 접근입니다. 여행 일정 Id가 없습니다.");    	
 		}
 		
 		if (tripSchedule == null) {
