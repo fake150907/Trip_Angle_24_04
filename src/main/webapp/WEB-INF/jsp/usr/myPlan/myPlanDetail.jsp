@@ -3943,7 +3943,7 @@ section.ta-item-container.fashion-man, section.ta-item-container.fashion-women
 				<div class="member-title-box">
 					<div class="member-title">
 						<span
-							style="font-family: Pretendard, -apple-system, Roboto, Helvetica, sans-serif; font-weight: 500; color: rgba(129, 200, 162, 1);">angler1</span>
+							style="font-family: Pretendard, -apple-system, Roboto, Helvetica, sans-serif; font-weight: 500; color: rgba(129, 200, 162, 1);">${rq.loginedMember.nickname }</span>
 						님의
 						<br>
 						나의 일정 상세페이지
