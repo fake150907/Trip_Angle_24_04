@@ -1,5 +1,9 @@
 package com.example.demo.controller;
 
+import java.math.BigInteger;
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,6 +14,7 @@ import com.example.demo.service.RegionService;
 import com.example.demo.service.TripScheduleService;
 import com.example.demo.vo.Region;
 import com.example.demo.vo.Rq;
+import com.example.demo.vo.TripSchedule;
 
 import jakarta.servlet.http.HttpServletRequest;
 
@@ -36,13 +41,20 @@ public class TripScheduleController {
 	}
 
 	@RequestMapping("/usr/schedule/ticketing")
-	// 파라미터로 도시 id 받아야함
-	public String tripSchedule(HttpServletRequest req, String title, String content, String checkInDate, String checkOutDate, @RequestParam(defaultValue = "0") int regionId) {
+	public String tripSchedule(HttpServletRequest req, String title, String content, String checkInDate, String checkOutDate, @RequestParam(defaultValue = "0") int regionId, Model model) {
 
 		Rq rq = (Rq) req.getAttribute("rq");
+		Map<String, Object> map = new HashMap<>();
 
 		tripScheduleService.insertTripSchedule(title, content, checkInDate,
-				checkOutDate, rq.getLoginedMemberId(), regionId);
+				checkOutDate, rq.getLoginedMemberId(), regionId, map);
+		
+		Integer id = ((BigInteger)map.get("id")).intValue();
+		model.addAttribute("id", id);
+		
+		TripSchedule tripSchedule = tripScheduleService.getTripScheduleById(id);
+		model.addAttribute("tripSchedule", tripSchedule);
+		
 
 		return "/usr/schedule/ticketing";
 	}

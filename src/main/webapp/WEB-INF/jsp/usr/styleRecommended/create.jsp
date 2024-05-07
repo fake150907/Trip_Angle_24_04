@@ -606,12 +606,12 @@
         <section class="top-section">
             <div class="region-widget">
                 <img loading="lazy"
-                    srcset="${travelSchedule.extra__regionImageUrl }"
+                    srcset="${tripSchedule.extra__regionImageUrl }"
                     class="region-img" />
                 <div class="country-name-box">
 
-                    <span class="country-region-name"> ${travelSchedule.extra__contryName}<br>
-                        <span class="region-name">${travelSchedule.extra__regionName}</span>
+                    <span class="country-region-name"> ${tripSchedule.extra__contryName}<br>
+                        <span class="region-name">${tripSchedule.extra__regionName}</span>
                     </span>
 
                 </div>
@@ -776,7 +776,7 @@
     
 
     <form id="doCreateForm" action="/usr/styleRecommended/doCreate" method="post">
-        <input type="hidden" id="travelScheduleId" name="travelScheduleId" value="${travelScheduleId}">
+        <input type="hidden" id="id" name="id" value="${id}">
 	    <input type="hidden" id="weatherDatas" name="weatherDatas">
 	    <input type="hidden" id="fashionDatas" name="fashionDatas">
 	    <input type="hidden" id="shoppingListDatas" name="shoppingListDatas">
@@ -785,14 +785,14 @@
 <script>
 
 
-    let regionEnglishName = "${travelSchedule.extra__regionEnglishName}";
-    let regionName = "${travelSchedule.extra__regionName }";
-    let countryName = "${travelSchedule.extra__contryName }";
+    let regionEnglishName = "${tripSchedule.extra__regionEnglishName}";
+    let regionName = "${tripSchedule.extra__regionName }";
+    let countryName = "${tripSchedule.extra__contryName }";
 
 
 
-    let startDate = "${travelSchedule.startDate }";
-    let endDate = "${travelSchedule.endDate }";
+    let startDate = "${tripSchedule.startDate }";
+    let endDate = "${tripSchedule.endDate }";
     let minTemp = Number.MAX_SAFE_INTEGER;
     let maxTemp = Number.MIN_SAFE_INTEGER;
 
