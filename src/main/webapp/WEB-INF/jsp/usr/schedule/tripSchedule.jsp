@@ -441,7 +441,7 @@ a {
 	background-color: #D5F1E2;
 	border: white;
 	font: 14px Pretendard, sans-serif;
-	margin-top: 100px;
+/* 	margin-top: 100px; */
 }
 
 /* 모달창 - 마이일정 생성하기 도시명 */
@@ -702,7 +702,7 @@ $.datepicker.setDefaults({
 <div class="wall"></div>
 
 <div class="div">
-	<div class="div-2">하와이</div>
+	<div class="div-2">${region.getName() }</div>
 	<div class="div-3"></div>
 	<div class="div-4">여행 기간을 선택해주세요</div>
 	<div class="div-5">여행지 출발 날짜와, 여행지 도착 날짜로 입력해주세요.</div>
@@ -744,7 +744,7 @@ $.datepicker.setDefaults({
 		</div>
 		<button class="btn btn-ghost close-button">✕</button>
 		</form>
-		<div class="modal-schedule-region">오사카</div>
+		<div class="modal-schedule-region">${region.getName() }</div>
 		<div id="checkDateModal"></div>
 <!-- 달력 CSS로 input 포커싱 색상이 바뀌지않아 태그로 직접 변경 -->
 <form action="/usr/schedule/ticketing" method="get">
@@ -752,6 +752,7 @@ $.datepicker.setDefaults({
     <input name="content" class="focus:outline-none focus:ring-1 focus:ring-green-100 focus:border-transparent schedule-content" placeholder="내용을 작성해주세요." style="border-color: #ededed;" type="text" />
 	<input type="hidden" id="checkInDateInput" name="checkInDate">
     <input type="hidden" id="checkOutDateInput" name="checkOutDate">
+    <input type="hidden" value="${regionId }" name="regionId">
 		<button class="modal-create-button">생성</button>
 		</form>
 </div>

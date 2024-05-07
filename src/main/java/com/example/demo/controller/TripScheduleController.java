@@ -10,7 +10,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.example.demo.service.RegionService;
 import com.example.demo.service.TripScheduleService;
+import com.example.demo.vo.Region;
 import com.example.demo.vo.Rq;
 import com.example.demo.vo.TripSchedule;
 
@@ -21,16 +23,25 @@ public class TripScheduleController {
 
 	@Autowired
 	private TripScheduleService tripScheduleService;
+	
+	@Autowired
+	private RegionService regionService;
 
 	@RequestMapping("/usr/schedule/tripSchedule")
-	public String showMyPlanList() {
-
+	public String showMyPlanList(Model model, HttpServletRequest req, @RequestParam(defaultValue = "0") int regionId) {
+		
+		Rq rq = (Rq) req.getAttribute("rq");
+		
+		Region region = regionService.getRegionById(regionId);
+		
+		model.addAttribute("regionId", regionId);
+		model.addAttribute("region", region);
+		
 		return "/usr/schedule/tripSchedule";
 	}
 
 	@RequestMapping("/usr/schedule/ticketing")
-	// 파라미터로 도시 id 받아야함
-	public String tripSchedule(HttpServletRequest req, String title, String content, String checkInDate, String checkOutDate, @RequestParam(defaultValue = "1") int regionId, Model model) {
+	public String tripSchedule(HttpServletRequest req, String title, String content, String checkInDate, String checkOutDate, @RequestParam(defaultValue = "0") int regionId, Model model) {
 
 		Rq rq = (Rq) req.getAttribute("rq");
 		Map<String, Object> map = new HashMap<>();
