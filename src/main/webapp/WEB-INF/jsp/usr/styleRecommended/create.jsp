@@ -512,13 +512,27 @@ keyframes rotator { 0% {
 }
 
 100
+
+
 %
 {
 transform
+
+
 :
-rotate(
+
+
+rotate
+(
+
+
 270deg
-);
+
+
+)
+;
+
+
 }
 }
 .path {
@@ -541,28 +555,71 @@ keyframes dash { 0% {
 }
 
 50
+
+
 %
 {
 stroke-dashoffset
+
+
 :
-46.75;
+
+
+46
+.75
+;
+
+
 transform
+
+
 :
-rotate(
+
+
+rotate
+(
+
+
 135deg
-);
+
+
+)
+;
+
+
 }
 100
+
+
 %
 {
 stroke-dashoffset
+
+
 :
-187;
+
+
+187
+;
+
+
 transform
+
+
 :
-rotate(
+
+
+rotate
+(
+
+
 450deg
-);
+
+
+)
+;
+
+
 }
 }
 .wall {
@@ -578,9 +635,8 @@ rotate(
 			<div class="country-name-box">
 
 				<span class="country-region-name">
-					${tripSchedule.extra__contryName}
-					<br>
-					<span class="region-name">${tripSchedule.extra__regionName}</span>
+					${tripSchedule.extra__contryName} <br> <span
+					class="region-name">${tripSchedule.extra__regionName}</span>
 				</span>
 
 			</div>
@@ -590,11 +646,9 @@ rotate(
 		<div class="weather-widget">
 			<header class="weather-header">
 				<h2 class="weather-title">
-					<span class="weather-icon">
-						<i class="fa-solid fa-calendar"></i>
+					<span class="weather-icon"> <i class="fa-solid fa-calendar"></i>
 						&nbsp;&nbsp;&nbsp;&nbsp;
-					</span>
-					<span class="weather-text">일정 기준 날씨</span>
+					</span> <span class="weather-text">일정 기준 날씨</span>
 				</h2>
 			</header>
 			<!--
@@ -634,8 +688,8 @@ rotate(
 		<section class="recommendation-section">
 			<header class="recommendation-header">
 				<h2 class="recommendation-title">
-					<span>날씨에 알맞는</span>
-					<span class="recommendation-accent">옷 추천</span>
+					<span>날씨에 알맞는</span> <span class="recommendation-accent">옷
+						추천</span>
 				</h2>
 				<nav class="recommendation-tabs">
 					<div class="recommendation-tab fashion-all">전체</div>
@@ -679,8 +733,7 @@ rotate(
 		<section class="recommendation-section ">
 			<header class="recommendation-header">
 				<h2 class="recommendation-title">
-					<span>쇼핑 추천 </span>
-					<span class="recommendation-accent">리스트</span>
+					<span>쇼핑 추천 </span> <span class="recommendation-accent">리스트</span>
 				</h2>
 			</header>
 			<div class="recommendation-divider"></div>
@@ -737,8 +790,8 @@ rotate(
 <div class="section-container mt-100">
 	<section class="bottom-buttons-section">
 		<section class="play-button-container">
-			<span class="play-button-text">PLAY</span>
-			<span class="play-button-text">▶</span>
+			<span class="play-button-text">PLAY</span> <span
+				class="play-button-text">▶</span>
 
 		</section>
 		<section class="next-step-container">
@@ -752,10 +805,10 @@ rotate(
 
 <form id="doCreateForm" action="/usr/styleRecommended/doCreate"
 	method="post">
-	<input type="hidden" id="id" name="id" value="${id}">
-	<input type="hidden" id="weatherDatas" name="weatherDatas">
-	<input type="hidden" id="fashionDatas" name="fashionDatas">
-	<input type="hidden" id="shoppingListDatas" name="shoppingListDatas">
+	<input type="hidden" id="id" name="id" value="${id}"> <input
+		type="hidden" id="weatherDatas" name="weatherDatas"> <input
+		type="hidden" id="fashionDatas" name="fashionDatas"> <input
+		type="hidden" id="shoppingListDatas" name="shoppingListDatas">
 </form>
 
 <script>

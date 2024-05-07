@@ -30,269 +30,66 @@ $(document).ready(function() {
 		$('.placeInfoList2').hide();
 		$('.placeInfoList3').hide();
 		$('.regDate_text').css('background-color', '#CDEAC0');
+		$('.tour').addClass('recommendation-active-tab');
 		$('.tour').click(function() {
 			$('.placeInfoList1').show();
 			$('.placeInfoList2').hide();
 			$('.placeInfoList3').hide();
+			$('.tour').addClass('recommendation-active-tab');
+			$('.dining').removeClass('recommendation-active-tab');
+			$('.shopping').removeClass('recommendation-active-tab');
 		});
 		$('.dining').click(function() {
 			$('.placeInfoList2').show();
 			$('.placeInfoList1').hide();
 			$('.placeInfoList3').hide();
+			$('.dining').addClass('recommendation-active-tab');
+			$('.tour').removeClass('recommendation-active-tab');
+			$('.shopping').removeClass('recommendation-active-tab');
 		});
 
 		$('.shopping').click(function() {
 			$('.placeInfoList3').show();
 			$('.placeInfoList1').hide();
 			$('.placeInfoList2').hide();
+			$('.shopping').addClass('recommendation-active-tab');
+			$('.tour').removeClass('recommendation-active-tab');
+			$('.dining').removeClass('recommendation-active-tab');
 		});
+		
+		
+		//패션리스트
+		$('.ta-item-container.fashion-woman').hide();
+		$('.ta-item-container.fashion-man').hide();
+		$('.recommendation-tab.fashion-all').addClass('recommendation-active-tab');
+		
+		$('.recommendation-tab.fashion-all').click(function() {
+			$('.ta-item-container.fashion-all').show();
+			$('.ta-item-container.fashion-man').hide();
+			$('.ta-item-container.fashion-woman').hide();
+			$('.recommendation-tab.fashion-all').addClass('recommendation-active-tab');
+			$('.recommendation-tab.fashion-man').removeClass('recommendation-active-tab');
+			$('.recommendation-tab.fashion-woman').removeClass('recommendation-active-tab');
+		});
+		$('.recommendation-tab.fashion-man').click(function() {
+			$('.ta-item-container.fashion-man').show();
+			$('.ta-item-container.fashion-woman').hide();
+			$('.ta-item-container.fashion-all').hide();
+			$('.recommendation-tab.fashion-man').addClass('recommendation-active-tab');
+			$('.recommendation-tab.fashion-woman').removeClass('recommendation-active-tab');
+			$('.recommendation-tab.fashion-all').removeClass('recommendation-active-tab');
+		});
+
+		$('.recommendation-tab.fashion-woman').click(function() {
+			$('.ta-item-container.fashion-woman').show();
+			$('.ta-item-container.fashion-all').hide();
+			$('.ta-item-container.fashion-man').hide();
+			$('.recommendation-tab.fashion-woman').addClass('recommendation-active-tab');
+			$('.recommendation-tab.fashion-all').removeClass('recommendation-active-tab');
+			$('.recommendation-tab.fashion-man').removeClass('recommendation-active-tab');
+		});
+		
 	});
-
-</script>
-<script>
-
-fashions = [
-	  {
-	    name: "롱패딩",
-	    brand: "뉴발란스",
-	    gender: 0,
-	    description:
-	      "한국 겨울에 적합한 롱패딩. 보온성이 뛰어나고 스타일리시한 디자인.",
-	    imageUrl:
-	      "https://shopping-phinf.pstatic.net/main_8704333/87043339346.1.jpg"
-	  },
-	  {
-	    name: "니트 가디건",
-	    brand: "지오다노",
-	    gender: 0,
-	    description: "가벼운 니트 가디건. 쾌적한 여행을 위한 아우터로 적합.",
-	    imageUrl:
-	      "https://shopping-phinf.pstatic.net/main_3170904/31709040807.20220410190846.jpg"
-	  },
-	  {
-	    name: "카고 바지",
-	    brand: "리바이스",
-	    gender: 0,
-	    description: "다양한 수납공간이 있는 카고 바지. 편안한 착용감과 실용성.",
-	    imageUrl:
-	      "https://shopping-phinf.pstatic.net/main_4680554/46805540242.20240403061756.jpg"
-	  },
-	  {
-	    name: "맨투맨",
-	    brand: "에잇세컨즈",
-	    gender: 0,
-	    description: "편안하고 스타일리시한 맨투맨. 다양한 코디에 활용 가능.",
-	    imageUrl:
-	      "https://shopping-phinf.pstatic.net/main_4528440/45284407201.20240217015504.jpg"
-	  },
-	  {
-	    name: "청바지",
-	    brand: "지오다노",
-	    gender: 0,
-	    description: "한국에서 인기있는 지오다노 청바지. 스트레치로 편안한 착용감.",
-	    imageUrl:
-	      "https://shopping-phinf.pstatic.net/main_4519423/45194233182.20240111171516.jpg"
-	  },
-	  {
-	    name: "스니커즈",
-	    brand: "컨버스",
-	    gender: 0,
-	    description: "대중적이고 편안한 컨버스 스니커즈. 여행 중 편리한 신발.",
-	    imageUrl: "https://shopping-phinf.pstatic.net/main_8637022/86370224181.jpg"
-	  },
-	  {
-	    name: "롱패딩",
-	    brand: "뉴발란스",
-	    gender: 1,
-	    description:
-	      "한국 겨울에 적합한 롱패딩. 보온성이 뛰어나고 여성스러운 실루엣.",
-	    imageUrl:
-	      "https://shopping-phinf.pstatic.net/main_8680585/86805851138.3.jpg"
-	  },
-	  {
-	    name: "캐시미어 스웨터",
-	    brand: "유니클로",
-	    gender: 1,
-	    description: "포근한 캐시미어 스웨터. 여행 중 따뜻하고 세련된 룩.",
-	    imageUrl:
-	      "https://shopping-phinf.pstatic.net/main_4392540/43925409499.20231110122444.jpg"
-	  },
-	  {
-	    name: "와이드 데님 팬츠",
-	    brand: "폴로 랄프로렌",
-	    gender: 1,
-	    description: "스타일리시한 와이드 데님 팬츠. 여행 중 편안한 착용감.",
-	    imageUrl: "https://shopping-phinf.pstatic.net/main_8771557/87715578465.jpg"
-	  },
-	  {
-	    name: "블라우스",
-	    brand: "제이에스티나",
-	    gender: 1,
-	    description:
-	      "세련된 디자인의 블라우스. 여행 중 여성스러운 매력을 선보일 수 있음.",
-	    imageUrl: "https://velog.velcdn.com/images/yunlinit/post/5d80752c-cbf7-44fd-9110-d29944d911b0/image.webp"
-	  },
-	  {
-	    name: "롱 스커트",
-	    brand: "린",
-	    gender: 1,
-	    description: "한국에서 유행하는 롱 스커트. 여성스러우면서도 편안한 착용감.",
-	    imageUrl:
-	      "https://shopping-phinf.pstatic.net/main_4092679/40926796986.20240320231821.jpg"
-	  },
-	  {
-	    name: "로퍼",
-	    brand: "존스부띠끄",
-	    gender: 1,
-	    description: "대중적인 존스부띠끄 로퍼. 여행 중 편리한 신발로 추천.",
-	    imageUrl: "https://velog.velcdn.com/images/yunlinit/post/5d80752c-cbf7-44fd-9110-d29944d911b0/image.webp"
-	  }
-	];
-
-	function printFashions() {
-	  const fashionAll = document.querySelector(".ta-item-container.fashion-all");
-	  const fashionMan = document.querySelector(".ta-item-container.fashion-man");
-	  const fashionWomen = document.querySelector(
-	    ".ta-item-container.fashion-women"
-	  );
-
-	  fashions.forEach((fashion) => {
-	    // Create the article element
-	    const article = document.createElement("article");
-	    article.className = "ta-item-card";
-
-	    // Create the image container div
-	    const imageContainer = document.createElement("div");
-	    imageContainer.className = "ta-item-image-container";
-
-	    // Create the image element
-	    const image = document.createElement("img");
-	    if (fashion.imageUrl == "") {
-	      image.src = "FashionNoimage.webp";
-	    } else {
-	      image.src = fashion.imageUrl;
-	    }
-
-	    image.alt = "Fashion Image";
-	    image.className = "ta-item-image";
-	    image.loading = "lazy";
-
-	    // Append the image to the image container
-	    imageContainer.appendChild(image);
-
-	    // Create the description div
-	    const description = document.createElement("div");
-	    description.className = "ta-item-description";
-	    description.textContent = fashion.description;
-
-	    // Append the description to the image container
-	    imageContainer.appendChild(description);
-
-	    // Append the image container to the article
-	    article.appendChild(imageContainer);
-
-	    // Create the details div
-	    const details = document.createElement("div");
-	    details.className = "ta-item-details";
-
-	    // Create the item name h3
-	    const itemName = document.createElement("h3");
-	    itemName.className = "ta-item-name";
-	    itemName.textContent = fashion.name;
-
-	    // Append the item name to the details div
-	    details.appendChild(itemName);
-
-	    // Create the details info div
-	    const detailsInfo = document.createElement("div");
-	    detailsInfo.className = "ta-item-details-info";
-
-	    // Create and append brand name paragraph
-	    const brandName = document.createElement("p");
-	    brandName.className = "ta-item-info";
-	    brandName.textContent = fashion.brand;
-	    detailsInfo.appendChild(brandName);
-
-	    // Create and append gender paragraph
-	    const gender = document.createElement("p");
-	    gender.className = "ta-item-info";
-	    if (fashion.gender == 0) {
-	      gender.textContent = "남성";
-	    } else {
-	      gender.textContent = "여성";
-	    }
-
-	    detailsInfo.appendChild(gender);
-
-	    // Append the details info to the details div
-	    details.appendChild(detailsInfo);
-
-	    // Append the details div to the article
-	    article.appendChild(details);
-	    console.log(article);
-
-	    fashionAll.appendChild(article);
-	    const articleClone = article.cloneNode(true);
-	    if (fashion.gender == 0) {
-	      fashionMan.appendChild(articleClone);
-	    } else {
-	      fashionWomen.appendChild(articleClone);
-	    }
-	  });
-
-	  // Append the article to the document body or any other container
-	  fashionAll.style.display = "flex";
-	  document.querySelector(".recommendation-tabs").style.display = "flex";
-	  document.querySelector(
-	    ".fashion-recommendation-main .loading-container"
-	  ).style.display = "none";
-	  document
-	    .querySelector(".recommendation-tab.fashion-all")
-	    .classList.add("active-recommendation-tab");
-	}
-
-	printFashions();
-	
-    document.addEventListener('DOMContentLoaded', function() {
-        // Select all elements with the class 'recommendation-tab'
-        var tabs = document.querySelectorAll('.recommendation-tab');
-
-        // Loop through each tab and add a click event listener
-        tabs.forEach(function(tab) {
-            tab.addEventListener('click', function() {
-                // Remove 'active-recommendation-tab' class from all tabs
-                document.querySelectorAll('.active-recommendation-tab').forEach(function(activeTab) {
-                    activeTab.classList.remove('active-recommendation-tab');
-                });
-
-                // Hide all item containers
-                document.querySelectorAll('.ta-item-container').forEach(function(container) {
-                    container.style.display = 'none';
-                });
-
-                // Display the corresponding item container if tab has specific classes
-                if (tab.classList.contains('fashion-all')) {
-                    document.querySelectorAll('.ta-item-container.fashion-all').forEach(function(container) {
-                        container.style.display = 'flex';
-                    });
-                } else if (tab.classList.contains('fashion-man')) {
-                    document.querySelectorAll('.ta-item-container.fashion-man').forEach(function(container) {
-                        container.style.display = 'flex';
-                    });
-                } else if (tab.classList.contains('fashion-women')) {
-                    document.querySelectorAll('.ta-item-container.fashion-women').forEach(function(container) {
-                        container.style.display = 'flex';
-                    });
-                }
-
-                // Add 'active-recommendation-tab' class to the clicked tab
-                tab.classList.add('active-recommendation-tab');
-
-            });
-        });
-    });
-
-
 
 </script>
 
@@ -664,3065 +461,31 @@ fashions = [
 
 /* 날씨 섹션 */
 .weather-section {
-	width: 70%;
+/* 	width: 70%; */
+/* 	display: flex; */
+/* 	justify-content: center; */
+/* 	align-items: center; */
+/* 	margin: 0 auto; */
+/* 	height: 200px; */
+/* 	margin-top: 50px; */
+	
+	
 	display: flex;
-	justify-content: center;
-	align-items: center;
-	margin: 0 auto;
-	background-color: #ededed;
-	height: 200px;
-	margin-top: 50px;
-}
-
-/* 옷 추천 / 추천장소 탭 */
-.recommendation-section {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	margin: 0 auto;
-	width: 70%;
-	align-self: start;
-	margin-top: 50px;
-}
-
-.recommendation-header {
-	display: flex;
-	gap: 20px;
-	padding: 0 20px;
-}
-
-.recommendation-title {
-	font: 500 24px/28px Inter, sans-serif;
-	flex: 1;
-}
-
-.recommendation-accent {
-	color: #81c8a2;
-}
-
-.recommendation-tabs {
-	display: flex;
-	gap: 14px;
-	font-size: 16px;
-	color: #3b3d40;
-	font-weight: 500;
-	line-height: 175%;
-	align-items: center;
-	margin-top: 30px;
-}
-
-.recommendation-tab {
-	border-bottom: solid #d5f1e2;
-	border-bottom-width: 0px;
-	transition-duration: 0.1s;
-	cursor: pointer;
-}
-
-.recommendation-tab:hover, .active-recommendation-tab {
-	border-bottom-width: 3px;
-}
-
-.recommendation-divider {
-	border-bottom: 1px solid rgba(206, 206, 206, 1);
-	margin-top: 11px;
-	width: 100%;
-	max-width: 100%;
-}
-
-.ta-item-container {
-	display: none;
 	overflow: auto;
 	gap: 30px;
-	width: 70%;
+	width: 80%;
+	align-items: center;
+	height: 200px;
+	justify-content: center;
+	margin: 0 auto;
 	-ms-overflow-style: none;
 	scroll-snap-type: x mandatory;
 	padding-top: 10px;
 	position: relative;
-	justify-content: center;
-	margin: 0 auto;
 }
-
-.ta-item-container::-webkit-scrollbar {
+.weather-section::-webkit-scrollbar {
 	display: none;
 }
-
-.ta-item-card {
-	display: flex;
-	flex-direction: column;
-	max-width: 270px;
-	border: 1px solid rgba(224, 219, 210, 1);
-	border-radius: 8px;
-	background-color: #fff;
-	padding-bottom: 18px;
-	font-weight: 400;
-	position: relative;
-	scroll-snap-align: start;
-	min-width: 250px;
-}
-
-.ta-item-image {
-	width: 100%;
-	aspect-ratio: 1;
-	object-fit: cover;
-	object-position: center;
-}
-
-.ta-item-details {
-	display: flex;
-	flex-direction: column;
-	margin: 36px 0 0 20px;
-}
-
-.ta-item-name {
-	font-size: 20px;
-	color: #383230;
-	letter-spacing: -0.4px;
-	font-weight: 500px;
-}
-
-.ta-item-info {
-	font-size: 13px;
-	color: #8c8c8c;
-	margin-top: 5px;
-}
-
-.ta-item-details-info {
-	display: flex;
-	gap: 50px;
-}
-
-.ta-item-description {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	aspect-ratio: 1;
-	height: 0px;
-	overflow: hidden;
-	background-color: #474747;
-	opacity: 80%;
-	z-index: 2;
-	transition-duration: 500ms;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	word-wrap: break-word;
-	color: white;
-}
-
-.ta-item-image-container:hover .ta-item-description {
-	height: 250px;
-}
-
-.play-button-container {
-	background-color: #81c8a2;
-	display: flex;
-	gap: 30px;
-	font-size: 20px;
-	color: #fff;
-	font-weight: 700;
-	justify-content: space-between;
-	height: 35px;
-	align-items: center;
-	padding: 0px 5px;
-	cursor: pointer;
-	transition-duration: 200ms;
-}
-
-.play-button-container:hover {
-	background-color: #5e9d7a;
-}
-
-.next-step-container {
-	display: flex;
-	flex-direction: column;
-	text-align: center;
-	padding: 0 20px;
-}
-
-.next-step-text {
-	text-decoration: none;
-	color: #383230;
-	transition-duration: 200ms;
-}
-
-.next-step-text:hover {
-	text-shadow: 0px -1px 1px #8c8c8c;
-}
-
-.next-step-text:active {
-	color: #383230;
-}
-
-.detail-page-link {
-	color: #81c8a2;
-	margin-top: 9px;
-	font: 400 11px Inter, sans-serif;
-}
-
-.loading-container {
-	height: 300px;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	flex-direction: column;
-}
-
-.spinner {
-	animation: rotator 1.4s linear infinite;
-}
-
-@
-keyframes rotator { 0% {
-	transform: rotate(0deg);
-}
-
-100
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-%
-{
-transform
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-:
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-rotate
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-(
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-270deg
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-;
-}
-}
-.path {
-	stroke-dasharray: 187;
-	stroke-dashoffset: 0;
-	transform-origin: center;
-	animation: dash 1.4s ease-in-out infinite, colors 5.6s ease-in-out
-		infinite;
-}
-
-@
-keyframes colors { 0%, 100% {
-	stroke: #81c8a2;
-}
-
-}
-@
-keyframes dash { 0% {
-	stroke-dashoffset: 187;
-}
-
-50
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-%
-{
-stroke-dashoffset
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-:
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-46
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.75
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-;
-transform
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-:
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-rotate
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-(
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-135deg
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-;
-}
-100
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-%
-{
-stroke-dashoffset
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-:
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-187
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-;
-transform
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-:
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-rotate
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-(
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-450deg
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-;
-}
-}
-
 /* 추천 */
 /* 옷 추천 탭 */
 .recommendation-section {
@@ -3768,15 +531,18 @@ rotate
 }
 
 .recommendation-tab {
-	border-bottom: solid #d5f1e2;
-	border-bottom-width: 0px;
+	border-bottom: solid 3px;
+	border-bottom-color: white;
 	transition-duration: 0.1s;
 	text-decoration: none;
+	cursor: pointer;
 }
 
 .recommendation-tab:hover {
-	border-bottom-width: 3px;
-	cursor: pointer;
+	border-bottom-color: #d5f1e2;
+}
+.recommendation-active-tab {
+	border-bottom-color: #d5f1e2;
 }
 
 .recommendation-divider {
@@ -3797,7 +563,7 @@ rotate
 	overflow: auto;
 	gap: 30px;
 	width: 80%;
-	justify-content: center;
+	justify-content: start;
 	margin: 0 auto;
 	-ms-overflow-style: none;
 	scroll-snap-type: x mandatory;
@@ -3825,7 +591,8 @@ rotate
 }
 
 .ta-item-image {
-	width: 100%;
+/* 	width: 100%; */
+	height: 270px;
 	aspect-ratio: 1;
 	object-fit: cover;
 	object-position: center;
@@ -3850,10 +617,7 @@ rotate
 	margin-top: 5px;
 }
 
-section.ta-item-container.fashion-man, section.ta-item-container.fashion-women
-	{
-	display: none;
-}
+
 
 .ta-item-details-info {
 	display: flex;
@@ -3959,7 +723,150 @@ section.ta-item-container.fashion-man, section.ta-item-container.fashion-women
 	flex-direction: row;
 	justify-content: space-around;
 }
+
+.forecast-item {
+	display: flex;
+	flex-direction: column;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	white-space: nowrap;
+	justify-items: center;
+	align-items: center;
+	gap: 2px;
+	padding: 0px 10px;
+}
+
+.forecast-item:nth-child(even) {
+	background-color: #DEDEDE;
+}
+
+@media ( max-width : 991px) {
+	.forecast-item {
+		white-space: initial;
+	}
+}
+
+.forecast-day {
+	color: #3b3d40;
+	margin: auto 0;
+	font-size: 22px;
+	font-weight: 500;
+}
+
+.forecast-icons {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	font-size: 15px;
+	font-weight: 0;
+	color: #3b3d40;
+	justify-content: baseline;
+}
+
+.forecast-temps {
+	display: flex;
+	align-items: center;
+	justify-content: items-between;
+}
+
+@media ( max-width : 991px) {
+	.forecast-temps {
+		white-space: initial;
+	}
+}
+
+.forecast-icon {
+	object-fit: auto;
+	width: 40px;
+	margin-bottom: -10px;
+}
+
+.forecast-low {
+	margin-top: 12px;
+	color: #1279C2;
+	font-size: 22px;
+	font-weight: 500;
+	display: block;
+	width: 40px;
+}
+
+.forecast-high {
+	margin-top: 12px;
+	color: #DC2B89;
+	font-size: 22px;
+	font-weight: 500;
+}
+
+.forecast-precipitation {
+	color: rgb(92, 165, 204);
+	font-size: 18px;
+}
+
+.forecast-item-alt {
+	display: flex;
+	margin-top: 15px;
+	gap: 15px;
+}
+
+.forecast-temps-alt {
+	display: flex;
+	align-items: start;
+	gap: 17px;
+	font-size: 22px;
+	color: #3b3d40;
+	font-weight: 500;
+	white-space: nowrap;
+	justify-content: space-between;
+	flex: 1;
+}
+
+@media ( max-width : 991px) {
+	.forecast-temps-alt {
+		white-space: initial;
+	}
+}
+
+.forecast-day-alt {
+	margin-top: 12px;
+}
+
+.forecast-icon-alt {
+	object-fit: auto;
+	object-position: center;
+	width: 25px;
+	fill: #fff;
+}
+
+.forecast-low-alt {
+	margin-top: 12px;
+}
+
+.forecast-high-container-alt {
+	align-self: start;
+	display: flex;
+	margin-top: 12px;
+	gap: 7px;
+	flex: 1;
+}
+
+.forecast-high-alt {
+	color: #3b3d40;
+}
+
+.forecast-precipitation-alt {
+	color: #81cffa;
+	align-self: start;
+	margin-left: 69px;
+}
+
+@media ( max-width : 991px) {
+	.forecast-precipitation-alt {
+		margin-left: 10px;
+	}
+}
+
 </style>
+
 
 
 
@@ -4046,7 +953,29 @@ section.ta-item-container.fashion-man, section.ta-item-container.fashion-women
 	</div>
 </div>
 
-<div class="weather-section">Weather API</div>
+<div class="weather-section">
+	<c:forEach var="weather" items="${weathers}">
+		<div class="forecast-item">
+			<time class="forecast-day">${weather.shortenDay()}</time>
+
+
+			<div class="forecast-icons">
+				<img src="${weather.pullIconPath() }" alt="Low temperature icon"
+					class="forecast-icon" />
+				<div class="forecast-precipitation">${weather.humidity}%</div>
+			</div>
+
+			<div class="forecast-temps">
+				<span class="forecast-low">${weather.minTemp}°</span> <span
+					class="forecast-high">${weather.maxTemp}°</span>
+			</div>
+		</div>
+
+
+
+	</c:forEach>
+</div>
+
 
 <!-- 스타일 추천 -->
 <div class="fashion-recommendation-main">
@@ -4059,7 +988,7 @@ section.ta-item-container.fashion-man, section.ta-item-container.fashion-women
 				</h2>
 				<nav class="recommendation-tabs">
 					<div class="recommendation-tab fashion-all">전체</div>
-					<div class="recommendation-tab fashion-women">여성</div>
+					<div class="recommendation-tab fashion-woman">여성</div>
 					<div class="recommendation-tab fashion-man">남성</div>
 				</nav>
 			</header>
@@ -4068,21 +997,154 @@ section.ta-item-container.fashion-man, section.ta-item-container.fashion-women
 
 	</div>
 	<div class="section-container">
-		<div class="loading-container">
-			<svg class="spinner" width="65px" height="65px" viewBox="0 0 66 66"
-				xmlns="http://www.w3.org/2000/svg">
-        <circle class="path" fill="none" stroke-width="6"
-					stroke-linecap="round" cx="33" cy="33" r="30"></circle>
-      </svg>
-			<p>지금 ai가 날씨에 맞는 옷을 찾아주는 중입니다.</p>
-		</div>
 
-		<section class="ta-item-container fashion-all"></section>
-		<section class="ta-item-container fashion-women"></section>
-		<section class="ta-item-container fashion-man"></section>
+		<section class="ta-item-container fashion-all">
+			<c:forEach var="fashion" items="${fashions}">
+				<article class="ta-item-card">
+					<div class="ta-item-image-container">
+						<c:choose>
+							<c:when test="${fashion.imageUrl==''}">
+								<img src="/resource/image/FashionNoimage.webp"
+									alt="Fashion Image" class="ta-item-image" loading="lazy">
+							</c:when>
+
+							<c:otherwise>
+								<img src="${fashion.imageUrl }" alt="Fashion Image"
+									class="ta-item-image" loading="lazy">
+							</c:otherwise>
+						</c:choose>
+						<div class="ta-item-description">${fashion.description}</div>
+					</div>
+					<div class="ta-item-details">
+						<h3 class="ta-item-name">${fashion.name}</h3>
+						<div class="ta-item-details-info">
+							<p class="ta-item-info">${fashion.brand}</p>
+							<p class="ta-item-info">
+								<c:if test="${fashion.gender==1}">
+							        여성
+							    </c:if>
+								<c:if test="${fashion.gender==0}">
+							        남성
+							    </c:if>
+
+							</p>
+						</div>
+					</div>
+				</article>
+			</c:forEach>
+			<!-- 이하 article 요소들도 위와 같이 정렬 -->
+		</section>
+		</section>
+		
+		<section class="ta-item-container fashion-woman">
+			<c:forEach var="fashion" items="${fashions}">
+				<c:if test="${fashion.gender==1}">
+					<article class="ta-item-card">
+						<div class="ta-item-image-container">
+						<c:choose>
+							<c:when test="${fashion.imageUrl==''}">
+								<img src="/resource/image/FashionNoimage.webp"
+									alt="Fashion Image" class="ta-item-image" loading="lazy">
+							</c:when>
+
+							<c:otherwise>
+								<img src="${fashion.imageUrl }" alt="Fashion Image"
+									class="ta-item-image" loading="lazy">
+							</c:otherwise>
+						</c:choose>
+							<div class="ta-item-description">${fashion.description}</div>
+						</div>
+						<div class="ta-item-details">
+							<h3 class="ta-item-name">${fashion.name}</h3>
+							<div class="ta-item-details-info">
+								<p class="ta-item-info">${fashion.brand}</p>
+								<p class="ta-item-info">여성</p>
+							</div>
+						</div>
+					</article>
+				</c:if>
+			</c:forEach>
+		</section>
+		
+		<section class="ta-item-container fashion-man">
+			<c:forEach var="fashion" items="${fashions}">
+				<c:if test="${fashion.gender==0}">
+					<article class="ta-item-card">
+						<div class="ta-item-image-container">
+						<c:choose>
+							<c:when test="${fashion.imageUrl==''}">
+								<img src="/resource/image/FashionNoimage.webp"
+									alt="Fashion Image" class="ta-item-image" loading="lazy">
+							</c:when>
+
+							<c:otherwise>
+								<img src="${fashion.imageUrl }" alt="Fashion Image"
+									class="ta-item-image" loading="lazy">
+							</c:otherwise>
+						</c:choose>
+							<div class="ta-item-description">${fashion.description}</div>
+						</div>
+						<div class="ta-item-details">
+							<h3 class="ta-item-name">${fashion.name}</h3>
+							<div class="ta-item-details-info">
+								<p class="ta-item-info">${fashion.brand}</p>
+								<p class="ta-item-info">남성</p>
+							</div>
+						</div>
+					</article>
+				</c:if>
+			</c:forEach>
+		</section>
 
 	</div>
 </div>
+<div class="section-container ">
+	<section class="recommendation-section ">
+		<header class="recommendation-header">
+			<h2 class="recommendation-title">
+				<span>쇼핑 추천 </span>
+				<span class="recommendation-accent">리스트</span>
+			</h2>
+		</header>
+		<div class="recommendation-divider"></div>
+	</section>
+
+</div>
+
+<div class="section-container">
+		<section class="ta-item-container shopping-list">
+		<c:forEach var="shoppingList" items="${shoppingLists}">
+
+			<article class="ta-item-card">
+                    <div class="ta-item-image-container">
+                    						<c:choose>
+							<c:when test="${shoppingList.imageUrl==''}">
+								<img src="/resource/image/ShoppingListNoimage.webp"
+									alt="Fashion Image" class="ta-item-image" loading="lazy">
+							</c:when>
+
+							<c:otherwise>
+								<img src="${shoppingList.imageUrl }" alt="Fashion Image"
+									class="ta-item-image" loading="lazy">
+							</c:otherwise>
+						</c:choose>
+                        <div class="ta-item-description">${shoppingList.description }</div>
+                    </div>
+
+                    <div class="ta-item-details">
+                        
+                    <h3 class="ta-item-name">${shoppingList.name }</h3>
+
+                    </div>
+                </article>
+</c:forEach>
+
+
+
+		</section>
+</div>
+
+<div class="section-container">
 
 <!-- 장소 추천 -->
 <div class="place-recommendation-main">
@@ -4102,10 +1164,12 @@ section.ta-item-container.fashion-man, section.ta-item-container.fashion-women
 		</section>
 	</div>
 </div>
+
+
 <div class="section-container">
 
 	<div class="placeInfoList1">
-		<section class="ta-item-container fashion-all">
+		<section class="ta-item-container">
 			<c:forEach var="place" items="${placeInfoList1}">
 				<a href="/usr/myPlan/placeDetail?id=${place.id}"
 					class="ta-item-card"> <span class="ta-item-image-container">
@@ -4122,7 +1186,7 @@ section.ta-item-container.fashion-man, section.ta-item-container.fashion-women
 		</section>
 	</div>
 	<div class="placeInfoList2">
-		<section class="ta-item-container fashion-all">
+		<section class="ta-item-container">
 			<c:forEach var="place" items="${placeInfoList2}">
 				<a href="/usr/myPlan/placeDetail?id=${place.id}"
 					class="ta-item-card"> <span class="ta-item-image-container">
@@ -4139,7 +1203,7 @@ section.ta-item-container.fashion-man, section.ta-item-container.fashion-women
 		</section>
 	</div>
 	<div class="placeInfoList3">
-		<section class="ta-item-container fashion-all">
+		<section class="ta-item-container">
 			<c:forEach var="place" items="${placeInfoList3}">
 				<a href="/usr/myPlan/placeDetail?id=${place.id}"
 					class="ta-item-card"> <span class="ta-item-image-container">
