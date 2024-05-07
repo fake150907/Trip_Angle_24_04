@@ -18,4 +18,10 @@ public interface PlaceInfoRepository {
 			""")
 	public List<PlaceInfoDto> getplaceInfoList(int tabId, int regionId);
 
+	@Select("""
+			SELECT * FROM `recommendSpot`
+			WHERE id = #{id}
+			""")
+	public PlaceInfoDto getPlaceInfo(int id);
+
 }

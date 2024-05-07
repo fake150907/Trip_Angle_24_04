@@ -44,6 +44,10 @@ public class MyPlanController {
 	public String showPlaceDetail(HttpServletRequest req, Model model, int id) {
 		Rq rq = (Rq) req.getAttribute("rq");
 
+		PlaceInfoDto placeInfoDto = placeInfoService.getPlaceInfo(id);
+
+		model.addAttribute("place", placeInfoDto);
+
 		return "/usr/myPlan/placeDetail";
 	}
 
