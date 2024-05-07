@@ -57,7 +57,7 @@
 
 
 </head>
-
+<style>
 /* 헤더가 고정 위치로 설정될 수 있도록 수정 */
 .header-container {
 	z-index: 999;
@@ -127,55 +127,61 @@
 </head>
 
 <body>
-<div class="header-container">
-	<header>
-		<div class="h-20 flex mx-auto items-center text-3xl">
-			<a href="/" class="logo logo1" style="font-family: pattaya; color: #696969; margin-left: 28px;">Trip</a>
-			<a href="/" class="logo" style="font-family: pattaya; color: #81C8A2">Angle</a>
-			<div class="flex-grow"></div>
-			<ul class="flex">
-				<li>
-					<a class="articleList-btn header-btns " href="../article/list?boardId=1&page=1">공지사항</a>
-				</li>
-				<li>
-					<a class="login-btn header-btns" href="../tripReview/reviewList">여행 후기</a>
-				</li>
-				<c:if test="${!rq.isLogined() }">
-					<li></li>
-					<li></li>
+	<div class="header-container">
+		<header>
+			<div class="h-20 flex mx-auto items-center text-3xl">
+				<a href="/" class="logo logo1"
+					style="font-family: pattaya; color: #696969; margin-left: 28px;">Trip</a>
+				<a href="/" class="logo"
+					style="font-family: pattaya; color: #81C8A2">Angle</a>
+				<div class="flex-grow"></div>
+				<ul class="flex">
 					<li>
-						<a class="login-btn header-btns" href="${rq.loginUri }">로그인</a>
-					</li>
-
-					<li>
-						<a class="join-btn header-btns " href="../member/join">회원가입</a>
-					</li>
-				</c:if>
-				<c:if test="${rq.isLogined() }">
-					<li>
-
-						<a class="write-btns header-btns " href="../tripReview/reviewWrite">후기 작성</a>
-					</li>
-
-					<li>
-						<a class="mypage-btns header-btns" href="/usr/myPlan/myPlanList">나의 일정</a>
-
-					</li>
-					<li></li>
-					<li></li>
-					<li>
-						<a class="mypage-btns header-btns" href="/usr/member/myPage">회원정보</a>
+						<a class="articleList-btn header-btns "
+							href="../article/list?boardId=1&page=1">공지사항</a>
 					</li>
 					<li>
-
-						<a onclick="if(confirm('로그아웃 할래?') == false) return false;" class="logout-btn header-btns "
-							href="${rq.logoutUri }">로그아웃</a>
-
+						<a class="login-btn header-btns" href="../tripReview/reviewList">여행
+							후기</a>
 					</li>
-				</c:if>
-			</ul>
-		</div>
-		<div class="div-8 header-line"></div>
-	</header>
-</div>
+					<c:if test="${!rq.isLogined() }">
+						<li></li>
+						<li></li>
+						<li>
+							<a class="login-btn header-btns" href="${rq.loginUri }">로그인</a>
+						</li>
+
+						<li>
+							<a class="join-btn header-btns " href="../member/join">회원가입</a>
+						</li>
+					</c:if>
+					<c:if test="${rq.isLogined() }">
+						<li>
+
+							<a class="write-btns header-btns "
+								href="../tripReview/reviewWrite">후기 작성</a>
+						</li>
+
+						<li>
+							<a class="mypage-btns header-btns" href="/usr/myPlan/myPlanList">나의
+								일정</a>
+
+						</li>
+						<li></li>
+						<li></li>
+						<li>
+							<a class="mypage-btns header-btns" href="/usr/member/myPage">회원정보</a>
+						</li>
+						<li>
+
+							<a onclick="if(confirm('로그아웃 할래?') == false) return false;"
+								class="logout-btn header-btns " href="${rq.logoutUri }">로그아웃</a>
+
+						</li>
+					</c:if>
+				</ul>
+			</div>
+			<div class="div-8 header-line"></div>
+		</header>
+	</div>
 </body>

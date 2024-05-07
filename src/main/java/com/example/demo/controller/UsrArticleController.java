@@ -56,6 +56,12 @@ public class UsrArticleController {
 
 	}
 
+	@RequestMapping("/usr/trip/reviewList")
+	public String showTripReviewList() {
+
+		return "/usr/trip/reviewList";
+	}
+
 	@RequestMapping("/usr/tripReview/reviewWrite")
 	public String reviewWrite(Model model) {
 
@@ -72,10 +78,10 @@ public class UsrArticleController {
 			MultipartRequest multipartRequest) {
 
 		Rq rq = (Rq) req.getAttribute("rq");
-		
+
 		// boardId 2번은 여행후기 게시판
 		int boardId = 2;
-		
+
 		if (Ut.isNullOrEmpty(title)) {
 			return Ut.jsHistoryBack("F-1", "제목을 입력해주세요");
 		}
@@ -84,7 +90,7 @@ public class UsrArticleController {
 		}
 
 		ResultData<Integer> writeArticleRd = articleService.writeArticle(rq.getLoginedMemberId(), title, body, boardId);
-		
+
 		System.err.println(boardId);
 
 		int id = (int) writeArticleRd.getData1();
@@ -101,47 +107,10 @@ public class UsrArticleController {
 			}
 		}
 
-		return Ut.jsReplace(writeArticleRd.getResultCode(), writeArticleRd.getMsg(), "../tripReview/reviewDetail?id=" + id);
+		return Ut.jsReplace(writeArticleRd.getResultCode(), writeArticleRd.getMsg(),
+				"../tripReview/reviewDetail?id=" + id);
 
 	}
-	
-	// 트립앵글 리뷰 리스트
-		@RequestMapping("/usr/tripReview/reviewList")
-		public String showTripReviewList() {
-
-			return "/usr/tripReview/reviewList";
-		}
-
-		//트립앵글 리뷰 디테일
-		@RequestMapping("/usr/tripReview/reviewDetail")
-		public String showTripReviewDetail(HttpServletRequest req, Model model, int id) {
-
-			Rq rq = (Rq) req.getAttribute("rq");
-
-			Article article = articleService.getForPrintArticle(rq.getLoginedMemberId(), id);
-			ResultData usersReactionRd = reactionPointService.usersReaction(rq.getLoginedMemberId(), "article", id);
-
-			if (usersReactionRd.isSuccess()) {
-				model.addAttribute("userCanMakeReaction", usersReactionRd.isSuccess());
-			}
-
-			List<Reply> replies = replyService.getForPrintReplies(rq.getLoginedMemberId(), "article", id);
-
-			int repliesCount = replies.size();
-
-			String relTypeCode = "article";
-
-			model.addAttribute("article", article);
-			model.addAttribute("replies", replies);
-			model.addAttribute("repliesCount", repliesCount);
-			model.addAttribute("relTypeCode", relTypeCode);
-			model.addAttribute("isAlreadyAddGoodRp",
-					reactionPointService.isAlreadyAddGoodRp(rq.getLoginedMemberId(), id, "article"));
-			model.addAttribute("isAlreadyAddBadRp",
-					reactionPointService.isAlreadyAddBadRp(rq.getLoginedMemberId(), id, "article"));
-			
-			return "/usr/tripReview/reviewDetail";
-		}
 
 	// 액션 메서드
 	@RequestMapping("/usr/article/list")
@@ -347,9 +316,39 @@ public class UsrArticleController {
 		return Ut.jsReplace(loginedMemberCanDeleteRd.getResultCode(), loginedMemberCanDeleteRd.getMsg(),
 				"../article/list");
 	}
-	
 
-	@RequestMapping("/usr/trip/tripReviewList")
+	// 트립앵글 리뷰 디테일
+	@RequestMapping("/usr/tripReview/reviewDetail")
+	public String showTripReviewDetail(HttpServletRequest req, Model model, int id) {
+
+		Rq rq = (Rq) req.getAttribute("rq");
+
+		Article article = articleService.getForPrintArticle(rq.getLoginedMemberId(), id);
+		ResultData usersReactionRd = reactionPointService.usersReaction(rq.getLoginedMemberId(), "article", id);
+
+		if (usersReactionRd.isSuccess()) {
+			model.addAttribute("userCanMakeReaction", usersReactionRd.isSuccess());
+		}
+
+		List<Reply> replies = replyService.getForPrintReplies(rq.getLoginedMemberId(), "article", id);
+
+		int repliesCount = replies.size();
+
+		String relTypeCode = "article";
+
+		model.addAttribute("article", article);
+		model.addAttribute("replies", replies);
+		model.addAttribute("repliesCount", repliesCount);
+		model.addAttribute("relTypeCode", relTypeCode);
+		model.addAttribute("isAlreadyAddGoodRp",
+				reactionPointService.isAlreadyAddGoodRp(rq.getLoginedMemberId(), id, "article"));
+		model.addAttribute("isAlreadyAddBadRp",
+				reactionPointService.isAlreadyAddBadRp(rq.getLoginedMemberId(), id, "article"));
+
+		return "/usr/tripReview/reviewDetail";
+	}
+
+	@RequestMapping("/usr/tripReview/reviewList")
 	public String showTripReviewList(Model model, HttpServletRequest req, @RequestParam(defaultValue = "1") int page,
 			@RequestParam(defaultValue = "2") int boardId) {
 		Rq rq = (Rq) req.getAttribute("rq");
@@ -374,7 +373,6 @@ public class UsrArticleController {
 		// 전체 페이지 수 계산
 		int pagesCount = (int) Math.ceil(reviewCount / (double) itemsInAPage);
 
-		
 		// 해당 페이지에 표시될 게시글 리스트 조회
 		List<Article> reviewList = articleService.getForPrintTripReviewList(boardId, itemsInAPage, page);
 
@@ -385,7 +383,7 @@ public class UsrArticleController {
 		model.addAttribute("page", page);
 		model.addAttribute("pagesCount", pagesCount);
 		model.addAttribute("reviewList", reviewList);
-		model.addAttribute("relTypeCode", "review");
+		model.addAttribute("relTypeCode", "article");
 		model.addAttribute("member", member); // null이 될 수 있음에 유의
 
 		// 로그인한 회원이 있다면 로그인 아이디도 추가
