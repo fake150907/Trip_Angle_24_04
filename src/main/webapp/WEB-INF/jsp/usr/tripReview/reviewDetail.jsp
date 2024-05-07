@@ -337,19 +337,6 @@ function doModifyReply(replyId) {
 	}
 }
 
-.list-btn {
-	font-family: Pretendard, sans-serif;
-	font-size: 12px;
-	color: black;
-	border-radius: 5px;
-	border: 1px solid #d5f1e2;
-	background-color: #d5f1e2;
-	margin-top: 11px;
-	aspect-ratio: 2.74;
-	justify-content: center;
-	padding: 7px 23px;
-}
-
 @media ( max-width : 991px) {
 	.list-btn {
 		white-space: initial;
@@ -617,6 +604,18 @@ function doModifyReply(replyId) {
 	margin-top: 13px;
 	font: 10px Pretendard, sans-serif;
 }
+
+.list-btn {
+	font-family: Pretendard, sans-serif;
+	justify-content: center;
+	border-radius: 5px;
+	background-color: #d5f1e2;
+	align-self: center;
+	color: #3b3d40;
+	white-space: nowrap;
+	padding: 8px 25px; /* 패딩을 조정하여 버튼의 크기를 변경합니다 */
+	font-size: 12px; /* 글꼴 크기를 조정합니다 */
+}
 </style>
 
 
@@ -642,7 +641,7 @@ function doModifyReply(replyId) {
 					href="../article/doDelete?id=${article.id }">삭제</a>
 			</c:if>
 		</div>
-		<button class="list-btn" type="button" onclick="history.back();">목록</button>
+		<a class="list-btn" href="../tripReview/reviewList">목록</a>
 	</div>
 
 	<!-- 	본문 부분 -->
