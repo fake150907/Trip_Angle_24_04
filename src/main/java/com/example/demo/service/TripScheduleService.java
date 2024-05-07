@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,15 +23,15 @@ public class TripScheduleService {
 
 	}
 
-	public TripSchedule getTripScheduleById(int travleScheduleId) {
+	public TripSchedule getTripScheduleById(int id) {
 
-		return tripScheduleRepository.getTripScheduleById(travleScheduleId);
+		return tripScheduleRepository.getTripScheduleById(id);
 	}
 
 	public void insertTripSchedule(String title, String content, String checkInDate, String checkOutDate,
-			int loginedMemberId, int regionId) {
+			int loginedMemberId, int regionId, Map<String, Object> map) {
 
-		tripScheduleRepository.insertTripSchedule(title, content, checkInDate, checkOutDate, loginedMemberId, regionId);
+		tripScheduleRepository.insertTripSchedule(title, content, checkInDate, checkOutDate, loginedMemberId, regionId, map);
 	}
 
 	public void addCalendarData(CalendarData calendarData, int loginedMemberId) {
@@ -44,5 +45,10 @@ public class TripScheduleService {
 	public List<CalendarData> getCalendarDatas(int loginedMemberId) {
 
 		return tripScheduleRepository.getCalendarDatas(loginedMemberId);
+	}
+
+	public void updateStepById(int id) {
+		tripScheduleRepository.updateStepById(id);
+		
 	}
 }

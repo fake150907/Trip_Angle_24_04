@@ -1,11 +1,14 @@
 package com.example.demo.repository;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import com.example.demo.vo.CalendarData;
 import com.example.demo.vo.TripSchedule;
@@ -30,11 +33,13 @@ public interface TripScheduleRepository {
 					startDate = #{checkInDate},
 					endDate = #{checkOutDate},
 					regionId = #{regionId},
-					memberId = #{loginedMemberId}
+					memberId = #{loginedMemberId},
+					step = 0
 			""")
+	@Options(useGeneratedKeys=true, keyProperty="map.id")
 	public void insertTripSchedule(String title, String content, String checkInDate, String checkOutDate,
-			int loginedMemberId, int regionId);
-
+			int loginedMemberId, int regionId, Map<String, Object> map);
+	
 	@Insert("""
 			INSERT INTO calendarData
 			SET regDate = NOW(),
@@ -59,5 +64,10 @@ public interface TripScheduleRepository {
 			WHERE `memberId` = #{loginedMemberId}
 			""")
 	public List<CalendarData> getCalendarDatas(int loginedMemberId);
+
+	@Update("""
+			UPDATE  TRIPSCHEDULE SET STEP=STEP+1, UPDATEDATE=NOW() WHERE id = #{id}
+		""")
+	public void updateStepById(int id);
 
 }
