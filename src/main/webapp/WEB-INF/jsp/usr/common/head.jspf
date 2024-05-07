@@ -58,8 +58,6 @@
 
 </head>
 
-
-
 <style>
 /* 헤더가 고정 위치로 설정될 수 있도록 수정 */
 .header-container {
@@ -128,7 +126,6 @@
 }
 </style>
 </head>
-
 
 <body>
 <div class="header-container">
