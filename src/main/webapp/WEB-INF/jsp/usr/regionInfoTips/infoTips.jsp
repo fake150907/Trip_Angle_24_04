@@ -43,7 +43,7 @@
 
 .Tab {
 	width: 224px;
-	left: 550px;
+	left: 520px;
 	top: 120px;
 	position: absolute;
 	justify-content: space-between;
@@ -52,9 +52,9 @@
 }
 
 .InfoLabel1, .InfoLabel2 {
-	width: 180px;
+	width: 200px;
 	height: 53px;
-	left: 137px;
+ 	left: 137px; 
 	top: 127px;
 	position: absolute;
 	top: 20%;
@@ -67,8 +67,12 @@
 	word-wrap: break-word;
 }
 
+.InfoLabel1:hover, .InfoLabel2:hover {
+ cursor: pointer; 
+}
+
 .InfoLabel1 {
-	left: -106%;
+	left: -110%;
 }
 
 .InfoLabel2 {
@@ -90,11 +94,11 @@
 }
 
 .TabContent1::after {
-	left: 12px;
+	left: 0.1px;
 }
 
 .TabContent2::after {
-	left: 42px;
+ 	left: 5px; 
 }
 
 .TabContent1, .TabContent2 {
@@ -253,8 +257,8 @@
 
 .country-city {
 	margin-top: 21px;
-	font: 400 15px/28px Inter, sans-serif;
-	font-weight: 500;
+	font: 400 15px/28px Pretendard, sans-serif;
+	font-weight: 400;
 }
 
 @media ( max-width : 991px) {
@@ -277,8 +281,8 @@
 
 .climate {
 	margin-top: 21px;
-	font: 400 15px/28px Inter, sans-serif;
-	font-weight: 500;
+	font: 400 15px/28px Pretendard, sans-serif;
+	font-weight: 400;
 }
 
 @media ( max-width : 991px) {
@@ -296,7 +300,7 @@
 	text-align: center;
 	justify-content: center;
 	padding: 13px 15px;
-	font: 16px Pretendard, sans-serif;
+	font: 400 16px Pretendard, sans-serif;
 }
 
 @media ( max-width : 991px) {
@@ -321,7 +325,7 @@
 	flex-direction: column;
 	color: #000;
 	font-weight: 500;
-	padding: 0 20px;
+ 	padding: 0 20px; 
 }
 
 .InfoItem {
@@ -351,7 +355,6 @@
 	position: relative;
 	width: 900px;
 	height: 450px;
-	width: 900px;
 }
 
 .language-box, .currency-box, .voltage-box, .transportation-box,
@@ -447,14 +450,15 @@
 	font-weight: 500;
 	text-decoration: none; /* Remove underline from links */
 	border-radius: 5px;
-	width: 100px;
-	height: 40px;
+	width: 103.16px;
+	height: 45px;
 	position: absolute;
-	left: 65%;
-	top: 80%;
+	left: 70.5%;
+	top: 71%;
 	background: #D5F1E2;
 	border-radius: 5px;
 	background: #D5F1E2;
+	font: 400 16px Pretendard, sans-serif;
 }
 </style>
 <div class="informationPage">
