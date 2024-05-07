@@ -85,4 +85,12 @@ public interface TripScheduleRepository {
 		""")
 	public void updateStepById(int id);
 
+	
+	
+
+	@Delete("DELETE FROM tripSchedule WHERE id = #{id}")
+	public void deleteMyPlanDetail(int id);
+	
+
+
 }

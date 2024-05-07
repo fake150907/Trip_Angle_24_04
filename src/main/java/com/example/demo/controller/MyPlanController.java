@@ -13,8 +13,11 @@ import com.example.demo.crawling.PlaceInfoDto;
 import com.example.demo.service.PlaceInfoService;
 import com.example.demo.service.RegionInfoTipsService;
 import com.example.demo.service.TripScheduleService;
+import com.example.demo.util.Ut;
+import com.example.demo.vo.Article;
 import com.example.demo.vo.CalendarData;
 import com.example.demo.vo.RegionInfoTips;
+import com.example.demo.vo.ResultData;
 import com.example.demo.vo.Rq;
 import com.example.demo.vo.TripSchedule;
 
@@ -37,7 +40,6 @@ public class MyPlanController {
 	@RequestMapping("/usr/myPlan/myPlanList")
 	public String showMyPlanList(HttpServletRequest req, Model model) {
 
-
 		Rq rq = (Rq) req.getAttribute("rq");
 
 		int memberId = rq.getLoginedMemberId();
@@ -48,7 +50,6 @@ public class MyPlanController {
 
 		return "/usr/myPlan/myPlanList";
 	}
-
 
 	@RequestMapping("/usr/myPlan/placeDetail")
 	public String showPlaceDetail(HttpServletRequest req, Model model, int id) {
@@ -93,6 +94,23 @@ public class MyPlanController {
 		return "/usr/myPlan/myPlanDetail";
 	}
 
+	// 로그인 체크 -> 유무 체크 -> 권한 체크 -> 삭제
+	@RequestMapping("/usr/myPlan/doDelete")
+	@ResponseBody
+	public String doDelete(HttpServletRequest req, int id) {
+		Rq rq = (Rq) req.getAttribute("rq");
+
+		TripSchedule tripSchedule = tripScheduleService.getTripScheduleById(id);
+
+		if (tripSchedule == null) {
+			return Ut.jsHistoryBack("F-1", Ut.f("%d번 일정은 존재하지 않습니다", id));
+		}
+
+		tripScheduleService.deleteMyPlanDetail(id);
+
+		return Ut.jsReplace("S-1", "일정이 삭제되었습니다.", "/usr/myPlan/myPlanList");
+	}
+
 	@RequestMapping("/usr/myPlan/myPlanCalendar")
 	public String showCalendar(HttpServletRequest req, Model model) {
 		Rq rq = (Rq) req.getAttribute("rq");
@@ -129,4 +147,5 @@ public class MyPlanController {
 			return "error";
 		}
 	}
+
 }
