@@ -53,7 +53,7 @@ public void insertTripSchedule(String title, String content, String checkInDate,
 		
 		return tripScheduleRepository.getForPrintTripSchedules(memberId);
 
-    
+	}
     
 	public void updateStepById(int id) {
 		tripScheduleRepository.updateStepById(id);
