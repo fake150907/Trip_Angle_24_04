@@ -43,8 +43,8 @@
 
 .Tab {
 	width: 224px;
-	left: 400px;
-	top: 70px;
+	left: 550px;
+	top: 120px;
 	position: absolute;
 	justify-content: space-between;
 	align-items: center;
@@ -52,7 +52,7 @@
 }
 
 .InfoLabel1, .InfoLabel2 {
-	width: 130px;
+	width: 180px;
 	height: 53px;
 	left: 137px;
 	top: 127px;
@@ -473,17 +473,19 @@
 				alt="오사카 이미지">
 		</div>
 	</div>
+	<form action="/usr/schedule/tripSchedule">
+	<input type="hidden" value="${region.getId() }" name="regionId" />
 	<div class="TipInformationPage">
 		<div class="column-2">
 			<div class="InfoItemContainer">
 			
-				<div class="OsakaInfo">${region.englishName}</div>  <!-- ${countryName} 들어가야함--> 
-				<div class="country-city-text">${region.extra__countryName} ${region.name}</div> <!-- ${regionName} 들어가야함--> 
+				<div class="OsakaInfo">${region.englishName}</div>
+				<div class="country-city-text">${region.extra__countryName} ${region.name}</div>
 				
 				<div class="country-city">${RegionInfoTips.getInformation()}</div>
 				<div class="climate-text">기후</div>
 				<div class="climate">${RegionInfoTips.getClimate()}</div>
-				<div class="ScheduleButton">일정 만들기</div>
+				<button class="ScheduleButton">일정 만들기</button>
 			</div>
 		</div>
 	</div>
@@ -517,13 +519,15 @@
 						<div class="InfoItem time-difference-text">시차</div>
 						<div class="InfoItem time-difference">${RegionInfoTips.getTimeDifference() }</div>
 					</div>
-
-					<button class="ScheduleButton2">일정 만들기</button>
+					
+					<button class="ScheduleButton2">일정 만들기
+					</button>
 
 				</div>
 			</div>
 		</div>
 	</div>
+	</form>
 </div>
 
 <%@ include file="../common/foot.jspf"%>
