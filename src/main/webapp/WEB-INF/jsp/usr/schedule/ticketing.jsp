@@ -9,19 +9,23 @@
 	color: #3b3d40;
 	position: absolute;
 	top: -10%;
-	left: 46.8%;
+	/* left: 46.8%; */
+	left: 50%;
 	font: 500 36px Pretendard, sans-serif;
 	text-align: center;
+	transform: translateX(-50%);
 }
 
 .travel-date {
 	color: #3b3d40;
 	position: absolute;
 	top: -4%;
-	left: 45%;
+/* 	left: 45%; */
+	left: 50%;
 	text-align: center;
 	font: 500 12px Pretendard, sans-serif;
 	border-bottom: 3px solid #d5f1e2;
+	transform: translateX(-50%);
 }
 
 .ticketing-container {
@@ -309,6 +313,7 @@
 	font-family: Pretendard, sans-serif;
 	flex-grow: 1;
 	margin: auto 0;
+	cursor:pointer;
 }
 
 .next-step-arrow-mark {
@@ -325,8 +330,8 @@
 }
 </style>
 <div class="ticketing-container">
-	<div class="travel-country">하와이</div>
-	<div class="travel-date">2024-04-15 부터 2024-04-24</div>
+	<div class="travel-country">${tripSchedule.extra__regionName }</div>
+	<div class="travel-date">${tripSchedule.startDate } 부터 ${tripSchedule.endDate }</div>
 
 	<div class="left-ticketing-container">
 		<div class="left-ticketing-box">
@@ -370,7 +375,7 @@
 			<div class="column-4">
 				<div class="next-step-box">
 					<div class="div-31">
-						<div class="next-step-text">다음단계</div>
+						<div class="next-step-text" onClick="location.href='/usr/styleRecommended/create?id=${id}'">다음단계</div>
 						<img
 							src="https://cdn.builder.io/api/v1/image/assets/TEMP/5e372a9baab8fc46ea66803d8658d232670e223da22264d0b874230a858f60b9?"
 							class="next-step-arrow-mark" />

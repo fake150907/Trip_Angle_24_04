@@ -38,31 +38,46 @@ public class TripStyleRecommendedController {
 	// 액션 메서드
 	
 	@GetMapping("/usr/styleRecommended/create")
-	public String styleRecommended(HttpServletRequest req, Model model, @RequestParam(defaultValue = "1") int tripScheduleId) {
+	public String styleRecommended(HttpServletRequest req, Model model, @RequestParam(defaultValue = "0") Integer id) {
 
-//		Rq rq = (Rq) req.getAttribute("rq");
-
-		TripSchedule tripSchedule = tripScheduleService.getTripScheduleById(tripScheduleId);
+		Rq rq = (Rq) req.getAttribute("rq");
+		
+		if(id==0) {
+			return rq.historyBackOnView("id를 입력해주세요");    	
+		}
+		
+		TripSchedule tripSchedule = tripScheduleService.getTripScheduleById(id);
+		
 
 		if (tripSchedule == null) {
 			return rq.historyBackOnView("존재하지 않는 일정 입니다.");
 		}
 		
+		if (tripSchedule.getMemberId() != rq.getLoginedMemberId()) {
+			return rq.historyBackOnView("일정의 작성자만 접근할 수 있습니다.");
+		}
+		
+		if (tripSchedule.getStep() != 0) {
+			return rq.historyBackOnView("잘못된 접근 입니다. 일정의 진행사항과 요청이 일치하지 않습니다.");
+		}
+		
+		tripScheduleService.updateStepById(id);
+		
 //		if(rq.getLoginedMemberId() != tripSchedule.getMemberId()) {
 //			return rq.historyBackOnView("로그인한 사용자가 일정 작성자가 아닙니다.");
 //		}
+		System.err.println(tripSchedule);
 
 
 		model.addAttribute("tripSchedule", tripSchedule);
-		model.addAttribute("tripScheduleId", tripScheduleId);
+		model.addAttribute("id", id);
 
 		return "usr/styleRecommended/create";
 	}
 	
 	
 	@PostMapping("/usr/styleRecommended/doCreate")
-	@ResponseBody
-	public String styleRecommendedDoCreate(String weatherDatas, String fashionDatas, String shoppingListDatas, Integer tripScheduleId) {
+	public String styleRecommendedDoCreate(String weatherDatas, String fashionDatas, String shoppingListDatas, @RequestParam(defaultValue = "0") Integer id, HttpServletRequest req) {
 		//todo 일정id가 일치하는지 확인 로직 추가 필요. (로그인기능 문제 없는거 확인 후 추가할 것)
 		
 		ObjectMapper mapper = new ObjectMapper();
@@ -70,15 +85,32 @@ public class TripStyleRecommendedController {
 		List<Fashion> fashions = null;
 		List<ShoppingList> shoppingLists = null;
 		
-		if(tripScheduleId == null) {
-        	return rq.historyBackOnView("잘못된 접근입니다. 여행 일정 id가 없습니다.");
+		TripSchedule tripSchedule = tripScheduleService.getTripScheduleById(id);
+		
+		if(id==0) {
+			return rq.historyBackOnView("잘못된 접근입니다. 여행 일정 Id가 없습니다.");    	
+		}
+		
+		if (tripSchedule == null) {
+			return rq.historyBackOnView("존재하지 않는 일정 입니다.");
+		}
+		
+		
+		
+		
+		if (tripSchedule.getStep() != 1) {
+			return rq.historyBackOnView("잘못된 접근 입니다. 일정의 진행사항과 요청이 일치하지 않습니다.");
+		}
+		
+		if (tripSchedule.getMemberId() != rq.getLoginedMemberId()) {
+			return rq.historyBackOnView("일정의 작성자만 접근할 수 있습니다.");
 		}
 		
 		
         try {
         	 weathers = mapper.readValue(weatherDatas, new TypeReference<List<Weather>>(){});
         	 for(Weather weather: weathers) {
-        		 weather.setScheduleId(tripScheduleId);
+        		 weather.setScheduleId(id);
         	 }
              
         } catch (Exception e) {
@@ -91,7 +123,7 @@ public class TripStyleRecommendedController {
         try {
         	fashions = mapper.readValue(fashionDatas, new TypeReference<List<Fashion>>(){});
 	       	 for(Fashion fashion: fashions) {
-	       		fashion.setScheduleId(tripScheduleId);
+	       		fashion.setScheduleId(id);
 	    	 }  
         } catch (Exception e) {
         	e.printStackTrace();
@@ -102,7 +134,7 @@ public class TripStyleRecommendedController {
         try {
         	shoppingLists = mapper.readValue(shoppingListDatas, new TypeReference<List<ShoppingList>>(){});
 	       	 for(ShoppingList shoppingItem: shoppingLists) {
-	       		shoppingItem.setScheduleId(tripScheduleId);
+	       		shoppingItem.setScheduleId(id);
 	    	 }  
         } catch (Exception e) {
         	e.printStackTrace();
@@ -110,8 +142,12 @@ public class TripStyleRecommendedController {
         	
         }
         
+		
+        
         
         tripStyleRecommendedService.writeStyleRecommendedDatas(weathers, fashions, shoppingLists);
+        
+        tripScheduleService.updateStepById(id);
 
 
         
@@ -119,7 +155,7 @@ public class TripStyleRecommendedController {
 //		return Ut.jsReplace(loginedMemberCanModifyRd.getResultCode(), loginedMemberCanModifyRd.getMsg(),
 //				"../article/detail?id=" + id);
 
-		return "정상 종료";
+		return "redirect:/usr/myPlan/myPlanDetail?id="+id+"&regionId="+tripSchedule.getRegionId();
 	}
 
 	
