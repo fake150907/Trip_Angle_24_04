@@ -168,7 +168,19 @@ public class ArticleService {
 
 	public int getCurrentArticleId() {
 		return articleRepository.getCurrentArticleId();
-		
+
+	}
+
+	public List<Article> getForPrintTripReviewList(int boardId, int itemsInAPage, int page) {
+
+		int limitFrom = (page - 1) * itemsInAPage;
+		int limitTake = itemsInAPage;
+
+		return articleRepository.getForPrintTripReviewList(boardId, limitFrom, limitTake);
+	}
+
+	public int getReviewCount(int boardId) {
+		return articleRepository.getReviewCount(boardId);
 	}
 
 }

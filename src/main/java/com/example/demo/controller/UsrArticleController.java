@@ -354,4 +354,51 @@ public class UsrArticleController {
 		return "/usr/tripReview/reviewDetail";
 	}
 
+	@RequestMapping("/usr/trip/tripReviewList")
+	public String showTripReviewList(Model model, HttpServletRequest req, @RequestParam(defaultValue = "1") int page,
+			@RequestParam(defaultValue = "2") int boardId) {
+		Rq rq = (Rq) req.getAttribute("rq");
+		// 현재 로그인한 회원이 있는지 확인
+		Member member = null;
+		if (rq.getLoginedMember() != null) {
+			// 로그인한 회원이 있다면 해당 회원 정보를 가져옴
+			member = memberService.getMemberByLoginId(rq.getLoginedMember().getLoginId());
+		}
+
+		// 게시판 정보 조회
+		Board board = boardService.getBoardById(boardId);
+
+		// 게시판이 존재하지 않는 경우
+		if (board == null) {
+			return rq.historyBackOnView("존재하지 않는 게시판입니다.");
+		}
+		int reviewCount = articleService.getReviewCount(boardId);
+
+		int itemsInAPage = 12;
+
+		// 전체 페이지 수 계산
+		int pagesCount = (int) Math.ceil(reviewCount / (double) itemsInAPage);
+
+		
+		// 해당 페이지에 표시될 게시글 리스트 조회
+		List<Article> reviewList = articleService.getForPrintTripReviewList(boardId, itemsInAPage, page);
+
+		// 모델에 속성 추가
+		// 모델에 속성 추가
+		model.addAttribute("board", board);
+		model.addAttribute("boardId", boardId);
+		model.addAttribute("page", page);
+		model.addAttribute("pagesCount", pagesCount);
+		model.addAttribute("reviewList", reviewList);
+		model.addAttribute("relTypeCode", "review");
+		model.addAttribute("member", member); // null이 될 수 있음에 유의
+
+		// 로그인한 회원이 있다면 로그인 아이디도 추가
+		if (rq.getLoginedMember() != null) {
+			model.addAttribute("loginId", rq.getLoginedMember().getLoginId());
+		}
+
+		return "/usr/tripReview/reviewList";
+	}
+
 }

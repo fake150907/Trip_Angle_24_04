@@ -58,7 +58,6 @@
 
 </head>
 
-<style>
 /* 헤더가 고정 위치로 설정될 수 있도록 수정 */
 .header-container {
 	z-index: 999;
@@ -154,11 +153,13 @@
 				</c:if>
 				<c:if test="${rq.isLogined() }">
 					<li>
+
 						<a class="write-btns header-btns " href="../tripReview/reviewWrite">후기 작성</a>
 					</li>
 
 					<li>
 						<a class="mypage-btns header-btns" href="/usr/myPlan/myPlanList">나의 일정</a>
+
 					</li>
 					<li></li>
 					<li></li>
@@ -166,8 +167,10 @@
 						<a class="mypage-btns header-btns" href="/usr/member/myPage">회원정보</a>
 					</li>
 					<li>
+
 						<a onclick="if(confirm('로그아웃 할래?') == false) return false;" class="logout-btn header-btns "
 							href="${rq.logoutUri }">로그아웃</a>
+
 					</li>
 				</c:if>
 			</ul>

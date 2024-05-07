@@ -16,10 +16,13 @@
 	display: flex;
 	justify-content: center; /* Horizontally center the container */
 	flex-wrap: wrap;
+	margin-top: 170px;
+	position: absolute;
 	/* Allow items to wrap if they exceed container width */
-	margin-top: 180px;
-	margin-right: 20px;
-	border: 1px solid red;
+}
+
+.trip-review-container {
+	
 }
 
 .trip-review-box {
@@ -35,12 +38,6 @@
 	flex: 1;
 	width: 200px;
 	display: inline-block;
-}
-
-@media ( max-width : 991px) {
-	.trip-review-box {
-		white-space: initial;
-	}
 }
 
 .trip-review-thumbnail {
@@ -67,11 +64,6 @@
 		white-space: initial;
 	}
 }
-
-.hashTag {
-	font-family: IBM Plex Mono, sans-serif;
-}
-
 .trip-review-information-box {
 	display: flex;
 	align-items: start;
@@ -162,15 +154,8 @@
 	margin-top: 100px;
 	margin-left: 150px;
 	position: relative;
+	left: -3.8%;
 	display: flex;
-	border: 1px solid pink;
-}
-
-@media ( max-width : 991px) {
-	.Tab {
-		max-width: 100%;
-		flex-wrap: wrap;
-	}
 }
 
 .InfoLabel1 {
@@ -196,6 +181,10 @@
 	transform: translateX(-50%); /* Center the bar */
 	background-color: #D5F1E2;
 }
+
+.pagination {
+	margin-top: 850px;
+}
 </style>
 <div class="trip-review-list-page">
 	<div class="Tab">
@@ -205,337 +194,124 @@
 	</div>
 	<div class="container">
 		<div class="trip-review-container">
-			<div class="trip-review-box">
-				<img
-					src="https://velog.velcdn.com/images/fake150907/post/16f9b770-cbf8-4b89-983c-929f7ad2843e/image.jpg"
-					class="trip-review-thumbnail" />
-				<div class="trip-review-hashTag-box">
-					<div class="hashTag">#캠핑</div>
-					<div class="hashTag">#알프스산맥</div>
-					<div class="hashTag">#방구</div>
-				</div>
-				<div class="trip-review-information-box">
-					<img
-						src="https://velog.velcdn.com/images/fake150907/post/6e82a95f-9874-4838-9862-a90c025c101a/image.jpg"
-						class="profile-image" />
-					<div class="trip-review-information">
-						<div class="div-8">
-							<div class="trip-review-title">후후여행후기&gt;&lt;</div>
-							<img
-								src="https://cdn.builder.io/api/v1/image/assets/TEMP/c2147d3e6324d81dc1a2909baba66e07251a734c79e0eac31516cc6774a33f87?"
-								class="goodReaction-btn" />
-						</div>
-						<div class="div-10">
-							<div class="member-nickName">고수달</div>
-							<div class="trip-review-regDate">2024.04.17</div>
-						</div>
-					</div>
-				</div>
+			<div class="review-line">
+				<%
+				int count = 0;
+				%>
+				<c:forEach var="review" items="${reviewList }">
+					<%
+					if (count != 0 && count % 4 == 0) {
+					%>
+				
 			</div>
-			<div class="trip-review-box">
-				<img
-					src="https://velog.velcdn.com/images/fake150907/post/16f9b770-cbf8-4b89-983c-929f7ad2843e/image.jpg"
-					class="trip-review-thumbnail" />
-				<div class="trip-review-hashTag-box">
-					<div class="hashTag">#캠핑</div>
-					<div class="hashTag">#알프스산맥</div>
-					<div class="hashTag">#방구</div>
-				</div>
-				<div class="trip-review-information-box">
-					<img
-						src="https://velog.velcdn.com/images/fake150907/post/6e82a95f-9874-4838-9862-a90c025c101a/image.jpg"
-						class="profile-image" />
-					<div class="trip-review-information">
-						<div class="div-8">
-							<div class="trip-review-title">후후여행후기&gt;&lt;</div>
+			<div class="review-line">
+				<%
+				}
+				%>
+				<a href="detail?id=${review.id }">
+					<div class="trip-review-box">
+						<%-- <img src="${rq.getImgUri(review.id,relTypeCode)}"
+							class="trip-review-thumbnail" /> --%>
+						<img
+							src="https://velog.velcdn.com/images/fake150907/post/610545eb-1a33-45ed-961a-df84f459b696/image.jpg"
+							class="trip-review-thumbnail" />
+						<div class="trip-review-information-box">
 							<img
-								src="https://cdn.builder.io/api/v1/image/assets/TEMP/c2147d3e6324d81dc1a2909baba66e07251a734c79e0eac31516cc6774a33f87?"
-								class="goodReaction-btn" />
-						</div>
-						<div class="div-10">
-							<div class="member-nickName">고수달</div>
-							<div class="trip-review-regDate">2024.04.17</div>
+								src="https://velog.velcdn.com/images/fake150907/post/6e82a95f-9874-4838-9862-a90c025c101a/image.jpg"
+								class="profile-image" />
+							<div class="trip-review-information">
+								<div class="div-8">
+									<div class="trip-review-title">${review.title }</div>
+									<img
+										src="https://cdn.builder.io/api/v1/image/assets/TEMP/c2147d3e6324d81dc1a2909baba66e07251a734c79e0eac31516cc6774a33f87?"
+										class="goodReaction-btn" />
+								</div>
+								<div class="div-10">
+									<div class="member-nickName">${review.extra__writer }</div>
+									<div class="trip-review-regDate">${review.regDate.substring(0,10)}</div>
+								</div>
+							</div>
 						</div>
 					</div>
-				</div>
-			</div>
-			<div class="trip-review-box">
-				<img
-					src="https://velog.velcdn.com/images/fake150907/post/16f9b770-cbf8-4b89-983c-929f7ad2843e/image.jpg"
-					class="trip-review-thumbnail" />
-				<div class="trip-review-hashTag-box">
-					<div class="hashTag">#캠핑</div>
-					<div class="hashTag">#알프스산맥</div>
-					<div class="hashTag">#방구</div>
-				</div>
-				<div class="trip-review-information-box">
-					<img
-						src="https://velog.velcdn.com/images/fake150907/post/6e82a95f-9874-4838-9862-a90c025c101a/image.jpg"
-						class="profile-image" />
-					<div class="trip-review-information">
-						<div class="div-8">
-							<div class="trip-review-title">후후여행후기&gt;&lt;</div>
-							<img
-								src="https://cdn.builder.io/api/v1/image/assets/TEMP/c2147d3e6324d81dc1a2909baba66e07251a734c79e0eac31516cc6774a33f87?"
-								class="goodReaction-btn" />
-						</div>
-						<div class="div-10">
-							<div class="member-nickName">고수달</div>
-							<div class="trip-review-regDate">2024.04.17</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="trip-review-box">
-				<img
-					src="https://velog.velcdn.com/images/fake150907/post/16f9b770-cbf8-4b89-983c-929f7ad2843e/image.jpg"
-					class="trip-review-thumbnail" />
-				<div class="trip-review-hashTag-box">
-					<div class="hashTag">#캠핑</div>
-					<div class="hashTag">#알프스산맥</div>
-					<div class="hashTag">#방구</div>
-				</div>
-				<div class="trip-review-information-box">
-					<img
-						src="https://velog.velcdn.com/images/fake150907/post/6e82a95f-9874-4838-9862-a90c025c101a/image.jpg"
-						class="profile-image" />
-					<div class="trip-review-information">
-						<div class="div-8">
-							<div class="trip-review-title">후후여행후기&gt;&lt;</div>
-							<img
-								src="https://cdn.builder.io/api/v1/image/assets/TEMP/c2147d3e6324d81dc1a2909baba66e07251a734c79e0eac31516cc6774a33f87?"
-								class="goodReaction-btn" />
-						</div>
-						<div class="div-10">
-							<div class="member-nickName">고수달</div>
-							<div class="trip-review-regDate">2024.04.17</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="trip-review-container">
-			<div class="trip-review-box">
-				<img
-					src="https://velog.velcdn.com/images/fake150907/post/16f9b770-cbf8-4b89-983c-929f7ad2843e/image.jpg"
-					class="trip-review-thumbnail" />
-				<div class="trip-review-hashTag-box">
-					<div class="hashTag">#캠핑</div>
-					<div class="hashTag">#알프스산맥</div>
-					<div class="hashTag">#방구</div>
-				</div>
-				<div class="trip-review-information-box">
-					<img
-						src="https://velog.velcdn.com/images/fake150907/post/6e82a95f-9874-4838-9862-a90c025c101a/image.jpg"
-						class="profile-image" />
-					<div class="trip-review-information">
-						<div class="div-8">
-							<div class="trip-review-title">후후여행후기&gt;&lt;</div>
-							<img
-								src="https://cdn.builder.io/api/v1/image/assets/TEMP/c2147d3e6324d81dc1a2909baba66e07251a734c79e0eac31516cc6774a33f87?"
-								class="goodReaction-btn" />
-						</div>
-						<div class="div-10">
-							<div class="member-nickName">고수달</div>
-							<div class="trip-review-regDate">2024.04.17</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="trip-review-box">
-				<img
-					src="https://velog.velcdn.com/images/fake150907/post/16f9b770-cbf8-4b89-983c-929f7ad2843e/image.jpg"
-					class="trip-review-thumbnail" />
-				<div class="trip-review-hashTag-box">
-					<div class="hashTag">#캠핑</div>
-					<div class="hashTag">#알프스산맥</div>
-					<div class="hashTag">#방구</div>
-				</div>
-				<div class="trip-review-information-box">
-					<img
-						src="https://velog.velcdn.com/images/fake150907/post/6e82a95f-9874-4838-9862-a90c025c101a/image.jpg"
-						class="profile-image" />
-					<div class="trip-review-information">
-						<div class="div-8">
-							<div class="trip-review-title">후후여행후기&gt;&lt;</div>
-							<img
-								src="https://cdn.builder.io/api/v1/image/assets/TEMP/c2147d3e6324d81dc1a2909baba66e07251a734c79e0eac31516cc6774a33f87?"
-								class="goodReaction-btn" />
-						</div>
-						<div class="div-10">
-							<div class="member-nickName">고수달</div>
-							<div class="trip-review-regDate">2024.04.17</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="trip-review-box">
-				<img
-					src="https://velog.velcdn.com/images/fake150907/post/16f9b770-cbf8-4b89-983c-929f7ad2843e/image.jpg"
-					class="trip-review-thumbnail" />
-				<div class="trip-review-hashTag-box">
-					<div class="hashTag">#캠핑</div>
-					<div class="hashTag">#알프스산맥</div>
-					<div class="hashTag">#방구</div>
-				</div>
-				<div class="trip-review-information-box">
-					<img
-						src="https://velog.velcdn.com/images/fake150907/post/6e82a95f-9874-4838-9862-a90c025c101a/image.jpg"
-						class="profile-image" />
-					<div class="trip-review-information">
-						<div class="div-8">
-							<div class="trip-review-title">후후여행후기&gt;&lt;</div>
-							<img
-								src="https://cdn.builder.io/api/v1/image/assets/TEMP/c2147d3e6324d81dc1a2909baba66e07251a734c79e0eac31516cc6774a33f87?"
-								class="goodReaction-btn" />
-						</div>
-						<div class="div-10">
-							<div class="member-nickName">고수달</div>
-							<div class="trip-review-regDate">2024.04.17</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="trip-review-box">
-				<img
-					src="https://velog.velcdn.com/images/fake150907/post/16f9b770-cbf8-4b89-983c-929f7ad2843e/image.jpg"
-					class="trip-review-thumbnail" />
-				<div class="trip-review-hashTag-box">
-					<div class="hashTag">#캠핑</div>
-					<div class="hashTag">#알프스산맥</div>
-					<div class="hashTag">#방구</div>
-				</div>
-				<div class="trip-review-information-box">
-					<img
-						src="https://velog.velcdn.com/images/fake150907/post/6e82a95f-9874-4838-9862-a90c025c101a/image.jpg"
-						class="profile-image" />
-					<div class="trip-review-information">
-						<div class="div-8">
-							<div class="trip-review-title">후후여행후기&gt;&lt;</div>
-							<img
-								src="https://cdn.builder.io/api/v1/image/assets/TEMP/c2147d3e6324d81dc1a2909baba66e07251a734c79e0eac31516cc6774a33f87?"
-								class="goodReaction-btn" />
-						</div>
-						<div class="div-10">
-							<div class="member-nickName">고수달</div>
-							<div class="trip-review-regDate">2024.04.17</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="trip-review-container">
-			<div class="trip-review-box">
-				<img
-					src="https://velog.velcdn.com/images/fake150907/post/16f9b770-cbf8-4b89-983c-929f7ad2843e/image.jpg"
-					class="trip-review-thumbnail" />
-				<div class="trip-review-hashTag-box">
-					<div class="hashTag">#캠핑</div>
-					<div class="hashTag">#알프스산맥</div>
-					<div class="hashTag">#방구</div>
-				</div>
-				<div class="trip-review-information-box">
-					<img
-						src="https://velog.velcdn.com/images/fake150907/post/6e82a95f-9874-4838-9862-a90c025c101a/image.jpg"
-						class="profile-image" />
-					<div class="trip-review-information">
-						<div class="div-8">
-							<div class="trip-review-title">후후여행후기&gt;&lt;</div>
-							<img
-								src="https://cdn.builder.io/api/v1/image/assets/TEMP/c2147d3e6324d81dc1a2909baba66e07251a734c79e0eac31516cc6774a33f87?"
-								class="goodReaction-btn" />
-						</div>
-						<div class="div-10">
-							<div class="member-nickName">고수달</div>
-							<div class="trip-review-regDate">2024.04.17</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="trip-review-box">
-				<img
-					src="https://velog.velcdn.com/images/fake150907/post/16f9b770-cbf8-4b89-983c-929f7ad2843e/image.jpg"
-					class="trip-review-thumbnail" />
-				<div class="trip-review-hashTag-box">
-					<div class="hashTag">#캠핑</div>
-					<div class="hashTag">#알프스산맥</div>
-					<div class="hashTag">#방구</div>
-				</div>
-				<div class="trip-review-information-box">
-					<img
-						src="https://velog.velcdn.com/images/fake150907/post/6e82a95f-9874-4838-9862-a90c025c101a/image.jpg"
-						class="profile-image" />
-					<div class="trip-review-information">
-						<div class="div-8">
-							<div class="trip-review-title">후후여행후기&gt;&lt;</div>
-							<img
-								src="https://cdn.builder.io/api/v1/image/assets/TEMP/c2147d3e6324d81dc1a2909baba66e07251a734c79e0eac31516cc6774a33f87?"
-								class="goodReaction-btn" />
-						</div>
-						<div class="div-10">
-							<div class="member-nickName">고수달</div>
-							<div class="trip-review-regDate">2024.04.17</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="trip-review-box">
-				<img
-					src="https://velog.velcdn.com/images/fake150907/post/16f9b770-cbf8-4b89-983c-929f7ad2843e/image.jpg"
-					class="trip-review-thumbnail" />
-				<div class="trip-review-hashTag-box">
-					<div class="hashTag">#캠핑</div>
-					<div class="hashTag">#알프스산맥</div>
-					<div class="hashTag">#방구</div>
-				</div>
-				<div class="trip-review-information-box">
-					<img
-						src="https://velog.velcdn.com/images/fake150907/post/6e82a95f-9874-4838-9862-a90c025c101a/image.jpg"
-						class="profile-image" />
-					<div class="trip-review-information">
-						<div class="div-8">
-							<div class="trip-review-title">후후여행후기&gt;&lt;</div>
-							<img
-								src="https://cdn.builder.io/api/v1/image/assets/TEMP/c2147d3e6324d81dc1a2909baba66e07251a734c79e0eac31516cc6774a33f87?"
-								class="goodReaction-btn" />
-						</div>
-						<div class="div-10">
-							<div class="member-nickName">고수달</div>
-							<div class="trip-review-regDate">2024.04.17</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="trip-review-box">
-				<img
-					src="https://velog.velcdn.com/images/fake150907/post/16f9b770-cbf8-4b89-983c-929f7ad2843e/image.jpg"
-					class="trip-review-thumbnail" />
-				<div class="trip-review-hashTag-box">
-					<div class="hashTag">#캠핑</div>
-					<div class="hashTag">#알프스산맥</div>
-					<div class="hashTag">#방구</div>
-				</div>
-				<div class="trip-review-information-box">
-					<img
-						src="https://velog.velcdn.com/images/fake150907/post/6e82a95f-9874-4838-9862-a90c025c101a/image.jpg"
-						class="profile-image" />
-					<div class="trip-review-information">
-						<div class="div-8">
-							<div class="trip-review-title">후후여행후기&gt;&lt;</div>
-							<img
-								src="https://cdn.builder.io/api/v1/image/assets/TEMP/c2147d3e6324d81dc1a2909baba66e07251a734c79e0eac31516cc6774a33f87?"
-								class="goodReaction-btn" />
-						</div>
-						<div class="div-10">
-							<div class="member-nickName">고수달</div>
-							<div class="trip-review-regDate">2024.04.17</div>
-						</div>
-					</div>
-				</div>
+				</a>
+				<%
+				count++;
+				%>
+				</c:forEach>
 			</div>
 		</div>
 	</div>
 </div>
 
+
+<div class="pagination flex justify-center mt-3">
+	<c:set var="paginationLen" value="3" />
+	<c:set var="startPage"
+		value="${page -  paginationLen  >= 1 ? page - paginationLen : 1}" />
+	<c:set var="endPage"
+		value="${page +  paginationLen  <= pagesCount ? page + paginationLen : pagesCount}" />
+
+	<c:set var="baseUri" value="?boardId=${boardId }" />
+
+	<c:if test="${startPage > 1 }">
+		<a class="btn btn-sm" href="${baseUri }&page=1">1</a>
+		<button class="btn btn-sm btn-disabled">...</button>
+	</c:if>
+
+	<c:forEach begin="${startPage }" end="${endPage }" var="i">
+		<a class="btn btn-sm ${param.page == i ? 'btn-active' : '' }"
+			href="${baseUri }&page=${i }">${i }</a>
+	</c:forEach>
+
+	<c:if test="${endPage < pagesCount }">
+		<button class="btn btn-sm btn-disabled">...</button>
+		<a class="btn btn-sm" href="${baseUri }&page=${pagesCount }">${pagesCount }</a>
+	</c:if>
+</div>
+
+<%-- <div class="recipe-container">
+	<div class="recipe-line">
+		<%
+		int count = 0;
+		%>
+		<c:forEach var="review" items="${reviewList }">
+			<%
+			if (count != 0 && count % 5 == 0) {
+			%>
+		
+	</div>
+	<div class="recipe-line">
+		<%
+		}
+		%>
+		<a href="detail?id=${review.id }">
+			<div class="recipe-box">
+				<img class="Thumbnail" src="${rq.getImgUri(review.id,relTypeCode)}"
+					onerror="${rq.profileFallbackImgOnErrorHtml}" alt="" />
+				<div class="div-6">
+					<img
+						src="https://velog.velcdn.com/images/fake150907/post/6e82a95f-9874-4838-9862-a90c025c101a/image.jpg"
+						class="profile-img" />
+					<div class="div-7">
+						<div class="div-8">
+							<div class="recipe-title">${review.title}</div>
+						</div>
+						<div class="div-10">
+							<div class="recipe-writer">${review.extra__writer }</div>
+							<div class="recipe-regDate">${review.regDate.substring(0,10) }</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</a>
+		<%
+		count++;
+		%>
+		</c:forEach>
+	</div>
+</div>
+ --%>
+
+<div></div>
 
 <%@ include file="../common/foot.jspf"%>
