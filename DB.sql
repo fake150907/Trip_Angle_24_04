@@ -663,20 +663,20 @@ SELECT * FROM article;
 SELECT * FROM board;
 
 # tripSchedule TD 생성
-INSERT INTO TRIPSCHEDULE(regDate, updateDate, `title`, `content`, startDate, endDate, regionId, memberId)
-VALUES(NOW(), NOW(), "나의 여행계획", "오늘은 맛있는 로컬 식당을 가자. 냠냠.", "2024-05-05", "2024-05-10", 1, 2);
+INSERT INTO TRIPSCHEDULE(regDate, updateDate, `title`, `content`, startDate, endDate, regionId, memberId, step)
+VALUES(NOW(), NOW(), "나의 여행계획", "오늘은 맛있는 로컬 식당을 가자. 냠냠.", "2024-05-05", "2024-05-10", 1, 2, 0);
 
 # tripSchedule TD 생성
-INSERT INTO TRIPSCHEDULE(regDate, updateDate, `title`, `content`, startDate, endDate, regionId, memberId)
-VALUES(NOW(), NOW(), "여행가자", "열심히 일했으니까 놀자~", "2024-06-05", "2024-06-10", 2, 2);
+INSERT INTO TRIPSCHEDULE(regDate, updateDate, `title`, `content`, startDate, endDate, regionId, memberId, step)
+VALUES(NOW(), NOW(), "여행가자", "열심히 일했으니까 놀자~", "2024-06-05", "2024-06-10", 2, 2, 0);
 
 # tripSchedule TD 생성
-INSERT INTO TRIPSCHEDULE(regDate, updateDate, `title`, `content`, startDate, endDate, regionId, memberId)
-VALUES(NOW(), NOW(), "또 여행", "여행 너무 좋앙~", "2024-07-05", "2024-07-10", 3, 2);
+INSERT INTO TRIPSCHEDULE(regDate, updateDate, `title`, `content`, startDate, endDate, regionId, memberId, step)
+VALUES(NOW(), NOW(), "또 여행", "여행 너무 좋앙~", "2024-07-05", "2024-07-10", 3, 2, 0);
 
 # tripSchedule TD 생성
-INSERT INTO TRIPSCHEDULE(regDate, updateDate, `title`, `content`, startDate, endDate, regionId, memberId)
-VALUES(NOW(), NOW(), "탕진 각", "ㅋㅋㅋ이제 파산각인가", "2024-08-05", "2024-08-10", 4, 2);
+INSERT INTO TRIPSCHEDULE(regDate, updateDate, `title`, `content`, startDate, endDate, regionId, memberId, step)
+VALUES(NOW(), NOW(), "탕진 각", "ㅋㅋㅋ이제 파산각인가", "2024-08-05", "2024-08-10", 4, 2, 0);
 
 
 
