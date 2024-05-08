@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import java.math.BigInteger;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -92,8 +93,16 @@ public class MyPlanController {
 		}
 		
 		
-		if (tripSchedule.getStep() < 2) {
-			return rq.historyBackOnView("잘못된 접근 입니다. 일정의 진행사항과 요청이 일치하지 않습니다.");
+		if (tripSchedule.getStep() == 0) {
+			model.addAttribute("id", id);
+			model.addAttribute("tripSchedule", tripSchedule);
+			
+
+			return "/usr/schedule/ticketing";
+		}
+		
+		if (tripSchedule.getStep() == 1) {
+			return "redirect:/usr/styleRecommended/create?id="+id;
 		}
 
 		RegionInfoTips regionInfoTips = regionInfoTipsService.getRegionInfoTipsId(regionId);
