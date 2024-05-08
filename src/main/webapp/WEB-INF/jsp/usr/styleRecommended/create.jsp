@@ -67,6 +67,8 @@
 	margin: auto 0;
 	font-size: 22px;
 	font-weight: 500;
+	margin-top: 20px;
+	width: 94px;
 }
 
 .forecast-temps {
@@ -180,7 +182,7 @@
 	width: 1280px;
 	border-radius: 10px;
 	overflow: hidden;
-	border: solid #c8c8c8 1px;
+	border: solid #ededed 2px;
 }
 
 .section-container {
@@ -335,7 +337,7 @@
 	display: flex;
 	flex-direction: column;
 	max-width: 270px;
-	border: 1px solid rgba(224, 219, 210, 1);
+	border: 2px solid #ededed;
 	border-radius: 8px;
 	background-color: #fff;
 	padding-bottom: 18px;
@@ -1395,9 +1397,9 @@ rotate
             img.alt = 'Shpping List image';
             img.classList.add('ta-item-image');
             img.loading = 'lazy';
+            img.setAttribute('onerror',"this.src='https://i.namu.wiki/i/rbOAzxvUuSSNv1VuxDAZn6t1e5Q-uf_MqqeyuQKRNLKpC0sQaKaxyLzhqIlRyEdOUpce9eMOzDxuN7MwWVcBzQ.webp';");
             imageContainer.appendChild(img);
-            
-            
+
 
             // Create the description div
             const descriptionDiv = document.createElement('div');

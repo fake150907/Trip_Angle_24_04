@@ -642,6 +642,7 @@ $(document).ready(function() {
 	align-items: center;
 	word-wrap: break-word;
 	color: white;
+	
 }
 
 .ta-item-image-container:hover .ta-item-description {
@@ -748,7 +749,7 @@ $(document).ready(function() {
 
 .forecast-day {
 	color: #3b3d40;
-	margin: auto 0;
+ 	margin: auto 0;
 	font-size: 22px;
 	font-weight: 500;
 }
