@@ -57,11 +57,14 @@ public class TripStyleRecommendedController {
 			return rq.historyBackOnView("일정의 작성자만 접근할 수 있습니다.");
 		}
 		
-		if (tripSchedule.getStep() != 0) {
-			return rq.historyBackOnView("잘못된 접근 입니다. 일정의 진행사항과 요청이 일치하지 않습니다.");
+		if (tripSchedule.getStep() == 0) {
+			tripScheduleService.updateStepById(id);
 		}
 		
-		tripScheduleService.updateStepById(id);
+		if (tripSchedule.getStep() == 2) {
+			return "redirect:/usr/myPlan/myPlanDetail?id="+id+"&regionId="+tripSchedule.getRegionId();
+		}
+		
 		
 //		if(rq.getLoginedMemberId() != tripSchedule.getMemberId()) {
 //			return rq.historyBackOnView("로그인한 사용자가 일정 작성자가 아닙니다.");
@@ -95,15 +98,15 @@ public class TripStyleRecommendedController {
 			return rq.historyBackOnView("존재하지 않는 일정 입니다.");
 		}
 		
+
 		
-		
-		
-		if (tripSchedule.getStep() != 1) {
-			return rq.historyBackOnView("잘못된 접근 입니다. 일정의 진행사항과 요청이 일치하지 않습니다.");
-		}
 		
 		if (tripSchedule.getMemberId() != rq.getLoginedMemberId()) {
 			return rq.historyBackOnView("일정의 작성자만 접근할 수 있습니다.");
+		}
+		
+		if (tripSchedule.getStep() == 0) {
+			return "redirect:/usr/styleRecommended/create?id="+id;
 		}
 		
 		
@@ -142,12 +145,20 @@ public class TripStyleRecommendedController {
         	
         }
         
+
 		
+		if (tripSchedule.getStep() == 1) {
+			tripScheduleService.updateStepById(id);
+		}
+		
+		if (tripSchedule.getStep() == 2) {
+			return "redirect:/usr/myPlan/myPlanDetail?id="+id+"&regionId="+tripSchedule.getRegionId();
+		}
         
         
         tripStyleRecommendedService.writeStyleRecommendedDatas(weathers, fashions, shoppingLists);
         
-        tripScheduleService.updateStepById(id);
+        //tripScheduleService.updateStepById(id);
 
 
         
