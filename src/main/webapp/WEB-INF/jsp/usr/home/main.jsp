@@ -108,47 +108,15 @@ header {
 /*     transform: translateY(-20px); */
 /*   } */
 /* } */
-@
-keyframes waviy { 0%, 40%, 100% {
-	transform: translateY(0);
-}
 
-20
-
-
-
-
-%
-{
-transform
-
-
-
-
-:
-
-
-
-
-translateY
-
-
-(
-
-
-
-
--20px
-
-
-
-
-)
-
-
-;
-}
-}
+ @keyframes waviy { 
+   0%, 40%, 100% { a
+     transform: translateY(0); 
+   } 
+   20% { 
+     transform: translateY(-20px); 
+   } 
+ } 
 
 /* ///////////  여기까지 건드리지마요 ////////////*/
 .scroll-down-sign1 {
