@@ -373,7 +373,7 @@
         position: relative;
         scroll-snap-align: start;
         min-width: 250px;
-/*         padding: 2px; */
+
     }
 
     .ta-item-image {
@@ -414,7 +414,6 @@
     }
 
     .ta-item-description {
-
         position: absolute;
         top: 0;
         /* Align top edge with the parent container */
@@ -437,10 +436,12 @@
         align-items: center;
         word-wrap: break-word;
         color: white;
-
-
+		padding-left: 10px;
+		padding-right: 10px;	
+	
     }
-
+    
+ 
 
 
     .ta-item-image-container:hover .ta-item-description {
@@ -761,11 +762,11 @@
 
     <div class="section-container mt-100">
         <section class="bottom-buttons-section">
-            <section class="play-button-container">
-                <span class="play-button-text">PLAY</span>
-                <span class="play-button-text">▶</span>
+<!--             <section class="play-button-container"> -->
+<!--                 <span class="play-button-text">PLAY</span> -->
+<!--                 <span class="play-button-text">▶</span> -->
 
-            </section>
+<!--             </section> -->s
             <section class="next-step-container">
                 <a href="#" class="next-step-text"
                  onclick='doCreateFormSubmit(event)'>다음단계 &gt;&gt;</a>
