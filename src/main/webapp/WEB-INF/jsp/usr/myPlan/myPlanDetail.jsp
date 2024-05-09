@@ -12,85 +12,94 @@
 
 
 <script>
-$(document).ready(function() {
-    // 추가 버튼을 클릭할 때 실행되는 함수
-    $('.create-button').click(function() {
+	$(document).ready(function() {
+		// 추가 버튼을 클릭할 때 실행되는 함수
+		$('.create-button').click(function() {
 
-			
-	        my_modal_3.showModal();
+			my_modal_3.showModal();
 
-
-    });
-});
-
+		});
+	});
 </script>
 <!-- 관광,맛집,쇼핑 토글 창 -->
 <script>
-	$(document).ready(function() {
-		$('.placeInfoList2').hide();
-		$('.placeInfoList3').hide();
-		$('.regDate_text').css('background-color', '#CDEAC0');
-		$('.tour').addClass('recommendation-active-tab');
-		$('.tour').click(function() {
-			$('.placeInfoList1').show();
-			$('.placeInfoList2').hide();
-			$('.placeInfoList3').hide();
-			$('.tour').addClass('recommendation-active-tab');
-			$('.dining').removeClass('recommendation-active-tab');
-			$('.shopping').removeClass('recommendation-active-tab');
-		});
-		$('.dining').click(function() {
-			$('.placeInfoList2').show();
-			$('.placeInfoList1').hide();
-			$('.placeInfoList3').hide();
-			$('.dining').addClass('recommendation-active-tab');
-			$('.tour').removeClass('recommendation-active-tab');
-			$('.shopping').removeClass('recommendation-active-tab');
-		});
+	$(document).ready(
+			function() {
+				$('.placeInfoList2').hide();
+				$('.placeInfoList3').hide();
+				$('.regDate_text').css('background-color', '#CDEAC0');
+				$('.tour').addClass('recommendation-active-tab');
+				$('.tour').click(function() {
+					$('.placeInfoList1').show();
+					$('.placeInfoList2').hide();
+					$('.placeInfoList3').hide();
+					$('.tour').addClass('recommendation-active-tab');
+					$('.dining').removeClass('recommendation-active-tab');
+					$('.shopping').removeClass('recommendation-active-tab');
+				});
+				$('.dining').click(function() {
+					$('.placeInfoList2').show();
+					$('.placeInfoList1').hide();
+					$('.placeInfoList3').hide();
+					$('.dining').addClass('recommendation-active-tab');
+					$('.tour').removeClass('recommendation-active-tab');
+					$('.shopping').removeClass('recommendation-active-tab');
+				});
 
-		$('.shopping').click(function() {
-			$('.placeInfoList3').show();
-			$('.placeInfoList1').hide();
-			$('.placeInfoList2').hide();
-			$('.shopping').addClass('recommendation-active-tab');
-			$('.tour').removeClass('recommendation-active-tab');
-			$('.dining').removeClass('recommendation-active-tab');
-		});
-		
-		
-		//패션리스트
-		$('.ta-item-container.fashion-woman').hide();
-		$('.ta-item-container.fashion-man').hide();
-		$('.recommendation-tab.fashion-all').addClass('recommendation-active-tab');
-		
-		$('.recommendation-tab.fashion-all').click(function() {
-			$('.ta-item-container.fashion-all').show();
-			$('.ta-item-container.fashion-man').hide();
-			$('.ta-item-container.fashion-woman').hide();
-			$('.recommendation-tab.fashion-all').addClass('recommendation-active-tab');
-			$('.recommendation-tab.fashion-man').removeClass('recommendation-active-tab');
-			$('.recommendation-tab.fashion-woman').removeClass('recommendation-active-tab');
-		});
-		$('.recommendation-tab.fashion-man').click(function() {
-			$('.ta-item-container.fashion-man').show();
-			$('.ta-item-container.fashion-woman').hide();
-			$('.ta-item-container.fashion-all').hide();
-			$('.recommendation-tab.fashion-man').addClass('recommendation-active-tab');
-			$('.recommendation-tab.fashion-woman').removeClass('recommendation-active-tab');
-			$('.recommendation-tab.fashion-all').removeClass('recommendation-active-tab');
-		});
+				$('.shopping').click(function() {
+					$('.placeInfoList3').show();
+					$('.placeInfoList1').hide();
+					$('.placeInfoList2').hide();
+					$('.shopping').addClass('recommendation-active-tab');
+					$('.tour').removeClass('recommendation-active-tab');
+					$('.dining').removeClass('recommendation-active-tab');
+				});
 
-		$('.recommendation-tab.fashion-woman').click(function() {
-			$('.ta-item-container.fashion-woman').show();
-			$('.ta-item-container.fashion-all').hide();
-			$('.ta-item-container.fashion-man').hide();
-			$('.recommendation-tab.fashion-woman').addClass('recommendation-active-tab');
-			$('.recommendation-tab.fashion-all').removeClass('recommendation-active-tab');
-			$('.recommendation-tab.fashion-man').removeClass('recommendation-active-tab');
-		});
-		
-	});
+				//패션리스트
+				$('.ta-item-container.fashion-woman').hide();
+				$('.ta-item-container.fashion-man').hide();
+				$('.recommendation-tab.fashion-all').addClass(
+						'recommendation-active-tab');
 
+				$('.recommendation-tab.fashion-all').click(
+						function() {
+							$('.ta-item-container.fashion-all').show();
+							$('.ta-item-container.fashion-man').hide();
+							$('.ta-item-container.fashion-woman').hide();
+							$('.recommendation-tab.fashion-all').addClass(
+									'recommendation-active-tab');
+							$('.recommendation-tab.fashion-man').removeClass(
+									'recommendation-active-tab');
+							$('.recommendation-tab.fashion-woman').removeClass(
+									'recommendation-active-tab');
+						});
+				$('.recommendation-tab.fashion-man').click(
+						function() {
+							$('.ta-item-container.fashion-man').show();
+							$('.ta-item-container.fashion-woman').hide();
+							$('.ta-item-container.fashion-all').hide();
+							$('.recommendation-tab.fashion-man').addClass(
+									'recommendation-active-tab');
+							$('.recommendation-tab.fashion-woman').removeClass(
+									'recommendation-active-tab');
+							$('.recommendation-tab.fashion-all').removeClass(
+									'recommendation-active-tab');
+						});
+
+				$('.recommendation-tab.fashion-woman').click(
+						function() {
+							$('.ta-item-container.fashion-woman').show();
+							$('.ta-item-container.fashion-all').hide();
+							$('.ta-item-container.fashion-man').hide();
+							$('.recommendation-tab.fashion-woman').addClass(
+									'recommendation-active-tab');
+							$('.recommendation-tab.fashion-all').removeClass(
+									'recommendation-active-tab');
+							$('.recommendation-tab.fashion-man').removeClass(
+									'recommendation-active-tab');
+						});
+
+			});
 </script>
 
 <style>
@@ -461,15 +470,13 @@ $(document).ready(function() {
 
 /* 날씨 섹션 */
 .weather-section {
-/* 	width: 70%; */
-/* 	display: flex; */
-/* 	justify-content: center; */
-/* 	align-items: center; */
-/* 	margin: 0 auto; */
-/* 	height: 200px; */
-/* 	margin-top: 50px; */
-	
-	
+	/* 	width: 70%; */
+	/* 	display: flex; */
+	/* 	justify-content: center; */
+	/* 	align-items: center; */
+	/* 	margin: 0 auto; */
+	/* 	height: 200px; */
+	/* 	margin-top: 50px; */
 	display: flex;
 	overflow: auto;
 	gap: 30px;
@@ -483,6 +490,7 @@ $(document).ready(function() {
 	padding-top: 10px;
 	position: relative;
 }
+
 .weather-section::-webkit-scrollbar {
 	display: none;
 }
@@ -541,6 +549,7 @@ $(document).ready(function() {
 .recommendation-tab:hover {
 	border-bottom-color: #d5f1e2;
 }
+
 .recommendation-active-tab {
 	border-bottom-color: #d5f1e2;
 }
@@ -591,7 +600,7 @@ $(document).ready(function() {
 }
 
 .ta-item-image {
-/* 	width: 100%; */
+	/* 	width: 100%; */
 	height: 270px;
 	aspect-ratio: 1;
 	object-fit: cover;
@@ -616,8 +625,6 @@ $(document).ready(function() {
 	color: #8c8c8c;
 	margin-top: 5px;
 }
-
-
 
 .ta-item-details-info {
 	display: flex;
@@ -864,7 +871,6 @@ $(document).ready(function() {
 		margin-left: 10px;
 	}
 }
-
 </style>
 
 
@@ -887,8 +893,7 @@ $(document).ready(function() {
 					<a class="calendar-btn" href="/usr/myPlan/myPlanCalendar">캘린더
 						보기</a>
 				</div>
-				<img
-					src="https://images.unsplash.com/photo-1551918120-9739cb430c6d?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+				<img src="${tripSchedule.extra__regionImageUrl }"
 					class="my-plan-img" />
 			</div>
 
@@ -907,23 +912,27 @@ $(document).ready(function() {
 					<div class="member-title">
 						<span
 							style="font-family: Pretendard, -apple-system, Roboto, Helvetica, sans-serif; font-weight: 500; color: rgba(129, 200, 162, 1);">${rq.loginedMember.nickname }</span>
-						님의 <br> 나의 일정 상세페이지
+						님의
+						<br>
+						나의 일정 상세페이지
 					</div>
 					<div class="mint-line"></div>
 
 
 					<div class="btns">
-						<a href="../myPlan/doDelete?id=${tripSchedule.id }" class="delete-btn">일정 삭제</a>
+						<a href="../myPlan/doDelete?id=${tripSchedule.id }"
+							class="delete-btn">일정 삭제</a>
 					</div>
-					
-					
+
+
 				</div>
 				<div class="div-15">
 					<div class="honey-tip1">
 						<div class="honey-tip-title">
 							<span
 								style="font-family: Pretendard, -apple-system, Roboto, Helvetica, sans-serif; font-weight: 500; color: rgba(105, 105, 105, 1);">
-								여행 </span> <span
+								여행 </span>
+							<span
 								style="font-family: Pretendard, -apple-system, Roboto, Helvetica, sans-serif; font-weight: 500; color: rgba(129, 200, 162, 1);">
 								꿀팁 </span>
 						</div>
@@ -966,8 +975,8 @@ $(document).ready(function() {
 			</div>
 
 			<div class="forecast-temps">
-				<span class="forecast-low">${weather.minTemp}°</span> <span
-					class="forecast-high">${weather.maxTemp}°</span>
+				<span class="forecast-low">${weather.minTemp}°</span>
+				<span class="forecast-high">${weather.maxTemp}°</span>
 			</div>
 		</div>
 
@@ -983,8 +992,8 @@ $(document).ready(function() {
 		<section class="recommendation-section">
 			<header class="recommendation-header">
 				<h2 class="recommendation-title">
-					<span>날씨에 알맞는</span> <span class="recommendation-accent">옷
-						추천</span>
+					<span>날씨에 알맞는</span>
+					<span class="recommendation-accent">옷 추천</span>
 				</h2>
 				<nav class="recommendation-tabs">
 					<div class="recommendation-tab fashion-all">전체</div>
@@ -1004,13 +1013,13 @@ $(document).ready(function() {
 					<div class="ta-item-image-container">
 						<c:choose>
 							<c:when test="${fashion.imageUrl==''}">
-								<img src="https://www.freeiconspng.com/thumbs/no-image-icon/no-image-icon-1.jpg"
+								<img src="/resource/image/FashionNoimage.webp"
 									alt="Fashion Image" class="ta-item-image" loading="lazy">
 							</c:when>
 
 							<c:otherwise>
 								<img src="${fashion.imageUrl }" alt="Fashion Image"
-									class="ta-item-image" loading="lazy" onerror="this.src='https://www.freeiconspng.com/thumbs/no-image-icon/no-image-icon-1.jpg';">
+									class="ta-item-image" loading="lazy">
 							</c:otherwise>
 						</c:choose>
 						<div class="ta-item-description">${fashion.description}</div>
@@ -1035,23 +1044,23 @@ $(document).ready(function() {
 			<!-- 이하 article 요소들도 위와 같이 정렬 -->
 		</section>
 		</section>
-		
+
 		<section class="ta-item-container fashion-woman">
 			<c:forEach var="fashion" items="${fashions}">
 				<c:if test="${fashion.gender==1}">
 					<article class="ta-item-card">
 						<div class="ta-item-image-container">
-						<c:choose>
-							<c:when test="${fashion.imageUrl==''}">
-								<img src="https://www.freeiconspng.com/thumbs/no-image-icon/no-image-icon-1.jpg"
-									alt="Fashion Image" class="ta-item-image" loading="lazy">
-							</c:when>
+							<c:choose>
+								<c:when test="${fashion.imageUrl==''}">
+									<img src="/resource/image/FashionNoimage.webp"
+										alt="Fashion Image" class="ta-item-image" loading="lazy">
+								</c:when>
 
-							<c:otherwise>
-								<img src="${fashion.imageUrl }" alt="Fashion Image"
-									class="ta-item-image" loading="lazy" onerror="this.src='https://www.freeiconspng.com/thumbs/no-image-icon/no-image-icon-1.jpg';">
-							</c:otherwise>
-						</c:choose>
+								<c:otherwise>
+									<img src="${fashion.imageUrl }" alt="Fashion Image"
+										class="ta-item-image" loading="lazy">
+								</c:otherwise>
+							</c:choose>
 							<div class="ta-item-description">${fashion.description}</div>
 						</div>
 						<div class="ta-item-details">
@@ -1065,23 +1074,23 @@ $(document).ready(function() {
 				</c:if>
 			</c:forEach>
 		</section>
-		
+
 		<section class="ta-item-container fashion-man">
 			<c:forEach var="fashion" items="${fashions}">
 				<c:if test="${fashion.gender==0}">
 					<article class="ta-item-card">
 						<div class="ta-item-image-container">
-						<c:choose>
-							<c:when test="${fashion.imageUrl==''}">
-								<img src="https://www.freeiconspng.com/thumbs/no-image-icon/no-image-icon-1.jpg"
-									alt="Fashion Image" class="ta-item-image" loading="lazy" onerror="this.src='https://www.freeiconspng.com/thumbs/no-image-icon/no-image-icon-1.jpg';">
-							</c:when>
+							<c:choose>
+								<c:when test="${fashion.imageUrl==''}">
+									<img src="/resource/image/FashionNoimage.webp"
+										alt="Fashion Image" class="ta-item-image" loading="lazy">
+								</c:when>
 
-							<c:otherwise>
-								<img src="${fashion.imageUrl }" alt="Fashion Image"
-									class="ta-item-image" loading="lazy" onerror="this.src='https://www.freeiconspng.com/thumbs/no-image-icon/no-image-icon-1.jpg';">
-							</c:otherwise>
-						</c:choose>
+								<c:otherwise>
+									<img src="${fashion.imageUrl }" alt="Fashion Image"
+										class="ta-item-image" loading="lazy">
+								</c:otherwise>
+							</c:choose>
 							<div class="ta-item-description">${fashion.description}</div>
 						</div>
 						<div class="ta-item-details">
@@ -1112,120 +1121,130 @@ $(document).ready(function() {
 </div>
 
 <div class="section-container">
-		<section class="ta-item-container shopping-list">
+	<section class="ta-item-container shopping-list">
 		<c:forEach var="shoppingList" items="${shoppingLists}">
 
 			<article class="ta-item-card">
-                    <div class="ta-item-image-container">
-                    						<c:choose>
-							<c:when test="${shoppingList.imageUrl==''}">
-								<img src="https://www.freeiconspng.com/thumbs/no-image-icon/no-image-icon-1.jpg"
-									alt="Fashion Image" class="ta-item-image" loading="lazy">
-							</c:when>
+				<div class="ta-item-image-container">
+					<c:choose>
+						<c:when test="${shoppingList.imageUrl==''}">
+							<img src="/resource/image/ShoppingListNoimage.webp"
+								alt="Fashion Image" class="ta-item-image" loading="lazy">
+						</c:when>
 
-							<c:otherwise>
-								<img src="${shoppingList.imageUrl }" alt="Fashion Image"
-									class="ta-item-image" loading="lazy" onerror="this.src='https://www.freeiconspng.com/thumbs/no-image-icon/no-image-icon-1.jpg';">
-							</c:otherwise>
-						</c:choose>
-                        <div class="ta-item-description">${shoppingList.description }</div>
-                    </div>
-
-                    <div class="ta-item-details">
-                        
-                    <h3 class="ta-item-name">${shoppingList.name }</h3>
-
-                    </div>
-                </article>
-</c:forEach>
-
-
-
-		</section>
-</div>
-
-<div class="section-container">
-
-<!-- 장소 추천 -->
-<div class="place-recommendation-main">
-	<div class="section-container">
-		<section class="recommendation-section">
-			<header class="recommendation-header">
-				<h2 class="recommendation-title">
-					<span>장소 </span> <span class="recommendation-accent">추천</span>
-				</h2>
-				<div class="recommendation-tabs">
-					<span class="recommendation-tab tour">관광</span> <span
-						class="recommendation-tab dining">맛집</span> <span
-						class="recommendation-tab shopping">쇼핑</span>
+						<c:otherwise>
+							<img src="${shoppingList.imageUrl }" alt="Fashion Image"
+								class="ta-item-image" loading="lazy">
+						</c:otherwise>
+					</c:choose>
+					<div class="ta-item-description">${shoppingList.description }</div>
 				</div>
-			</header>
-			<div class="recommendation-divider"></div>
-		</section>
-	</div>
-</div>
 
+				<div class="ta-item-details">
+
+					<h3 class="ta-item-name">${shoppingList.name }</h3>
+
+				</div>
+			</article>
+		</c:forEach>
+
+
+
+	</section>
+</div>
 
 <div class="section-container">
 
-	<div class="placeInfoList1">
-		<section class="ta-item-container">
-			<c:forEach var="place" items="${placeInfoList1}">
-				<a href="/usr/myPlan/placeDetail?id=${place.id}"
-					class="ta-item-card"> <span class="ta-item-image-container">
-						<img src="${place.imageUrl1 }" alt="Fashion Image"
-						class="ta-item-image" /> <span class="ta-item-description">
-							Click </span>
-				</span> <span class="ta-item-details"> <span class="ta-item-name">${place.name }</span>
-						<span class="ta-item-details-info"> <span
-							class="ta-item-info">${place.address }</span>
-					</span>
-				</span>
-				</a>
-			</c:forEach>
-		</section>
-	</div>
-	<div class="placeInfoList2">
-		<section class="ta-item-container">
-			<c:forEach var="place" items="${placeInfoList2}">
-				<a href="/usr/myPlan/placeDetail?id=${place.id}"
-					class="ta-item-card"> <span class="ta-item-image-container">
-						<img src="${place.imageUrl1 }" alt="Fashion Image"
-						class="ta-item-image" /> <span class="ta-item-description">
-							Click </span>
-				</span> <span class="ta-item-details"> <span class="ta-item-name">${place.name }</span>
-						<span class="ta-item-details-info"> <span
-							class="ta-item-info">${place.address }</span>
-					</span>
-				</span>
-				</a>
-			</c:forEach>
-		</section>
-	</div>
-	<div class="placeInfoList3">
-		<section class="ta-item-container">
-			<c:forEach var="place" items="${placeInfoList3}">
-				<a href="/usr/myPlan/placeDetail?id=${place.id}"
-					class="ta-item-card"> <span class="ta-item-image-container">
-						<img src="${place.imageUrl1 }" alt="Fashion Image"
-						class="ta-item-image" /> <span class="ta-item-description">
-							Click </span>
-				</span> <span class="ta-item-details"> <span class="ta-item-name">${place.name }</span>
-						<span class="ta-item-details-info"> <span
-							class="ta-item-info">${place.address }</span>
-					</span>
-				</span>
-				</a>
-			</c:forEach>
-		</section>
+	<!-- 장소 추천 -->
+	<div class="place-recommendation-main">
+		<div class="section-container">
+			<section class="recommendation-section">
+				<header class="recommendation-header">
+					<h2 class="recommendation-title">
+						<span>장소 </span>
+						<span class="recommendation-accent">추천</span>
+					</h2>
+					<div class="recommendation-tabs">
+						<span class="recommendation-tab tour">관광</span>
+						<span class="recommendation-tab dining">맛집</span>
+						<span class="recommendation-tab shopping">쇼핑</span>
+					</div>
+				</header>
+				<div class="recommendation-divider"></div>
+			</section>
+		</div>
 	</div>
 
-</div>
+
+	<div class="section-container">
+
+		<div class="placeInfoList1">
+			<section class="ta-item-container">
+				<c:forEach var="place" items="${placeInfoList1}">
+					<a href="/usr/myPlan/placeDetail?id=${place.id}"
+						class="ta-item-card">
+						<span class="ta-item-image-container">
+							<img src="${place.imageUrl1 }" alt="Fashion Image"
+								class="ta-item-image" />
+							<span class="ta-item-description"> Click </span>
+						</span>
+						<span class="ta-item-details">
+							<span class="ta-item-name">${place.name }</span>
+							<span class="ta-item-details-info">
+								<span class="ta-item-info">${place.address }</span>
+							</span>
+						</span>
+					</a>
+				</c:forEach>
+			</section>
+		</div>
+		<div class="placeInfoList2">
+			<section class="ta-item-container">
+				<c:forEach var="place" items="${placeInfoList2}">
+					<a href="/usr/myPlan/placeDetail?id=${place.id}"
+						class="ta-item-card">
+						<span class="ta-item-image-container">
+							<img src="${place.imageUrl1 }" alt="Fashion Image"
+								class="ta-item-image" />
+							<span class="ta-item-description"> Click </span>
+						</span>
+						<span class="ta-item-details">
+							<span class="ta-item-name">${place.name }</span>
+							<span class="ta-item-details-info">
+								<span class="ta-item-info">${place.address }</span>
+							</span>
+						</span>
+					</a>
+				</c:forEach>
+			</section>
+		</div>
+		<div class="placeInfoList3">
+			<section class="ta-item-container">
+				<c:forEach var="place" items="${placeInfoList3}">
+					<a href="/usr/myPlan/placeDetail?id=${place.id}"
+						class="ta-item-card">
+						<span class="ta-item-image-container">
+							<img src="${place.imageUrl1 }" alt="Fashion Image"
+								class="ta-item-image" />
+							<span class="ta-item-description"> Click </span>
+						</span>
+						<span class="ta-item-details">
+							<span class="ta-item-name">${place.name }</span>
+							<span class="ta-item-details-info">
+								<span class="ta-item-info">${place.address }</span>
+							</span>
+						</span>
+					</a>
+				</c:forEach>
+			</section>
+		</div>
+
+	</div>
 
 
 
 
 
-<div class="wall" style="height: 120px;"></div>
+	<div class="wall" style="height: 120px;"></div>
 
-<%@ include file="../common/foot.jspf"%>
+	<%@ include file="../common/foot.jspf"%>
