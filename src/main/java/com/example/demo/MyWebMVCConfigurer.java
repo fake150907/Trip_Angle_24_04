@@ -65,6 +65,8 @@ public class MyWebMVCConfigurer implements WebMvcConfigurer {
 		ir.addPathPatterns("/usr/article/modify");
 		ir.addPathPatterns("/usr/article/doModify");
 		ir.addPathPatterns("/usr/article/doDelete");
+		ir.addPathPatterns("/usr/article/reviewWrite");
+		ir.addPathPatterns("/usr/article/doReviewWrite");
 
 //		회원관련
 		ir.addPathPatterns("/usr/member/myPage");
@@ -87,7 +89,9 @@ public class MyWebMVCConfigurer implements WebMvcConfigurer {
 		ir.addPathPatterns("/usr/schedule/ticketing");
 
 		// myPlan 관련
+		ir.addPathPatterns("/usr/myPlan/myPlanList");
 		ir.addPathPatterns("/usr/myPlan/myPlanDetail");
+		ir.addPathPatterns("/usr/myPlan/doDelete");
 
 		// 캘린더 관련
 		ir.addPathPatterns("/usr/myPlan/myPlanCalendar");
