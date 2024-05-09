@@ -14,7 +14,7 @@ ___
 ___
 |서명원|장윤린|윤가연|신규섭|
 |:---:|:---:|:---:|:---:|
-|<img src="https://velog.velcdn.com/images/yunlinit/post/03484ed2-c09c-415c-b78c-bd098012aa8b/image.jpg" height="400"/> |<img src="https://velog.velcdn.com/images/yunlinit/post/1260ec4b-492c-41dc-9606-d9f2a8e4ca95/image.jpg" height="400"/>|<img src="https://velog.velcdn.com/images/yunlinit/post/1ee12c41-2fee-4f8c-991d-0f05538a93df/image.jpg" height="400"/>|<img src="https://velog.velcdn.com/images/yunlinit/post/e11db386-253c-4de1-94cd-908cd7c5ab74/image.jpg" height="400"/>|
+|<img src="https://velog.velcdn.com/images/yunlinit/post/03484ed2-c09c-415c-b78c-bd098012aa8b/image.jpg" width="150" height="250"/> |<img src="https://velog.velcdn.com/images/yunlinit/post/1260ec4b-492c-41dc-9606-d9f2a8e4ca95/image.jpg" width="150" height="250"/>|<img src="https://velog.velcdn.com/images/yunlinit/post/1ee12c41-2fee-4f8c-991d-0f05538a93df/image.jpg" width="150" height="250"/>|<img src="https://velog.velcdn.com/images/yunlinit/post/e11db386-253c-4de1-94cd-908cd7c5ab74/image.jpg" width="150" height="250"/>|
 |insamjoo300@gmail.com|yunlinit@gmail.com|yungayeon223@gmail.com|tlstlsrbrb11@gmail.com|
 
 
