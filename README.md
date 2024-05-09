@@ -21,18 +21,38 @@ ___
 
 #  기술스택
 ___
-* Front: HTML, CSS, Javascript, jquery3, tailwind, daisyUI
-* Front-API: Weather API, Free Weather API
-* Back-프레임워크: SpringBoot 3, FastAPI, Selenium
-* 사용 라이브러리: langchain, BeautifulSoup, lombok, tomcat
-* 템플릿 엔진: JSP
-* ORM: Mybatis 3
-* DB: MySQL 10
-* 쿼리 브라우저: SQLYog
-* 형성 관리: Git, GitHub
-* 협업툴: discord, google 스프레드시트, google 문서, 클로바노트
-* 디자인: Figma
-* 개발툴: Jdk 1.8, MAVEN, SQLYog, Spring tool suit 4, Visual Studio Code
+### Front
+* HTML, CSS, Javascript, jquery3, tailwind, daisyUI
+
+### Front-API
+*  Weather API, Free Weather API
+
+###  Back-프레임워크
+* SpringBoot 3, FastAPI, Selenium
+
+### 사용 라이브러리
+*  langchain, BeautifulSoup, lombok, tomcat
+
+### 템플릿 엔진
+*  JSP
+
+###  ORM
+* Mybatis 3
+
+### DB
+* MySQL 10
+
+### 형성 관리
+* Git, GitHub
+
+### 협업툴
+* discord, google 스프레드시트, google 문서, 클로바노트
+
+### 디자인
+* Figma
+
+### 개발툴
+* Jdk 1.8, MAVEN, SQLYog, Spring tool suit 4, Visual Studio Code
 
 #   참고 링크
 ___
