@@ -688,12 +688,30 @@ $.datepicker.setDefaults({
 				
 		        my_modal_3.showModal();
 
-// 		        console.log(getDateDiff(getToday(), checkOutDate));
-		        
-// 	        	console.log(getDateDiff(checkInDate, checkOutDate) + 1);
+		     // 폼 요소를 가져옵니다
+		        var form = document.querySelector('form[action="/usr/schedule/ticketing"]');
 
-	        // form 제출
-// 	        $('form').submit();
+		        // 제출(submit) 이벤트가 발생했을 때 실행될 함수를 정의합니다
+		        form.addEventListener('submit', function(event) {
+		          // title과 content 입력란의 값을 가져옵니다
+		          var titleValue = form.querySelector('input[name="title"]').value;
+		          var contentValue = form.querySelector('input[name="content"]').value;
+
+		          // 유효성을 확인하고 경고창을 띄웁니다
+		          if (titleValue.length === 0 && contentValue.length === 0) {
+		            alert('일정명과 내용을 입력해주세요.');
+		            event.preventDefault(); // 제출을 막습니다
+		          } else if (titleValue.length === 0){
+		        	  alert('일정명을 입력해주세요.');
+			            event.preventDefault();
+		          } else if (contentValue.length === 0){
+		        	  alert('내용을 입력해주세요.');
+			            event.preventDefault();
+		          }
+		        });
+
+
+		        
 	    });
 	});
 	
@@ -748,8 +766,8 @@ $.datepicker.setDefaults({
 		<div id="checkDateModal"></div>
 <!-- 달력 CSS로 input 포커싱 색상이 바뀌지않아 태그로 직접 변경 -->
 <form action="/usr/schedule/ticketing" method="get">
-<input name="title" class="focus:outline-none focus:ring-1 focus:ring-green-100 focus:border-transparent schedule-title" placeholder="일정명을 입력해주세요." style="border-color: #ededed;" type="text" />
-    <input name="content" class="focus:outline-none focus:ring-1 focus:ring-green-100 focus:border-transparent schedule-content" placeholder="내용을 작성해주세요." style="border-color: #ededed;" type="text" />
+<input name="title" class="focus:outline-none focus:ring-1 focus:ring-green-100 focus:border-transparent schedule-title" placeholder="일정명을 입력해주세요." autocomplete="off" style="border-color: #ededed;" type="text" />
+    <input name="content" class="focus:outline-none focus:ring-1 focus:ring-green-100 focus:border-transparent schedule-content" placeholder="내용을 작성해주세요." autocomplete="off" style="border-color: #ededed;" type="text" />
 	<input type="hidden" id="checkInDateInput" name="checkInDate">
     <input type="hidden" id="checkOutDateInput" name="checkOutDate">
     <input type="hidden" value="${regionId }" name="regionId">
