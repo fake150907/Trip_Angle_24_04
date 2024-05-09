@@ -875,12 +875,13 @@ img {
 /* Caption text */
 .caption {
   color: #fff;
-  font-size: 16px;
+  font-size: 23px;
   padding: 8px 12px;
   position: absolute;
   top: 100px;
   width: 100%;
   text-align: center;
+  font-weight: 500;
 }
 
 
@@ -1184,7 +1185,7 @@ to {
 						<img
 							src="https://velog.velcdn.com/images/yunlinit/post/ef7c6624-be57-44ec-812e-93d274a77d63/image.jpg"
 							style="width: 100%">
-							 <div class="caption">“모든 것은 훌륭한 아이디어와 팀워크로부터 시작됩니다.” Garrett Camp</div>
+							 <div class="caption">“모든 것은 훌륭한 아이디어와<br>팀워크로부터 시작됩니다.” <br>Garrett Camp</div>
 						
 					</div>
 
@@ -1193,7 +1194,7 @@ to {
 						<img
 							src="https://velog.velcdn.com/images/yunlinit/post/e5b8b8f8-1deb-4f2a-ac7c-675754e0ab36/image.jpg"
 							style="width: 100%">
-							 <div class="caption">“모든 것은 훌륭한 아이디어와 팀워크로부터 시작됩니다.” Garrett Camp</div>
+							 <div class="caption">“모든 것은 훌륭한 아이디어와<br>팀워크로부터 시작됩니다.” <br>Garrett Camp</div>
 					
 					</div>
 
@@ -1202,10 +1203,10 @@ to {
 						<img
 							src="https://velog.velcdn.com/images/yunlinit/post/8e507583-95cd-4ebf-8006-18e423b5d79e/image.jpg"
 							style="width: 100%">
-							 <div class="caption">“모든 것은 훌륭한 아이디어와 팀워크로부터 시작됩니다.” Garrett Camp</div>
+							 <div class="caption">“모든 것은 훌륭한 아이디어와<br>팀워크로부터 시작됩니다.” <br>Garrett Camp</div>
 						
 					</div>
-S
+
 				</div>
 				<br>
 

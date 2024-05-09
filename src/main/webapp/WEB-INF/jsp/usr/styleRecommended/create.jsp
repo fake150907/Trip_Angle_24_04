@@ -491,6 +491,8 @@
         flex-direction: column;
         text-align: center;
         padding: 0 20px;
+        margin-bottom: 100px;
+        margin-left: 87%; 
     }
 
     /* .next-step-button {
@@ -766,7 +768,7 @@
 <!--                 <span class="play-button-text">PLAY</span> -->
 <!--                 <span class="play-button-text">▶</span> -->
 
-<!--             </section> -->s
+<!--             </section> -->
             <section class="next-step-container">
                 <a href="#" class="next-step-text"
                  onclick='doCreateFormSubmit(event)'>다음단계 &gt;&gt;</a>

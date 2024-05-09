@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="pageTitle" value="나의 회원정보"></c:set>
 <%@ include file="../common/head.jspf"%>
@@ -46,20 +47,43 @@
 					</div>
 
 
-					<a class="modifyBtn btn btn-sm" href="../member/checkPw">회원정보 수정</a>
+					<a class="modifyBtn btn btn-sm" href="../member/checkPw">회원정보
+						수정</a>
 
 					<div class="btns">
 
 						<button class="backBtn" type="button" onclick="history.back();">뒤로가기</button>
-<!-- 						<a class="toMyPageBtn" href="../member/myPage">마이페이지로 이동</a> -->
-						
-						<a class="loginBtn" href="../member/doDeleteId">회원탈퇴</a>
 
+<!-- 						<a class="deleteMemberBtn" onclick='deleteMember()' href="../member/doDeleteId">회원탈퇴</a> -->
+						<a class="deleteMemberBtn" onclick='return deleteMember()' href="../member/doDeleteId">회원탈퇴</a>
 
 					</div>
 			</div>
-
 </section>
+
+
+
+
+
+
+<script>
+function deleteMember() {
+    if (window.confirm("정말 탈퇴 하시겠습니까?")) {
+        // 여기에 탈퇴 처리를 위한 코드를 작성하세요.
+        // 예를 들어, 탈퇴 처리 후 리디렉션 등을 할 수 있습니다.
+        // 탈퇴 처리 후 리디렉션 예시: window.location.href = '탈퇴 후 리디렉션할 URL';
+        return true; // 확인을 누르면 탈퇴
+    } else {
+        history.back(); // 취소를 누르면 뒤로가기
+        return false; // 취소를 눌러서 탈퇴되지 않음
+    }
+}
+
+</script>
+
+
+
+
 
 <style>
 .mint-line {
@@ -69,6 +93,7 @@
 	width: 78px;
 	margin-left: 8px;
 }
+
 .title {
 	font-weight: 500;
 	color: #666666;
@@ -191,7 +216,7 @@
 	border: 1px #cacaca solid;
 }
 
-.loginBtn {
+.deleteMemberBtn {
 	width: 74px;
 	height: 39px;
 	position: absolute;
@@ -211,7 +236,6 @@
 	background-color: #d5f1e2;
 	font-size: 12px;
 }
-
 
 .modifyBtn:hover {
 	width: 100px;
@@ -244,10 +268,6 @@
 	font-size: 12px;
 	font-weight: 500;
 }
-
-
-
-
 </style>
 
 

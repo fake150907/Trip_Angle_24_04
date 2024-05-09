@@ -22,6 +22,23 @@ public class UsrMemberController {
 
 	@Autowired
 	private MemberService memberService;
+	
+	
+	@RequestMapping("/usr/member/doDeleteId")
+	@ResponseBody
+	public String doDeleteId(HttpServletRequest req, @RequestParam(defaultValue = "/") String afterLogoutUri) {
+		Rq rq = (Rq) req.getAttribute("rq");
+		System.err.println("rq.loginedId: " + rq.getLoginedMember().getLoginId());
+		if (!rq.isLogined()) {
+			return Ut.jsHistoryBack("F-A", "로그인 후 이용해주세요");
+		}
+
+		memberService.deleteId(rq.getLoginedMember().getLoginId());
+		rq.logout();
+
+		return Ut.jsReplace("S-1", "탈퇴가 완료되었습니다", afterLogoutUri);
+	}
+	
 
 	@RequestMapping("/usr/member/getLoginIdDup")
 	@ResponseBody
@@ -93,8 +110,15 @@ public class UsrMemberController {
 		System.out.println(Ut.sha256(loginPw));
 
 		if (member.getLoginPw().equals(Ut.sha256(loginPw)) == false) {
-			return Ut.jsHistoryBack("F-4", Ut.f("비밀번호가 일치하지 않습니다!!!!!"));
+			return Ut.jsHistoryBack("F-4", Ut.f("비밀번호가 일치하지 않습니다"));
 		}
+		
+		if (member.getDelStatus() == 0) {
+			rq.login(member);
+		} else {
+			return Ut.jsHistoryBack("F-5", Ut.f("%s(은)는 탈퇴한 회원입니다", loginId));
+		}
+
 
 		rq.login(member);
 

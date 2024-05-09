@@ -176,7 +176,7 @@
 
 .OsakaImage {
 	aspect-ratio: 1;
-	object-fit: auto;
+	object-fit: cover;
 	border-radius: 10px;
 	width: 70%; /* You can adjust the width as needed */
 	margin-top: 35%;
