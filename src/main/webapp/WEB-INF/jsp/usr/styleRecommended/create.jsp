@@ -491,6 +491,8 @@
         flex-direction: column;
         text-align: center;
         padding: 0 20px;
+        margin-bottom: 100px;
+        margin-left: 87%; 
     }
 
     /* .next-step-button {

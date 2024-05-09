@@ -100,4 +100,10 @@ public class MemberService {
 		memberRepository.modify(actor.getId(), Ut.sha256(tempPassword), null, null, null, null);
 	}
 
+	public void deleteId(String loginId) {
+
+		memberRepository.deleteId(loginId);
+
+	}
+
 }

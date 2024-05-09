@@ -93,5 +93,15 @@ public interface MemberRepository {
 			</script>
 			""")
 	public void modifyWithoutPw(int loginedMemberId, String name, String nickname, String cellphoneNum, String email);
+	
+	
+	
+	@Update("""
+			UPDATE `member`
+			SET delStatus = 1,
+			delDate = NOW()
+			WHERE loginId = #{loginId}
+			""")
+	public void deleteId(String loginId);
 
 }
