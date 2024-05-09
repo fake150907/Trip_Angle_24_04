@@ -11,7 +11,8 @@ import com.example.demo.crawling.PlaceInfoDto;
 public interface PlaceInfoRepository {
 
 	@Select("""
-			SELECT * FROM `recommendSpot`
+			SELECT id,regDate,updateDate,name,grade,price,reviewCount,facilities,address,phoneNumber,imageUrl1,imageUrl2,imageUrl3,imageUrl4,imageUrl5, REPLACE(naverSpotCord, '/', '') AS naverSpotCord,tabId,regionId
+			FROM `recommendSpot`
 			WHERE tabId = #{tabId}
 			AND regionId = #{regionId}
 			ORDER BY id;
@@ -19,7 +20,8 @@ public interface PlaceInfoRepository {
 	public List<PlaceInfoDto> getplaceInfoList(int tabId, int regionId);
 
 	@Select("""
-			SELECT * FROM `recommendSpot`
+			SELECT id,regDate,updateDate,name,grade,price,reviewCount,facilities,address,phoneNumber,imageUrl1,imageUrl2,imageUrl3,imageUrl4,imageUrl5, REPLACE(naverSpotCord, '/', '') AS naverSpotCord,tabId,regionId
+			FROM `recommendSpot`
 			WHERE id = #{id}
 			""")
 	public PlaceInfoDto getPlaceInfo(int id);

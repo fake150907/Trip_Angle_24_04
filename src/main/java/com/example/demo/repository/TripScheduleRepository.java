@@ -24,7 +24,7 @@ public interface TripScheduleRepository {
 	public TripSchedule getTripScheduleById(int id);
 
 	@Select("""
-						SELECT TS.id, TS.regDate, TS.title, TS.content, TS.regionId, R.name AS 'extra__regionName', TS.startDate, TS.endDate, TS.memberId, R.englishName AS 'extra__regionEnglishName', C.name AS 'extra__contryName'
+						SELECT TS.id, TS.regDate, R.imageUrl AS 'extra__regionImageUrl',TS.title, TS.content, TS.regionId, R.name AS 'extra__regionName', TS.startDate, TS.endDate, TS.memberId, R.englishName AS 'extra__regionEnglishName', C.name AS 'extra__contryName'
 						FROM tripSchedule AS TS
 						INNER JOIN region AS R ON TS.regionId = R.id
 						INNER JOIN country AS C ON R.countryId = C.id

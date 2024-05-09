@@ -175,6 +175,7 @@ public class UsrMemberController {
 		}
 
 		return "usr/member/modify";
+
 	}
 
 	@RequestMapping("/usr/member/doModify")
@@ -229,7 +230,7 @@ public class UsrMemberController {
 
 		return Ut.jsReplace("S-1", Ut.f("너의 아이디는 [ %s ] 야", member.getLoginId()), afterFindLoginIdUri);
 	}
-	
+
 	@RequestMapping("/usr/member/findLoginPw")
 	public String showFindLoginPw() {
 
