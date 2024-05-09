@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <c:set var="pageTitle" value="추천 장소 상세보기"></c:set>
 <%@ include file="../common/head.jspf"%>
 
@@ -111,58 +112,8 @@
 	$(function() {
 		checkPlaceScrap();
 	});
-	
-	
-	
+
 </script>
-
-
-<!-- 댓글 수정 -->
-<script>
-function toggleModifybtn(placeReviewId) {
-	
-	console.log(placeReviewId);
-	
-	$('#modify-btn-'+placeReviewId).hide();
-	$('#save-btn-'+placeReviewId).show();
-	$('#placeReview-'+placeReviewId).hide();
-	$('#modify-form-'+placeReviewId).show();
-}
-
-function doModifyPlaceReview(placeReviewId) {
-	 console.log(placeReviewId); // 디버깅을 위해 replyId를 콘솔에 출력
-	    
-	    // form 요소를 정확하게 선택
-	    var form = $('#modify-form-' + placeReviewId);
-	    console.log(form); // 디버깅을 위해 form을 콘솔에 출력
-
-	    // form 내의 input 요소의 값을 가져옵니다
-	    var text = form.find('input[name="placeReview-text-' + placeReviewId + '"]').val();
-	    console.log(text); // 디버깅을 위해 text를 콘솔에 출력
-
-	    // form의 action 속성 값을 가져옵니다
-	    var action = form.attr('action');
-	    console.log(action); // 디버깅을 위해 action을 콘솔에 출력
-	
-    $.post({
-    	url: '/usr/placeReview/doModify', // 수정된 URL
-        type: 'POST', // GET에서 POST로 변경
-        data: { id: placeReviewId, body: text }, // 서버에 전송할 데이터
-        success: function(data) {
-            $('#modify-form-'+placeReviewId).hide();
-            $('#review-'+placeReviewId).text(data); // 수정된 리뷰 내용으로 업데이트
-            $('#placeReview-'+placeReviewId).show();
-            $('#save-btn-'+placeReviewId).hide();
-            $('#modify-btn-'+placeReviewId).show();
-        },
-        error: function(xhr, status, error) {
-            alert('리뷰 수정에 실패했습니다: ' + error);
-        }
-	})
-}
-</script>
-
-
 
 <section class="place-detail-page">
 
@@ -203,11 +154,22 @@ function doModifyPlaceReview(placeReviewId) {
 	<!-- 사진 아래 부분 -->
 
 	<div class="info-and-review section-under-imgs">
-		<!-- 카페 정보 -->
+		<!-- 추천 장소 정보 -->
 		<div class="place-info">
 			<div class="place-name">${place.name}</div>
 			<div class="place-address">${place.address}</div>
-			<div class="place-phone">${place.phoneNumber}</div>
+			<div class="place-phone">
+				<c:if test="${fn:length(place.phoneNumber) == 0}">
+			없는 정보 입니다.
+			</c:if>
+				${place.phoneNumber}
+			</div>
+			<div class="place-facilities">
+				<c:if test="${fn:length(place.facilities) == 0}">
+				없는 정보 입니다.
+				</c:if>
+				${place.facilities }
+			</div>
 			<div class="like-count">
 				<button class="material-symbols-outlined thumb_up" id="likeButton"
 					onclick="doPlaceScrap(${param.id})">thumb_up</button>
@@ -218,8 +180,6 @@ function doModifyPlaceReview(placeReviewId) {
 				<div class="review-count-num">${place.reviewCount}</div>
 			</div>
 
-			<span class="material-symbols-outlined clock-circle"
-				style="color: #a9a9a9"> schedule </span>
 			<span class="material-symbols-outlined phone" style="color: #a9a9a9">
 				call </span>
 			<span class="material-symbols-outlined store" style="color: #a9a9a9">
@@ -227,188 +187,11 @@ function doModifyPlaceReview(placeReviewId) {
 
 		</div>
 
-
-		<!-- 카페 지도 -->
-		<div class="place-map">
-			<!-- 			<img class="map-img" src="/" /> -->
-			<div class="map-title">지도보기</div>
-
-			<div id="map" style="width: 525px; height: 323px; top: 63px;"></div>
-		</div>
-
-		<!-- JavaScript 코드가 HTML 문서의 DOM 구조에 의존.
-		 HTML 코드와 자바스크립트 코드가 상호 작용하기 때문에 자바스크립트 코드가 HTML 문서가 완전히 로드된 후 실행.
-		 따라서 자바스크립트 코드를 HTML 문서의 아래에 배치. 
-		 페이지의 모든 요소가 로드되고 DOM이 완전히 준비된 후에 자바스크립트 코드가 실행됨. -->
-
-		<!-- 카페 지도API Javascript -->
-		<script>
-		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-    		mapOption = {
-        		center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-        		level: 3 // 지도의 확대 레벨
-   		 	};  
-
-		// 지도를 생성합니다    
-		var map = new kakao.maps.Map(mapContainer, mapOption); 
-
-		// 주소-좌표 변환 객체를 생성합니다
-		var geocoder = new kakao.maps.services.Geocoder();
-
-		// 주소로 좌표를 검색합니다
-		geocoder.addressSearch('${place.address}', function(result, status) {
-   			// 정상적으로 검색이 완료됐으면 
-     		if (status === kakao.maps.services.Status.OK) {
-		        var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
-		        
-		        //카페의 위도(lat|y) 경도(long|x)를 콘솔에 출력
-		       	console.log("위도(lat|y) : " + result[0].y);
-		       	console.log("경도(long|x) : " + result[0].x);
-		       	
-		       	lat2 = String(result[0].y);
-		       	lon2 = String(result[0].x);
-		       	
-		       	console.log("new위도(lat|y) : " + lat2)
-		        console.log("new경도(long|x) : " + lon2);
-		       	
-		       	showLatLon(lat2,lon2);
-		
-		        // 결과값으로 받은 위치를 마커로 표시합니다
-		
-		        var marker = new kakao.maps.Marker({
-		    		map: map,
-		    		position: coords,
-		    		image: new kakao.maps.MarkerImage(
-		        	'https://velog.velcdn.com/images/yunlinit/post/8c994474-03a4-481f-9294-a3a3e201cb72/image.png',
-		        new kakao.maps.Size(39, 39),
-		        { offset: new kakao.maps.Point(16, 32) }
-				    )
-				});
-		        	
-		        // 인포윈도우로 장소에 대한 설명을 표시합니다
-		        var infowindow = new kakao.maps.InfoWindow({
-		            content: '<div style="width:150px;text-align:center;padding:6px 0; font-size: 15px; color: black;">${place.name}</div>'
-		        });
-		        infowindow.open(map, marker);
-		
-		        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
-		        map.setCenter(coords);
-    		} 
-		});    
-		
-		function showLatLon(lat2, lon2) {
-			var myLat, myLon;
-			
-			// 크롬브라우저 전용 사용자의 위도와 경도를 불러오는 함수
-			navigator.geolocation.getCurrentPosition(function(position) {
-	            myLat = position.coords.latitude;
-	            myLon = position.coords.longitude;
-	            
-	            $.ajax({
-			        type: "POST",
-			        url: "/usr/findplace/distance", // 요청을 처리할 컨트롤러의 URL
-			        contentType: "application/json", // id도 넘겨줘........ 
-			        data: JSON.stringify({
-			        	'myLat': myLat,
-			        	'myLon': myLon,
-			        	'placeLat': lat2,
-			        	'placeLon': lon2
-			        }),
-			        //dataType: 'json',
-			        success: function(distanceInKm) {
-			            //alert("위도와 경도를 서버로 전송했습니다.\n * distanceInKm_Response : " + distanceInKm);
-			            // 성공적으로 처리되었을 때 실행할 코드
-			            $('.distance-num').text(distanceInKm+"km");
-			        },
-			        error: function(xhr, status, error) {
-			            alert("에러면 표시 " + JSON.stringify(lat2));
-			            // 오류 발생 시 실행할 코드
-			            //JSON.stringify(lat2)
-			        }
-			    });
-			});
-		}
-		
-		</script>
-
-
-
-		<!-- 카페정보 하단 -->
-		<div class="review-group reviewlist-and-write">
-			<!-- 리뷰 부분 -->
-			<div class="review-section">
-				<!-- 리뷰 작성 -->
-
-				<div class="write-review-section">
-					<div class="write-review">리뷰 작성</div>
-
-					<c:if test="${rq.isLogined() }">
-						<div class="review-input-area">
-
-							<form action="../placeReview/doWrite" method="POST">
-								<input type="hidden" name="placeId" value="${place.id }" />
-								<input type="text" autocomplete="off" placeholder="리뷰를 남겨주세요"
-									name="body"
-									class="review-input-box input input-bordered input-md w-full " />
-								<!-- 								<button class="review-write-btn btn btn-sm">등록</button> -->
-								<input class="review-write-btn btn btn-sm" type="submit"
-									value="등록" />
-							</form>
-						</div>
-					</c:if>
-					<c:if test="${!rq.isLogined() }">
-						<a href="${rq.loginUri }"
-							style="text-decoration: underline; font-weight: 600;">로그인</a> 후 이용해주세요.
-				</c:if>
-				</div>
-
-				<!-- 리뷰 목록 -->
-				<div class="review-list">
-					<div class="review-title">리뷰 (${placeReviewsCount})</div>
-
-					<c:forEach var="placeReview" items="${placeReviews }">
-						<div class="show-review-box">
-							<div class="user-nickname 리뷰작성자">${placeReview.extra__writer }
-								<div id="reviewRegDate-${placeReview.id }"
-									style="font-size: 11px; font-weight: 300; color: #a9a9a9;">${placeReview.regDate.substring(0,10) }</div>
-							</div>
-
-
-							<div class="review-body 리뷰내용">
-								<span id="review-${placeReview.id }">${placeReview.body }</span>
-								<form method="POST" id="modify-form-${placeReview.id }"
-									style="display: none; position: absolute; top: 20px; left: 0; width: 100%; z-index: 1;"
-									action="/usr/placeReview/doModify">
-									<input style="width: 1110px; height: 35px; margin-top: -17px;"
-										type="text" value="${placeReview.body }"
-										name="placeReview-text-${placeReview.id }" />
-								</form>
-							</div>
-
-							<!-- 	수정 삭제 버튼		 -->
-							<div class="mod-del-btns"
-								style="font-weight: 500; color: #a9a9a9; margin-top: 89px; margin-left: 17px; font-size: 11px;">
-								<c:if test="${placeReview.userCanModify }">
-									<button onclick="toggleModifybtn('${placeReview.id}');"
-										id="modify-btn-${placeReview.id }"
-										style="white-space: nowrap;">수정</button>
-									<button onclick="doModifyPlaceReview('${placeReview.id}');"
-										style="white-space: nowrap; display: none;"
-										id="save-btn-${placeReview.id }">저장</button>
-
-								</c:if>
-
-								<c:if test="${placeReview.userCanDelete }">
-									<a style="white-space: nowrap; margin-left: 10px;"
-										onclick="if(confirm('정말 삭제하시겠습니까?') == false) return false;"
-										href="../placeReview/doDelete?id=${placeReview.id }">삭제</a>
-								</c:if>
-							</div>
-
-						</div>
-					</c:forEach>
-				</div>
-			</div>
+		<!-- 리뷰 링크 -->
+		<div class="review-section">
+			<a target='_blank' class="btn review-link"
+				href="https://travel.naver.com/overseas/${place.naverSpotCord }/poi/review/ta">리뷰
+				보러가기</a>
 		</div>
 	</div>
 </section>
@@ -606,23 +389,16 @@ function doModifyPlaceReview(placeReviewId) {
 .place-detail-page .section-under-imgs {
 	position: absolute;
 	width: 1160px;
-	height: 1130px;
+	height: 500px;
 	top: 508px;
 	/* 	left: 60px; */
 }
 
-.place-detail-page .review-group {
-	width: 1155px;
-	top: 10px;
-	left: 5px;
-	padding-bottom: 20px; /* review-box 밑에 20px 공간을 만듭니다 */
-}
-
 .place-detail-page .review-section {
 	position: absolute;
-	width: 1155px;
-	top: 500px;
-	left: 0;
+	width: 100px;
+	top: 40%;
+	left: 89%;
 	bottom: 0;
 }
 
@@ -916,7 +692,7 @@ function doModifyPlaceReview(placeReviewId) {
 	white-space: nowrap;
 }
 
-.place-detail-page .place-facility {
+.place-detail-page .place-facilities {
 	width: 796px;
 	height: 17px;
 	top: 219px;
@@ -965,6 +741,11 @@ function doModifyPlaceReview(placeReviewId) {
 	height: 21px;
 	top: 110px;
 	left: 78px;
+}
+
+.place-detail-page .review-link {
+	width: 120px;
+	background-color: #D5F1E2;
 }
 
 .place-detail-page .review-badge {
@@ -1201,8 +982,4 @@ function bulletClassReset() {
 </script>
 
 
-
-
-
-
-<%-- <%@ include file="../common/foot.jspf"%> --%>
+<%@ include file="../common/foot.jspf"%>

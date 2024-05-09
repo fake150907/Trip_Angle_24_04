@@ -30,12 +30,12 @@
 		<div class="search-result plan-list" id="search-result">
 			<c:forEach var="tripSchedule" items="${tripSchedules}">
 
-				<a href="myPlanDetail?id=${tripSchedule.id}&regionId=${tripSchedule.regionId}" class="linkbox１">
+				<a
+					href="myPlanDetail?id=${tripSchedule.id}&regionId=${tripSchedule.regionId}"
+					class="linkbox１">
 					<div class="content-info-box content-1">
 						<div class="my-plan-img-box">
-							<img
-								src="https://images.unsplash.com/photo-1551918120-9739cb430c6d?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-								alt="마이 일정 이미지" />
+							<img src="${tripSchedule.extra__regionImageUrl }" alt="마이 일정 이미지" />
 						</div>
 						<div class="name-regdate">
 							<div class="my-plan-name">${tripSchedule.title}</div>
@@ -45,7 +45,8 @@
 
 						<div class="destination-schedule">
 							<div class="my-destination">${tripSchedule.extra__regionName}</div>
-							<p class="my-schedule">${tripSchedule.startDate} ~ ${tripSchedule.endDate}</p>
+							<p class="my-schedule">${tripSchedule.startDate}~
+								${tripSchedule.endDate}</p>
 						</div>
 
 					</div>
@@ -100,10 +101,9 @@
 .my-plan-list-page {
 	display: flex;
 	justify-content: center; /* 좌우 중앙 정렬 */
- 	margin-top: 150px; 
+	margin-top: 150px;
 	margin-bottom: 100px;
 }
-
 
 .my-plan-list {
 	position: absolute;
@@ -113,7 +113,7 @@
 	position: relative;
 	width: 750px;
 	height: 247px;
-	margin-bottom: 80px; 
+	margin-bottom: 80px;
 }
 
 .content-info-box .name-regdate {

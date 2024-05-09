@@ -43,13 +43,13 @@ public class MyPlanController {
 
 	@Autowired
 	private PlaceInfoService placeInfoService;
-	
+
 	@Autowired
 	private WeatherService weatherService;
-	
+
 	@Autowired
 	private FashionService fashionService;
-	
+
 	@Autowired
 	private ShoppingListService shoppingListService;
 
@@ -73,6 +73,8 @@ public class MyPlanController {
 
 		PlaceInfoDto placeInfoDto = placeInfoService.getPlaceInfo(id);
 
+		System.err.println("getPhoneNumber : " + placeInfoDto.getPhoneNumber().length());
+
 		model.addAttribute("place", placeInfoDto);
 
 		return "/usr/myPlan/placeDetail";
@@ -83,26 +85,24 @@ public class MyPlanController {
 		Rq rq = (Rq) req.getAttribute("rq");
 
 		TripSchedule tripSchedule = tripScheduleService.getTripScheduleById(id);
-		
+
 		if (tripSchedule == null) {
 			return rq.historyBackOnView("존재하지 않는 일정 입니다.");
 		}
-		
+
 		if (tripSchedule.getMemberId() != rq.getLoginedMemberId()) {
 			return rq.historyBackOnView("일정의 작성자만 접근할 수 있습니다.");
 		}
-		
-		
+
 		if (tripSchedule.getStep() == 0) {
 			model.addAttribute("id", id);
 			model.addAttribute("tripSchedule", tripSchedule);
-			
 
 			return "/usr/schedule/ticketing";
 		}
-		
+
 		if (tripSchedule.getStep() == 1) {
-			return "redirect:/usr/styleRecommended/create?id="+id;
+			return "redirect:/usr/styleRecommended/create?id=" + id;
 		}
 
 		RegionInfoTips regionInfoTips = regionInfoTipsService.getRegionInfoTipsId(regionId);
@@ -114,17 +114,15 @@ public class MyPlanController {
 		List<PlaceInfoDto> placeInfoList1 = placeInfoService.getplaceInfoList(tabId1, regionId); // 관광placeList
 		List<PlaceInfoDto> placeInfoList2 = placeInfoService.getplaceInfoList(tabId2, regionId); // 맛집placeList
 		List<PlaceInfoDto> placeInfoList3 = placeInfoService.getplaceInfoList(tabId3, regionId); // 쇼핑placeList
-		
-		
-		List <Weather> weathers = weatherService.getWeathersFromScheduleId(id);
-		List <Fashion> fashions = fashionService.getFashionsFromScheduleId(id);
-		List <ShoppingList> shoppingLists = shoppingListService.getShoppingListsFromScheduleId(id);
-		
+
+		List<Weather> weathers = weatherService.getWeathersFromScheduleId(id);
+		List<Fashion> fashions = fashionService.getFashionsFromScheduleId(id);
+		List<ShoppingList> shoppingLists = shoppingListService.getShoppingListsFromScheduleId(id);
 
 		for (PlaceInfoDto placeInfoDto : placeInfoList1) {
 			System.err.println("ImgUrl1" + placeInfoDto.getImageUrl1());
 		}
-		
+
 		tripScheduleService.updateStepById(id);
 
 		model.addAttribute("tripSchedule", tripSchedule);
@@ -133,7 +131,7 @@ public class MyPlanController {
 		model.addAttribute("placeInfoList1", placeInfoList1);
 		model.addAttribute("placeInfoList2", placeInfoList2);
 		model.addAttribute("placeInfoList3", placeInfoList3);
-		
+
 		model.addAttribute("weathers", weathers);
 		model.addAttribute("fashions", fashions);
 		model.addAttribute("shoppingLists", shoppingLists);
@@ -150,12 +148,11 @@ public class MyPlanController {
 		Rq rq = (Rq) req.getAttribute("rq");
 
 		TripSchedule tripSchedule = tripScheduleService.getTripScheduleById(id);
-		
 
 		if (tripSchedule == null) {
 			return Ut.jsHistoryBack("F-1", Ut.f("%d번 일정은 존재하지 않습니다", id));
 		}
-		
+
 		if (tripSchedule.getMemberId() != rq.getLoginedMemberId()) {
 			return Ut.jsHistoryBack("F-2", "일정의 작성자만 접근할 수 있습니다");
 		}
