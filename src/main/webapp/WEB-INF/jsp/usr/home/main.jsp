@@ -1096,7 +1096,7 @@ to {
 								<h2 class="korean-name">서명원</h2>
 								<div class="mint-line"></div>
 								<br>
-								<p>010-4495-0000</p>
+								<p>010-4495-8592</p>
 								<!--           <p>010-4495-8592</p> -->
 								<!--           <button class="button btn btn-sm"> text message</button> -->
 								<!--           <br> -->
@@ -1117,7 +1117,7 @@ to {
 								<h2 class="korean-name">장윤린</h2>
 								<div class="mint-line"></div>
 								<br>
-								<p>010-4249-0000</p>
+								<p>010-4249-0977</p>
 								<!--           <p>010-4249-0977</p> -->
 								<!--           <button class="button btn btn-sm">text message</button> -->
 								<!--           <br> -->
@@ -1138,7 +1138,7 @@ to {
 								<h2 class="korean-name">윤가연</h2>
 								<div class="mint-line"></div>
 								<br>
-								<p>010-5408-0000</p>
+								<p>010-5408-4893</p>
 								<!--           <p>010-5408-4893</p> -->
 								<!--           <button class="button btn btn-sm">text message</button> -->
 								<!--           <br> -->
@@ -1158,7 +1158,7 @@ to {
 								<h2 class="korean-name">신규섭</h2>
 								<div class="mint-line"></div>
 								<br>
-								<p>010-7752-0000</p>
+								<p>010-7752-8687</p>
 								<!--           <p>010-7752-8687</p> -->
 								<!--           <button class="button btn btn-sm" >text message</button> -->
 								<!--           <br> -->
