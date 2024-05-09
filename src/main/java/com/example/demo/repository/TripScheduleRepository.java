@@ -24,28 +24,27 @@ public interface TripScheduleRepository {
 	public TripSchedule getTripScheduleById(int id);
 
 	@Select("""
-						SELECT TS.id, TS.regDate, R.imageUrl AS 'extra__regionImageUrl',TS.title, TS.content, TS.regionId, R.name AS 'extra__regionName', TS.startDate, TS.endDate, TS.memberId, R.englishName AS 'extra__regionEnglishName', C.name AS 'extra__contryName'
-						FROM tripSchedule AS TS
-						INNER JOIN region AS R ON TS.regionId = R.id
-						INNER JOIN country AS C ON R.countryId = C.id
-						WHERE TS.memberId = #{memberId}
-						GROUP BY TS.id
-						ORDER BY TS.startDate;
-
-						""")
+			SELECT TS.id, TS.regDate, R.imageUrl AS 'extra__regionImageUrl',TS.title, TS.content, TS.regionId, R.name AS 'extra__regionName', TS.startDate, TS.endDate, TS.memberId, R.englishName AS 'extra__regionEnglishName', C.name AS 'extra__contryName'
+			FROM tripSchedule AS TS
+			INNER JOIN region AS R ON TS.regionId = R.id
+			INNER JOIN country AS C ON R.countryId = C.id
+			WHERE TS.memberId = #{memberId}
+			GROUP BY TS.id
+			ORDER BY TS.startDate;
+			""")
 	public List<TripSchedule> getForPrintTripSchedules(int memberId);
 
 	@Insert("""
-					INSERT INTO tripSchedule
-					SET regDate = NOW(),
-					updateDate = NOW(),
-					`title` = #{title},
-					`content` = #{content},
-					startDate = #{checkInDate},
-					endDate = #{checkOutDate},
-					regionId = #{regionId},
-					memberId = #{loginedMemberId},
-					step = 0
+			INSERT INTO tripSchedule
+			SET regDate = NOW(),
+			updateDate = NOW(),
+			`title` = #{title},
+			`content` = #{content},
+			startDate = #{checkInDate},
+			endDate = #{checkOutDate},
+			regionId = #{regionId},
+			memberId = #{loginedMemberId},
+			step = 0
 			""")
 	@Options(useGeneratedKeys = true, keyProperty = "map.id")
 	public void insertTripSchedule(String title, String content, String checkInDate, String checkOutDate,
@@ -77,7 +76,7 @@ public interface TripScheduleRepository {
 	public List<CalendarData> getCalendarDatas(int loginedMemberId);
 
 	@Update("""
-				UPDATE  TRIPSCHEDULE SET STEP=STEP+1, UPDATEDATE=NOW() WHERE id = #{id}
+			UPDATE  TRIPSCHEDULE SET STEP=STEP+1, UPDATEDATE=NOW() WHERE id = #{id}
 			""")
 	public void updateStepById(int id);
 
