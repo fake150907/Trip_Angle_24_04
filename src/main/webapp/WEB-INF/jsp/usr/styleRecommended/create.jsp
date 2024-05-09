@@ -1022,7 +1022,7 @@
             // Create the image element
             const image = document.createElement('img');
             if (fashion.imageUrl == "") {
-                image.src = "/resource/image/FashionNoimage.webp";
+                image.src = "https://www.freeiconspng.com/thumbs/no-image-icon/no-image-icon-1.jpg";
             } else {
                 image.src = fashion.imageUrl;
 
@@ -1368,7 +1368,10 @@
             img.classList.add('ta-item-image');
             img.loading = 'lazy';
             imageContainer.appendChild(img);
-            
+			// img.setAttribute('onerror', 'this.src=https://www.soapark.com/wp-content/themes/soapark/assets/images/noimg2.jpg;');
+			img.onerror = function() {
+				this.src = 'https://www.freeiconspng.com/thumbs/no-image-icon/no-image-icon-1.jpg';
+			};
             
 
             // Create the description div
