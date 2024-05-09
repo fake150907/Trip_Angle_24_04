@@ -894,48 +894,55 @@ img {
 	top: 0;
 }
 
-/* The dots/bullets/indicators */
-/* .dot { */
-/* 	height: 15px; */
-/* 	width: 15px; */
-/* 	margin: 0 2px; */
-/* 	background-color: #bbb; */
-/* 	border-radius: 50%; */
-/* 	display: inline-block; */
-/* 	transition: background-color 0.6s ease; */
-/* } */
 
 .active {
 	background-color: #717171;
 }
 
 /* Fading animation */
+/* Fading animation */
 .fade {
-	-webkit-animation-name: fade;
-	-webkit-animation-duration: 1.5s;
-	animation-name: fade;
-	animation-duration: 1.5s;
+    -webkit-animation-name: fade;
+    animation-name: fade;
+    -webkit-animation-duration: 1.5s;
+    animation-duration: 1.5s;
 }
 
-@
--webkit-keyframes fade {
-	from {opacity: .4
+
+/* @-webkit-keyframes fade { */
+/*     from { */
+/*         opacity: .4; */
+/*     } */
+/*     to { */
+/*         opacity: 1; */
+/*     } */
+/* } */
+
+/* @keyframes fade { */
+/*     from { */
+/*         opacity: .4; */
+/*     } */
+/*     to { */
+/*         opacity: 1; */
+/*     } */
+/* } */
+
+@-webkit-keyframes fade {
+    from {
+        opacity: .4;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
-to {
-	opacity: 1
-}
-
-}
-@
-keyframes fade {
-	from {opacity: .4
-}
-
-to {
-	opacity: 1
-}
-
+@keyframes fade {
+    from {
+        opacity: .4;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
 /* On smaller screens, decrease text size */
@@ -944,7 +951,16 @@ to {
 		font-size: 11px
 	}
 }
+
+
+
+.img{
+	border-radius: 20px;
+	}
+	
+	
 </style>
+
 </head>
 
 <body>
@@ -1009,14 +1025,6 @@ to {
 
 							<div class="search-list flex">
 
-								<%-- 							  <c:forEach var="region" items="${regions }"> --%>
-								<!-- 					              <div class="search-item"> -->
-								<!-- 					                <div class="country-region-name"> -->
-								<%-- 					                  <p class="country-name">${region.name }</p> --%>
-								<%-- 					                  <p class="region-name">${region.extra__countryName }</p> --%>
-								<!-- 					                </div> -->
-								<!-- 					              </div> -->
-								<%-- 				              </c:forEach> --%>
 
 							</div>
 
@@ -1182,10 +1190,13 @@ to {
 
 					<div class="mySlides fade">
 						<div class="numbertext">1 / 3</div>
-						<img
-							src="https://velog.velcdn.com/images/yunlinit/post/ef7c6624-be57-44ec-812e-93d274a77d63/image.jpg"
-							style="width: 100%">
-							 <div class="caption">“모든 것은 훌륭한 아이디어와<br>팀워크로부터 시작됩니다.” <br>Garrett Camp</div>
+<!-- 						<img -->
+<!-- 							src="https://velog.velcdn.com/images/yunlinit/post/ef7c6624-be57-44ec-812e-93d274a77d63/image.jpg" -->
+<!-- 							style="width: 100%"> -->
+							
+							<img src="https://velog.velcdn.com/images/yunlinit/post/ef7c6624-be57-44ec-812e-93d274a77d63/image.jpg" style="width: 100%" class="img">
+							
+							 <div class="caption">“모든 것은 훌륭한 아이디어와<br>팀워크로부터 시작됩니다.” <br>- 우버 창립자 Garrett Camp </div>
 						
 					</div>
 
@@ -1193,8 +1204,8 @@ to {
 						<div class="numbertext">2 / 3</div>
 						<img
 							src="https://velog.velcdn.com/images/yunlinit/post/e5b8b8f8-1deb-4f2a-ac7c-675754e0ab36/image.jpg"
-							style="width: 100%">
-							 <div class="caption">“모든 것은 훌륭한 아이디어와<br>팀워크로부터 시작됩니다.” <br>Garrett Camp</div>
+							style="width: 100%" class="img">
+							 <div class="caption">“모든 것은 훌륭한 아이디어와<br>팀워크로부터 시작됩니다.” <br>- 우버 창립자 Garrett Camp</div>
 					
 					</div>
 
@@ -1202,8 +1213,8 @@ to {
 						<div class="numbertext">3 / 3</div>
 						<img
 							src="https://velog.velcdn.com/images/yunlinit/post/8e507583-95cd-4ebf-8006-18e423b5d79e/image.jpg"
-							style="width: 100%">
-							 <div class="caption">“모든 것은 훌륭한 아이디어와<br>팀워크로부터 시작됩니다.” <br>Garrett Camp</div>
+							style="width: 100%" class="img">
+							 <div class="caption">“모든 것은 훌륭한 아이디어와<br>팀워크로부터 시작됩니다.” <br>- 우버 창립자 Garrett Camp </div>
 						
 					</div>
 
@@ -1224,6 +1235,8 @@ to {
 
 		</div>
 	</section>
+	
+
 
 	<script>
   function writeEmailToYunlin() {
