@@ -40,3 +40,4 @@ keys.js
 
 !**/__pycache__/*
 my_llm_cache.db
+main.cpython-312.pyc
