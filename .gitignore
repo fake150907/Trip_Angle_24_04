@@ -38,6 +38,7 @@ log/
 .env
 keys.js
 
-!**/__pycache__/*
+!**/__pycache__/**
 my_llm_cache.db
 main.cpython-312.pyc
+!**/main.cpython-312.pyc
