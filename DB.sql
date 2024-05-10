@@ -145,6 +145,15 @@ CREATE TABLE `recommendRegion` (
 	`goodReactionPoint`	INT(100)	NULL	COMMENT '좋아요갯수'
 );
 
+SELECT * FROM `region`;
+
+SELECT * FROM tripSchedule;
+
+SELECT T.* ,imageUrl
+FROM region AS R
+INNER JOIN tripSchedule AS T
+ON R.id = T.regionId;
+
 CREATE TABLE `tabList` (
 	`id`	INT(10)	NOT NULL	COMMENT '테마별 추천 장소 리스트 id',
 	`regDate`	DATETIME	NULL,
@@ -175,6 +184,15 @@ CREATE TABLE `recommendSpot` (
 );
 
 SELECT * FROM `recommendSpot`;
+
+SELECT REPLACE(naverSpotCord, '/', '') AS naverSpotCord
+FROM recommendSpot;
+
+SELECT id,regDate,updateDate,`name`,grade,price,reviewCount,facilities,address,phoneNumber,imageUrl1,imageUrl2,imageUrl3,imageUrl4,imageUrl5, REPLACE(naverSpotCord, '/', '') AS naverSpotCord,tabId,regionId
+			FROM `recommendSpot`
+			WHERE tabId = 1
+			AND regionId = 1
+			ORDER BY id;
 
 UPDATE `recommendSpot`
 SET imageUrl1 = 'https://search.pstatic.net/common?src=http%3A%2F%2Fmedia-cdn.tripadvisor.com%2Fmedia%2Fphoto-o%2F1b%2Fe0%2Fa0%2F0e%2Fphoto0jpg.jpg&type=f520_288_travelsearch'
@@ -388,31 +406,152 @@ REFERENCES `member` (
 
 ########### TEST DATA ############
 
-
 # article TD 생성
 INSERT INTO article
 SET regDate = NOW(),
 updateDate = NOW(),
 title = '제목1',
-`body` = '내용1';
+`body` = '내용1',
+memberId = 2,
+boardId = 2;
 
 INSERT INTO article
 SET regDate = NOW(),
 updateDate = NOW(),
-title = '제목2',
-`body` = '내용2';
+title = '제목1',
+`body` = '내용1',
+memberId = 3,
+boardId = 2;
 
 INSERT INTO article
 SET regDate = NOW(),
 updateDate = NOW(),
-title = '제목3',
-`body` = '내용3';
+title = '제목1',
+`body` = '내용1',
+memberId = 2,
+boardId = 2;
 
 INSERT INTO article
 SET regDate = NOW(),
 updateDate = NOW(),
-title = '제목4',
-`body` = '내용4';
+title = '제목1',
+`body` = '내용1',
+memberId = 2,
+boardId = 2;
+
+INSERT INTO article
+SET regDate = NOW(),
+updateDate = NOW(),
+title = '제목1',
+`body` = '내용1',
+memberId = 2,
+boardId = 2;
+
+INSERT INTO article
+SET regDate = NOW(),
+updateDate = NOW(),
+title = '제목1',
+`body` = '내용1',
+memberId = 2,
+boardId = 2;
+
+INSERT INTO article
+SET regDate = NOW(),
+updateDate = NOW(),
+title = '제목1',
+`body` = '내용1',
+memberId = 3,
+boardId = 2;
+
+INSERT INTO article
+SET regDate = NOW(),
+updateDate = NOW(),
+title = '제목1',
+`body` = '내용1',
+memberId = 2,
+boardId = 2;
+
+INSERT INTO article
+SET regDate = NOW(),
+updateDate = NOW(),
+title = '제목1',
+`body` = '내용1',
+memberId = 2,
+boardId = 2;
+
+INSERT INTO article
+SET regDate = NOW(),
+updateDate = NOW(),
+title = '제목1',
+`body` = '내용1',
+memberId = 2,
+boardId = 2;
+
+
+INSERT INTO article
+SET regDate = NOW(),
+updateDate = NOW(),
+title = '제목1',
+`body` = '내용1',
+memberId = 2,
+boardId = 2;
+
+INSERT INTO article
+SET regDate = NOW(),
+updateDate = NOW(),
+title = '제목1',
+`body` = '내용1',
+memberId = 3,
+boardId = 2;
+
+INSERT INTO article
+SET regDate = NOW(),
+updateDate = NOW(),
+title = '제목1',
+`body` = '내용1',
+memberId = 2,
+boardId = 2;
+
+INSERT INTO article
+SET regDate = NOW(),
+updateDate = NOW(),
+title = '제목1',
+`body` = '내용1',
+memberId = 2,
+boardId = 2;
+
+INSERT INTO article
+SET regDate = NOW(),
+updateDate = NOW(),
+title = '제목1',
+`body` = '내용1',
+memberId = 2,
+boardId = 2;
+
+INSERT INTO article
+SET regDate = NOW(),
+updateDate = NOW(),
+title = '제목1',
+`body` = '내용1',
+memberId = 1,
+boardId = 1;
+
+INSERT INTO article
+SET regDate = NOW(),
+updateDate = NOW(),
+title = '제목1',
+`body` = '내용1',
+memberId = 1,
+boardId = 1;
+
+INSERT INTO article
+SET regDate = NOW(),
+updateDate = NOW(),
+title = '제목1',
+`body` = '내용1',
+memberId = 1,
+boardId = 1;
+
 
 # member TD 생성
 # (관리자)
@@ -475,19 +614,6 @@ SET regDate = NOW(),
 updateDate = NOW(),
 `code` = 'QnA',
 `name` = '질의응답';
-
-
-UPDATE article
-SET boardId = 1
-WHERE id IN (1,2);
-
-UPDATE article
-SET boardId = 2
-WHERE id = 3;
-
-UPDATE article
-SET boardId = 3
-WHERE id = 4;
 
 
 # reactionPoint 테스트 데이터 생성
@@ -663,20 +789,20 @@ SELECT * FROM article;
 SELECT * FROM board;
 
 # tripSchedule TD 생성
-INSERT INTO TRIPSCHEDULE(regDate, updateDate, `title`, `content`, startDate, endDate, regionId, memberId, step)
-VALUES(NOW(), NOW(), "나의 여행계획", "오늘은 맛있는 로컬 식당을 가자. 냠냠.", "2024-05-05", "2024-05-10", 1, 2, 0);
+INSERT INTO TRIPSCHEDULE(regDate, updateDate, `title`, `content`, startDate, endDate, regionId, memberId)
+VALUES(NOW(), NOW(), "나의 여행계획", "오늘은 맛있는 로컬 식당을 가자. 냠냠.", "2024-05-05", "2024-05-10", 1, 2);
 
 # tripSchedule TD 생성
-INSERT INTO TRIPSCHEDULE(regDate, updateDate, `title`, `content`, startDate, endDate, regionId, memberId, step)
-VALUES(NOW(), NOW(), "여행가자", "열심히 일했으니까 놀자~", "2024-06-05", "2024-06-10", 2, 2, 0);
+INSERT INTO TRIPSCHEDULE(regDate, updateDate, `title`, `content`, startDate, endDate, regionId, memberId)
+VALUES(NOW(), NOW(), "여행가자", "열심히 일했으니까 놀자~", "2024-06-05", "2024-06-10", 2, 2);
 
 # tripSchedule TD 생성
-INSERT INTO TRIPSCHEDULE(regDate, updateDate, `title`, `content`, startDate, endDate, regionId, memberId, step)
-VALUES(NOW(), NOW(), "또 여행", "여행 너무 좋앙~", "2024-07-05", "2024-07-10", 3, 2, 0);
+INSERT INTO TRIPSCHEDULE(regDate, updateDate, `title`, `content`, startDate, endDate, regionId, memberId)
+VALUES(NOW(), NOW(), "또 여행", "여행 너무 좋앙~", "2024-07-05", "2024-07-10", 3, 2);
 
 # tripSchedule TD 생성
-INSERT INTO TRIPSCHEDULE(regDate, updateDate, `title`, `content`, startDate, endDate, regionId, memberId, step)
-VALUES(NOW(), NOW(), "탕진 각", "ㅋㅋㅋ이제 파산각인가", "2024-08-05", "2024-08-10", 4, 2, 0);
+INSERT INTO TRIPSCHEDULE(regDate, updateDate, `title`, `content`, startDate, endDate, regionId, memberId)
+VALUES(NOW(), NOW(), "탕진 각", "ㅋㅋㅋ이제 파산각인가", "2024-08-05", "2024-08-10", 4, 2);
 
 
 
@@ -706,8 +832,6 @@ INSERT INTO `tabList` (regDate, updateDate, themeName) VALUES(
 
 ####20개 크롤링 insert문
 
-
-
 INSERT  INTO `country`(`id`,`regDate`,`updateDate`,`name`) VALUES 
 (1,'2024-05-03 17:22:37','2024-05-03 17:22:37','그리스'),
 (2,'2024-05-03 17:22:37','2024-05-03 17:22:37','네덜란드'),
@@ -717,8 +841,7 @@ INSERT  INTO `country`(`id`,`regDate`,`updateDate`,`name`) VALUES
 
 
 INSERT  INTO `recommendSpot`(`id`,`regDate`,`updateDate`,`name`,`grade`,`price`,`reviewCount`,`facilities`,`address`,`phoneNumber`,`imageUrl1`,`imageUrl2`,`imageUrl3`,`imageUrl4`,`imageUrl5`,`naverSpotCord`,`tabId`,`regionId`) VALUES 
-(1,'2024-05-03 17:26:18','2024-05-03 17:26:18','리틀 베니스',5,'','참여 7,191명','','Mitropoleos Georgouli, Mykonos Town Greece','','https://search.pstatic.net/common?src=http%3A%2F%2Fmedia-cdn.tripadvisor.com%2Fmedia%2Fphoto-o%2F1b%2Fe0%2Fa0%2F0e%2Fphoto0jpg.jpg&type=f520_288_
-search','https://search.pstatic.net/common?src=https%3A%2F%2Fdbscthumb-phinf.pstatic.net%2F5885_000_12%2F20201229163221632_I97AR1HBR.jpg%2Ffb345_32_i1.jpg%3Ftype%3Dw540_fst&type=f520_288_travelsearch','https://search.pstatic.net/common?src=https%3A%2F%2Fdbscthumb-phinf.pstatic.net%2F5885_000_12%2F20201229163227691_9AECSG0IG.jpg%2Ffb345_32_i2.jpg%3Ftype%3Dw540_fst&type=f520_288_travelsearch','https://search.pstatic.net/common?src=http%3A%2F%2Fmedia-cdn.tripadvisor.com%2Fmedia%2Fphoto-o%2F1b%2Ff3%2F71%2Fb5%2Fphoto2jpg.jpg&type=f520_288_travelsearch','https://search.pstatic.net/common?src=http%3A%2F%2Fmedia-cdn.tripadvisor.com%2Fmedia%2Fphoto-o%2F1b%2Ff3%2F71%2Fb4%2Fphoto1jpg.jpg&type=f520_288_travelsearch','GRJMK519760/',1,1),
+(1,'2024-05-03 17:26:18','2024-05-03 17:26:18','리틀 베니스',5,'','참여 7,191명','','Mitropoleos Georgouli, Mykonos Town Greece','','https://search.pstatic.net/common?src=http%3A%2F%2Fmedia-cdn.tripadvisor.com%2Fmedia%2Fphoto-o%2F1b%2Fe0%2Fa0%2F0e%2Fphoto0jpg.jpg&type=f520_288_travelsearch','https://search.pstatic.net/common?src=https%3A%2F%2Fdbscthumb-phinf.pstatic.net%2F5885_000_12%2F20201229163221632_I97AR1HBR.jpg%2Ffb345_32_i1.jpg%3Ftype%3Dw540_fst&type=f520_288_travelsearch','https://search.pstatic.net/common?src=https%3A%2F%2Fdbscthumb-phinf.pstatic.net%2F5885_000_12%2F20201229163227691_9AECSG0IG.jpg%2Ffb345_32_i2.jpg%3Ftype%3Dw540_fst&type=f520_288_travelsearch','https://search.pstatic.net/common?src=http%3A%2F%2Fmedia-cdn.tripadvisor.com%2Fmedia%2Fphoto-o%2F1b%2Ff3%2F71%2Fb5%2Fphoto2jpg.jpg&type=f520_288_travelsearch','https://search.pstatic.net/common?src=http%3A%2F%2Fmedia-cdn.tripadvisor.com%2Fmedia%2Fphoto-o%2F1b%2Ff3%2F71%2Fb4%2Fphoto1jpg.jpg&type=f520_288_travelsearch','GRJMK519760/',1,1),
 (2,'2024-05-03 17:26:19','2024-05-03 17:26:19','플라티스 기아로스 비치',4,'','참여 2,543명','','Mykonos, Platys Gialos 846 00 Greece','','https://search.pstatic.net/common?src=https%3A%2F%2Fdbscthumb-phinf.pstatic.net%2F5885_000_12%2F20201229163248429_K0F9CL7E3.jpg%2Ffb345_34_i1.jpg%3Ftype%3Dw540_fst&type=f520_288_travelsearch','https://search.pstatic.net/common?src=https%3A%2F%2Fdbscthumb-phinf.pstatic.net%2F5885_000_12%2F20201229163249869_I8WUCJO7L.jpg%2Ffb345_34_i2.jpg%3Ftype%3Dw540_fst&type=f520_288_travelsearch','https://search.pstatic.net/common?src=http%3A%2F%2Fmedia-cdn.tripadvisor.com%2Fmedia%2Fphoto-o%2F1b%2Ff0%2F81%2F17%2Fta-img-20200905-094831.jpg&type=f520_288_travelsearch','https://search.pstatic.net/common?src=http%3A%2F%2Fmedia-cdn.tripadvisor.com%2Fmedia%2Fphoto-o%2F1b%2Fe7%2F53%2Fec%2F20200830-180705-largejpg.jpg&type=f520_288_travelsearch','https://search.pstatic.net/common?src=http%3A%2F%2Fmedia-cdn.tripadvisor.com%2Fmedia%2Fphoto-o%2F1b%2Fe7%2F53%2Feb%2F20200830-180848-largejpg.jpg&type=f520_288_travelsearch','GRJMK2445564',1,1),
 (3,'2024-05-03 17:26:20','2024-05-03 17:26:20','미코노스 섬 풍차지구',4,'','참여 3,336명','','Alefkadras, Mykonos Town 846 00 Greece','','https://search.pstatic.net/common?src=https%3A%2F%2Fdbscthumb-phinf.pstatic.net%2F5885_000_12%2F20201229163235463_ITWCPHPRH.jpg%2Ffb345_33_i1.jpg%3Ftype%3Dw540_fst&type=f520_288_travelsearch','https://search.pstatic.net/common?src=https%3A%2F%2Fdbscthumb-phinf.pstatic.net%2F5885_000_12%2F20201229163246798_QX2IDFUAG.jpg%2Ffb345_33_i2.jpg%3Ftype%3Dw540_fst&type=f520_288_travelsearch','https://search.pstatic.net/common?src=http%3A%2F%2Fmedia-cdn.tripadvisor.com%2Fmedia%2Fphoto-o%2F1b%2Fec%2F0a%2F35%2Fimg-20100101-025454-largejpg.jpg&type=f520_288_travelsearch','https://search.pstatic.net/common?src=http%3A%2F%2Fmedia-cdn.tripadvisor.com%2Fmedia%2Fphoto-o%2F1b%2Fec%2F0a%2F34%2Fimg-20100101-025449-largejpg.jpg&type=f520_288_travelsearch','https://search.pstatic.net/common?src=http%3A%2F%2Fmedia-cdn.tripadvisor.com%2Fmedia%2Fphoto-o%2F1b%2Fe7%2F55%2Fb0%2Fwindmills.jpg&type=f520_288_travelsearch','GRJMK669289/',1,1),
 (4,'2024-05-03 17:26:21','2024-05-03 17:26:21','엘리아 해변',5,'','참여 2,480명','','Elia 84600 Greece','','https://search.pstatic.net/common?src=https%3A%2F%2Fdbscthumb-phinf.pstatic.net%2F5885_000_12%2F20201229163332129_QFARFOBIV.jpg%2Ffb345_38_i1.jpg%3Ftype%3Dw540_fst&type=f520_288_travelsearch','https://search.pstatic.net/common?src=https%3A%2F%2Fdbscthumb-phinf.pstatic.net%2F5885_000_12%2F20201229163341982_YS5XYKSBY.jpg%2Ffb345_38_i2.jpg%3Ftype%3Dw540_fst&type=f520_288_travelsearch','https://search.pstatic.net/common?src=http%3A%2F%2Fmedia-cdn.tripadvisor.com%2Fmedia%2Fphoto-o%2F1b%2Fe4%2F4d%2F27%2Fphoto0jpg.jpg&type=f520_288_travelsearch','https://search.pstatic.net/common?src=http%3A%2F%2Fmedia-cdn.tripadvisor.com%2Fmedia%2Fphoto-o%2F1b%2Fd8%2F6f%2F9d%2Felia-beach.jpg&type=f520_288_travelsearch','https://search.pstatic.net/common?src=http%3A%2F%2Fmedia-cdn.tripadvisor.com%2Fmedia%2Fphoto-o%2F1b%2Fd8%2F6f%2F9c%2Felia-beach.jpg&type=f520_288_travelsearch','GRJMK1752025',1,1),
@@ -996,7 +1119,7 @@ INSERT  INTO `region`(`id`,`regDate`,`updateDate`,`name`,`naverRegionCord`,`imag
 (2,'2024-05-03 17:22:37','2024-05-03 17:22:37','산토리니','GRATN189433','https://search.pstatic.net/common?src=https%3A%2F%2Fdbscthumb-phinf.pstatic.net%2F5885_000_12%2F20201229162116699_Y15JPAMDG.jpg%2Ffb344_3_i1.jpg%3Ftype%3Dw540_fst&type=f520_288_travelsearch','Santorini',1),
 (3,'2024-05-03 17:22:37','2024-05-03 17:22:37','아테네','GRCHI189400','https://search.pstatic.net/common?src=https%3A%2F%2Fdbscthumb-phinf.pstatic.net%2F5885_000_12%2F20201229160501475_893QSWYFX.jpg%2Ffb343_3_i1.jpg%3Ftype%3Dw540_fst&type=f520_288_travelsearch','Athens',1),
 (4,'2024-05-03 17:22:37','2024-05-03 17:22:37','자킨토스','GRZTH189462','https://search.pstatic.net/common?src=https%3A%2F%2Fdbscthumb-phinf.pstatic.net%2F5885_000_12%2F20201229163412800_HIVDM70GQ.jpg%2Ffb346_3_i1.jpg%3Ftype%3Dw540_fst&type=f520_288_travelsearch','Zakynthos',1),
-(5,'2024-05-03 17:22:37','2024-05-03 17:22:37','칼람바카','GR827315843','https://search.pstatic.net/common?src=http%3A%2F%2Fmedia-cdn.tripadvisor.com%2Fmedia%2Fphoto-o%2F1b%2Fe5%2Fb9%2F45%2F20200829-183629-largejpg.jpg&type=f520_288_travelsearch','Kalabaka',1),
+(5,'2024-05-03 17:22:37','2024-05-03 17:22:37','칼람바카','GR827315843','https://search.pstatic.net/common?src=http%3A%2F%2Fmedia-cdn.tripadvisor.com%2Fmedia%2Fphoto-o%2F1b%2Fe5%2Fb9%2F45%2F20200829-183629-largejpg.jpg&type=f520_288_travelsearch','Kalambaka',1),
 (6,'2024-05-03 17:22:37','2024-05-03 17:22:37','로테르담','NLRTM188632','https://search.pstatic.net/common?src=https%3A%2F%2Fdbscthumb-phinf.pstatic.net%2F5885_000_9%2F20201022172315404_TPOZLC6FY.jpg%2Ffb190_3_i1.jpg%3Ftype%3Dw540_fst&type=f520_288_travelsearch','Rotterdam',2),
 (7,'2024-05-03 17:22:37','2024-05-03 17:22:37','암스테르담','NLAMS188590','https://search.pstatic.net/common?src=https%3A%2F%2Fdbscthumb-phinf.pstatic.net%2F5885_000_9%2F20201022144540310_MDZWYMU88.jpg%2Ffb189_3_i1.jpg%3Ftype%3Dw540_fst&type=f520_288_travelsearch','Amsterdam',2),
 (8,'2024-05-03 17:22:37','2024-05-03 17:22:37','헤이그','NLHA9188633','https://search.pstatic.net/common?src=https%3A%2F%2Fdbscthumb-phinf.pstatic.net%2F5885_000_9%2F20201022173120070_V019Y0HZD.jpg%2Ffb191_3_i1.jpg%3Ftype%3Dw540_fst&type=f520_288_travelsearch','The Hague',2),
