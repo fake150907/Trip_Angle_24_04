@@ -1185,7 +1185,7 @@
 						class="ta-item-card">
 						<span class="ta-item-image-container">
 							<img src="${place.imageUrl1 }" alt="Fashion Image"
-								class="ta-item-image" />
+								class="ta-item-image" onerror="this.src='https://www.freeiconspng.com/thumbs/no-image-icon/no-image-icon-1.jpg';"/>
 							<span class="ta-item-description"> Click </span>
 						</span>
 						<span class="ta-item-details">
@@ -1205,7 +1205,7 @@
 						class="ta-item-card">
 						<span class="ta-item-image-container">
 							<img src="${place.imageUrl1 }" alt="Fashion Image"
-								class="ta-item-image" />
+								class="ta-item-image" onerror="this.src='https://www.freeiconspng.com/thumbs/no-image-icon/no-image-icon-1.jpg';"/>
 							<span class="ta-item-description"> Click </span>
 						</span>
 						<span class="ta-item-details">
@@ -1225,7 +1225,7 @@
 						class="ta-item-card">
 						<span class="ta-item-image-container">
 							<img src="${place.imageUrl1 }" alt="Fashion Image"
-								class="ta-item-image" />
+								class="ta-item-image" onerror="this.src='https://www.freeiconspng.com/thumbs/no-image-icon/no-image-icon-1.jpg';"/>
 							<span class="ta-item-description"> Click </span>
 						</span>
 						<span class="ta-item-details">
