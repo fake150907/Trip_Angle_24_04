@@ -205,6 +205,73 @@ ___
 ◆ 크롤링
 - 테마별 추천 장소 페이지(이름, 시설정보, 주소, 리뷰갯수, 이미지5개) 크롤링
 
+
+#   페이지별 기능
+[메인화면]
+![](https://velog.velcdn.com/images/insamju300/post/617afc64-567d-4b39-bf81-442ae648de61/image.png)
+![](https://velog.velcdn.com/images/insamju300/post/e702b42c-2dd7-45f6-bd6d-0784186a3ca3/image.png)
+![](https://velog.velcdn.com/images/insamju300/post/f982ed58-9b17-4213-9237-999bbcd4db72/image.png)
+![](https://velog.velcdn.com/images/insamju300/post/e09edb4d-b2b8-4d08-bbae-c8d5594f5479/image.png)
+![](https://velog.velcdn.com/images/insamju300/post/4e91f583-9857-4034-842c-3f9cbba23d43/image.png)
+
+[티케팅 페이지]
+![](https://velog.velcdn.com/images/insamju300/post/614a8e77-ce5a-4a79-9a98-e78e3f029a4c/image.png)
+
+[여행지 기본정보]
+![](https://velog.velcdn.com/images/insamju300/post/51f50584-b8bb-478a-813c-a15382faffa2/image.png)
+
+[여행지 꿀팁]
+![](https://velog.velcdn.com/images/insamju300/post/d5cbfd77-6b3c-4d4a-9ac0-e0f6e0298254/image.png)
+
+[일정 달력]
+![](https://velog.velcdn.com/images/insamju300/post/eded322e-2f85-4bf6-9588-03e4ab9fc191/image.png)
+![](https://velog.velcdn.com/images/insamju300/post/0bdccf4d-12d9-4f14-bded-af3d303b5a48/image.png)
+![](https://velog.velcdn.com/images/insamju300/post/e473406c-ddb7-4e79-8887-5ff61c89479c/image.png)
+
+[나의 일정]
+![](https://velog.velcdn.com/images/insamju300/post/6d28b5cf-0422-43a0-89f4-8cb01ca9c142/image.png)
+
+[장소 상세보기]
+![](https://velog.velcdn.com/images/insamju300/post/8f040a76-f42b-4ba5-be7e-1b689ff48d35/image.png)
+
+[로그인 페이지]
+![](https://velog.velcdn.com/images/insamju300/post/48da80aa-f584-4135-a53a-16a8c15cc2d6/image.png)
+
+[여행후기 리스트 ]
+![](https://velog.velcdn.com/images/insamju300/post/b625f6d4-16db-4a51-bc26-a4a77b0c00ce/image.png)
+
+[여행후기 상세]
+![](https://velog.velcdn.com/images/insamju300/post/b763dc5f-0120-4451-913a-4b7c6603da24/image.png)
+
+[회원가입]
+![](https://velog.velcdn.com/images/insamju300/post/b711c011-bdc6-473a-9f81-01ec2de997fc/image.png)
+
+[회원정보 수정]
+![](https://velog.velcdn.com/images/insamju300/post/5b29c75e-9059-4daa-ab19-eb1598fff8e8/image.png)
+
+[나의 일정 상세- 기본정보 및 꿀팁]
+![](https://velog.velcdn.com/images/insamju300/post/ae93ce31-86ea-48a0-b7d4-9bbcb02bbc4d/image.png)
+[나의 일정 상세 - 옷추천 ]
+![](https://velog.velcdn.com/images/insamju300/post/de37012e-994f-48df-958c-ce7265a0ff8c/image.png)
+
+
+[나의 일정 상세-쇼핑리스트 및 장소추천]
+![](https://velog.velcdn.com/images/insamju300/post/908dbd54-aa22-4307-afc0-a478aeb56ad6/image.png)
+
+[나의 일정 상세-캘린더]
+![](https://velog.velcdn.com/images/insamju300/post/5247ee72-9640-43c2-a153-50c8f2b59c91/image.png)
+
+[스타일링 추천페이지 - 날씨]
+![](https://velog.velcdn.com/images/insamju300/post/0785b172-6601-4e34-a5bd-3edd2acaf6e7/image.png)
+
+[스타일링 추천페이지 - 쇼핑리스트]
+![](https://velog.velcdn.com/images/insamju300/post/a1e56db5-38c7-4030-8505-f99a5bd0dc54/image.png)
+
+
+[스타일링 추천페이지 - 옷추천]
+![](https://velog.velcdn.com/images/insamju300/post/4ad5fd09-aaec-47f7-be35-44cf0d596702/image.png)
+
+
 #   참고 링크
 ___
 api 키 설정 및 fastapi 연동을 위한 설정 정보: [설정 정보](https://velog.io/@insamju300/python-fastapi-%EC%97%B0%EA%B4%80%EA%B8%B0%EB%8A%A5-%EC%9E%91%EB%8F%99%EC%9D%84-%EC%9C%84%ED%95%9C-%EC%84%9C%EB%B2%84-%EC%9E%91%EB%8F%99%EB%B0%A9%EB%B2%95-%EC%97%B0%EA%B3%84)
