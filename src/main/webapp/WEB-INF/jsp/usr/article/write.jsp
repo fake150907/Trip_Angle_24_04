@@ -46,7 +46,7 @@
 			onsubmit="ArticleWrite__submit(this); return false;"
 			enctype="multipart/form-data">
 			<input type="hidden" name="${currentId }"> <input
-				type="hidden" name="body"> <input type="hidden" name="body">
+				type="hidden" name="body">
 			<table class="write-box table-box-1 mx-auto" border="1">
 				<tbody>
 					<tr>
