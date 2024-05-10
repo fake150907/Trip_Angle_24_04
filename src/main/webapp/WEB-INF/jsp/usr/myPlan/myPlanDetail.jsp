@@ -1013,13 +1013,13 @@
 					<div class="ta-item-image-container">
 						<c:choose>
 							<c:when test="${fashion.imageUrl==''}">
-								<img src="/resource/image/FashionNoimage.webp"
+								<img src="https://www.freeiconspng.com/thumbs/no-image-icon/no-image-icon-1.jpg"
 									alt="Fashion Image" class="ta-item-image" loading="lazy">
 							</c:when>
 
 							<c:otherwise>
 								<img src="${fashion.imageUrl }" alt="Fashion Image"
-									class="ta-item-image" loading="lazy">
+									class="ta-item-image" loading="lazy" onerror="this.src='https://www.freeiconspng.com/thumbs/no-image-icon/no-image-icon-1.jpg';">
 							</c:otherwise>
 						</c:choose>
 						<div class="ta-item-description">${fashion.description}</div>
@@ -1052,13 +1052,13 @@
 						<div class="ta-item-image-container">
 							<c:choose>
 								<c:when test="${fashion.imageUrl==''}">
-									<img src="/resource/image/FashionNoimage.webp"
-										alt="Fashion Image" class="ta-item-image" loading="lazy">
+									<img src="https://www.freeiconspng.com/thumbs/no-image-icon/no-image-icon-1.jpg"
+										alt="Fashion Image" class="ta-item-image" loading="lazy" >
 								</c:when>
 
 								<c:otherwise>
 									<img src="${fashion.imageUrl }" alt="Fashion Image"
-										class="ta-item-image" loading="lazy">
+										class="ta-item-image" loading="lazy" onerror="this.src='https://www.freeiconspng.com/thumbs/no-image-icon/no-image-icon-1.jpg';">
 								</c:otherwise>
 							</c:choose>
 							<div class="ta-item-description">${fashion.description}</div>
@@ -1082,13 +1082,13 @@
 						<div class="ta-item-image-container">
 							<c:choose>
 								<c:when test="${fashion.imageUrl==''}">
-									<img src="/resource/image/FashionNoimage.webp"
+									<img src="https://www.freeiconspng.com/thumbs/no-image-icon/no-image-icon-1.jpg"
 										alt="Fashion Image" class="ta-item-image" loading="lazy">
 								</c:when>
 
 								<c:otherwise>
 									<img src="${fashion.imageUrl }" alt="Fashion Image"
-										class="ta-item-image" loading="lazy">
+										class="ta-item-image" loading="lazy" onerror="this.src='https://www.freeiconspng.com/thumbs/no-image-icon/no-image-icon-1.jpg';">
 								</c:otherwise>
 							</c:choose>
 							<div class="ta-item-description">${fashion.description}</div>
@@ -1128,13 +1128,13 @@
 				<div class="ta-item-image-container">
 					<c:choose>
 						<c:when test="${shoppingList.imageUrl==''}">
-							<img src="/resource/image/ShoppingListNoimage.webp"
+							<img src="https://www.freeiconspng.com/thumbs/no-image-icon/no-image-icon-1.jpg"
 								alt="Fashion Image" class="ta-item-image" loading="lazy">
 						</c:when>
 
 						<c:otherwise>
 							<img src="${shoppingList.imageUrl }" alt="Fashion Image"
-								class="ta-item-image" loading="lazy">
+								class="ta-item-image" loading="lazy" onerror="this.src='https://www.freeiconspng.com/thumbs/no-image-icon/no-image-icon-1.jpg';">
 						</c:otherwise>
 					</c:choose>
 					<div class="ta-item-description">${shoppingList.description }</div>
