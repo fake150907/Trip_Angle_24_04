@@ -887,7 +887,7 @@
 				<div class="div-3">
 					<div class="div-4">
 						<div class="destination">${tripSchedule.extra__regionName}</div>
-						<div class="trip-date">2024-04-15 ~ 2024-04-24</div>
+						<div class="trip-date">${tripSchedule.startDate } ~ ${tripSchedule.endDate }</div>
 					</div>
 
 					<a class="calendar-btn" href="/usr/myPlan/myPlanCalendar">캘린더
