@@ -173,13 +173,12 @@ ___
 
 [티케팅 페이지]
 ![](https://velog.velcdn.com/images/insamju300/post/614a8e77-ce5a-4a79-9a98-e78e3f029a4c/image.png)
-
 - 항공권 예매 섹션 클릭 시 Skyscanner 홈페이지로 연결됩니다.
 - 숙소 예약 섹션 클릭 시 Booking.com 홈페이지로 연결됩니다.
 
 [여행지 기본정보]
 ![](https://velog.velcdn.com/images/insamju300/post/51f50584-b8bb-478a-813c-a15382faffa2/image.png)
-- 기본적보 섹션은 선택한 여행지의 기본 정보, 기후를 확인 할 수 있습니다.
+- 기본정보 섹션은 선택한 여행지의 기본 정보, 기후를 확인 할 수 있습니다.
 
 [여행지 꿀팁]
 ![](https://velog.velcdn.com/images/insamju300/post/d5cbfd77-6b3c-4d4a-9ac0-e0f6e0298254/image.png)
