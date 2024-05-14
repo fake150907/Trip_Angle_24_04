@@ -1,4 +1,4 @@
-# 🛫여행, 패션, 날씨를 연결한 서비스 웹 TripAngle
+# 🛫TripAngle: GPT 기반의 여행, 패션, 날씨 통합 서비스
 ___
 
 ![](https://velog.velcdn.com/images/insamju300/post/829f1d9e-b53a-4d35-b945-9288fcf07ff9/image.png)
