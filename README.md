@@ -208,37 +208,49 @@ ___
 ![](https://velog.velcdn.com/images/insamju300/post/e473406c-ddb7-4e79-8887-5ff61c89479c/image.png)
 - 일정 제목과 내용을 입력하고 일정을 생성합니다.
 
-[나의 일정]
-![](https://velog.velcdn.com/images/insamju300/post/6d28b5cf-0422-43a0-89f4-8cb01ca9c142/image.png)
-
-[장소 상세보기]
-![](https://velog.velcdn.com/images/insamju300/post/8f040a76-f42b-4ba5-be7e-1b689ff48d35/image.png)
-
-[여행후기 리스트 ]
-![](https://velog.velcdn.com/images/insamju300/post/b625f6d4-16db-4a51-bc26-a4a77b0c00ce/image.png)
-
-[여행후기 상세]
-![](https://velog.velcdn.com/images/insamju300/post/b763dc5f-0120-4451-913a-4b7c6603da24/image.png)
-
-[나의 일정 상세- 기본정보 및 꿀팁]
-![](https://velog.velcdn.com/images/insamju300/post/ae93ce31-86ea-48a0-b7d4-9bbcb02bbc4d/image.png)
-[나의 일정 상세 - 옷추천 ]
-![](https://velog.velcdn.com/images/insamju300/post/de37012e-994f-48df-958c-ce7265a0ff8c/image.png)
-
-[나의 일정 상세-쇼핑리스트 및 장소추천]
-![](https://velog.velcdn.com/images/insamju300/post/908dbd54-aa22-4307-afc0-a478aeb56ad6/image.png)
-
-[나의 일정 상세-캘린더]
-![](https://velog.velcdn.com/images/insamju300/post/5247ee72-9640-43c2-a153-50c8f2b59c91/image.png)
-
 [스타일링 추천페이지 - 날씨]
 ![](https://velog.velcdn.com/images/insamju300/post/0785b172-6601-4e34-a5bd-3edd2acaf6e7/image.png)
+- 일정 달력에서 선택한 기간의 날씨를 확인 할 수 있습니다.
 
 [스타일링 추천페이지 - 쇼핑리스트]
 ![](https://velog.velcdn.com/images/insamju300/post/a1e56db5-38c7-4030-8505-f99a5bd0dc54/image.png)
+여행 지역에 맞는 쇼핑 리스트를 추천 받을 수 있습니다.
 
 [스타일링 추천페이지 - 옷추천]
 ![](https://velog.velcdn.com/images/insamju300/post/4ad5fd09-aaec-47f7-be35-44cf0d596702/image.png)
+- 여행지 날씨에 맞는 의상을 추천 받을 수 있습니다.
+
+[나의 일정 상세- 기본정보 및 꿀팁]
+![](https://velog.velcdn.com/images/insamju300/post/ae93ce31-86ea-48a0-b7d4-9bbcb02bbc4d/image.png)
+- 여행지의 정보와 나의 일정명, 내용을 확인 할 수 있습니다.
+
+[나의 일정 상세-캘린더]
+![](https://velog.velcdn.com/images/insamju300/post/5247ee72-9640-43c2-a153-50c8f2b59c91/image.png)
+- 캘린더 보기 버튼 클릭시 날짜마다 일정 내용을 작성 할 수 있는 캘린더를 사용 가능합니다.
+
+[나의 일정 상세 - 옷추천 ]
+![](https://velog.velcdn.com/images/insamju300/post/de37012e-994f-48df-958c-ce7265a0ff8c/image.png)
+- 스타일링 추천페이지에서 추천받은 의상을 확인 할 수 있습니다.
+
+[나의 일정 상세-쇼핑리스트 및 장소추천]
+![](https://velog.velcdn.com/images/insamju300/post/908dbd54-aa22-4307-afc0-a478aeb56ad6/image.png)
+- 스타일링 추천페이지에서 추천받은 의상을 확인 할 수 있습니다.
+
+[장소 상세보기]
+![](https://velog.velcdn.com/images/insamju300/post/8f040a76-f42b-4ba5-be7e-1b689ff48d35/image.png)
+- 장소 탭에서 각 장소 섹션 클릭시 장소 상세보기로 이동하며, 각 장소의 정보를 확인 할 수 있습니다.
+
+[나의 일정]
+![](https://velog.velcdn.com/images/insamju300/post/6d28b5cf-0422-43a0-89f4-8cb01ca9c142/image.png)
+- 헤더의 나의 일정 부분을 클릭하고 내가 만든 일정을 카드 형식으로 확인이 가능합니다.
+
+[여행후기 리스트 ]
+![](https://velog.velcdn.com/images/insamju300/post/b625f6d4-16db-4a51-bc26-a4a77b0c00ce/image.png)
+- 헤더의 여행 후기 부분을 클릭하고 트립앵글을 이용하는 회원들의 게시글을 확인 할 수 있습니다.
+
+[여행후기 상세]
+![](https://velog.velcdn.com/images/insamju300/post/b763dc5f-0120-4451-913a-4b7c6603da24/image.png)
+- 트립앵글의 회원이 작성한 여행 후기의 상세 내용을 확인 할 수 있습니다.
 
 
 #   참고 링크
