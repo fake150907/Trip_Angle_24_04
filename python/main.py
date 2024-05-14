@@ -105,7 +105,7 @@ async def fashionRecommendation(
             "format_instructions": parser.get_format_instructions()},)
 
     # OpenAI 챗모델을 초기화합니다.
-    model = ChatOpenAI(model="gpt-4-turbo",
+    model = ChatOpenAI(model="gpt-4o",
                        temperature=0.5,)
 
 
@@ -208,7 +208,7 @@ async def shopingListRecommendation(
             "format_instructions": parser.get_format_instructions()},)
 
     # OpenAI 챗모델을 초기화합니다.
-    model = ChatOpenAI(model="gpt-3.5-turbo",
+    model = ChatOpenAI(model="gpt-4o",
                        temperature=0.5,)
 
 
