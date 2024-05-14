@@ -154,7 +154,7 @@ ___
 
 
 #   페이지별 기능
-[메인화면]
+#### [메인화면]
 ![](https://velog.velcdn.com/images/insamju300/post/617afc64-567d-4b39-bf81-442ae648de61/image.png)
 - 처음 시작화면은 여행테마에 맞는 4개의 영상이 재생되는 페이지 입니다.
 - 메인페이지는 마우스 휠을 한번만 내려도 바로 다음섹션으로 내려가게 기능구현이 되어 있습니다.
@@ -171,84 +171,84 @@ ___
 ![](https://velog.velcdn.com/images/insamju300/post/4e91f583-9857-4034-842c-3f9cbba23d43/image.png)
 - TripAngle 프로젝트를 함께 만든 팀원 전원이 함께 찍은 단체사진섹션입니다.
 
-[회원가입]
+#### [회원가입]
 ![](https://velog.velcdn.com/images/insamju300/post/b711c011-bdc6-473a-9f81-01ec2de997fc/image.png)
 - 기본 정보 입력 후 회원가입을 합니다.
 
-[로그인 페이지]
+#### [로그인 페이지]
 ![](https://velog.velcdn.com/images/insamju300/post/48da80aa-f584-4135-a53a-16a8c15cc2d6/image.png)
 - 아이디와 비밀번호로 로그인을 합니다.
 
-[회원정보 수정]
+#### [회원정보 수정]
 ![](https://velog.velcdn.com/images/insamju300/post/5b29c75e-9059-4daa-ab19-eb1598fff8e8/image.png)
 - 회원정보 페이지에서 개인정보를 수정 할 수 있습니다.
 
-[티케팅 페이지]
+#### [티케팅 페이지]
 ![](https://velog.velcdn.com/images/insamju300/post/614a8e77-ce5a-4a79-9a98-e78e3f029a4c/image.png)
 - 항공권 예매 섹션 클릭 시 Skyscanner 홈페이지로 연결됩니다.
 - 숙소 예약 섹션 클릭 시 Booking.com 홈페이지로 연결됩니다.
 
-[여행지 기본정보]
+#### [여행지 기본정보]
 ![](https://velog.velcdn.com/images/insamju300/post/51f50584-b8bb-478a-813c-a15382faffa2/image.png)
 - 기본정보 섹션은 선택한 여행지의 기본 정보, 기후를 확인 할 수 있습니다.
 
-[여행지 꿀팁]
+#### [여행지 꿀팁]
 ![](https://velog.velcdn.com/images/insamju300/post/d5cbfd77-6b3c-4d4a-9ac0-e0f6e0298254/image.png)
 - 꿀팁 섹션은 선택한 여행지의 사용 언어, 팁, 환율, 시차, 전압을 확인 할 수 있습니다.
 
-[일정 달력]
+#### [일정 달력]
 ![](https://velog.velcdn.com/images/insamju300/post/eded322e-2f85-4bf6-9588-03e4ab9fc191/image.png)
 - 일정 기간을 선택 할 수 있습니다.
 
-[일정 달력 - 기간 선택]
+#### [일정 달력 - 기간 선택]
 ![](https://velog.velcdn.com/images/insamju300/post/0bdccf4d-12d9-4f14-bded-af3d303b5a48/image.png)
 - 일정 기간은 오늘 날짜로부터 15일 이하로 선택 가능하며 2일 이상 선택해야 합니다.
 
-[일정 달력 - 일정 생성 입력창]
+#### [일정 달력 - 일정 생성 입력창]
 ![](https://velog.velcdn.com/images/insamju300/post/e473406c-ddb7-4e79-8887-5ff61c89479c/image.png)
 - 일정 제목과 내용을 입력하고 일정을 생성합니다.
 
-[스타일링 추천페이지 - 날씨]
+#### [스타일링 추천페이지 - 날씨]
 ![](https://velog.velcdn.com/images/insamju300/post/0785b172-6601-4e34-a5bd-3edd2acaf6e7/image.png)
 - 일정 달력에서 선택한 기간의 날씨를 확인 할 수 있습니다.
 
-[스타일링 추천페이지 - 쇼핑리스트]
+#### [스타일링 추천페이지 - 쇼핑리스트]
 ![](https://velog.velcdn.com/images/insamju300/post/a1e56db5-38c7-4030-8505-f99a5bd0dc54/image.png)
 여행 지역에 맞는 쇼핑 리스트를 추천 받을 수 있습니다.
 
-[스타일링 추천페이지 - 옷추천]
+#### [스타일링 추천페이지 - 옷추천]
 ![](https://velog.velcdn.com/images/insamju300/post/4ad5fd09-aaec-47f7-be35-44cf0d596702/image.png)
 - 여행지 날씨에 맞는 의상을 추천 받을 수 있습니다.
 
-[나의 일정 상세- 기본정보 및 꿀팁]
+#### [나의 일정 상세- 기본정보 및 꿀팁]
 ![](https://velog.velcdn.com/images/insamju300/post/ae93ce31-86ea-48a0-b7d4-9bbcb02bbc4d/image.png)
 - 여행지의 정보와 나의 일정명, 내용을 확인 할 수 있습니다.
 
-[나의 일정 상세-캘린더]
+#### [나의 일정 상세-캘린더]
 ![](https://velog.velcdn.com/images/insamju300/post/5247ee72-9640-43c2-a153-50c8f2b59c91/image.png)
 - 캘린더 보기 버튼 클릭시 날짜마다 일정 내용을 작성 할 수 있는 캘린더를 사용 가능합니다.
 
-[나의 일정 상세 - 옷추천 ]
+#### [나의 일정 상세 - 옷추천 ]
 ![](https://velog.velcdn.com/images/insamju300/post/de37012e-994f-48df-958c-ce7265a0ff8c/image.png)
 - 스타일링 추천페이지에서 추천받은 의상을 확인 할 수 있습니다.
 
-[나의 일정 상세-쇼핑리스트 및 장소추천]
+#### [나의 일정 상세-쇼핑리스트 및 장소추천]
 ![](https://velog.velcdn.com/images/insamju300/post/908dbd54-aa22-4307-afc0-a478aeb56ad6/image.png)
 - 스타일링 추천페이지에서 추천받은 의상을 확인 할 수 있습니다.
 
-[장소 상세보기]
+#### [장소 상세보기]
 ![](https://velog.velcdn.com/images/insamju300/post/8f040a76-f42b-4ba5-be7e-1b689ff48d35/image.png)
 - 장소 탭에서 각 장소 섹션 클릭시 장소 상세보기로 이동하며, 각 장소의 정보를 확인 할 수 있습니다.
 
-[나의 일정]
+#### [나의 일정]
 ![](https://velog.velcdn.com/images/insamju300/post/6d28b5cf-0422-43a0-89f4-8cb01ca9c142/image.png)
 - 헤더의 나의 일정 부분을 클릭하고 내가 만든 일정을 카드 형식으로 확인이 가능합니다.
 
-[여행후기 리스트 ]
+#### [여행후기 리스트 ]
 ![](https://velog.velcdn.com/images/insamju300/post/b625f6d4-16db-4a51-bc26-a4a77b0c00ce/image.png)
 - 헤더의 여행 후기 부분을 클릭하고 트립앵글을 이용하는 회원들의 게시글을 확인 할 수 있습니다.
 
-[여행후기 상세]
+#### [여행후기 상세]
 ![](https://velog.velcdn.com/images/insamju300/post/b763dc5f-0120-4451-913a-4b7c6603da24/image.png)
 - 트립앵글의 회원이 작성한 여행 후기의 상세 내용을 확인 할 수 있습니다.
 
