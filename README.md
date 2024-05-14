@@ -156,10 +156,16 @@ ___
 #   페이지별 기능
 [메인화면]
 ![](https://velog.velcdn.com/images/insamju300/post/617afc64-567d-4b39-bf81-442ae648de61/image.png)
+- 처음 시작화면은 여행테마에 맞는 4개의 영상이 재생되는 페이지 입니다.
+- 메인페이지는 마우스 휠을 한번만 내려도 바로 다음섹션으로 내려가게 기능구현이 되어 있습니다.
 ![](https://velog.velcdn.com/images/insamju300/post/e702b42c-2dd7-45f6-bd6d-0784186a3ca3/image.png)
+- 저희 TripAngle의 핵심 기능중 하나인 여행일정 만들기 기능을 사용하기 위해서는 검색창에서 가고 싶은 해외 여행지를 검색하여 선택 후 일정만들기를 하면 됩니다.
 ![](https://velog.velcdn.com/images/insamju300/post/f982ed58-9b17-4213-9237-999bbcd4db72/image.png)
+- About TripAngle은 저희가 만든 TripAngle의 정체성인 trip, style, weather에 대한 설명을 적어놓은 섹션입니다.
 ![](https://velog.velcdn.com/images/insamju300/post/e09edb4d-b2b8-4d08-bbae-c8d5594f5479/image.png)
+- TripAngle 프로젝트를 함께 만든 팀원들의 정보와 contact 할 수단을 작성해놓은 섹션입니다.
 ![](https://velog.velcdn.com/images/insamju300/post/4e91f583-9857-4034-842c-3f9cbba23d43/image.png)
+- TripAngle 프로젝트를 함께 만든 팀원 전원이 함께 찍은 단체사진섹션입니다.
 
 [티케팅 페이지]
 ![](https://velog.velcdn.com/images/insamju300/post/614a8e77-ce5a-4a79-9a98-e78e3f029a4c/image.png)
