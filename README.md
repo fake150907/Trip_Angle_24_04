@@ -255,43 +255,42 @@ ___
 
 #   TripAngle 환경설정 가이드 북
 
+### I. 프로젝트 실행에 필요한 프로그램  
+[STS4](https://cdn.spring.io/spring-tools/release/STS4/4.22.0.RELEASE/dist/e4.31/spring-tool-suite-4-4.22.0.RELEASE-e4.31.0-win32.win32.x86_64.self-extracting.jar)  
+[VSCode](https://code.visualstudio.com)  
+[Xampp](https://www.apachefriends.org/)  
+[SQLyog](https://s3.amazonaws.com/SQLyog_Community/SQLyog+13.2.1/SQLyog-13.2.1-0.x64Community.exe)  
+[파이썬](https://www.python.org/ftp/python/3.12.3/python-3.12.3-amd64.exe)  
 
-### I. 프로젝트 실행에 필요한 프로그램
-[STS4](https://cdn.spring.io/spring-tools/release/STS4/4.22.0.RELEASE/dist/e4.31/spring-tool-suite-4-4.22.0.RELEASE-e4.31.0-win32.win32.x86_64.self-extracting.jar)
-[VSCode](https://code.visualstudio.com)
-[Xampp](https://www.apachefriends.org/)
-[SQLyog](https://s3.amazonaws.com/SQLyog_Community/SQLyog+13.2.1/SQLyog-13.2.1-0.x64Community.exe)
-[파이썬](https://www.python.org/ftp/python/3.12.3/python-3.12.3-amd64.exe)
+### 2. DB(DataBase) 세팅  
+1. TripAngle 파일 내부의 DB.sql 파일을 메모장으로 실행 후 텍스트 전체 복사(ctrl+A)해주세요.  
+![](https://velog.velcdn.com/images/insamju300/post/f79e7b36-4482-422e-8bbf-955ab08b973e/image.png)  
+2. 텍스트 붙여넣기 후 전체 쿼리 실행(F9)해주세요.  
+![](https://velog.velcdn.com/images/insamju300/post/f0044e4c-c134-492d-bf7f-315065c8e966/image.png)  
 
-### 2. DB(DataBase) 세팅
-1. TripAngle 파일 내부의 DB.sql 파일을 메모장으로 실행 후 텍스트 전체 복사(ctrl+A)해주세요.
-![](https://velog.velcdn.com/images/insamju300/post/f79e7b36-4482-422e-8bbf-955ab08b973e/image.png)
-2. 텍스트 붙여넣기 후 전체 쿼리 실행(F9)해주세요.
-![](https://velog.velcdn.com/images/insamju300/post/f0044e4c-c134-492d-bf7f-315065c8e966/image.png)
-
-### 3. API KEY 세팅 및 FASTAPI 구동 방법
-구동시 필요한 프로그램 
- - VSCode
- - Python 3.12.3
+### 3. API KEY 세팅 및 FASTAPI 구동 방법  
+구동시 필요한 프로그램  
+ - VSCode  
+ - Python 3.12.3  
  
-1. OPEN WEATHER API KEY 적용을 위한 js 파일 생성
-keys.js란 파일 명으로 아래 내용을 담아 파일을 생성해 주세요.
-OPEN WEATHER API KEY는 아래 사이트에서 얻을 수 있습니다.
-https://openweathermap.org/
+1. OPEN WEATHER API KEY 적용을 위한 js 파일 생성  
+keys.js란 파일 명으로 아래 내용을 담아 파일을 생성해 주세요.  
+OPEN WEATHER API KEY는 아래 사이트에서 얻을 수 있습니다.  
+https://openweathermap.org/  
 
-파일에 담을 내용:
+파일에 담을 내용:  
 ``` javascript
 const openWeatherApiKey= ()=>"yourkey";
 ```
 
-2. keys.js파일의 배치 클론한 Trip_Angle_24_04\src\main\resources\static\resource 경로 아래 keys.js파일을 배치해 주세요.
+2. keys.js파일의 배치 클론한 Trip_Angle_24_04\src\main\resources\static\resource 경로 아래 keys.js파일을 배치해 주세요.  
 ![](https://velog.velcdn.com/images/insamju300/post/159f4be7-339b-4f06-8a00-6ba4975d1d29/image.png)
 
-3. OPEN AI API KEY와  네이버 API의 클라이언트ID와 시크릿 키 적용을 위한 .env 파일 생성 .env라는 파일 명으로 아래 내용을 담아 파일을 생성해 주세요. 
-
-openai의 api키는 아래 사이트에서 얻을 수 있습니다. 
-https://openai.com/index/openai-api
-네이버 클라이언트 id와 네이버 시크릿키는 아래 사이트에서 얻을 수 있습니다. https://developers.naver.com/main/
+3. OPEN AI API KEY와  네이버 API의 클라이언트ID와 시크릿 키 적용을 위한 .env 파일 생성 .env라는 파일 명으로 아래 내용을 담아 파일을 생성해 주세요.   
+openai의 api키는 아래 사이트에서 얻을 수 있습니다.  
+https://openai.com/index/openai-api  
+네이버 클라이언트 id와 네이버 시크릿키는 아래 사이트에서 얻을 수 있습니다.  
+https://developers.naver.com/main/  
 
 파일에 담을 내용:
 ```python
