@@ -206,7 +206,7 @@ public class PlaceInfoCrawlerForAllInit {
 				reviewCount = null;
 			}
 
-			String placeInsertSql = "INSERT INTO recommendSpot (regDate, updateDate, groceryName, address, phoneNumber,facilities,grade,imageUrl1,imageUrl2,imageUrl3,imageUrl4,imageUrl5,reviewCount, naverSpotCord, tabId, regionId,price) VALUES (NOW(), NOW(), ?, ?, ? ,?, ?, ?,?,?,?,?,?,?,?,?,?)";
+			String placeInsertSql = "INSERT INTO recommendSpot (regDate, updateDate, name, address, phoneNumber,facilities,grade,imageUrl1,imageUrl2,imageUrl3,imageUrl4,imageUrl5,reviewCount, naverSpotCord, tabId, regionId,price) VALUES (NOW(), NOW(), ?, ?, ? ,?, ?, ?,?,?,?,?,?,?,?,?,?)";
 			// 크롤링이 끝난 후에는 WebDriver를 종료
 			// driver.quit();
 			PlaceInfoDto place = new PlaceInfoDto(name, address, phoneNum, facilities, grade, imgUrl1, imgUrl2, imgUrl3,

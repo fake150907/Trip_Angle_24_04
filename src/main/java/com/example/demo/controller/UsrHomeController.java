@@ -8,7 +8,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.demo.service.RegionService;
-import com.example.demo.util.crawlTest;
 import com.example.demo.vo.Region;
 import com.google.gson.Gson;
 
@@ -41,15 +40,6 @@ public class UsrHomeController {
 
 		return "redirect:/usr/home/main";
 	}
-
-	@RequestMapping("/usr/crawl")
-	public String doCrawl() {
-
-		crawlTest.crawl();
-
-		return "redirect:/usr/home/main";
-	}
-	
 	
 	@RequestMapping("/usr/home/writeEmailToYunlin")
 	public String writeEmailToYunlin() {
