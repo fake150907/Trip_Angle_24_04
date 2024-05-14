@@ -174,16 +174,28 @@ ___
 [티케팅 페이지]
 ![](https://velog.velcdn.com/images/insamju300/post/614a8e77-ce5a-4a79-9a98-e78e3f029a4c/image.png)
 
+- 항공권 예매 섹션 클릭 시 Skyscanner 홈페이지로 연결됩니다.
+- 숙소 예약 섹션 클릭 시 Booking.com 홈페이지로 연결됩니다.
+
 [여행지 기본정보]
 ![](https://velog.velcdn.com/images/insamju300/post/51f50584-b8bb-478a-813c-a15382faffa2/image.png)
+- 기본적보 섹션은 선택한 여행지의 기본 정보, 기후를 확인 할 수 있습니다.
 
 [여행지 꿀팁]
 ![](https://velog.velcdn.com/images/insamju300/post/d5cbfd77-6b3c-4d4a-9ac0-e0f6e0298254/image.png)
+- 꿀팁 섹션은 선택한 여행지의 사용 언어, 팁, 환율, 시차, 전압을 확인 할 수 있습니다.
 
 [일정 달력]
 ![](https://velog.velcdn.com/images/insamju300/post/eded322e-2f85-4bf6-9588-03e4ab9fc191/image.png)
+- 일정 기간을 선택 할 수 있습니다.
+
+[일정 달력 - 기간 선택]
 ![](https://velog.velcdn.com/images/insamju300/post/0bdccf4d-12d9-4f14-bded-af3d303b5a48/image.png)
+- 일정 기간은 오늘 날짜로부터 15일 이하로 선택 가능하며 2일 이상 선택해야 합니다.
+
+[일정 달력 - 일정 생성 입력창]
 ![](https://velog.velcdn.com/images/insamju300/post/e473406c-ddb7-4e79-8887-5ff61c89479c/image.png)
+- 일정 제목과 내용을 입력하고 일정을 생성합니다.
 
 [나의 일정]
 ![](https://velog.velcdn.com/images/insamju300/post/6d28b5cf-0422-43a0-89f4-8cb01ca9c142/image.png)
