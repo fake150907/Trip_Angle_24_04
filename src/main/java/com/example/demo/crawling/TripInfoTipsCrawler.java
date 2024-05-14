@@ -22,7 +22,7 @@ record RegionInfoTips(String information, String voltage, String language, Strin
 
 }
 
-public class CrawlingTest2 {
+public class TripInfoTipsCrawler {
 
 	private WebDriver driver;
 	private String url;
@@ -153,7 +153,7 @@ public class CrawlingTest2 {
 		regionCrawlingDto.setRegionId(0);
 		regionCrawlingDtos.add(regionCrawlingDto);
 
-		CrawlingTest2 crawler = new CrawlingTest2();
+		TripInfoTipsCrawler crawler = new TripInfoTipsCrawler();
 		try {
 			crawler.crawling(regionCrawlingDtos);
 		} catch (ClassNotFoundException e) {

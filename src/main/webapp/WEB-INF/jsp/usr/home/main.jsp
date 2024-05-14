@@ -185,7 +185,8 @@ header {
 	background-image:
 		url("https://velog.velcdn.com/images/yunlinit/post/7233e023-f724-4182-916b-1c7c373e4b3a/image.png");
 	background-size: cover; /* 배경 이미지를 요소에 맞게 채우기 */
-	margin-bottom: 100px;
+	margin-bottom: 50px;
+	margin-top: 50px;
 }
 
 .div-top::before {
@@ -432,7 +433,7 @@ header {
 	padding: 32px 80px 80px;
 	max-width: 1280px;
 	margin: auto;
-	margin-top: 150px;
+	margin-top: 250px;
 	margin-bottom: 90px;
 }
 
@@ -1004,7 +1005,7 @@ img {
 			</div>
 
 			<div class="section">
-				<div class="div-top">
+				<div class="div-top ">
 					<div class="comment-and-search-box">
 						<div class="comment-box">
 							<div class="comment">

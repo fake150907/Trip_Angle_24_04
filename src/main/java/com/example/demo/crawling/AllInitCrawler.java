@@ -6,7 +6,7 @@ import java.util.List;
 
 public class AllInitCrawler {
 	public static void main(String[] args) {
-    	CrawlingTest2 crawlingTest2 = new CrawlingTest2();
+    	TripInfoTipsCrawler tripInfoTipsCrawler = new TripInfoTipsCrawler();
     	RegionNameCrawler regionCrawling = new RegionNameCrawler();
     	PlaceCrawler placeCrawling = new PlaceCrawler();
     	PlaceInfoCrawlerForAllInit placeInfoCrawling = new PlaceInfoCrawlerForAllInit();
@@ -36,7 +36,7 @@ public class AllInitCrawler {
     	
     	if(regionList != null) {
     		try {
-				crawlingTest2.crawling(regionList);
+				tripInfoTipsCrawler.crawling(regionList);
 				
 				System.out.println("여행 도시 상세정보 입력 완료.");
 			} catch (ClassNotFoundException e) {
