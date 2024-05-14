@@ -310,56 +310,56 @@ CLIENT_SECRET = 'your_naver_secretKey'
 
 ![](https://velog.velcdn.com/images/insamju300/post/5c9993fb-2074-4fa5-bb54-1b4926143888/image.png)
 
-7.  Terminal -> New Terminal을 선택해 주세요.
-![](https://velog.velcdn.com/images/insamju300/post/461927a7-69dc-4668-94d0-af79bd1ca386/image.png)
+7.  Terminal -> New Terminal을 선택해 주세요.  
+![](https://velog.velcdn.com/images/insamju300/post/461927a7-69dc-4668-94d0-af79bd1ca386/image.png)  
 
-8. 프로그램에 필요한 라이브 러리 파일들을 받아오기 위해 터미널에 다음 명령어 들을 입력해주세요. (Python이 설치되어 경로설정도 되어있는 걸 전제로 합니다.)
-pip install fastapi
-pip install selenium
-pip install langchain
-pip install python-dotenv
-pip install langchain_openai
-pip install bs4
-pip install lxml
+8. 프로그램에 필요한 라이브 러리 파일들을 받아오기 위해 터미널에 다음 명령어 들을 입력해주세요. (Python이 설치되어 경로설정도 되어있는 걸 전제로 합니다.)  
+pip install fastapi  
+pip install selenium  
+pip install langchain  
+pip install python-dotenv  
+pip install langchain_openai  
+pip install bs4  
+pip install lxml  
 
-![](https://velog.velcdn.com/images/insamju300/post/815e117b-a67c-4e52-9a2a-76616b7b811b/image.png)
+![](https://velog.velcdn.com/images/insamju300/post/815e117b-a67c-4e52-9a2a-76616b7b811b/image.png)  
 
-9. 다음 명령어를 통해 fast api를 실행해 주세요.
-uvicorn main:app --reload
-![](https://velog.velcdn.com/images/insamju300/post/13ee38b0-8cd3-4ac2-8be0-ce6ee84e0f0b/image.png)
+9. 다음 명령어를 통해 fast api를 실행해 주세요.  
+uvicorn main:app --reload  
+![](https://velog.velcdn.com/images/insamju300/post/13ee38b0-8cd3-4ac2-8be0-ce6ee84e0f0b/image.png)  
 
-### 4. ChromeDriver 설치 및 크롤링 작업
- - 저희 프로젝트는 DB에 테스트 데이터를 미리 세팅해놨으므로 크롤링 작업은 필수가 아니지만, 추가적으로 더 많은 지역 데이터를 사용하려면 크롤링을 추가로 진행해야 합니다. (크롤링 방법은 6번부터 참고하세요.)
+### 4. ChromeDriver 설치 및 크롤링 작업  
+ - 저희 프로젝트는 DB에 테스트 데이터를 미리 세팅해놨으므로 크롤링 작업은 필수가 아니지만, 추가적으로 더 많은 지역 데이터를 사용하려면 크롤링을 추가로 진행해야 합니다. (크롤링 방법은 6번부터 참고하세요.)  
 
-#### ChromeDriver 115 버전 이후 드라이버 다운로드
-1. ChromeDriver - WebDriver for Chrome 접속
-[크롬 드라이버 다운로드](https://chromedriver.chromium.org/downloads)
-
-
-2. 노란색 형광펜으로 표시된 부분을 클릭해 들어갑니다.
-![](https://velog.velcdn.com/images/insamju300/post/fc2277ee-a1f6-46be-aa3b-af2f0a759e6e/image.png)
-
-3. table한 버전들이 나오는데 chromedriver 중 각자 OS에 맞는 버전의 URL을 복사해 주소창에 입력하면 웹 드라이버가 다운로드됩니다.![](https://velog.velcdn.com/images/insamju300/post/6e06fe03-83a5-4685-bf1e-c972e09e2dc9/image.png)
-
-4. 다운로드된 zip 파일의 압축을 해제합니다.
-![](https://velog.velcdn.com/images/insamju300/post/8bda1637-26e4-47ba-820e-a4b1434fce6d/image.png)
-
-5. chromedriver.exe(응용프로그램)을 현재 사용하고 있는 디렉토리에 추가해 주세요..
-- 저희 프로젝트를 구동 하기 위해선 c://work에 추가해주시면 됩니다.
-![](https://velog.velcdn.com/images/insamju300/post/10483837-46e8-4e47-b3da-1673c42a8615/image.png)
+#### ChromeDriver 115 버전 이후 드라이버 다운로드  
+1. ChromeDriver - WebDriver for Chrome 접속  
+[크롬 드라이버 다운로드](https://chromedriver.chromium.org/downloads)  
 
 
+2. 노란색 형광펜으로 표시된 부분을 클릭해 들어갑니다.  
+![](https://velog.velcdn.com/images/insamju300/post/fc2277ee-a1f6-46be-aa3b-af2f0a759e6e/image.png)  
 
-#### STS4에서 크롤링 작업
-6. 기본값으로 20개의 지역만 크롤링하게 세팅되어있습니다. 추가적으로 더 많은 지역 크롤링을 희망하시면 노란색으로 표시된 숫자를 수정해주세요.
-- 전체 지역 크롤링은 숫자대신 null을 적으시면 됩니다.
+3. table한 버전들이 나오는데 chromedriver 중 각자 OS에 맞는 버전의 URL을 복사해 주소창에 입력하면 웹 드라이버가 다운로드됩니다.![](https://velog.velcdn.com/images/insamju300/post/6e06fe03-83a5-4685-bf1e-c972e09e2dc9/image.png)  
 
-![](https://velog.velcdn.com/images/insamju300/post/c3d23db9-307a-4f71-8f24-4f0f8bfed5f2/image.png)
+4. 다운로드된 zip 파일의 압축을 해제합니다.  
+![](https://velog.velcdn.com/images/insamju300/post/8bda1637-26e4-47ba-820e-a4b1434fce6d/image.png)  
+
+5. chromedriver.exe(응용프로그램)을 현재 사용하고 있는 디렉토리에 추가해 주세요.  
+- 저희 프로젝트를 구동 하기 위해선 c://work에 추가해주시면 됩니다.  
+![](https://velog.velcdn.com/images/insamju300/post/10483837-46e8-4e47-b3da-1673c42a8615/image.png)  
 
 
 
-7. com.example.demo.crawling 패키지에서 AllInitCrawler.java를 Run As Java Application으로 실행합니다. 
+#### STS4에서 크롤링 작업  
+6. 기본값으로 20개의 지역만 크롤링하게 세팅되어있습니다. 추가적으로 더 많은 지역 크롤링을 희망하시면 노란색으로 표시된 숫자를 수정해주세요.  
+- 전체 지역 크롤링은 숫자대신 null을 적으시면 됩니다.  
 
-8. 크롤링이 시작되자마자 마우스 커서를 약 3초정도 건드리지 말아주세요. 크롤링 과정중 마우스 커서를 직접 이동시켜 클릭하는 이벤트가 추가되어있어, 사용자가 임의적으로 마우스 커서를 이동하면 크롤링중 에러가 발생할 수 있습니다.
+![](https://velog.velcdn.com/images/insamju300/post/c3d23db9-307a-4f71-8f24-4f0f8bfed5f2/image.png)  
+
+
+
+7. com.example.demo.crawling 패키지에서 AllInitCrawler.java를 Run As Java Application으로 실행합니다.   
+
+8. 크롤링이 시작되자마자 마우스 커서를 약 3초정도 건드리지 말아주세요. 크롤링 과정중 마우스 커서를 직접 이동시켜 클릭하는 이벤트가 추가되어있어, 사용자가 임의적으로 마우스 커서를 이동하면 크롤링중 에러가 발생할 수 있습니다.  
 
 
