@@ -253,6 +253,5 @@ ___
 - 트립앵글의 회원이 작성한 여행 후기의 상세 내용을 확인 할 수 있습니다.
 
 
-#   참고 링크
-___
-api 키 설정 및 fastapi 연동을 위한 설정 정보: [설정 정보](https://velog.io/@insamju300/python-fastapi-%EC%97%B0%EA%B4%80%EA%B8%B0%EB%8A%A5-%EC%9E%91%EB%8F%99%EC%9D%84-%EC%9C%84%ED%95%9C-%EC%84%9C%EB%B2%84-%EC%9E%91%EB%8F%99%EB%B0%A9%EB%B2%95-%EC%97%B0%EA%B3%84)
+#   TripAngle - 가이드북
+[TripAngle - 가이드북](./setup.pdf)
