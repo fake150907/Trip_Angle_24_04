@@ -171,6 +171,18 @@ ___
 ![](https://velog.velcdn.com/images/insamju300/post/4e91f583-9857-4034-842c-3f9cbba23d43/image.png)
 - TripAngle 프로젝트를 함께 만든 팀원 전원이 함께 찍은 단체사진섹션입니다.
 
+[회원가입]
+![](https://velog.velcdn.com/images/insamju300/post/b711c011-bdc6-473a-9f81-01ec2de997fc/image.png)
+- 기본 정보 입력 후 회원가입을 합니다.
+
+[로그인 페이지]
+![](https://velog.velcdn.com/images/insamju300/post/48da80aa-f584-4135-a53a-16a8c15cc2d6/image.png)
+- 아이디와 비밀번호로 로그인을 합니다.
+
+[회원정보 수정]
+![](https://velog.velcdn.com/images/insamju300/post/5b29c75e-9059-4daa-ab19-eb1598fff8e8/image.png)
+- 회원정보 페이지에서 개인정보를 수정 할 수 있습니다.
+
 [티케팅 페이지]
 ![](https://velog.velcdn.com/images/insamju300/post/614a8e77-ce5a-4a79-9a98-e78e3f029a4c/image.png)
 - 항공권 예매 섹션 클릭 시 Skyscanner 홈페이지로 연결됩니다.
@@ -202,26 +214,16 @@ ___
 [장소 상세보기]
 ![](https://velog.velcdn.com/images/insamju300/post/8f040a76-f42b-4ba5-be7e-1b689ff48d35/image.png)
 
-[로그인 페이지]
-![](https://velog.velcdn.com/images/insamju300/post/48da80aa-f584-4135-a53a-16a8c15cc2d6/image.png)
-
 [여행후기 리스트 ]
 ![](https://velog.velcdn.com/images/insamju300/post/b625f6d4-16db-4a51-bc26-a4a77b0c00ce/image.png)
 
 [여행후기 상세]
 ![](https://velog.velcdn.com/images/insamju300/post/b763dc5f-0120-4451-913a-4b7c6603da24/image.png)
 
-[회원가입]
-![](https://velog.velcdn.com/images/insamju300/post/b711c011-bdc6-473a-9f81-01ec2de997fc/image.png)
-
-[회원정보 수정]
-![](https://velog.velcdn.com/images/insamju300/post/5b29c75e-9059-4daa-ab19-eb1598fff8e8/image.png)
-
 [나의 일정 상세- 기본정보 및 꿀팁]
 ![](https://velog.velcdn.com/images/insamju300/post/ae93ce31-86ea-48a0-b7d4-9bbcb02bbc4d/image.png)
 [나의 일정 상세 - 옷추천 ]
 ![](https://velog.velcdn.com/images/insamju300/post/de37012e-994f-48df-958c-ce7265a0ff8c/image.png)
-
 
 [나의 일정 상세-쇼핑리스트 및 장소추천]
 ![](https://velog.velcdn.com/images/insamju300/post/908dbd54-aa22-4307-afc0-a478aeb56ad6/image.png)
@@ -234,7 +236,6 @@ ___
 
 [스타일링 추천페이지 - 쇼핑리스트]
 ![](https://velog.velcdn.com/images/insamju300/post/a1e56db5-38c7-4030-8505-f99a5bd0dc54/image.png)
-
 
 [스타일링 추천페이지 - 옷추천]
 ![](https://velog.velcdn.com/images/insamju300/post/4ad5fd09-aaec-47f7-be35-44cf0d596702/image.png)
