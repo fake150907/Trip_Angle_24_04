@@ -320,7 +320,8 @@ pip install langchain
 pip install python-dotenv  
 pip install langchain_openai  
 pip install bs4  
-pip install lxml  
+pip install lxml
+pip install unicorn
 
 ![](https://velog.velcdn.com/images/insamju300/post/815e117b-a67c-4e52-9a2a-76616b7b811b/image.png)  
 
