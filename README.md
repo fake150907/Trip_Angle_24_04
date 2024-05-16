@@ -4,16 +4,16 @@ ___
 ![](https://velog.velcdn.com/images/insamju300/post/829f1d9e-b53a-4d35-b945-9288fcf07ff9/image.png)
 
 
-# 프로젝트 소개
+# 📌 프로젝트 소개
 ___
 * TripAngle은 여행을 준비하는 사람들을 위한 정보 제공과 스타일링 서비스를 병합하여 재공합니다.
 *  유저는 여행 장소 및 여행 일정을 지정하여, 해당 여행지에 대한 상세 정보, 여행지에 적합한 스타일링 정보, 추천할만한 여행 장소 정보 등을 제공받을 수 있습니다.
 
-# 개발 기간
+# 📅 개발 기간
 ___
 - 2024.04.08 ~ 2024.05.09
 
-# 팀원 구성
+# 👥 팀원 구성
 ___
 |서명원|장윤린|윤가연|신규섭|
 |:---:|:---:|:---:|:---:|
@@ -22,7 +22,7 @@ ___
 
 
 
-#  기술스택
+# 🛠 기술스택
 ___
 * Front: HTML, CSS, Javascript, Jquery3, Tailwind, DaisyUI
 * Front-API: Weather API, Free Weather API
@@ -38,7 +38,7 @@ ___
 * 개발툴: Jdk 1.8, MAVEN, SQLYog, Spring Tool Suit 4, Visual Studio Code
 
 
-# 역할 분담
+# 🙋‍♂️ 역할 분담
 ---
 ### 🐱‍💻서명원
 
@@ -156,7 +156,7 @@ ___
 - 테마별 추천 장소 페이지(이름, 시설정보, 주소, 리뷰갯수, 이미지5개) 크롤링
 
 
-#   페이지별 기능
+# 💡 페이지별 기능
 #### [메인화면]
 ![](https://velog.velcdn.com/images/insamju300/post/617afc64-567d-4b39-bf81-442ae648de61/image.png)
 - 처음 시작화면은 여행테마에 맞는 4개의 영상이 재생되는 페이지 입니다.
@@ -256,7 +256,7 @@ ___
 - 트립앵글의 회원이 작성한 여행 후기의 상세 내용을 확인 할 수 있습니다.
 
 
-#   TripAngle 환경설정 가이드 북
+# 📑 TripAngle 환경설정 가이드 북
 
 ### I. 프로젝트 실행에 필요한 프로그램  
 [STS4](https://cdn.spring.io/spring-tools/release/STS4/4.22.0.RELEASE/dist/e4.31/spring-tool-suite-4-4.22.0.RELEASE-e4.31.0-win32.win32.x86_64.self-extracting.jar)  
