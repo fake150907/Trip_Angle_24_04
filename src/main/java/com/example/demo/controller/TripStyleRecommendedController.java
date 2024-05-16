@@ -24,6 +24,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.http.HttpServletRequest;
 
 
+//여행지 스타일링 추천 페이지와 관련된 처리를 담당하는 컨트롤러
 @Controller
 public class TripStyleRecommendedController {
 	@Autowired
@@ -35,8 +36,8 @@ public class TripStyleRecommendedController {
 	@Autowired
 	private TripStyleRecommendedService tripStyleRecommendedService;
 
-	// 액션 메서드
-	
+
+	//스케쥴Id를 파라미터로 받아서, 스케쥴 객체와 스케쥴 Id를 스타일링 페이지에 전달하기 위한 메서드
 	@GetMapping("/usr/styleRecommended/create")
 	public String styleRecommended(HttpServletRequest req, Model model, @RequestParam(defaultValue = "0") Integer id) {
 
@@ -78,10 +79,10 @@ public class TripStyleRecommendedController {
 		return "usr/styleRecommended/create";
 	}
 	
-	
+
+	//스케쥴Id와 날씨 추천 받은 패션 데이터, 추천 받은 쇼핑리스트 데이터를 파라미터로 받아서, 해당 데이터들을 db에 저장하는 컨트롤러
 	@PostMapping("/usr/styleRecommended/doCreate")
 	public String styleRecommendedDoCreate(String weatherDatas, String fashionDatas, String shoppingListDatas, @RequestParam(defaultValue = "0") Integer id, HttpServletRequest req) {
-		//todo 일정id가 일치하는지 확인 로직 추가 필요. (로그인기능 문제 없는거 확인 후 추가할 것)
 		
 		ObjectMapper mapper = new ObjectMapper();
 		List<Weather> weathers = null;
@@ -105,9 +106,16 @@ public class TripStyleRecommendedController {
 			return rq.historyBackOnView("일정의 작성자만 접근할 수 있습니다.");
 		}
 		
+		//스타일링 추천 페이지를 거치지 않고 넘어온 경우 스타일링 추천 페이지로 전이한다.
 		if (tripSchedule.getStep() == 0) {
 			return "redirect:/usr/styleRecommended/create?id="+id;
 		}
+		
+		//이미 생성이 완료된 데이터 라면 디테일 페이지로 이동한다
+		if (tripSchedule.getStep() == 2) {
+			return "redirect:/usr/myPlan/myPlanDetail?id="+id+"&regionId="+tripSchedule.getRegionId();
+		}
+        
 		
 		
         try {
@@ -146,15 +154,12 @@ public class TripStyleRecommendedController {
         }
         
 
-		
+		//정상적인 순서로 실행되어 메서드에 들어온 경우 step을 1 증가시킨다.
 		if (tripSchedule.getStep() == 1) {
 			tripScheduleService.updateStepById(id);
 		}
-		
-		if (tripSchedule.getStep() == 2) {
-			return "redirect:/usr/myPlan/myPlanDetail?id="+id+"&regionId="+tripSchedule.getRegionId();
-		}
-        
+
+
         
         tripStyleRecommendedService.writeStyleRecommendedDatas(weathers, fashions, shoppingLists);
         
