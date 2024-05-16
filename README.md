@@ -26,6 +26,7 @@ ___
 ___
 * Front: HTML, CSS, Javascript, Jquery3, Tailwind, DaisyUI
 * Front-API: Weather API, Free Weather API
+* 웹-프레임워크: 구글 앱 스크립트
 * Back-개발언어: Java, Python
 * Back-프레임워크: SpringBoot 3, FastAPI, Selenium
 * Back-라이브러리: Langchain, BeautifulSoup, Lombok, Tomcat
