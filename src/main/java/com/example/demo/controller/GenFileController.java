@@ -30,62 +30,73 @@ import jakarta.servlet.http.HttpServletRequest;
 
 @Controller
 public class GenFileController {
-	@Value("${custom.genFileDirPath}")
-	private String genFileDirPath;
+    // 파일 저장 경로를 설정하는 변수
+    @Value("${custom.genFileDirPath}")
+    private String genFileDirPath;
 
-	@Autowired
-	private GenFileService genFileService;
+    // GenFileService 객체를 자동으로 주입 받음
+    @Autowired
+    private GenFileService genFileService;
 
-	@RequestMapping("/common/genFile/doUpload")
-	@ResponseBody
-	public ResultData doUpload(@RequestParam Map<String, Object> param, MultipartRequest multipartRequest) {
-		return genFileService.saveFiles(param, multipartRequest);
-	}
+    // 파일 업로드를 처리하는 메서드
+    @RequestMapping("/common/genFile/doUpload")
+    @ResponseBody
+    public ResultData doUpload(@RequestParam Map<String, Object> param, MultipartRequest multipartRequest) {
+        return genFileService.saveFiles(param, multipartRequest);
+    }
 
-	@GetMapping("/common/genFile/doDownload")
-	public ResponseEntity<Resource> downloadFile(int id, HttpServletRequest request) throws IOException {
-		GenFile genFile = genFileService.getGenFile(id);
+    // 파일 다운로드를 처리하는 메서드
+    @GetMapping("/common/genFile/doDownload")
+    public ResponseEntity<Resource> downloadFile(int id, HttpServletRequest request) throws IOException {
+        GenFile genFile = genFileService.getGenFile(id);
 
-		if (genFile == null) {
-			throw new GenFileNotFoundException();
-		}
+        // 파일이 존재하지 않으면 예외 발생
+        if (genFile == null) {
+            throw new GenFileNotFoundException();
+        }
 
-		String filePath = genFile.getFilePath(genFileDirPath);
+        // 파일 경로 설정
+        String filePath = genFile.getFilePath(genFileDirPath);
 
-		Resource resource = new InputStreamResource(new FileInputStream(filePath));
+        // 파일의 Resource 객체 생성
+        Resource resource = new InputStreamResource(new FileInputStream(filePath));
 
-		// Try to determine file's content type
-		String contentType = request.getServletContext().getMimeType(new File(filePath).getAbsolutePath());
+        // 파일의 MIME 타입 설정
+        String contentType = request.getServletContext().getMimeType(new File(filePath).getAbsolutePath());
+        if (contentType == null) {
+            contentType = "application/octet-stream";
+        }
 
-		if (contentType == null) {
-			contentType = "application/octet-stream";
-		}
+        // 다운로드 응답 생성
+        return ResponseEntity.ok()
+                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + genFile.getOriginFileName() + "\"")
+                .contentType(MediaType.parseMediaType(contentType)).body(resource);
+    }
 
-		return ResponseEntity.ok()
-				.header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + genFile.getOriginFileName() + "\"")
-				.contentType(MediaType.parseMediaType(contentType)).body(resource);
-	}
+    // 파일 표시를 처리하는 메서드
+    @GetMapping("/common/genFile/file/{relTypeCode}/{relId}/{typeCode}/{type2Code}/{fileNo}")
+    public ResponseEntity<Resource> showFile(HttpServletRequest request, @PathVariable String relTypeCode,
+            @PathVariable int relId, @PathVariable String typeCode, @PathVariable String type2Code,
+            @PathVariable int fileNo) throws FileNotFoundException {
+        GenFile genFile = genFileService.getGenFile(relTypeCode, relId, typeCode, type2Code, fileNo);
 
-	@GetMapping("/common/genFile/file/{relTypeCode}/{relId}/{typeCode}/{type2Code}/{fileNo}")
-	public ResponseEntity<Resource> showFile(HttpServletRequest request, @PathVariable String relTypeCode,
-			@PathVariable int relId, @PathVariable String typeCode, @PathVariable String type2Code,
-			@PathVariable int fileNo) throws FileNotFoundException {
-		GenFile genFile = genFileService.getGenFile(relTypeCode, relId, typeCode, type2Code, fileNo);
+        // 파일이 존재하지 않으면 예외 발생
+        if (genFile == null) {
+            throw new GenFileNotFoundException();
+        }
 
-		if (genFile == null) {
-			throw new GenFileNotFoundException();
-		}
+        // 파일 경로 설정
+        String filePath = genFile.getFilePath(genFileDirPath);
+        // 파일의 Resource 객체 생성
+        Resource resource = new InputStreamResource(new FileInputStream(filePath));
 
-		String filePath = genFile.getFilePath(genFileDirPath);
-		Resource resource = new InputStreamResource(new FileInputStream(filePath));
+        // 파일의 MIME 타입 설정
+        String contentType = request.getServletContext().getMimeType(new File(filePath).getAbsolutePath());
+        if (contentType == null) {
+            contentType = "application/octet-stream";
+        }
 
-		// Try to determine file's content type
-		String contentType = request.getServletContext().getMimeType(new File(filePath).getAbsolutePath());
-
-		if (contentType == null) {
-			contentType = "application/octet-stream";
-		}
-
-		return ResponseEntity.ok().contentType(MediaType.parseMediaType(contentType)).body(resource);
-	}
+        // 파일 표시 응답 생성
+        return ResponseEntity.ok().contentType(MediaType.parseMediaType(contentType)).body(resource);
+    }
 }

@@ -63,7 +63,7 @@ public class AllInitCrawler {
     	
     	if(placeInfoList != null) {
 	    	try {
-	    		placeInfoCrawling.crawlPlaces(placeInfoList);
+	    		placeInfoCrawling.crawlPlaceInfo(placeInfoList);
 			} catch (ClassNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
