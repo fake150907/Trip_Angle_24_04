@@ -18,12 +18,6 @@
 	href="https://fonts.googleapis.com/css2?family=Hi+Melody&family=Nanum+Brush+Script&family=Nanum+Pen+Script&family=Pattaya&display=swap"
 	rel="stylesheet">
 
-
-
-
-
-
-
 <style>
 
 /* 노말라이즈 */
@@ -33,6 +27,7 @@ body, ul, li, h1 {
 	list-style: none;
 }
 
+/* 헤더 */
 header {
 	position: fixed;
 	top: 0;
@@ -43,6 +38,7 @@ header {
 	transition: opacity 0.5s ease; /* 투명도 변화에 애니메이션 적용 */
 }
 
+/* 메인 동영상 */
 .fullscreen-video {
 	width: 100%;
 	height: 970px;
@@ -67,6 +63,8 @@ header {
 		height: 910px; /* 화면 크기가 991px 이하일 때 비디오의 높이를 줄입니다. */
 	}
 }
+
+/* TripAngle 대문 로고 */
 
 .wavy-tripangle {
 	z-index: 999;
@@ -96,9 +94,9 @@ header {
 	}
 }
 
-/* ///////////  여기서부터 건드리지마요 ////////////*/
+/* ///////////  여기서부터 건드리지마세요 ////////////*/
 
-/* ///////////  로고 통통튀는 애니메이션 효과 CSS ////////////*/
+/* 로고 통통튀는 애니메이션 효과 CSS */
 
 /* @keyframes waviy { */
 /*   0%, 40%, 100% { a*/
@@ -109,6 +107,7 @@ header {
 /*   } */
 /* } */
 
+/* 자동들여쓰기로 코드 변형 시 위의 주석코드를 복사붙여넣기해주세요 */
  @keyframes waviy { 
    0%, 40%, 100% { a
      transform: translateY(0); 
@@ -118,8 +117,10 @@ header {
    } 
  } 
 
-/* ///////////  여기까지 건드리지마요 ////////////*/
-.scroll-down-sign1 {
+/* ///////////  여기까지 건드리지마세요 ////////////*/
+
+/* 스크롤 내리기 표시 "SCROLL DOWN" */
+croll-down-sign1 {
 	position: absolute;
 	top: 79%;
 	left: 50%;
@@ -130,6 +131,7 @@ header {
 	z-index: 999;
 }
 
+/* 스크롤 내리기 표시 "↓" */
 .scroll-down-sign2 {
 	position: absolute;
 	top: 83%;
@@ -141,9 +143,10 @@ header {
 	z-index: 999;
 }
 
+/* 화면 크기가 991px 이하일 때 스크롤 관련 텍스트 크기를 줄입니다 */
 @media ( max-width : 991px) {
 	.scroll-down-sign2, .scroll-down-sign1 {
-		font-size: 20px; /* 화면 크기가 991px 이하일 때 텍스트 크기를 줄입니다. */
+		font-size: 20px; 
 	}
 }
 
@@ -172,7 +175,7 @@ header {
 	justify-content: center;
 }
 
-/* top-area */
+/* 메인화면 - 검색창 섹션 */
 .div-top {
 	border-radius: 10px;
 	border: none;
@@ -421,7 +424,7 @@ header {
 	width: 24px;
 }
 
-/* /////////////////////////// bottom-area */
+/* ABOUT TRIPANGLE 섹션 */
 .div-bottom {
 	position: relative;
 	width: 100%; /* 이 부분을 추가하여 가로 길이를 화면의 100%로 설정합니다. */
@@ -590,6 +593,7 @@ header {
 	font: 400 16px/26px Pretendard, sans-serif;
 }
 
+/* music-box -> weather로 바뀜 */
 .music-box {
 	display: flex;
 	flex-direction: column;
@@ -641,7 +645,7 @@ header {
 	font: 400 16px/26px Pretendard, sans-serif;
 }
 
-/* CONTACT US  */
+/* CONTACT US 섹션 */
 .contactus {
 	background-color: #fff;
 	display: flex;
@@ -775,7 +779,6 @@ header {
 	transform: rotateY(0deg);
 }
 
-/* custom */
 .flip {
 	display: inline-block;
 	margin-right: 5px;
@@ -844,7 +847,7 @@ header {
 	border: solid 1px #ededed;
 }
 
-/* 슬라이드 단체사진 */
+/* 슬라이드 단체사진 섹션 */
 
 * {
 	box-sizing: border-box;
@@ -910,6 +913,8 @@ img {
 }
 
 
+/* 단체사진 슬라이드 효과  */
+
 /* @-webkit-keyframes fade { */
 /*     from { */
 /*         opacity: .4; */
@@ -927,6 +932,9 @@ img {
 /*         opacity: 1; */
 /*     } */
 /* } */
+
+
+/* 자동들여쓰기 적용 시 코드 변형 되면 위의 주석코드 복사붙여넣기하세요  */
 
 @-webkit-keyframes fade {
     from {
@@ -966,8 +974,9 @@ img {
 
 <body>
 	<section>
-
 		<div id="container">
+		
+<!-- 메인 동영상화면 섹션 -->
 			<div class="section">
 				<div class="video-container">
 					<video muted autoplay loop class="fullscreen-video active">
@@ -1003,7 +1012,7 @@ img {
 				</div>
 
 			</div>
-
+<!-- 메인 검색창 섹션 -->
 			<div class="section">
 				<div class="div-top ">
 					<div class="comment-and-search-box">
@@ -1034,7 +1043,8 @@ img {
 					</div>
 				</div>
 			</div>
-
+			
+<!-- ABOUT TRIPANGLE 섹션 -->
 			<div class="section">
 				<div class="div-bottom">
 					<div class="about-trip-angle">
@@ -1070,7 +1080,8 @@ img {
 					</div>
 				</div>
 			</div>
-
+			
+<!-- CONTACT US 섹션 -->
 			<div class="section">
 				<div class="contactus">
 					<div class="title">Contact Us</div>
@@ -1184,11 +1195,9 @@ img {
 
 
 
-
+<!-- 팀원 단체사진 슬라이드 섹션 -->
 			<div class="section">
-
 				<div class="slideshow-container">
-
 					<div class="mySlides fade">
 						<div class="numbertext">1 / 3</div>
 <!-- 						<img -->
@@ -1226,47 +1235,32 @@ img {
 					<span class="dot"></span> <span class="dot"></span> <span
 						class="dot"></span>
 				</div>
-
-<!-- 				<div class="wall" style="height: 200px;"></div> -->
-
 			</div>
-
-
-
-
 		</div>
 	</section>
 	
 
 
-	<script>
+<!-- 팀원에게 보내기 자바스크립트 함수 -->
+<script>
   function writeEmailToYunlin() {
     // 여기서는 예시로 mailto 링크를 사용하여 이메일 클라이언트를 열도록 하였습니다.
     // 실제로는 백엔드와의 통신 등을 통해 이메일을 보내는 방법을 구현해야 할 수 있습니다.
     window.location.href = "/usr/home/writeEmailToYunlin";
   }
-</script>
-
-
-	<script>
+  
   function writeEmailToGayeon() {
     // 여기서는 예시로 mailto 링크를 사용하여 이메일 클라이언트를 열도록 하였습니다.
     // 실제로는 백엔드와의 통신 등을 통해 이메일을 보내는 방법을 구현해야 할 수 있습니다.
     window.location.href = "/usr/home/writeEmailToGayeon";
   }
-</script>
 
-
-
-	<script>
   function writeEmailToGyusub() {
     // 여기서는 예시로 mailto 링크를 사용하여 이메일 클라이언트를 열도록 하였습니다.
     // 실제로는 백엔드와의 통신 등을 통해 이메일을 보내는 방법을 구현해야 할 수 있습니다.
     window.location.href = "/usr/home/writeEmailToGyusub";
   }
-</script>
 
-	<script>
   function writeEmailToMyeongwon() {
     // 여기서는 예시로 mailto 링크를 사용하여 이메일 클라이언트를 열도록 하였습니다.
     // 실제로는 백엔드와의 통신 등을 통해 이메일을 보내는 방법을 구현해야 할 수 있습니다.
@@ -1275,7 +1269,8 @@ img {
 </script>
 
 
-	<script>
+<!-- 동영상이 3.5초마다 바뀌는 자바스크립트 -->
+<script>
     document.addEventListener("DOMContentLoaded", function () {
         const videos = document.querySelectorAll(".fullscreen-video");
         let currentVideoIndex = 0;
@@ -1344,8 +1339,8 @@ img {
     
 </script>
 
-
-	<script>
+<!-- 헤더 사라졌다 나타났다 자바스크립트 함수 -->
+<script>
 	window.addEventListener('scroll', function() {
 		var scroll = window.scrollY;
 		var header = document.querySelector('header');
@@ -1360,12 +1355,10 @@ img {
 		}
 	});
 	
-	</script>
+</script>
 
-	<script>
+<script>
 	let isFocused = false;
-
-	
 
 	// Wait for the document to finish loading
 	document.addEventListener("DOMContentLoaded", function() {
@@ -1509,9 +1502,10 @@ img {
 
 	    return copy;
 	}
+</script>
 	
-	
-// 	슬라이드단체사진
+<script>	
+// 팀원 단체사진 슬라이드 효과 자바스크립트
 var slideIndex = 0;
 showSlides();
 
@@ -1531,9 +1525,6 @@ function showSlides() {
     dots[slideIndex-1].className += " active";
     setTimeout(showSlides, 2000); // Change image every 2 seconds
 }
-
-
-
 </script>
 
 
