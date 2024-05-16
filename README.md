@@ -36,8 +36,7 @@ ___
 * 형성 관리: Git, GitHub
 * 협업툴: Discord, Google 스프레드시트, Google 문서, 클로바노트
 * 디자인: Figma
-* 개발툴: Jdk 1.7, MAVEN, SQLYog, Spring Tool Suit 4, Visual Studio Code
-
+* 개발환경: Jdk 1.7, MAVEN, SQLYog, Spring Tool Suit 4, Visual Studio Code, Window 10
 
 
 # 🙋‍♂️ 역할 분담
