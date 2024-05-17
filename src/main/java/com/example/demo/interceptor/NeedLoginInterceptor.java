@@ -24,7 +24,9 @@ public class NeedLoginInterceptor implements HandlerInterceptor {
 
         // 로그인되어 있지 않은 경우
         if (!rq.isLogined()) {
-            System.out.println("==============로그인 하고 이용해주세요============");
+
+            System.out.println("==============로그인 후 사용해주세요============");
+
             // 현재 URI를 인코딩하여 로그인 후 이동할 URI 생성
             String afterLoginUri = rq.getEncodedCurrentUri();
             // 로그인 페이지로 이동하고 로그인 후 이동할 URI를 파라미터로 전달
