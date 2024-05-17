@@ -5,70 +5,84 @@
 <%@ include file="../common/head.jspf"%>
 <%@ include file="../common/toastUiEditorLib.jspf"%>
 
-<!-- <iframe src="http://localhost:8081/usr/article/doIncreaseHitCountRd?id=372" frameborder="0"></iframe> -->
 
 <!-- 변수 -->
 <script>
+	// params 객체 생성
 	const params = {};
+	// params 객체에 id 값 설정 (문자열을 정수로 변환)
 	params.id = parseInt('${param.id}');
+	// params 객체에 memberId 값 설정 (문자열을 정수로 변환)
 	params.memberId = parseInt('${loginedMemberId}');
-	
+
+	// params 객체와 memberId 값 콘솔 출력
 	console.log(params);
 	console.log(params.memberId);
-	
+
+	// 좋아요 및 싫어요 상태 변수 설정
 	var isAlreadyAddGoodRp = ${isAlreadyAddGoodRp};
 	var isAlreadyAddBadRp = ${isAlreadyAddBadRp};
-	
-	
 </script>
 
 <!-- 조회수 -->
 <script>
+	// 게시글 조회수 증가 함수
 	function ArticleDetail__doIncreaseHitCount() {
+		// 로컬 스토리지 키 생성
 		const localStorageKey = 'article__' + params.id + '__alreadyView';
 
+		// 로컬 스토리지에 키가 존재하면 함수 종료
 		if (localStorage.getItem(localStorageKey)) {
 			return;
 		}
 
+		// 로컬 스토리지에 키 저장
 		localStorage.setItem(localStorageKey, true);
 
+		// 서버에 조회수 증가 요청
 		$.get('../article/doIncreaseHitCountRd', {
 			id : params.id,
 			ajaxMode : 'Y'
 		}, function(data) {
+			// 조회수 업데이트
 			$('.article-detail__hit-count').empty().html(data.data1);
 		}, 'json');
 	}
 
 	$(function() {
-		// 		ArticleDetail__doIncreaseHitCount();
+		// 페이지 로드 후 2초 뒤에 조회수 증가 함수 호출
 		setTimeout(ArticleDetail__doIncreaseHitCount, 2000);
 	});
 </script>
 
 <!-- 좋아요 싫어요  -->
 <script>
-	<!-- 좋아요 싫어요 버튼	-->
+	<!-- 좋아요 싫어요 버튼 상태 설정 함수 -->
 	function checkRP() {
+		// 좋아요가 이미 추가된 경우
 		if(isAlreadyAddGoodRp == true){
 			$('#likeButton').toggleClass('btn-outline');
+		// 싫어요가 이미 추가된 경우
 		}else if(isAlreadyAddBadRp == true){
 			$('#DislikeButton').toggleClass('btn-outline');
-		}else {
+		} else {
 			return;
 		}
 	}
-	
+
+	// 좋아요 추가 함수
 	function doGoodReaction(articleId) {
+		// 회원이 로그인하지 않은 경우
 		if(isNaN(params.memberId) == true){
-			if(confirm('로그인 해야해. 로그인 페이지로 가실???')){
+			if(confirm('로그인이 필요합니다. 로그인하시겠습니까?')){
 				var currentUri = encodeURIComponent(window.location.href);
-				window.location.href = '../member/login?afterLoginUri=' + currentUri; // 로그인 페이지에 원래 페이지의 uri를 같이 보냄
+				// 로그인 페이지로 이동
+				window.location.href = '../member/login?afterLoginUri=' + currentUri;
 			}
 			return;
 		}
-		
+
+		// 서버에 좋아요 추가 요청
 		$.ajax({
 			url: '/usr/reactionPoint/doGoodReaction',
 			type: 'POST',
@@ -76,16 +90,13 @@
 			dataType: 'json',
 			success: function(data){
 				console.log(data);
-				console.log('data.data1Name : ' + data.data1Name);
-				console.log('data.data1 : ' + data.data1);
-				console.log('data.data2Name : ' + data.data2Name);
-				console.log('data.data2 : ' + data.data2);
 				if(data.resultCode.startsWith('S-')){
 					var likeButton = $('#likeButton');
 					var likeCount = $('#likeCount');
 					var DislikeButton = $('#DislikeButton');
 					var DislikeCount = $('#DislikeCount');
-					
+
+					// 서버 응답에 따라 버튼 상태 및 카운트 업데이트
 					if(data.resultCode == 'S-1'){
 						likeButton.toggleClass('btn-outline');
 						likeCount.text(data.data1);
@@ -98,49 +109,43 @@
 						likeButton.toggleClass('btn-outline');
 						likeCount.text(data.data1);
 					}
-					
 				}else {
 					alert(data.msg);
 				}
-		
 			},
 			error: function(jqXHR,textStatus,errorThrown) {
 				alert('좋아요 오류 발생 : ' + textStatus);
-
 			}
-			
 		});
 	}
-	
-	
-	
+
+	// 싫어요 추가 함수
 	function doBadReaction(articleId) {
-		
+		// 회원이 로그인하지 않은 경우
 		if(isNaN(params.memberId) == true){
-			if(confirm('로그인 해야해. 로그인 페이지로 가실???')){
+			if(confirm('로그인이 필요합니다. 로그인하시겠습니까?')){
 				var currentUri = encodeURIComponent(window.location.href);
-				window.location.href = '../member/login?afterLoginUri=' + currentUri; // 로그인 페이지에 원래 페이지의 uri를 같이 보냄
+				// 로그인 페이지로 이동
+				window.location.href = '../member/login?afterLoginUri=' + currentUri;
 			}
 			return;
 		}
-		
-	 $.ajax({
+
+		// 서버에 싫어요 추가 요청
+		$.ajax({
 			url: '/usr/reactionPoint/doBadReaction',
 			type: 'POST',
 			data: {relTypeCode: 'article', relId: articleId},
 			dataType: 'json',
 			success: function(data){
 				console.log(data);
-				console.log('data.data1Name : ' + data.data1Name);
-				console.log('data.data1 : ' + data.data1);
-				console.log('data.data2Name : ' + data.data2Name);
-				console.log('data.data2 : ' + data.data2);
 				if(data.resultCode.startsWith('S-')){
 					var likeButton = $('#likeButton');
 					var likeCount = $('#likeCount');
 					var DislikeButton = $('#DislikeButton');
 					var DislikeCount = $('#DislikeCount');
-					
+
+					// 서버 응답에 따라 버튼 상태 및 카운트 업데이트
 					if(data.resultCode == 'S-1'){
 						DislikeButton.toggleClass('btn-outline');
 						DislikeCount.text(data.data2);
@@ -149,12 +154,10 @@
 						likeCount.text(data.data1);
 						DislikeButton.toggleClass('btn-outline');
 						DislikeCount.text(data.data2);
-		
 					}else {
 						DislikeButton.toggleClass('btn-outline');
 						DislikeCount.text(data.data2);
 					}
-			
 				}else {
 					alert(data.msg);
 				}
@@ -162,83 +165,89 @@
 			error: function(jqXHR,textStatus,errorThrown) {
 				alert('싫어요 오류 발생 : ' + textStatus);
 			}
-			
 		});
 	}
-	
+
 	$(function() {
+		// 페이지 로드 시 좋아요/싫어요 버튼 상태 설정
 		checkRP();
 	});
 </script>
 
 <!-- 댓글 -->
 <script>
-		var ReplyWrite__submitDone = false;
+	// 댓글 작성 제출 함수
+	var ReplyWrite__submitDone = false;
 
-		function ReplyWrite__submit(form) {
-			if (ReplyWrite__submitDone) {
-				alert('이미 처리중입니다');
-				return;
-			}
-			console.log(123);
-			
-			console.log(form.body.value);
-			
-			if (form.body.value.length < 3) {
-				alert('댓글은 3글자 이상 입력해');
-				form.body.focus();
-				return;
-			}
-
-			ReplyWrite__submitDone = true;
-			form.submit();
-
+	function ReplyWrite__submit(form) {
+		// 이미 제출 중인 경우
+		if (ReplyWrite__submitDone) {
+			alert('이미 처리중입니다');
+			return;
 		}
+		
+		console.log(form.body.value);
+
+		// 댓글 내용이 3글자 미만인 경우
+		if (form.body.value.length < 3) {
+			alert('댓글은 3글자 이상 입력해주세요');
+			form.body.focus();
+			return;
+		}
+
+		ReplyWrite__submitDone = true;
+		// 폼 제출
+		form.submit();
+	}
 </script>
+
 <!-- 댓글 수정 -->
 <script>
-function toggleModifybtn(replyId) {
-	
-	console.log(replyId);
-	
-	$('#modify-btn-'+replyId).hide();
-	$('#save-btn-'+replyId).show();
-	$('#reply-'+replyId).hide();
-	$('#modify-form-'+replyId).show();
-}
+	// 댓글 수정 버튼 토글 함수
+	function toggleModifybtn(replyId) {
+		console.log(replyId);
 
-function doModifyReply(replyId) {
-	 console.log(replyId); // 디버깅을 위해 replyId를 콘솔에 출력
+		$('#modify-btn-'+replyId).hide();
+		$('#save-btn-'+replyId).show();
+		$('#reply-'+replyId).hide();
+		$('#modify-form-'+replyId).show();
+	}
+
+	// 댓글 수정 함수
+	function doModifyReply(replyId) {
+		console.log(replyId); // 디버깅을 위해 replyId를 콘솔에 출력
 	    
 	    // form 요소를 정확하게 선택
 	    var form = $('#modify-form-' + replyId);
 	    console.log(form); // 디버깅을 위해 form을 콘솔에 출력
 
-	    // form 내의 input 요소의 값을 가져옵니다
+	    // form 내의 input 요소의 값을 가져옴
 	    var text = form.find('input[name="reply-text-' + replyId + '"]').val();
 	    console.log(text); // 디버깅을 위해 text를 콘솔에 출력
 
-	    // form의 action 속성 값을 가져옵니다
+	    // form의 action 속성 값을 가져옴
 	    var action = form.attr('action');
 	    console.log(action); // 디버깅을 위해 action을 콘솔에 출력
 	
-    $.post({
-    	url: '/usr/reply/doModify', // 수정된 URL
-        type: 'POST', // GET에서 POST로 변경
-        data: { id: replyId, body: text }, // 서버에 전송할 데이터
-        success: function(data) {
-        	$('#modify-form-'+replyId).hide();
-        	$('#reply-'+replyId).text(data);
-        	$('#reply-'+replyId).show();
-        	$('#save-btn-'+replyId).hide();
-        	$('#modify-btn-'+replyId).show();
-        },
-        error: function(xhr, status, error) {
-            alert('댓글 수정에 실패했습니다: ' + error);
-        }
-	})
-}
+	    // 서버에 댓글 수정 요청
+	    $.post({
+	    	url: '/usr/reply/doModify', // 수정된 URL
+	        type: 'POST', // GET에서 POST로 변경
+	        data: { id: replyId, body: text }, // 서버에 전송할 데이터
+	        success: function(data) {
+	        	$('#modify-form-'+replyId).hide();
+	        	$('#reply-'+replyId).text(data);
+	        	$('#reply-'+replyId).show();
+	        	$('#save-btn-'+replyId).hide();
+	        	$('#modify-btn-'+replyId).show();
+	        },
+	        error: function(xhr, status, error) {
+	            alert('댓글 수정에 실패했습니다: ' + error);
+	        }
+		})
+	}
 </script>
+
 
 <style>
 .detail-page {
@@ -745,21 +754,23 @@ function doModifyReply(replyId) {
 					<!-- 	수정 삭제 버튼		 -->
 					<div class="mod-del-btns"
 						style="font-weight: 600; color: #666666; margin-top: 10px;">
+						<!-- 댓글 수정 버튼 -->
 						<c:if test="${reply.userCanModify }">
 							<button onclick="toggleModifybtn('${reply.id}');"
 								id="modify-btn-${reply.id }" style="white-space: nowrap;">수정</button>
 							<button onclick="doModifyReply('${reply.id}');"
 								style="white-space: nowrap; display: none;"
 								id="save-btn-${reply.id }">저장</button>
-
 						</c:if>
 
+						<!-- 댓글 삭제 버튼 -->
 						<c:if test="${reply.userCanDelete }">
 							<a style="white-space: nowrap; margin-left: 10px;"
 								onclick="if(confirm('정말 삭제하시겠습니까?') == false) return false;"
 								href="../reply/doDelete?id=${reply.id }">삭제</a>
 						</c:if>
 					</div>
+S
 					<div class="reply-box-bottom-line"></div>
 				</div>
 
