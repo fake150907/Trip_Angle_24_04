@@ -15,6 +15,7 @@ import com.example.demo.vo.RegionInfoTips;
 
 import jakarta.servlet.http.HttpServletRequest;
 
+//여행지 기본 정보 및 꿀팁 화면 전이를 담당하는 컨트롤러 
 @Controller
 public class RegionInfoTipsController {
 	
@@ -23,6 +24,7 @@ public class RegionInfoTipsController {
 	@Autowired
 	private RegionService regionService;
 
+	// 도시의 id를 파라미터로 받아, 도시의 상세 정보를 반환하는 메서드
 	@RequestMapping("/usr/regionInfoTips/infoTips")
 	public String showinformation(HttpServletRequest req, Model model, @RequestParam(defaultValue = "0") int regionId) {
 		 Rq rq = (Rq) req.getAttribute("rq");

@@ -27,7 +27,7 @@ public class PlaceInfoCrawlerForAllInit {
 		PlaceInfoCrawlerForAllInit.driver = driver;
 	}
 
-	public void crawlPlaces(List<PlaceInfoDto> placeInfoList)
+	public void crawlPlaceInfo(List<PlaceInfoDto> placeInfoList)
 			throws InterruptedException, AWTException, SQLException, ClassNotFoundException {
 		System.setProperty(WEB_DRIVER_ID, WEB_DRIVER_PATH);
 

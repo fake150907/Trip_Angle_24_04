@@ -16,21 +16,39 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
 public class PlaceInfoCrawler {
+	// 크롤링에 필요한 WebDriver를 담을 변수
 	private static WebDriver driver;
+	// 데이터를 크롤링할 페이지의 URL을 담을 변수
 	private static String url;
 
+	// 크롤링할때 쓸 드라이버의 ID
 	public static String WEB_DRIVER_ID = "webdriver.chrome.driver";
+	// 크롤링할때 쓸 드라이버의 위치를 나타낸 경로
 	public static String WEB_DRIVER_PATH = "C:/work/chromedriver.exe";
 
+	// 드라이버 setter
 	public static void setWebDriver(WebDriver driver) {
 		PlaceInfoCrawler.driver = driver;
 	}
 
-	public static void crawlPlaces() throws InterruptedException, AWTException, SQLException, ClassNotFoundException {
+	// 추천장소의 정보를 크롤링할 함수 선언
+	public static void crawlPlaceInfo()
+			throws InterruptedException, AWTException, SQLException, ClassNotFoundException {
+		
+		// 위에서 선언했었던 ID,PATH를 웹 드라이버의 속성으로 설정
 		System.setProperty(WEB_DRIVER_ID, WEB_DRIVER_PATH);
 
+		// Chrome 브라우저를 제어하는 동안 설정할 수 있는 다양한 옵션들을 관리하기 위해 ChromeOptions객체 생성
 		ChromeOptions options = new ChromeOptions();
+		
+		// ChromeOptions에 Selenium을 사용하여 로컬로 실행되는 Chrome 브라우저를 제어하기위한
+		// "ignoreProtectedModeSettings"라는 설정을 추가,
 		options.setCapability("ignoreProtectedModeSettings", true);
+		
+		/*
+		 * ChromeDriver 클래스의 객체 생성 이때 앞서 설정한 ChromeOptions 객체를 전달하여 Chrome 브라우저를 제어하는 데
+		 * 사용할 옵션을 지정 웹 페이지를 열거나 상호 작용할 수 있다.
+		 */
 		driver = new ChromeDriver(options);
 
 		driver.manage().window().maximize();
@@ -233,6 +251,6 @@ public class PlaceInfoCrawler {
 
 	public static void main(String[] args)
 			throws InterruptedException, AWTException, SQLException, ClassNotFoundException {
-		crawlPlaces();
+		crawlPlaceInfo();
 	}
 }

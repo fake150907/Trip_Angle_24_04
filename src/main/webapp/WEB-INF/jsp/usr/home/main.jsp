@@ -1386,21 +1386,17 @@ img {
 
 
 	
-	
+	// 도시명 리스트를 javascript객체화 처리
 	var regionsJson = <%=request.getAttribute("regionsJson")%>;
 	console.log(regionsJson);
 	
-	
+
+	// 도시명 객체 리스트를 element화 해서 출력하는 처리
 	function showSearchList(){
 		
 		let regionsJsonCopy = [];
 		let searchInputValue = document.querySelector('.search-input').value;
-		// Select all elements with the class "search-list"
 		let searchListElement = document.querySelector('.search-list');
-
-		
-		
-		
 		
 		
 		if(!searchInputValue){

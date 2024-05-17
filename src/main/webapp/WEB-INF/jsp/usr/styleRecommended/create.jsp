@@ -1375,7 +1375,6 @@
 				this.src = 'https://www.freeiconspng.com/thumbs/no-image-icon/no-image-icon-1.jpg';
 			};
             
-
             // Create the description div
             const descriptionDiv = document.createElement('div');
             descriptionDiv.classList.add('ta-item-description');
