@@ -23,6 +23,7 @@ public class NeedLogoutInterceptor implements HandlerInterceptor {
 
         // 로그인되어 있는 경우
         if (rq.isLogined()) {
+
             System.out.println("==============로그아웃 하고 사용해주세요============");
             // 이전 페이지로 이동하며 메시지 출력
             rq.printHistoryBack("로그아웃 하고 사용해주세요");
