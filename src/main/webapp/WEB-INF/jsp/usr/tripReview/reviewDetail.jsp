@@ -7,19 +7,18 @@
 
 <!-- <iframe src="http://localhost:8081/usr/article/doIncreaseHitCountRd?id=372" frameborder="0"></iframe> -->
 
+
 <!-- 변수 -->
 <script>
 	const params = {};
-	params.id = parseInt('${param.id}');
-	params.memberId = parseInt('${loginedMemberId}');
+	params.id = parseInt('${param.id}'); // 'params' 객체에 'id' 값 설정
+	params.memberId = parseInt('${loginedMemberId}'); // 'params' 객체에 'memberId' 값 설정
 	
-	console.log(params);
-	console.log(params.memberId);
+	console.log(params); // 'params' 객체를 콘솔에 출력
+	console.log(params.memberId); // 'params.memberId' 값을 콘솔에 출력
 	
-	var isAlreadyAddGoodRp = ${isAlreadyAddGoodRp};
-	var isAlreadyAddBadRp = ${isAlreadyAddBadRp};
-	
-	
+	var isAlreadyAddGoodRp = ${isAlreadyAddGoodRp}; // '좋아요' 여부 설정
+	var isAlreadyAddBadRp = ${isAlreadyAddBadRp}; // '싫어요' 여부 설정
 </script>
 
 <!-- 조회수 -->
@@ -28,33 +27,32 @@
 		const localStorageKey = 'article__' + params.id + '__alreadyView';
 
 		if (localStorage.getItem(localStorageKey)) {
-			return;
+			return; // 이미 조회된 경우 반환
 		}
 
-		localStorage.setItem(localStorageKey, true);
+		localStorage.setItem(localStorageKey, true); // 조회 상태를 로컬 스토리지에 저장
 
 		$.get('../article/doIncreaseHitCountRd', {
 			id : params.id,
 			ajaxMode : 'Y'
 		}, function(data) {
-			$('.article-detail__hit-count').empty().html(data.data1);
+			$('.article-detail__hit-count').empty().html(data.data1); // 조회수 업데이트
 		}, 'json');
 	}
 
 	$(function() {
-		// 		ArticleDetail__doIncreaseHitCount();
+		// 조회수 증가 함수 호출을 지연
 		setTimeout(ArticleDetail__doIncreaseHitCount, 2000);
 	});
 </script>
 
 <!-- 좋아요 싫어요  -->
 <script>
-	<!-- 좋아요 싫어요 버튼	-->
 	function checkRP() {
 		if(isAlreadyAddGoodRp == true){
-			$('#likeButton').toggleClass('btn-outline');
+			$('#likeButton').toggleClass('btn-outline'); // '좋아요' 버튼 상태 토글
 		}else if(isAlreadyAddBadRp == true){
-			$('#DislikeButton').toggleClass('btn-outline');
+			$('#DislikeButton').toggleClass('btn-outline'); // '싫어요' 버튼 상태 토글
 		}else {
 			return;
 		}
@@ -64,7 +62,7 @@
 		if(isNaN(params.memberId) == true){
 			if(confirm('로그인 해야해. 로그인 페이지로 가실???')){
 				var currentUri = encodeURIComponent(window.location.href);
-				window.location.href = '../member/login?afterLoginUri=' + currentUri; // 로그인 페이지에 원래 페이지의 uri를 같이 보냄
+				window.location.href = '../member/login?afterLoginUri=' + currentUri; // 로그인 페이지로 리디렉션
 			}
 			return;
 		}
@@ -75,11 +73,6 @@
 			data: {relTypeCode: 'article', relId: articleId},
 			dataType: 'json',
 			success: function(data){
-				console.log(data);
-				console.log('data.data1Name : ' + data.data1Name);
-				console.log('data.data1 : ' + data.data1);
-				console.log('data.data2Name : ' + data.data2Name);
-				console.log('data.data2 : ' + data.data2);
 				if(data.resultCode.startsWith('S-')){
 					var likeButton = $('#likeButton');
 					var likeCount = $('#likeCount');
@@ -102,39 +95,28 @@
 				}else {
 					alert(data.msg);
 				}
-		
 			},
 			error: function(jqXHR,textStatus,errorThrown) {
-				alert('좋아요 오류 발생 : ' + textStatus);
-
+				alert('좋아요 오류 발생 : ' + textStatus); // 오류 메시지 표시
 			}
-			
 		});
 	}
 	
-	
-	
 	function doBadReaction(articleId) {
-		
 		if(isNaN(params.memberId) == true){
 			if(confirm('로그인 해야해. 로그인 페이지로 가실???')){
 				var currentUri = encodeURIComponent(window.location.href);
-				window.location.href = '../member/login?afterLoginUri=' + currentUri; // 로그인 페이지에 원래 페이지의 uri를 같이 보냄
+				window.location.href = '../member/login?afterLoginUri=' + currentUri; // 로그인 페이지로 리디렉션
 			}
 			return;
 		}
 		
-	 $.ajax({
+	 	$.ajax({
 			url: '/usr/reactionPoint/doBadReaction',
 			type: 'POST',
 			data: {relTypeCode: 'article', relId: articleId},
 			dataType: 'json',
 			success: function(data){
-				console.log(data);
-				console.log('data.data1Name : ' + data.data1Name);
-				console.log('data.data1 : ' + data.data1);
-				console.log('data.data2Name : ' + data.data2Name);
-				console.log('data.data2 : ' + data.data2);
 				if(data.resultCode.startsWith('S-')){
 					var likeButton = $('#likeButton');
 					var likeCount = $('#likeCount');
@@ -149,25 +131,22 @@
 						likeCount.text(data.data1);
 						DislikeButton.toggleClass('btn-outline');
 						DislikeCount.text(data.data2);
-		
 					}else {
 						DislikeButton.toggleClass('btn-outline');
 						DislikeCount.text(data.data2);
 					}
-			
 				}else {
 					alert(data.msg);
 				}
 			},
 			error: function(jqXHR,textStatus,errorThrown) {
-				alert('싫어요 오류 발생 : ' + textStatus);
+				alert('싫어요 오류 발생 : ' + textStatus); // 오류 메시지 표시
 			}
-			
 		});
 	}
 	
 	$(function() {
-		checkRP();
+		checkRP(); // '좋아요', '싫어요' 버튼 상태 초기화
 	});
 </script>
 
@@ -180,9 +159,6 @@
 				alert('이미 처리중입니다');
 				return;
 			}
-			console.log(123);
-			
-			console.log(form.body.value);
 			
 			if (form.body.value.length < 3) {
 				alert('댓글은 3글자 이상 입력해');
@@ -190,53 +166,39 @@
 				return;
 			}
 
-			ReplyWrite__submitDone = true;
+			ReplyWrite__submitDone = true; // 댓글 작성 완료 플래그 설정
 			form.submit();
-
 		}
 </script>
+
 <!-- 댓글 수정 -->
 <script>
 function toggleModifybtn(replyId) {
-	
-	console.log(replyId);
-	
 	$('#modify-btn-'+replyId).hide();
 	$('#save-btn-'+replyId).show();
 	$('#reply-'+replyId).hide();
-	$('#modify-form-'+replyId).show();
+	$('#modify-form-'+replyId).show(); // 수정 버튼과 폼 토글
 }
 
 function doModifyReply(replyId) {
-	 console.log(replyId); // 디버깅을 위해 replyId를 콘솔에 출력
-	    
-	    // form 요소를 정확하게 선택
-	    var form = $('#modify-form-' + replyId);
-	    console.log(form); // 디버깅을 위해 form을 콘솔에 출력
+	var form = $('#modify-form-' + replyId);
+	var text = form.find('input[name="reply-text-' + replyId + '"]').val();
 
-	    // form 내의 input 요소의 값을 가져옵니다
-	    var text = form.find('input[name="reply-text-' + replyId + '"]').val();
-	    console.log(text); // 디버깅을 위해 text를 콘솔에 출력
-
-	    // form의 action 속성 값을 가져옵니다
-	    var action = form.attr('action');
-	    console.log(action); // 디버깅을 위해 action을 콘솔에 출력
-	
-    $.post({
-    	url: '/usr/reply/doModify', // 수정된 URL
-        type: 'POST', // GET에서 POST로 변경
-        data: { id: replyId, body: text }, // 서버에 전송할 데이터
-        success: function(data) {
-        	$('#modify-form-'+replyId).hide();
-        	$('#reply-'+replyId).text(data);
-        	$('#reply-'+replyId).show();
-        	$('#save-btn-'+replyId).hide();
-        	$('#modify-btn-'+replyId).show();
-        },
-        error: function(xhr, status, error) {
-            alert('댓글 수정에 실패했습니다: ' + error);
-        }
-	})
+	$.post({
+		url: '/usr/reply/doModify',
+		type: 'POST',
+		data: { id: replyId, body: text }, // 서버에 전송할 데이터
+		success: function(data) {
+			$('#modify-form-'+replyId).hide();
+			$('#reply-'+replyId).text(data);
+			$('#reply-'+replyId).show();
+			$('#save-btn-'+replyId).hide();
+			$('#modify-btn-'+replyId).show();
+		},
+		error: function(xhr, status, error) {
+			alert('댓글 수정에 실패했습니다: ' + error); // 오류 메시지 표시
+		}
+	});
 }
 </script>
 
