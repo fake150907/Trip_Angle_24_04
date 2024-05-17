@@ -58,18 +58,17 @@ public class TripStyleRecommendedController {
 			return rq.historyBackOnView("일정의 작성자만 접근할 수 있습니다.");
 		}
 		
+		//이미 생성이 완료된 데이터 라면 디테일 페이지로 이동한다
 		if (tripSchedule.getStep() == 0) {
 			tripScheduleService.updateStepById(id);
 		}
 		
+		//이미 생성이 완료된 일정이 라면 디테일 페이지로 이동한다
 		if (tripSchedule.getStep() == 2) {
 			return "redirect:/usr/myPlan/myPlanDetail?id="+id+"&regionId="+tripSchedule.getRegionId();
 		}
 		
 		
-//		if(rq.getLoginedMemberId() != tripSchedule.getMemberId()) {
-//			return rq.historyBackOnView("로그인한 사용자가 일정 작성자가 아닙니다.");
-//		}
 		System.err.println(tripSchedule);
 
 
@@ -111,7 +110,7 @@ public class TripStyleRecommendedController {
 			return "redirect:/usr/styleRecommended/create?id="+id;
 		}
 		
-		//이미 생성이 완료된 데이터 라면 디테일 페이지로 이동한다
+		//이미 생성이 완료된 일정이 라면 디테일 페이지로 이동한다
 		if (tripSchedule.getStep() == 2) {
 			return "redirect:/usr/myPlan/myPlanDetail?id="+id+"&regionId="+tripSchedule.getRegionId();
 		}
@@ -163,13 +162,6 @@ public class TripStyleRecommendedController {
         
         tripStyleRecommendedService.writeStyleRecommendedDatas(weathers, fashions, shoppingLists);
         
-        //tripScheduleService.updateStepById(id);
-
-
-        
-        //추후 상세 정보 보기로 넘겨주기.
-//		return Ut.jsReplace(loginedMemberCanModifyRd.getResultCode(), loginedMemberCanModifyRd.getMsg(),
-//				"../article/detail?id=" + id);
 
 		return "redirect:/usr/myPlan/myPlanDetail?id="+id+"&regionId="+tripSchedule.getRegionId();
 	}
