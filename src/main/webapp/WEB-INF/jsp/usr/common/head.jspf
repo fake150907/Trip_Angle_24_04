@@ -126,24 +126,44 @@
 </style>
 </head>
 
-<body>
-	<div class="header-container">
-		<header>
-			<div class="h-20 flex mx-auto items-center text-3xl">
+<body> <!-- 본문 시작 -->
+
+	<!-- 헤더 컨테이너 -->
+	<div class="header-container"> 
+
+		<!-- 헤더 영역 -->
+		<header> 
+
+			<!-- 헤더 내용 -->
+			<div class="h-20 flex mx-auto items-center text-3xl"> 
+
+				<!-- 로고 1 -->
 				<a href="/" class="logo logo1"
-					style="font-family: pattaya; color: #696969; margin-left: 28px;">Trip</a>
+					style="font-family: pattaya; color: #696969; margin-left: 28px;">Trip</a> 
+
+				<!-- 로고 2 -->
 				<a href="/" class="logo"
-					style="font-family: pattaya; color: #81C8A2">Angle</a>
-				<div class="flex-grow"></div>
-				<ul class="flex">
+					style="font-family: pattaya; color: #81C8A2">Angle</a> 
+
+				<!-- 자동으로 넓이를 채움 -->
+				<div class="flex-grow"></div> 
+
+				<!-- 메뉴 목록 -->
+				<ul class="flex"> 
+
+					<!-- 공지사항 메뉴 -->
 					<li>
 						<a class="articleList-btn header-btns "
 							href="../article/list?boardId=1&page=1">공지사항</a>
-					</li>
+					</li> 
+
+					<!-- 여행 후기 메뉴 -->
 					<li>
 						<a class="login-btn header-btns" href="../tripReview/reviewList">여행
 							후기</a>
-					</li>
+					</li> 
+
+					<!-- 로그인 전 메뉴 -->
 					<c:if test="${!rq.isLogined() }">
 						<li></li>
 						<li></li>
@@ -155,9 +175,10 @@
 							<a class="join-btn header-btns " href="../member/join">회원가입</a>
 						</li>
 					</c:if>
+
+					<!-- 로그인 후 메뉴 -->
 					<c:if test="${rq.isLogined() }">
 						<li>
-
 							<a class="write-btns header-btns "
 								href="../tripReview/reviewWrite">후기 작성</a>
 						</li>
@@ -165,7 +186,6 @@
 						<li>
 							<a class="mypage-btns header-btns" href="/usr/myPlan/myPlanList">나의
 								일정</a>
-
 						</li>
 						<li></li>
 						<li></li>
@@ -173,15 +193,18 @@
 							<a class="mypage-btns header-btns" href="/usr/member/myPage">회원정보</a>
 						</li>
 						<li>
-
 							<a onclick="if(confirm('로그아웃 할래?') == false) return false;"
 								class="logout-btn header-btns " href="${rq.logoutUri }">로그아웃</a>
-
 						</li>
 					</c:if>
-				</ul>
-			</div>
-			<div class="div-8 header-line"></div>
+				</ul> 
+			</div> 
+
+			<!-- 헤더 라인 -->
+			<div class="div-8 header-line"></div> 
+
 		</header>
-	</div>
+
+	</div> 
+
 </body>
