@@ -4,32 +4,35 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
+@Data // Lombok을 사용하여 getter, setter, toString 등의 메서드 자동 생성
+@AllArgsConstructor // 모든 필드를 매개변수로 받는 생성자 자동 생성
+@NoArgsConstructor // 기본 생성자 자동 생성
+
+// 장소 정보를 담는 DTO(Data Transfer Object) 클래스
 public class PlaceInfoDto {
-	private int id;
-	private String regDate;
-	private String updateDate;
-	private String name;
-	private String address;
-	private String grade;
-	private String facilities;
-	// private String operatingTime;
-	private String phoneNumber;
-	private String reviewCount;
-	private String price;
+	
+	// 필드 선언
+	private int id; // ID
+	private String regDate; // 등록일시
+	private String updateDate; // 수정일시
+	private String name; // 이름
+	private String address; // 주소
+	private String grade; // 등급
+	private String facilities; // 시설
+	private String phoneNumber; // 전화번호
+	private String reviewCount; // 리뷰 수
+	private String price; // 가격
+	private String imageUrl1; // 이미지 URL 1
+	private String imageUrl2; // 이미지 URL 2
+	private String imageUrl3; // 이미지 URL 3
+	private String imageUrl4; // 이미지 URL 4
+	private String imageUrl5; // 이미지 URL 5
+	private String naverSpotCord; // 네이버 스팟 코드
+	private int tabId; // 탭 ID
+	private int regionId; // 지역 ID
 
-	private String imageUrl1;
-	private String imageUrl2;
-	private String imageUrl3;
-	private String imageUrl4;
-	private String imageUrl5;
-
-	private String naverSpotCord;
-	private int tabId;
-	private int regionId;
-
+	// 생성자 선언
+	// 장소 정보를 생성하는 데 필요한 매개변수를 모두 받는 생성자
 	public PlaceInfoDto(String name, String address, String phoneNum, String facilities, String grade, String imgUrl1,
 			String imgUrl2, String imgUrl3, String imgUrl4, String imgUrl5, String reviewCount, String price) {
 		super();
@@ -47,6 +50,7 @@ public class PlaceInfoDto {
 		this.price = price;
 	}
 
+	// 네이버 스팟 코드와 탭 ID, 지역 ID를 받는 생성자
 	public PlaceInfoDto(String naverSpotCord, int tabId, int regionId) {
 		super();
 		this.naverSpotCord = naverSpotCord;
