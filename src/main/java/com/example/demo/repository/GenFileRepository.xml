@@ -3,6 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.demo.repository.GenFileRepository">
+	<!-- 파일정보 insert를 위한 쿼리 -->
 	<insert id="saveMeta" useGeneratedKeys="true" keyProperty="id">
 		INSERT INTO genFile
 		SET regDate = NOW(),
@@ -23,6 +24,7 @@
 		fileExt = #{fileExt}
 	</insert>
 
+	<!-- 특정 조건에 해당하는 파일 정보를 가져오는 쿼리 -->
 	<select id="getGenFile" resultType="GenFile">
 		SELECT *
 		FROM genFile
@@ -44,6 +46,7 @@
 		</if>
 	</select>
 
+	<!-- ID를 기반으로 파일 정보를 가져오는 쿼리 -->
 	<select id="getGenFileById" resultType="GenFile">
 		SELECT *
 		FROM genFile
@@ -51,6 +54,7 @@
 		AND id = #{id}
 	</select>
 
+	<!-- 특정 조건에 해당하는 파일 목록을 가져오는 쿼리 -->
 	<select id="getGenFiles" resultType="GenFile">
 		SELECT *
 		FROM genFile
@@ -67,6 +71,7 @@
 		ORDER BY typeCode, type2Code, fileNo
 	</select>
 
+	<!-- 특정 릴레이션 타입 코드와 릴레이션 ID를 기반으로 파일 목록을 가져오는 쿼리 -->
 	<select id="getGenFilesByRelTypeCodeAndRelId"
 		resultType="GenFile">
 		SELECT *
@@ -77,6 +82,7 @@
 		ORDER BY typeCode, type2Code, fileNo
 	</select>
 
+	<!-- 특정 조건에 해당하는 파일 목록을 가져오는 쿼리 -->
 	<select
 		id="getGenFilesRelTypeCodeAndRelIdsAndTypeCodeAndType2Code"
 		resultType="GenFile">
@@ -97,6 +103,7 @@
 		ORDER BY relId, fileNo
 	</select>
 
+	<!-- 파일의 관련 ID를 변경하는 쿼리 -->
 	<update id="changeRelId">
 		UPDATE genFile
 		<set>
@@ -106,12 +113,14 @@
 		WHERE id = #{id}
 	</update>
 
+	<!-- 특정 조건에 해당하는 파일들을 삭제하는 쿼리 -->
 	<delete id="deleteFiles">
 		DELETE FROM genFile
 		WHERE relTypeCode = #{relTypeCode}
 		AND relId = #{relId}
 	</delete>
 
+	<!-- 특정 ID를 기반으로 파일을 삭제하는 쿼리 -->
 	<delete id="deleteFile">
 		DELETE FROM genFile
 		WHERE id = #{id}
