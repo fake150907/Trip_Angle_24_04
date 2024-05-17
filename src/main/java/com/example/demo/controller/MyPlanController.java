@@ -87,18 +87,60 @@ public class MyPlanController {
 	public String showPlanDetail(HttpServletRequest req, Model model, int id, int regionId) {
 		Rq rq = (Rq) req.getAttribute("rq");
 
-		// 일정 ID를 기반으로 일정 정보를 가져옴
 		TripSchedule tripSchedule = tripScheduleService.getTripScheduleById(id);
 
 		if (tripSchedule == null) {
-			return rq.historyBackOnView("존재하지 않는 일정 입니다."); // 일정이 없으면 이전 페이지로 이동
+			return rq.historyBackOnView("존재하지 않는 일정 입니다.");
 		}
 
 		if (tripSchedule.getMemberId() != rq.getLoginedMemberId()) {
-			return rq.historyBackOnView("일정의 작성자만 접근할 수 있습니다."); // 일정의 작성자가 아니면 이전 페이지로 이동
+			return rq.historyBackOnView("일정의 작성자만 접근할 수 있습니다.");
 		}
 
-		// 일정 상세 정보 페이지로 이동
+		if (tripSchedule.getStep() == 0) {
+			model.addAttribute("id", id);
+			model.addAttribute("tripSchedule", tripSchedule);
+
+			return "/usr/schedule/ticketing";
+		}
+
+		if (tripSchedule.getStep() == 1) {
+			return "redirect:/usr/styleRecommended/create?id=" + id;
+		}
+
+		RegionInfoTips regionInfoTips = regionInfoTipsService.getRegionInfoTipsId(regionId);
+
+		int tabId1 = 1; // 관광tabId
+		int tabId2 = 2; // 맛집tabId
+		int tabId3 = 3; // 쇼핑tabId
+
+		List<PlaceInfoDto> placeInfoList1 = placeInfoService.getplaceInfoList(tabId1, regionId); // 관광placeList
+		List<PlaceInfoDto> placeInfoList2 = placeInfoService.getplaceInfoList(tabId2, regionId); // 맛집placeList
+		List<PlaceInfoDto> placeInfoList3 = placeInfoService.getplaceInfoList(tabId3, regionId); // 쇼핑placeList
+
+		List<Weather> weathers = weatherService.getWeathersFromScheduleId(id);
+		List<Fashion> fashions = fashionService.getFashionsFromScheduleId(id);
+		List<ShoppingList> shoppingLists = shoppingListService.getShoppingListsFromScheduleId(id);
+
+		for (PlaceInfoDto placeInfoDto : placeInfoList1) {
+			System.err.println("ImgUrl1" + placeInfoDto.getImageUrl1());
+		}
+
+		tripScheduleService.updateStepById(id);
+
+		model.addAttribute("tripSchedule", tripSchedule);
+		model.addAttribute("regionInfoTips", regionInfoTips);
+
+		model.addAttribute("placeInfoList1", placeInfoList1);
+		model.addAttribute("placeInfoList2", placeInfoList2);
+		model.addAttribute("placeInfoList3", placeInfoList3);
+
+		model.addAttribute("weathers", weathers);
+		model.addAttribute("fashions", fashions);
+		model.addAttribute("shoppingLists", shoppingLists);
+
+		System.out.println(regionInfoTips);
+
 		return "/usr/myPlan/myPlanDetail";
 	}
 
