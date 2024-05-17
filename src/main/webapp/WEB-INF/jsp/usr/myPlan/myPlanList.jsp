@@ -13,7 +13,6 @@
 	</div>
 </div>
 
-<!-- 찜 하트 -->
 <style>
 .heart {
 	color: #eb4034;
@@ -22,17 +21,17 @@
 }
 </style>
 
-<!-- 나의 일정 리스트 페이지 -->  -->
+<!-- 찜 한 카페 페이지  -->
 <section class="my-plan-list-page">
 
 
-<!-- 나의 일정 리스트 -->
 	<section class="my-plan-list">
-
+		<!-- 찜한 카페목록 -->
 		<div class="search-result plan-list" id="search-result">
 			<c:forEach var="tripSchedule" items="${tripSchedules}">
 
-				<a href="myPlanDetail?id=${tripSchedule.id}&regionId=${tripSchedule.regionId}"
+				<a
+					href="myPlanDetail?id=${tripSchedule.id}&regionId=${tripSchedule.regionId}"
 					class="linkbox１">
 					<div class="content-info-box content-1">
 						<div class="my-plan-img-box">

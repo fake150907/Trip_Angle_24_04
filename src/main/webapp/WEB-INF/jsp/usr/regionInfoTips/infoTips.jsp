@@ -7,34 +7,25 @@
 
 <!-- <iframe src="http://localhost:8081/usr/article/doIncreaseHitCountRd?id=372" frameborder="0"></iframe> -->
 <script>
-$(document).ready(function() {
-    // HoneyTipsPage 숨기기
-    $('.HoneyTipsPage').hide();
-    // regDate_text 배경색 설정
-    $('.regDate_text').css('background-color', '#CDEAC0');
+	$(document).ready(function() {
+		$('.HoneyTipsPage').hide();
+		$('.regDate_text').css('background-color', '#CDEAC0');
+		$('.InfoLabel1').click(function() {
+			$('.TipInformationPage').show();
+			$('.HoneyTipsPage').hide();
+		});
 
-    // InfoLabel1 클릭 이벤트 설정
-    $('.InfoLabel1').click(function() {
-        // TipInformationPage 보이기, HoneyTipsPage 숨기기
-        $('.TipInformationPage').show();
-        $('.HoneyTipsPage').hide();
-    });
+		$('.InfoLabel2').click(function() {
+			$('.HoneyTipsPage').show();
+			$('.TipInformationPage').hide();
+		});
+	});
 
-    // InfoLabel2 클릭 이벤트 설정
-    $('.InfoLabel2').click(function() {
-        // HoneyTipsPage 보이기, TipInformationPage 숨기기
-        $('.HoneyTipsPage').show();
-        $('.TipInformationPage').hide();
-    });
-});
+	function hideHoneyTipsPage() {
+		$('.HoneyTipsPage').hide();
+	}
 
-// HoneyTipsPage 숨기는 함수
-function hideHoneyTipsPage() {
-    $('.HoneyTipsPage').hide();
-}
-
-// 페이지 로딩 시 HoneyTipsPage 숨김
-hideHoneyTipsPage();
+	hideHoneyTipsPage();
 </script>
 <style>
 .informationPage {

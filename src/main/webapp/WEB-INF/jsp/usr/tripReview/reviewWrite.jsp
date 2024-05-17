@@ -5,50 +5,33 @@
 <%@ include file="../common/toastUiEditorLib.jspf"%>
 <!-- Article write 관련 -->
 <script type="text/javascript">
-//게시글 작성 폼 제출 여부를 확인하기 위한 변수
-let ArticleWrite__submitFormDone = false;
+	let ArticleWrite__submitFormDone = false;
+	function ArticleWrite__submit(form) {
+		if (ArticleWrite__submitFormDone) {
+			return;
+		}
+		form.title.value = form.title.value.trim();
+		if (form.title.value == 0) {
+			alert('제목을 입력해주세요');
+			return;
+		}
+		const editor = $(form).find('.toast-ui-editor').data(
+				'data-toast-editor');
+		const markdown = editor.getMarkdown().trim();
+		if (markdown.length == 0) {
+			alert('내용을 입력해주세요');
+			editor.focus();
+			return;
+		}
+		
+// 		alert(${currentId});
 
-// 게시글 작성 폼 제출 함수
-function ArticleWrite__submit(form) {
-	// 폼이 이미 제출된 경우 함수 종료
-	if (ArticleWrite__submitFormDone) {
-		return;
-	}
-	
-	// 제목 필드의 값에서 공백 제거
-	form.title.value = form.title.value.trim();
-	
-	// 제목이 비어 있는 경우 경고 메시지 출력
-	if (form.title.value == 0) {
-		alert('제목을 입력해주세요');
-		return;
-	}
-	
-	// Toast UI Editor 인스턴스를 가져옴
-	const editor = $(form).find('.toast-ui-editor').data('data-toast-editor');
-	
-	// 에디터 내용에서 공백 제거
-	const markdown = editor.getMarkdown().trim();
-	
-	// 에디터 내용이 비어 있는 경우 경고 메시지 출력 및 포커스 설정
-	if (markdown.length == 0) {
-		alert('내용을 입력해주세요');
-		editor.focus();
-		return;
-	}
-	
-	// 이미지 파일 입력 필드의 이름 설정
-	$('#fileInput').attr('name', 'file__article__' + ${currentId} + '__extra__Img__1');
+		$('#fileInput').attr('name', 'file__article__' + ${currentId} + '__extra__Img__1');
 
-	// 폼의 body 필드에 에디터 내용 설정
-	form.body.value = markdown;
+		form.body.value = markdown;
 
-	// 폼이 제출되었음을 표시
-	ArticleWrite__submitFormDone = true;
-	
-	// 폼 제출
-	form.submit();
-}
+		ArticleWrite__submitFormDone = true;
+		form.submit();
 	}
 </script>
 
@@ -72,6 +55,7 @@ function ArticleWrite__submit(form) {
 						<th style="font-weight: 600">게시판</th>
 						<td>
 							<select class="select select-bordered select-sm w-full max-w-xs" name="boardId">
+								<!-- <option selected="selected" disabled>게시판을 선택해주세요</option> -->
 								<option value="2">여행 후기</option>
 								<option value="1">공지사항</option>
 
