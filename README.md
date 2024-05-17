@@ -26,8 +26,10 @@ ___
 ___
 * Front: HTML, CSS, Javascript, Jquery3, Tailwind, DaisyUI
 * Front-API: Weather API, Free Weather API
+* 웹-프레임워크: 구글 앱 스크립트
+* Back-개발언어: Java, Python
 * Back-프레임워크: SpringBoot 3, FastAPI, Selenium
-* 사용 라이브러리: Langchain, BeautifulSoup, Lombok, Tomcat
+* Back-라이브러리: Langchain, BeautifulSoup, Lombok, Tomcat
 * 템플릿 엔진: JSP
 * ORM: Mybatis 3
 * DB: MySQL 10
@@ -35,7 +37,7 @@ ___
 * 형성 관리: Git, GitHub
 * 협업툴: Discord, Google 스프레드시트, Google 문서, 클로바노트
 * 디자인: Figma
-* 개발툴: Jdk 1.8, MAVEN, SQLYog, Spring Tool Suit 4, Visual Studio Code
+* 개발환경: Jdk 1.7, MAVEN, Spring Tool Suit 4, Visual Studio Code, Window 10
 
 
 # 🙋‍♂️ 역할 분담

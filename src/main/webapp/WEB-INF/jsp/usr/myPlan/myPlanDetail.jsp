@@ -5,11 +5,6 @@
 <%@ include file="../common/head.jspf"%>
 <meta charset="utf-8">
 
-<!-- <link rel="stylesheet" -->
-<!-- 	href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css"> -->
-<!-- <link rel="stylesheet" -->
-<!-- 	href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.structure.min.css"> -->
-
 
 <script>
 	$(document).ready(function() {
@@ -21,6 +16,7 @@
 		});
 	});
 </script>
+
 <!-- 관광,맛집,쇼핑 토글 창 -->
 <script>
 	$(document).ready(
@@ -102,6 +98,7 @@
 			});
 </script>
 
+<!-- 나의일정 상세보기 및 기본정보 -->
 <style>
 .my-plan-detail {
 	width: 70%;
@@ -876,10 +873,11 @@
 
 
 
-
+<!-- 헤더 뒤의 공간 -->
 <div class="wall" style="height: 120px;"></div>
 
 
+<!-- 나의 일정 상세보기 섹션 -->
 <div class="my-plan-detail">
 	<div class="detail-box">
 		<div class="column">
@@ -889,20 +887,15 @@
 						<div class="destination">${tripSchedule.extra__regionName}</div>
 						<div class="trip-date">${tripSchedule.startDate } ~ ${tripSchedule.endDate }</div>
 					</div>
-
-					<a class="calendar-btn" href="/usr/myPlan/myPlanCalendar">캘린더
-						보기</a>
+					<a class="calendar-btn" href="/usr/myPlan/myPlanCalendar">캘린더 보기</a>
 				</div>
-				<img src="${tripSchedule.extra__regionImageUrl }"
-					class="my-plan-img" />
+				<img src="${tripSchedule.extra__regionImageUrl }" class="my-plan-img" />
 			</div>
-
 			<div class="plan-box">
 				<div class="my-plan-title">${tripSchedule.title}</div>
 				<div class="reg-date-title">나의 일정 등록일</div>
 				<div class="reg-date">${tripSchedule.regDate}</div>
 				<div class="my-plan-content">${tripSchedule.content}</div>
-
 			</div>
 
 		</div>
@@ -911,20 +904,16 @@
 				<div class="member-title-box">
 					<div class="member-title">
 						<span
-							style="font-family: Pretendard, -apple-system, Roboto, Helvetica, sans-serif; font-weight: 500; color: rgba(129, 200, 162, 1);">${rq.loginedMember.nickname }</span>
-						님의
+							style="font-family: Pretendard, -apple-system, Roboto, Helvetica, sans-serif; font-weight: 500; color: rgba(129, 200, 162, 1);">${rq.loginedMember.nickname }</span>님의
 						<br>
 						나의 일정 상세페이지
 					</div>
 					<div class="mint-line"></div>
-
-
+					
 					<div class="btns">
 						<a href="../myPlan/doDelete?id=${tripSchedule.id }"
 							class="delete-btn">일정 삭제</a>
 					</div>
-
-
 				</div>
 				<div class="div-15">
 					<div class="honey-tip1">
@@ -962,6 +951,7 @@
 	</div>
 </div>
 
+<!-- 날씨 보여주기 섹션 -->
 <div class="weather-section">
 	<c:forEach var="weather" items="${weathers}">
 		<div class="forecast-item">
@@ -986,7 +976,7 @@
 </div>
 
 
-<!-- 스타일 추천 -->
+<!-- 스타일 추천 섹션-->
 <div class="fashion-recommendation-main">
 	<div class="section-container mt-100">
 		<section class="recommendation-section">
@@ -1107,6 +1097,8 @@
 
 	</div>
 </div>
+
+<!-- 쇼핑리스트 추천 섹션 -->
 <div class="section-container ">
 	<section class="recommendation-section ">
 		<header class="recommendation-header">
@@ -1153,9 +1145,8 @@
 	</section>
 </div>
 
+<!-- 장소 추천 -->
 <div class="section-container">
-
-	<!-- 장소 추천 -->
 	<div class="place-recommendation-main">
 		<div class="section-container">
 			<section class="recommendation-section">
@@ -1174,10 +1165,9 @@
 			</section>
 		</div>
 	</div>
+</div>
 
-
-	<div class="section-container">
-
+<div class="section-container">
 		<div class="placeInfoList1">
 			<section class="ta-item-container">
 				<c:forEach var="place" items="${placeInfoList1}">
@@ -1238,13 +1228,10 @@
 				</c:forEach>
 			</section>
 		</div>
-
-	</div>
-
+</div>
 
 
+<!-- 하단 공백 필요  -->
+<div class="wall" style="height: 120px;"></div>
 
-
-	<div class="wall" style="height: 120px;"></div>
-
-	<%@ include file="../common/foot.jspf"%>
+<%@ include file="../common/foot.jspf"%>

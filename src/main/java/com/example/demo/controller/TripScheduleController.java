@@ -54,6 +54,9 @@ public class TripScheduleController {
 
 	// 여행 일정 티켓 예매를 처리.
 	@RequestMapping("/usr/schedule/ticketing")
+	/*
+	 * 캘린더에서 여행 일정을 만든 후에 나오는 항공, 숙소 예약 페이지 이다. 
+	 * */
 	public String tripSchedule(HttpServletRequest req, String title, String content, String checkInDate, String checkOutDate, @RequestParam(defaultValue = "0") int regionId, Model model) {
 
 		Rq rq = (Rq) req.getAttribute("rq");
