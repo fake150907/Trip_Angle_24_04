@@ -25,7 +25,7 @@ ___
 # 🛠 기술스택
 ___
 * Front: HTML, CSS, Javascript, Jquery3, Tailwind, DaisyUI
-* Front-API: Weather API, Open Meteo API
+* Front-API: Open Weather API, Open Meteo API
 * 웹-프레임워크: 구글 앱 스크립트
 * Back-개발언어: Java, Python
 * Back-프레임워크: SpringBoot 3, FastAPI, Selenium
