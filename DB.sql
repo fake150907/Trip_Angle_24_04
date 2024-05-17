@@ -118,7 +118,7 @@ CREATE TABLE `shoppingList` (
 	`id`	INT(10)	NOT NULL,
 	`regDate`	DATETIME	NULL,
 	`updateDate`	DATETIME	NULL,
-	`name`	VARCHAR(30)	NULL,
+	`name`	VARCHAR(100)	NULL,
 	`description`	TEXT	NULL,
 	`imageUrl`	TEXT	NULL,
 	`scheduleId`	INT(10)	NOT NULL
