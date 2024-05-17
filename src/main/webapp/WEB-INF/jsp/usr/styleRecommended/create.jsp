@@ -815,6 +815,7 @@
     fetchWeatherProcess(regionEnglishName);
     fetchShoppingListProcess(regionName, countryName);
     
+    //다음 단계 버튼을 클릭 했을 때, 데이터 유효성을 체크하고, 데이터를 전송하기 위한 메서드 
     function doCreateFormSubmit(e){
     	e.preventDefault();
     	
@@ -847,24 +848,23 @@
 
 
 
+  //패션 관련 탭 버튼을 눌렀을 때, 이벤트 처리를 위한 메서드
     document.addEventListener('DOMContentLoaded', function () {
-        // Select all elements with the class 'recommendation-tab'
         var tabs = document.querySelectorAll('.recommendation-tab');
 
-        // Loop through each tab and add a click event listener
         tabs.forEach(function (tab) {
             tab.addEventListener('click', function () {
-                // Remove 'active-recommendation-tab' class from all tabs
+
                 document.querySelectorAll('.active-recommendation-tab').forEach(function (activeTab) {
                     activeTab.classList.remove('active-recommendation-tab');
                 });
 
-                // Hide all item containers
+
                 document.querySelectorAll('.ta-item-container:not(.shopping-list)').forEach(function (container) {
                     container.style.display = 'none';
                 });
 
-                // Display the corresponding item container if tab has specific classes
+
                 if (tab.classList.contains('fashion-all')) {
                     document.querySelectorAll('.ta-item-container.fashion-all').forEach(function (container) {
                         container.style.display = 'flex';
@@ -879,13 +879,14 @@
                     });
                 }
 
-                // Add 'active-recommendation-tab' class to the clicked tab
+
                 tab.classList.add('active-recommendation-tab');
 
             });
         });
     });
 
+    //도시의 영문명을 key로 open weather api 에서 위도, 경도를 가져오기 위한 메서드
     async function fetchGeoCode(regionEnglishName) {
         let apiKey = openWeatherApiKey();
         console.log("apiKey "+ apiKey)
@@ -904,6 +905,8 @@
             return null;
         }
     }
+    
+  //여행지의 위도, 경도와 여행 시작 날짜, 종료 날짜를 key로 Open-Meteo api에서 각 날짜의 날씨 정보를 받아오는 기능
     async function fetchDailyWeather(lat, lon, startDate, endDate) {
         //참고 https://open-meteo.com/en/docs#hourly=&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max&forecast_days=16&start_date=2024-05-01&end_date=2024-05-16
 
@@ -928,6 +931,7 @@
     }
 
 
+    //지역의 영문명을 기반으로 날씨 정보를 받아와 화면에 그려주는 전체 기능을 담당하는 메소드
     async function fetchWeatherProcess(regionEnglishName) {
         const weatherData = await fetchGeoCode(regionEnglishName);
         if (weatherData) {
@@ -1006,6 +1010,7 @@
         }
     }
 
+    //추천 옷 정보를 화면에 그려주는 메소드
     async function printFashions() {
 
         const fashionAll = document.querySelector('.ta-item-container.fashion-all');
@@ -1013,15 +1018,12 @@
         const fashionWomen = document.querySelector('.ta-item-container.fashion-women');
 
         fashions.forEach((fashion) => {
-            // Create the article element
             const article = document.createElement('article');
             article.className = 'ta-item-card';
 
-            // Create the image container div
             const imageContainer = document.createElement('div');
             imageContainer.className = 'ta-item-image-container';
 
-            // Create the image element
             const image = document.createElement('img');
             if (fashion.imageUrl == "") {
                 image.src = "https://www.freeiconspng.com/thumbs/no-image-icon/no-image-icon-1.jpg";
@@ -1034,43 +1036,33 @@
             image.className = 'ta-item-image';
             image.loading = 'lazy';
 
-            // Append the image to the image container
             imageContainer.appendChild(image);
 
-            // Create the description div
             const description = document.createElement('div');
             description.className = 'ta-item-description';
             description.textContent = fashion.description;
 
-            // Append the description to the image container
             imageContainer.appendChild(description);
 
-            // Append the image container to the article
             article.appendChild(imageContainer);
 
-            // Create the details div
             const details = document.createElement('div');
             details.className = 'ta-item-details';
 
-            // Create the item name h3
             const itemName = document.createElement('h3');
             itemName.className = 'ta-item-name';
             itemName.textContent = fashion.name;
 
-            // Append the item name to the details div
             details.appendChild(itemName);
 
-            // Create the details info div
             const detailsInfo = document.createElement('div');
             detailsInfo.className = 'ta-item-details-info';
 
-            // Create and append brand name paragraph
             const brandName = document.createElement('p');
             brandName.className = 'ta-item-info';
             brandName.textContent = fashion.brand;
             detailsInfo.appendChild(brandName);
 
-            // Create and append gender paragraph
             const gender = document.createElement('p');
             gender.className = 'ta-item-info';
             if (fashion.gender == 0) {
@@ -1083,10 +1075,8 @@
 
             detailsInfo.appendChild(gender);
 
-            // Append the details info to the details div
             details.appendChild(detailsInfo);
 
-            // Append the details div to the article
             article.appendChild(details);
             fashionAll.appendChild(article);
             const articleClone = article.cloneNode(true);
@@ -1100,7 +1090,6 @@
         });
 
 
-        // Append the article to the document body or any other container
         fashionAll.style.display = "flex";
         document.querySelector(".recommendation-tabs").style.display = "flex";
         document.querySelector(".fashion-recommendation-main .loading-container").style.display = "none";
@@ -1112,7 +1101,7 @@
 
 
 
-
+    // gpt를 통해 추천 옷 정보를 요청하고 받아오는 처리를 하는 메소드
     async function fetchFashionRecommendation() {
         const url = `http://127.0.0.1:8000/fashion/recommendation?minTemp=\${minTemp}&maxTemp=\${maxTemp}`;
 
@@ -1139,6 +1128,7 @@
 
 
 
+    // 날씨 정보를 뿌려 주기 위한 메소드
     function printWeathers() {
         var weatherWidget = document.querySelector(".weather-widget");
 
@@ -1150,10 +1140,8 @@
             timeElement.classList.add("forecast-day");
             var originalDate = "2024-04-26";
 
-            // Split the date string by "-"
-            var parts = weather.day.split("-");
 
-            // Rearrange the parts to desired format
+            var parts = weather.day.split("-");
             var rearrangedDate = parts[0].slice(2) + "/" + parts[1] + "/" + parts[2];
 
 
@@ -1205,6 +1193,7 @@
     }
 
 
+    //meteo-api에서 받아온 날씨 코드를 알맞는 weather-api의 icon 명으로 변환하는 메소드
     function getIconCode(weatherCode) {
         switch (weatherCode) {
             case 0:
@@ -1298,6 +1287,7 @@
     }
 
 
+    //chat gpt로 요청하여 추천 쇼핑 리스트를 받아와서 화면에 그려주는 것 까지 담당하는 메소드
     async function fetchShoppingListProcess(regionName, countryName) {
         const shoppingListDatas = await fetchShoppingListRecommendation();
 
@@ -1324,7 +1314,7 @@
 
     }
 
-
+    //chat gpt로 요청하여 추천 쇼핑 리스트를 받아오는 메소드
     async function fetchShoppingListRecommendation() {
         const url = `http://127.0.0.1:8000/shopingList/recommendation?countryName=\${countryName}&regionName=\${regionName}`;
 
@@ -1346,19 +1336,17 @@
         }
     }
 
+    //쇼핑 리스트를 화면에 그려주는 메소드
     async function printShoppings() {
         let shoppingListContainer = document.querySelector(".ta-item-container.shopping-list");
         shopingLists.forEach((shopingItem) => {
-            // Create the main container for the item card
             const article = document.createElement('article');
             article.classList.add('ta-item-card');
 
-            // Create the image container
             const imageContainer = document.createElement('div');
             imageContainer.classList.add('ta-item-image-container');
             article.appendChild(imageContainer);
 
-            // Create the image element
             const img = document.createElement('img');
             if (shopingItem.imageUrl == "") {
                 img.src = "/resource/image/ShppingListNoimage.webp";
@@ -1370,40 +1358,33 @@
             img.classList.add('ta-item-image');
             img.loading = 'lazy';
             imageContainer.appendChild(img);
-			// img.setAttribute('onerror', 'this.src=https://www.soapark.com/wp-content/themes/soapark/assets/images/noimg2.jpg;');
 			img.onerror = function() {
 				this.src = 'https://www.freeiconspng.com/thumbs/no-image-icon/no-image-icon-1.jpg';
 			};
             
-            // Create the description div
             const descriptionDiv = document.createElement('div');
             descriptionDiv.classList.add('ta-item-description');
             descriptionDiv.textContent = shopingItem.description;
             imageContainer.appendChild(descriptionDiv);
 
-            // Create the details container
             const detailsContainer = document.createElement('div');
             detailsContainer.classList.add('ta-item-details');
             article.appendChild(detailsContainer);
 
-            // Create the heading for the item name
             const itemName = document.createElement('h3');
             itemName.classList.add('ta-item-name');
             itemName.textContent = shopingItem.name;
             detailsContainer.appendChild(itemName);
 
-            // Create the details info container
             const detailsInfo = document.createElement('div');
             detailsInfo.classList.add('ta-item-details-info');
             detailsContainer.appendChild(detailsInfo);
 
-            // Create the paragraph for item info
             const itemInfo = document.createElement('p');
             itemInfo.classList.add('ta-item-info');
             itemInfo.textContent = '브랜드명';
             detailsInfo.appendChild(itemInfo);
 
-            // Append the article to the body or specific container
 
             shoppingListContainer.appendChild(article);
         })

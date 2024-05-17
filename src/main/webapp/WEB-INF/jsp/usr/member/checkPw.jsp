@@ -5,44 +5,48 @@
 
 
 <section>
-	<div class="checkPw">
-		<div class="checkPwBox">
-			<div class="Rectangle6">
-				<section class="mt-8 text-xl px-4">
-					<div class="mx-auto">
-						<form action="../member/doCheckPw" method="POST">
+  <div class="checkPw">
+    <div class="checkPwBox">
+      <div class="Rectangle6">
+        <section class="mt-8 text-xl px-4">
+          <div class="mx-auto">
+            <form action="../member/doCheckPw" method="POST">
 
+              <!-- 제목 -->
+              <div class="title">회원정보 수정</div>
+              <div class="mint-line"></div>
+              <div class="oneMoreTime">본인확인을 위해 비밀번호를 한번 더 입력해주세요</div>
 
-							<div class="title">회원정보 수정</div>
-							<div class="mint-line"></div>
-							<div class="oneMoreTime">본인확인을 위해 비밀번호를 한번 더 입력해주세요</div>
+              <!-- 사용자 ID 박스 -->
+              <div class="IdBox">
+                <span class="material-symbols-outlined"> person </span>
+                <div class="loginId">${rq.loginedMember.loginId}</div>
+              </div>
 
+              <!-- 비밀번호 입력 박스 -->
+              <div class="PwBox">
+                <span class="material-symbols-outlined"> lock </span>
+                <input id="loginPw"
+                       class="input input-sm w-full max-w-xs"
+                       autocomplete="off"
+                       type="password"
+                       placeholder="비밀번호를 입력해주세요"
+                       name="loginPw" />
+              </div>
 
-								<div class="IdBox">
-									<span class="material-symbols-outlined"> person </span>
-									<div class="loginId">${rq.loginedMember.loginId }</div>
-								</div>
+              <!-- 확인 버튼 -->
+              <input class="loginBtn btn btn-sm" type="submit" value="확인" />
 
-
-								<div class="PwBox">
-									<span class="material-symbols-outlined"> lock </span> <input id="loginPw"
-										class="input input-sm w-full max-w-xs" autocomplete="off" type="password" placeholder="비밀번호를 입력해주세요"
-										name="loginPw" />
-								</div>
-
-
-							<input class="loginBtn btn btn-sm" type="submit" value="확인" />
-
-						</form>
-						<div class="btns">
-							<button class="backBtn" type="button" onclick="history.back();">뒤로가기</button>
-
-						</div>
-					</div>
-				</section>
-			</div>
-		</div>
-	</div>
+            </form>
+            <!-- 뒤로가기 버튼 -->
+            <div class="btns">
+              <button class="backBtn" type="button" onclick="history.back();">뒤로가기</button>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
 </section>
 
 <style>

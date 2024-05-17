@@ -5,6 +5,7 @@
 <%@ include file="../common/head.jspf"%>
 <!-- 변수 -->
 <script>
+	// 게시글 상세 페이지에서 사용할 파라미터 설정
 	const params = {};
 	params.id = parseInt('${param.id}');
 	params.memberId = parseInt('${loginedMemberId}');
@@ -12,6 +13,7 @@
 	console.log(params);
 	console.log(params.memberId);
 
+	// 이미 좋아요 또는 싫어요를 추가했는지 여부를 저장하는 변수
 	var isAlreadyAddGoodRp = $
 	{
 		isAlreadyAddGoodRp
@@ -214,10 +216,12 @@
 	<div class="container">
 		<div class="trip-review-container">
 			<div class="review-line">
+				<!-- 리뷰 라인: 각 라인에 최대 4개의 리뷰 표시 -->
 				<%
 				int count = 0;
 				%>
 				<c:forEach var="review" items="${reviewList }">
+				    <!-- 4개의 리뷰마다 새로운 라인을 생성 -->
 					<%
 					if (count != 0 && count % 4 == 0) {
 					%>
@@ -285,48 +289,6 @@
 	</c:if>
 </div>
 
-<%-- <div class="recipe-container">
-	<div class="recipe-line">
-		<%
-		int count = 0;
-		%>
-		<c:forEach var="review" items="${reviewList }">
-			<%
-			if (count != 0 && count % 5 == 0) {
-			%>
-		
-	</div>
-	<div class="recipe-line">
-		<%
-		}
-		%>
-		<a href="detail?id=${review.id }">
-			<div class="recipe-box">
-				<img class="Thumbnail" src="${rq.getImgUri(review.id,relTypeCode)}"
-					onerror="${rq.profileFallbackImgOnErrorHtml}" alt="" />
-				<div class="div-6">
-					<img
-						src="https://velog.velcdn.com/images/fake150907/post/6e82a95f-9874-4838-9862-a90c025c101a/image.jpg"
-						class="profile-img" />
-					<div class="div-7">
-						<div class="div-8">
-							<div class="recipe-title">${review.title}</div>
-						</div>
-						<div class="div-10">
-							<div class="recipe-writer">${review.extra__writer }</div>
-							<div class="recipe-regDate">${review.regDate.substring(0,10) }</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</a>
-		<%
-		count++;
-		%>
-		</c:forEach>
-	</div>
-</div>
- --%>
 
 <div></div>
 
