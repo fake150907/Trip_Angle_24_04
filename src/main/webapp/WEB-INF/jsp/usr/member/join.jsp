@@ -8,122 +8,89 @@
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
 <script>
-let submitJoinFormDone = false;
-let validLoginId = "";
+	let submitJoinFormDone = false;
+	let validLoginId = "";
 
-// 회원가입 폼 제출 함수 주석
-function submitJoinForm(form) {
-    // 이미 제출된 폼이면 실행 중단
-    if (submitJoinFormDone) {
-        alert('처리 중입니다.');
-        return;
-    }
-    
-    // 로그인 아이디 trim 처리
-    form.loginId.value = form.loginId.value.trim();
-    // 아이디 입력값이 없을 경우 알림
-    if (form.loginId.value == 0) {
-        alert('아이디를 입력해주세요.');
-        return;
-    }
+	function submitJoinForm(form) {
+		if (submitJoinFormDone) {
+			alert('처리중입니다');
+			return;
+		}
+		form.loginId.value = form.loginId.value.trim();
+		if (form.loginId.value == 0) {
+			alert('아이디를 입력해주세요');
+			return;
+		}
 
-    // 유효한 아이디가 아닐 경우 알림
-    if (form.loginId.value != validLoginId) {
-        alert('사용할 수 없는 아이디입니다.');
-        form.loginId.focus();
-        return;
-    }
-    
-    // 로그인 비밀번호 trim 처리
-    form.loginPw.value = form.loginPw.value.trim();
-    // 비밀번호 입력값이 없을 경우 알림
-    if (form.loginPw.value == 0) {
-        alert('비밀번호를 입력해주세요.');
-        return;
-    }
-    
-    // 비밀번호 확인 trim 처리
-    form.loginPwConfirm.value = form.loginPwConfirm.value.trim();
-    // 비밀번호 확인 입력값이 없을 경우 알림
-    if (form.loginPwConfirm.value == 0) {
-        alert('비밀번호 확인을 입력해주세요.');
-        return;
-    }
-    
-    // 비밀번호 일치 여부 확인
-    if (form.loginPwConfirm.value != form.loginPw.value) {
-        alert('비밀번호가 일치하지 않습니다.');
-        form.loginPw.focus();
-        return;
-    }
-    
-    // 이름 trim 처리
-    form.name.value = form.name.value.trim();
-    // 이름 입력값이 없을 경우 알림
-    if (form.name.value == 0) {
-        alert('이름을 입력해주세요.');
-        return;
-    }
-    
-    // 닉네임 trim 처리
-    form.nickname.value = form.nickname.value.trim();
-    // 닉네임 입력값이 없을 경우 알림
-    if (form.nickname.value == 0) {
-        alert('닉네임을 입력해주세요.');
-        return;
-    }
-    
-    // 이메일 trim 처리
-    form.email.value = form.email.value.trim();
-    // 이메일 입력값이 없을 경우 알림
-    if (form.email.value == 0) {
-        alert('이메일을 입력해주세요.');
-        return;
-    }
-    
-    // 전화번호 trim 처리
-    form.cellphoneNum.value = form.cellphoneNum.value.trim();
-    // 전화번호 입력값이 없을 경우 알림
-    if (form.cellphoneNum.value == 0) {
-        alert('전화번호를 입력해주세요.');
-        return;
-    }
-    
-    // 폼 제출 완료 상태로 변경
-    submitJoinFormDone = true;
-    // 폼 제출
-    form.submit();
-}
+		if (form.loginId.value != validLoginId) {
+			alert('사용할 수 없는 아이디야');
+			form.loginId.focus();
+			return;
+		}
+		if (validLoginId == form.loginId.value) {
+			return;
+		}
 
-//로그인 아이디 중복 확인 함수 주석
-function checkLoginIdDup(el) {
-    // 중복 확인 메시지 영역 비우기
-    $('.checkDup-msg').empty();
-    // 폼 요소 가져오기
-    const form = $(el).closest('form').get(0);
-    // 로그인 아이디 값이 없으면 유효한 아이디 초기화 후 종료
-    if (form.loginId.value.length == 0) {
-        validLoginId = '';
-        return;
-    }
-    // AJAX를 통해 중복 확인 요청
-    $.get('../member/getLoginIdDup', {
-        isAjax: 'Y',
-        loginId: form.loginId.value
-    }, function (data) {
-        // 중복 확인 메시지 출력
-        $('.checkDup-msg').html('<div class="mt-2">' + data.msg + '</div>')
-        // 중복이 아닐 경우 유효한 아이디 설정
-        if (data.success) {
-            validLoginId = data.data1;
-        } else {
-            validLoginId = '';
-        }
-    }, 'json');
-}
+		form.loginPw.value = form.loginPw.value.trim();
+		if (form.loginPw.value == 0) {
+			alert('비밀번호를 입력해주세요');
+			return;
+		}
+		form.loginPwConfirm.value = form.loginPwConfirm.value.trim();
+		if (form.loginPwConfirm.value == 0) {
+			alert('비밀번호 확인을 입력해주세요');
+			return;
+		}
+		if (form.loginPwConfirm.value != form.loginPw.value) {
+			alert('비밀번호가 일치하지 않습니다');
+			form.loginPw.focus();
+			return;
+		}
+		form.name.value = form.name.value.trim();
+		if (form.name.value == 0) {
+			alert('이름을 입력해주세요');
+			return;
+		}
+		form.nickname.value = form.nickname.value.trim();
+		if (form.nickname.value == 0) {
+			alert('닉네임을 입력해주세요');
+			return;
+		}
+		form.email.value = form.email.value.trim();
+		if (form.email.value == 0) {
+			alert('이메일을 입력해주세요');
+			return;
+		}
+		form.cellphoneNum.value = form.cellphoneNum.value.trim();
+		if (form.cellphoneNum.value == 0) {
+			alert('전화번호를 입력해주세요');
+			return;
+		}
+		submitJoinFormDone = true;
+		form.submit();
+	}
 
-// 중복 확인 디바운스 처리 함수
-const checkLoginIdDupDebounced = _.debounce(checkLoginIdDup, 600);
+	function checkLoginIdDup(el) {
+		$('.checkDup-msg').empty();
+		const form = $(el).closest('form').get(0);
+		if (form.loginId.value.length == 0) {
+			validLoginId = '';
+			return;
+		}
+		$.get('../member/getLoginIdDup', {
+			isAjax : 'Y',
+			loginId : form.loginId.value
+		}, function(data) {
+			$('.checkDup-msg').html('<div class="mt-2">' + data.msg + '</div>')
+			if (data.success) {
+				validLoginId = data.data1;
+			} else {
+				validLoginId = '';
+			}
+		}, 'json');
+	}
+
+	const checkLoginIdDupDebounced = _.debounce(checkLoginIdDup, 600);
 </script>
 <style>
 .mint-line {

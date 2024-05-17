@@ -5,37 +5,24 @@
 
 <script type="text/javascript">
 	let MemberFindLoginPw__submitFormDone = false;
-
-	//회원 비밀번호 찾기 폼 제출 함수 주석
 	function MemberFindLoginPw__submit(form) {
-		// 이미 제출된 폼이면 실행 중단
 		if (MemberFindLoginPw__submitFormDone) {
 			return;
 		}
-
-		// 폼 입력값 trim 처리
 		form.loginId.value = form.loginId.value.trim();
 		form.email.value = form.email.value.trim();
-
-		// 아이디 입력값 유효성 검사
 		if (form.loginId.value.length == 0) {
-			alert('아이디를 입력해주세요.');
+			alert('아이디 써라');
 			form.loginId.focus();
 			return;
 		}
-
-		// 이메일 입력값 유효성 검사
 		if (form.email.value.length == 0) {
-			alert('이메일을 입력해주세요.');
+			alert('email 써라');
 			form.email.focus();
 			return;
 		}
-
-		// 폼 제출 완료 상태로 변경
 		MemberFindLoginPw__submitFormDone = true;
-		// 임시 비밀번호 발송 알림
-		alert('메일로 임시 비밀번호를 발송했습니다.');
-		// 폼 제출
+		alert('메일로 임시 비밀번호를 발송했습니다');
 		form.submit();
 	}
 </script>

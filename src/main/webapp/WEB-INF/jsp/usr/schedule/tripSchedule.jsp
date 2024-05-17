@@ -549,100 +549,74 @@ form {
 
 <script>
 $(function() {
-    'use strict';
+	  'use strict';
 
-    // 변수 초기화
-    var checkIn, checkOut, numberOfMonths = [1, 2],
-        $calendar = $('#calendar').datepicker({
-            numberOfMonths: numberOfMonths,
-            prevText: '',
-            nextText: '',
-            beforeShowDay: function(date) {
-                // 날짜를 moment 객체로 변환
-                date = moment(date);
+	  var checkIn, checkOut, numberOfMonths = [1, 2],
+	      $calendar = $('#calendar').datepicker({
+	        numberOfMonths: numberOfMonths,
+	        prevText: '',
+	        nextText: '',
+	        beforeShowDay: function(date) {
+	          date = moment(date);
 
-                // 현재 시간
-                var now = moment(),
-                    // 이 날짜를 보여줄지 여부
-                    show = date.isAfter(now),
-                    // CSS 클래스
-                    css = '';
+	          var now = moment(),
+	              show = date.isAfter(now),
+	              css = '';
 
-                // checkIn과 checkOut이 설정되어 있고, 이 날짜가 checkIn과 checkOut 사이에 있을 경우
-                if (checkIn && checkOut
-                    && date.isSameOrAfter(checkIn)
-                    && date.isSameOrBefore(checkOut)) {
-                    css = 'ui-datepicker-reserved';
+	          if (checkIn && checkOut 
+	              && date.isSameOrAfter(checkIn)
+	              && date.isSameOrBefore(checkOut)) {
+	            css = 'ui-datepicker-reserved';
 
-                    // checkIn 날짜와 checkOut 날짜를 표시
-                    if (date.isSame(checkIn)) css += ' ui-datepicker-checkin';
-                    if (date.isSame(checkOut)) css += ' ui-datepicker-checkout';
-                }
+	            if (date.isSame(checkIn)) css += ' ui-datepicker-checkin';
+	            if (date.isSame(checkOut)) css += ' ui-datepicker-checkout';
+	          }
 
-                return [show, css];
-            },
-            onSelect: function(value) {
-                // 선택된 날짜를 moment 객체로 변환
-                var date = moment($calendar.datepicker('getDate'));
+	          return [show, css];
+	        },
+	        onSelect: function(value) {
+	          var date = moment($calendar.datepicker('getDate'));
 
-                // checkIn이 설정되어 있고, checkOut이 설정되어 있지 않으면 checkOut 설정
-                if (checkIn && !checkOut
-                    && date.isSameOrAfter(checkIn))
-                    checkOut = date;
-                else {
-                    // checkIn 설정
-                    checkIn = date;
-                    // checkOut 초기화
-                    checkOut = null;
-                }
-
-                // 선택된 날짜 표시
-                $('#check-in-date').text(checkIn ? checkIn.format('YYYY-MM-DD') : '날짜를 선택하세요');
-                $('#check-out-date').text(checkOut ? checkOut.format('YYYY-MM-DD') : '날짜를 선택하세요');
-            },
-            onChangeMonthYear: function() {
-                // 달력이 변경되면 fade-in 클래스 추가
-                $calendar.addClass('fade-in');
-            }
-        }).on('animationend webkitAnimationEnd', function() {
-            // 애니메이션이 종료되면 fade-in 클래스 제거
-            $calendar.removeClass('fade-in');
-        });
-});
+	          if (checkIn && !checkOut
+	              && date.isSameOrAfter(checkIn)) 
+	            checkOut = date;
+	          else {
+	            checkIn = date;
+	            checkOut = null;
+	          }
+	          
+	          $('#check-in-date').text(checkIn ? checkIn.format('YYYY-MM-DD') : '날짜를 선택하세요');
+	          $('#check-out-date').text(checkOut ? checkOut.format('YYYY-MM-DD') : '날짜를 선택하세요');
+	        },
+	        onChangeMonthYear: function() {
+	          $calendar.addClass('fade-in');
+	        }
+	      }).on('animationend webkitAnimationEnd', function() {
+	        $calendar.removeClass('fade-in');
+	      });
  
-function resize() {
-    // ui-datepicker 요소 가져오기
-    var element = $('.ui-datepicker').get(0),
-        // ui-datepicker 요소의 min-width 값 가져오기
-        style = window.getComputedStyle(element).getPropertyValue('min-width'),
-        // numberOfMonths 값 설정
-        value;
+	  function resize() {
+	    var element = $('.ui-datepicker').get(0),
+	        style = window.getComputedStyle(element).getPropertyValue('min-width'), 
+	        value;
 
-    switch (style) {
-        case '765px':
-            value = [1, 2];
-            break;
-        case '510px':
-            value = [2, 1];
-            break;
-        default:
-            value = [2, 1];
-            break;
-    }
+	    switch (style) {
+	      case '765px': value = [1, 2]; break;
+	      case '510px': value = [2, 1]; break;
+	      default: value = [2, 1]; break;
+	    }
 
-    // 현재 numberOfMonths 값과 비교하여 변경되었으면 설정 변경
-    if (numberOfMonths !== value) {
-        if (checkIn) $calendar.datepicker('setDate', checkIn.toDate());
+	    if (numberOfMonths !== value) {
+	      if (checkIn) $calendar.datepicker('setDate', checkIn.toDate());
 
-        $calendar.datepicker('option', 'numberOfMonths', numberOfMonths = value);
-    }
-}
+	      $calendar.datepicker('option', 'numberOfMonths', numberOfMonths = value);
+	    }
+	  }
 
-// resize 이벤트 핸들러 등록
-$(window).on('resize', resize);
+	  $(window).on('resize', resize);
 
-// 초기 호출
-resize();
+	  resize();
+	});
 	
 $.datepicker.setDefaults({
 	  dateFormat: 'yy-mm-dd',
@@ -758,26 +732,32 @@ $.datepicker.setDefaults({
 </div>
 
 <div class="check-in">
+	<!--       <h5>Check-In</h5> -->
 	<h6>
 		<input type="" hidden"" id="check-in-date">
 	</h6>
 </div>
 <div class="arrow"></div>
 <div class="check-out">
+	<!--        <h5>Check-Out</h5> -->
 	<h6>
 		<input type="hidden" id="check-out-date">
 	</h6>
 </div>
 
+<!-- <form action="/usr/tipInfo/information" method="get"> -->
 
 <div class="button-flex">
 	<button type="button" class="create-button">추가</button>
 </div>
+<!-- </form> -->
 
+<!-- <button class="btn" onclick="my_modal_1.showModal()">open modal</button> -->
 <dialog id="my_modal_3" class="modal">
 <div class="modal-box w-11/12 max-w-5xl">
 	<form method="dialog">
 		<div class="modal-schedule-create-text-box">
+			<!--       <button class="btn btn-sm btn-circle btn-ghost absolute close-button">✕</button> -->
 			<div class="modal-schedule-create-text">마이일정 생성하기</div>
 		</div>
 		<button class="btn btn-ghost close-button">✕</button>

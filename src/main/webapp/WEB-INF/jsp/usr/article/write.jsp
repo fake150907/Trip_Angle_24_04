@@ -4,60 +4,44 @@
 <c:set var="pageTitle" value="게시글 작성"></c:set>
 <%@ include file="../common/head.jspf"%>
 <%@ include file="../common/toastUiEditorLib.jspf"%>
-
 <!-- Article write 관련 -->
 <script type="text/javascript">
-    // 변수 초기화: 글 작성 폼 제출 여부
-    let ArticleWrite__submitFormDone = false;
+	let ArticleWrite__submitFormDone = false;
+	function ArticleWrite__submit(form) {
+		if (ArticleWrite__submitFormDone) {
+			return;
+		}
+		form.title.value = form.title.value.trim();
+		if (form.title.value == 0) {
+			alert('제목을 입력해주세요');
+			return;
+		}
+		const editor = $(form).find('.toast-ui-editor').data(
+				'data-toast-editor');
+		const markdown = editor.getMarkdown().trim();
+		if (markdown.length == 0) {
+			alert('내용을 입력해주세요');
+			editor.focus();
+			return;
+		}
+		
+// 		alert(${currentId});
 
-    // 글 작성 폼 제출 함수
-    function ArticleWrite__submit(form) {
-        // 이미 제출된 상태이면 함수 종료
-        if (ArticleWrite__submitFormDone) {
-            return;
-        }
-        
-        // 제목 입력값 앞뒤 공백 제거
-        form.title.value = form.title.value.trim();
-        
-        // 제목이 공백인 경우 알림 후 함수 종료
-        if (form.title.value == 0) {
-            alert('제목을 입력해주세요');
-            return;
-        }
-        
-        // 에디터에서 마크다운 내용 가져오기
-        const editor = $(form).find('.toast-ui-editor').data('data-toast-editor');
-        const markdown = editor.getMarkdown().trim();
-        
-        // 내용이 공백인 경우 알림 후 포커스 설정 후 함수 종료
-        if (markdown.length == 0) {
-            alert('내용을 입력해주세요');
-            editor.focus();
-            return;
-        }
-        
-        // 이미지 업로드 파일명 설정
-        $('#fileInput').attr('name', 'file__article__' + ${currentId} + '__extra__Img__1');
+		$('#fileInput').attr('name', 'file__article__' + ${currentId} + '__extra__Img__1');
 
-        // 폼의 body 필드에 마크다운 내용 설정
-        form.body.value = markdown;
+		form.body.value = markdown;
 
-        // 제출 완료 상태로 변경
-        ArticleWrite__submitFormDone = true;
-
-        // 폼 제출
-        form.submit();
-    }
+		ArticleWrite__submitFormDone = true;
+		form.submit();
+	}
 </script>
 
-
-<!-- 작성 input -->
 <section class="mt-8 text-xl px-4">
 	<h1
 		style="text-align: center; font-size: 25; margin-top: 100px; font-weight: 600;">게시글
 		작성</h1>
 	<div class="mx-auto">
+		<%-- 		<div>${currentId }</div> --%>
 		<form action="../article/doWrite" method="POST"
 			onsubmit="ArticleWrite__submit(this); return false;"
 			enctype="multipart/form-data">
@@ -97,7 +81,8 @@
 						<th style="font-weight: 600">내용</th>
 						<td>
 							<div class="toast-ui-editor">
-								<script type="text/x-template"></script>
+								<script type="text/x-template">
+      </script>
 							</div>
 						</td>
 					</tr>

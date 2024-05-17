@@ -6,35 +6,29 @@
 <script type="text/javascript">
 	let MemberFindLoginId__submitFormDone = false;
 
-	//회원 아이디 찾기 폼 제출 함수 주석
 	function MemberFindLoginId__submit(form) {
-		// 이미 제출된 폼이면 실행 중단
 		if (MemberFindLoginId__submitFormDone) {
 			return;
 		}
 
-		// 폼 입력값 trim 처리
 		form.name.value = form.name.value.trim();
 		form.email.value = form.email.value.trim();
 
-		// 이름 입력값 유효성 검사
 		if (form.name.value.length == 0) {
-			alert('이름을 입력해주세요.');
+			alert('이름 써라');
 			form.name.focus();
 			return;
 		}
 
-		// 이메일 입력값 유효성 검사
 		if (form.email.value.length == 0) {
-			alert('이메일을 입력해주세요.');
+			alert('email 써라');
 			form.email.focus();
 			return;
 		}
 
-		// 폼 제출 완료 상태로 변경
 		MemberFindLoginId__submitFormDone = true;
-		// 폼 제출
 		form.submit();
+
 	}
 </script>
 
