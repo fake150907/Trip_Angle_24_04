@@ -8,19 +8,20 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class TripSchedule {
-	private int id;
-	private String regDate;
-	private String updateDate;
-	private String title;
-	private String content;
-	private String startDate;
-	private String endDate;
-	private Integer step;
-	private int memberId;
-	private int regionId;
+	private int id; // 여행 일정의 ID
+	private String regDate; // 등록일
+	private String updateDate; // 수정일
+	private String title; // 여행 일정의 제목
+	private String content; // 여행 일정의 내용
+	private String startDate; // 여행 시작일
+	private String endDate; // 여행 종료일
+	private Integer step; // 여행 일정의 단계
+	private int memberId; // 회원 ID
+	private int regionId; // 지역 ID
 	
-	private String extra__contryName;
-	private String extra__regionName;
-	private String extra__regionImageUrl;
-	private String extra__regionEnglishName;
+	// 추가 정보
+	private String extra__contryName; // 국가 이름
+	private String extra__regionName; // 지역 이름
+	private String extra__regionImageUrl; // 지역 이미지 URL
+	private String extra__regionEnglishName; // 지역 영문 이름
 }
