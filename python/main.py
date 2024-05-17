@@ -1,3 +1,4 @@
+# 필요한 라이브러리와 모듈을 FastAPI, Selenium, 기타 패키지에서 가져오기
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
@@ -17,20 +18,14 @@ from langchain_core.pydantic_v1 import BaseModel, Field
 from selenium.webdriver.common.keys import Keys
 import urllib.request
 
-
-
 from bs4 import BeautifulSoup
 from langchain.cache import SQLiteCache
 from langchain.globals import set_llm_cache
 
-
-
-
-
-
-
+# FastAPI 애플리케이션 초기화
 app = FastAPI()
 
+# CORS 설정 구성
 origins = [
     "http://localhost",
     "http://localhost:8080",
@@ -45,27 +40,26 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# LLM (Language Learning Model) 캐싱 설정
 set_llm_cache(SQLiteCache(database_path="my_llm_cache.db"))
 
-
-##http://127.0.0.1:8000/fashion/recommendation?minTemp=20.5&maxTemp=21.5
+# 패션 추천 엔드포인트 정의
+## 예시 사용법: http://127.0.0.1:8000/fashion/recommendation?minTemp=20.5&maxTemp=21.5
 @app.get("/fashion/recommendation")
 async def fashionRecommendation(
     minTemp: float, 
     maxTemp: float
 ):
-    # sys.stdout = io.TextIOWrapper(sys.stdout.detach(), encoding = 'utf-8')
-    # sys.stderr = io.TextIOWrapper(sys.stderr.detach(), encoding = 'utf-8')
-
-
+    # 환경 변수 로드
     load_dotenv()
 
+    # OpenAI 클라이언트 초기화
     client = OpenAI(
-        # This is the default and can be omitted
         api_key=os.environ.get("OPENAI_API_KEY"),
     )
 
-
+    # LLM을 위한 프롬프트 템플릿 정의
     template = """
     너는 베테랑 스타일리스트야.
     여행지의 최저, 최고온도를 기반으로 쾌적한 여행을 할 수 있는 옷을 추천해주고,
@@ -85,79 +79,70 @@ async def fashionRecommendation(
     {format_instructions}
     """
 
-
+    # 패션 아이템 모델 정의
     class Fashion(BaseModel):
         name: str = Field(description="추천하는 옷의 이름")
         brand: str = Field(description="추천하는 옷의 메이커")
-        gender: str=Field(description="옷을 입을 사람의 성별, 남성 또는 여성으로 답해줘.")
-        description: str=Field(description="해당 옷을 선정한 이유")
-        # imageUrl: str = Field(description="해당 옷의 이미지. 구글 등에서 크롤링 해 올 것")
+        gender: str = Field(description="옷을 입을 사람의 성별, 남성 또는 여성으로 답해줘.")
+        description: str = Field(description="해당 옷을 선정한 이유")
         
     class FashionItems(BaseModel):
         fashionItems: Fashion = Field(description="추천하는 복장의 이름과 메이커")
 
-
-    # 문자열 출력 파서를 초기화합니다.
+    # JSON 출력 파서 초기화
     parser = JsonOutputParser(pydantic_object=FashionItems)
 
+    # 프롬프트 템플릿 생성
     prompt = PromptTemplate.from_template(template=template,
                                         partial_variables={
             "format_instructions": parser.get_format_instructions()},)
 
-    # OpenAI 챗모델을 초기화합니다.
+    # OpenAI 채팅 모델 초기화
     model = ChatOpenAI(model="gpt-4o",
                        temperature=0.5,)
 
-
-    # 프롬프트, 모델, 출력 파서를 연결하여 처리 체인을 구성합니다.
+    # 프롬프트, 모델, 파서를 결합하여 처리 체인 구성
     chain = prompt | model | parser
     
-    
-
-    
+    # 매개변수로 최저온도, 최고 온도를 전달 하여, gpt에서 받아온 결과값(FashionItems)을 객체에 저장
     resultGpt = chain.invoke({"minTemp": minTemp, "maxTemp": maxTemp})
     
-    resultData={}
-    
+    resultData = {}
 
-    client_id =  os.environ.get("CLIENT_ID")
+    # 네이버 OpenAPI를 위한 API 자격 증명 가져오기
+    client_id = os.environ.get("CLIENT_ID")
     client_secret = os.environ.get("CLIENT_SECRET")
     
+    # 네이버 API를 사용하여 각 추천 패션 아이템의 이미지 URL 가져오기
     for fashionItem in resultGpt['fashionItems']:
-
-        
-        encText = urllib.parse.quote(", ".join((fashionItem['gender']+"용 "+fashionItem['name'], fashionItem['brand'])))
-        #url = "https://openapi.naver.com/v1/search/blog?query=" + encText # JSON 결과
+        encText = urllib.parse.quote(", ".join((fashionItem['gender'] + "용 " + fashionItem['name'], fashionItem['brand'])))
         url = "https://openapi.naver.com/v1/search/shop.xml?query=" + encText # XML 결과
         request = urllib.request.Request(url)
-        request.add_header("X-Naver-Client-Id",client_id)
-        request.add_header("X-Naver-Client-Secret",client_secret)
+        request.add_header("X-Naver-Client-Id", client_id)
+        request.add_header("X-Naver-Client-Secret", client_secret)
         response = urllib.request.urlopen(request)
         rescode = response.getcode()
-        if(rescode==200):
+        if(rescode == 200):
             response_body = response.read()
             body = response_body.decode('utf-8')
             soup = BeautifulSoup(body, "xml")
-            item=soup.find("item")
+            item = soup.find("item")
             imageUrl = ""
             if item:
                 image = item.find("image")
                 imageUrl = image.text
                 
             fashionItem['imageUrl'] = imageUrl
-
-
-
         else:
             fashionItem['imageUrl'] = ""
-    
 
     resultData['data1'] = resultGpt['fashionItems']
-
     resultData['resultCode'] = 'S-1'
     resultData['message'] = 'Success'
     
+    # 객체를 Json형태로 변환하여 반환
     return JSONResponse(content=resultData)
+
 
 
 ##http://127.0.0.1:8000/shopingList/recommendation?countryName=일본&regionName=도쿄
@@ -166,18 +151,18 @@ async def shopingListRecommendation(
     countryName: str, 
     regionName: str
 ):
-    # sys.stdout = io.TextIOWrapper(sys.stdout.detach(), encoding = 'utf-8')
-    # sys.stderr = io.TextIOWrapper(sys.stderr.detach(), encoding = 'utf-8')
+    
 
-
+    # 환경 변수 로드
     load_dotenv()
 
+    # OpenAI 클라이언트 초기화
     client = OpenAI(
-        # This is the default and can be omitted
+        # 기본값으로 설정할 수 있습니다.
         api_key=os.environ.get("OPENAI_API_KEY"),
     )
 
-
+    # LLM을 위한 프롬프트 템플릿 정의
     template = """
     너의 친구가 {countryName} {regionName}에 여행을 가려고 하고 있어.
     너의 친구는 한국인이야.
@@ -190,74 +175,65 @@ async def shopingListRecommendation(
     {format_instructions}
     """
 
-
+    # 쇼핑 아이템 모델 정의
     class shopingItem(BaseModel):
         name: str = Field(description="상품의 브랜드 + 이름")
-        description: str=Field(description="상품에 대한 설명")
+        description: str = Field(description="상품에 대한 설명")
         # imageUrl: str = Field(description="해당 옷의 이미지. 구글 등에서 크롤링 해 올 것")
-        
+
     class shopingList(BaseModel):
         shopingItems: shopingItem = Field(description="상품의 브랜드, 이름, 설명")
-
 
     # 문자열 출력 파서를 초기화합니다.
     parser = JsonOutputParser(pydantic_object=shopingList)
 
     prompt = PromptTemplate.from_template(template=template,
-                                        partial_variables={
-            "format_instructions": parser.get_format_instructions()},)
+                                          partial_variables={
+        "format_instructions": parser.get_format_instructions()},)
 
     # OpenAI 챗모델을 초기화합니다.
     model = ChatOpenAI(model="gpt-4o",
                        temperature=0.5,)
 
-
     # 프롬프트, 모델, 출력 파서를 연결하여 처리 체인을 구성합니다.
     chain = prompt | model | parser
-    
-    
 
-    
+    # 매개변수로 국가명, 지역명을 전달 하여, gpt에서 받아온 결과값(shopingList)를 객체에 저장
     resultGpt = chain.invoke({"countryName": countryName, "regionName": regionName})
-    
-    resultData={}
-    
-    ##"https://openapi.naver.com/v1/search/image.xml?query="
-    client_id =  os.environ.get("CLIENT_ID")
-    client_secret = os.environ.get("CLIENT_SECRET")
-    
-    for shopingItem in resultGpt['shopingItems']:
 
-        
+    resultData = {}
+
+    # 네이버 OpenAPI를 위한 API 자격 증명 가져오기
+    client_id = os.environ.get("CLIENT_ID")
+    client_secret = os.environ.get("CLIENT_SECRET")
+
+    # 네이버 API를 사용하여 각 쇼핑리스트 아이템의 이미지 URL 가져오기
+    for shopingItem in resultGpt['shopingItems']:
         encText = urllib.parse.quote(shopingItem['name'])
-        #url = "https://openapi.naver.com/v1/search/blog?query=" + encText # JSON 결과
         url = "https://openapi.naver.com/v1/search/image.xml?query=" + encText # XML 결과
         request = urllib.request.Request(url)
-        request.add_header("X-Naver-Client-Id",client_id)
-        request.add_header("X-Naver-Client-Secret",client_secret)
+        request.add_header("X-Naver-Client-Id", client_id)
+        request.add_header("X-Naver-Client-Secret", client_secret)
         response = urllib.request.urlopen(request)
         rescode = response.getcode()
-        if(rescode==200):
+        if(rescode == 200):
             response_body = response.read()
             body = response_body.decode('utf-8')
             soup = BeautifulSoup(body, "xml")
-            item=soup.find("item")
+            item = soup.find("item")
             imageUrl = ""
             if item:
                 foundLink = item.find("link")
-                imageUrl=foundLink.text
+                imageUrl = foundLink.text
 
-                # thumbnail = item.find("thumbnail")
-                
             shopingItem['imageUrl'] = imageUrl
 
         else:
             shopingItem['imageUrl'] = ""
-    
 
     resultData['data1'] = resultGpt['shopingItems']
-
     resultData['resultCode'] = 'S-1'
     resultData['message'] = 'Success'
-    
+
+    # 객체를 Json형태로 변환하여 반환
     return JSONResponse(content=resultData)
