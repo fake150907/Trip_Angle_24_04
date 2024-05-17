@@ -24,7 +24,7 @@ public class ReactionPointService {
 	public ResultData usersReaction(int loginedMemberId, String relTypeCode, int relId) {
 		// 로그인 여부 확인
 		if (loginedMemberId == 0) {
-			return ResultData.from("F-L", "로그인 하고 써야해");
+			return ResultData.from("F-L", "로그인 하고 사용해주세요");
 		}
 
 		// 회원이 이미 반응을 했는지 확인
