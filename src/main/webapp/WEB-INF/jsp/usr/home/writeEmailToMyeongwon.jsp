@@ -9,6 +9,7 @@
 
 
 
+<!-- 뒤로가기버튼 -->
 <style>
 .backBtn {
 	color: #a9a9a9;
@@ -16,7 +17,7 @@
 </style>
 
 
-
+<!-- 이메일 보내기 input form -->
 <section class="mt-8 text-xl px-4">
     <h1 style="text-align: center; font-size: 25; margin-top: 100px; font-weight: 600;">서명원에게 이메일 보내기</h1>
     <div class="mx-auto">
@@ -72,8 +73,8 @@
 
 </section>
 
+<!-- 이메일 전송 버튼 자바스크립트 -->
 <script>
-
 document.querySelector(".gform").addEventListener("submit", function(event) {
     var checkbox = document.getElementById("checkbox");
         // 이메일 전송 알림
