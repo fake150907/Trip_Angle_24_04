@@ -17,7 +17,7 @@ ___
 ___
 |서명원|장윤린|윤가연|신규섭|
 |:---:|:---:|:---:|:---:|
-|<img src="https://velog.velcdn.com/images/yunlinit/post/80c47f35-5ab5-4f47-8713-7eebfe35efa3/image.jpg" width ="190" height="280"/> |<img src="https://velog.velcdn.com/images/yunlinit/post/50a14c38-d5e7-4e5e-9e5f-aeca410a3e40/image.jpg" width ="190" height="280"/>|<img src="https://velog.velcdn.com/images/yunlinit/post/b12df080-9bb5-4a21-9b9a-706c0b6052e2/image.jpg" width ="190" height="280"/>|<img src="https://velog.velcdn.com/images/yunlinit/post/6ec92887-7129-4720-bf84-293c0813b83a/image.jpg" width ="195" height="280"/>|
+|<img src="https://velog.velcdn.com/images/yunlinit/post/80c47f35-5ab5-4f47-8713-7eebfe35efa3/image.jpg" width ="190" height="280"/> |<img src="https://velog.velcdn.com/images/yunlinit/post/fce531da-5ead-4858-b4d2-7b5f6cf44870/image.jpg" width ="190" height="280"/>|<img src="https://velog.velcdn.com/images/yunlinit/post/b12df080-9bb5-4a21-9b9a-706c0b6052e2/image.jpg" width ="190" height="280"/>|<img src="https://velog.velcdn.com/images/yunlinit/post/6ec92887-7129-4720-bf84-293c0813b83a/image.jpg" width ="195" height="280"/>|
 |insamjoo300@gmail.com|yunlinit@gmail.com|yungayeon223@gmail.com|tlstlsrbrb11@gmail.com|
 
 
