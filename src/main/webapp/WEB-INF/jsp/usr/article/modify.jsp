@@ -44,8 +44,6 @@
 	}
 </script>
 
-<!-- 본문 수정 -->
-
 <section class="mt-8 text-xl px-4">
 	<h1 style="text-align: center; font-size: 25; margin-top: 100px; font-weight: 600;">게시글 수정</h1>
 	<div class="mx-auto">

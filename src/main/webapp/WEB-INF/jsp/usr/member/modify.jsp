@@ -6,46 +6,30 @@
 
 <script type="text/javascript">
 	let MemberModify__submitFormDone = false;
-
-	//회원 정보 수정 폼 제출 함수 주석
 	function MemberModify__submit(form) {
-		// 이미 제출된 폼이면 실행 중단
 		if (MemberModify__submitFormDone) {
 			return;
 		}
-
-		// 비밀번호 trim 처리
 		form.loginPw.value = form.loginPw.value.trim();
-		// 비밀번호 입력값이 있을 경우
 		if (form.loginPw.value.length > 0) {
-			// 비밀번호 확인 trim 처리
 			form.loginPwConfirm.value = form.loginPwConfirm.value.trim();
-			// 비밀번호 확인 입력값이 없을 경우 알림
 			if (form.loginPwConfirm.value.length == 0) {
-				alert('비밀번호 확인을 입력해주세요.');
+				alert('비밀번호 확인을 입력해주세요');
 				form.loginPwConfirm.focus();
 				return;
 			}
-			// 비밀번호 일치 여부 확인
 			if (form.loginPw.value != form.loginPwConfirm.value) {
-				alert('비밀번호가 일치하지 않습니다.');
+				alert('비밀번호가 일치하지 않습니다');
 				form.loginPw.focus();
 				return;
 			}
 		}
-
-		// 이름 trim 처리
 		form.name.value = form.name.value.trim();
-		// 닉네임 trim 처리
 		form.nickname.value = form.nickname.value.trim();
-		// 전화번호 trim 처리
 		form.cellphoneNum.value = form.cellphoneNum.value.trim();
-		// 이메일 trim 처리
 		form.email.value = form.email.value.trim();
 
-		// 폼 제출 완료 상태로 변경
 		MemberModify__submitFormDone = true;
-		// 폼 제출
 		form.submit();
 	}
 </script>

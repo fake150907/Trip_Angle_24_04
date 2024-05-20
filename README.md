@@ -6,40 +6,51 @@ ___
 
 # 📌 프로젝트 소개
 ___
-* TripAngle은 여행을 준비하는 사람들을 위한 정보 제공과 스타일링 서비스를 병합하여 재공합니다.
+* TripAngle은 여행을 준비하는 사람들을 위한 정보 제공과 스타일링 서비스를 병합하여 제공합니다.
 *  유저는 여행 장소 및 여행 일정을 지정하여, 해당 여행지에 대한 상세 정보, 여행지에 적합한 스타일링 정보, 추천할만한 여행 장소 정보 등을 제공받을 수 있습니다.
 
 # 📅 개발 기간
 ___
 - 2024.04.08 ~ 2024.05.09
 
-# 👥 팀원 구성
+# 👨‍👩‍👧‍👦 팀원 구성
 ___
 |서명원|장윤린|윤가연|신규섭|
 |:---:|:---:|:---:|:---:|
-|<img src="https://velog.velcdn.com/images/yunlinit/post/03484ed2-c09c-415c-b78c-bd098012aa8b/image.jpg" height="400"/> |<img src="https://velog.velcdn.com/images/yunlinit/post/1260ec4b-492c-41dc-9606-d9f2a8e4ca95/image.jpg" height="400"/>|<img src="https://velog.velcdn.com/images/yunlinit/post/1ee12c41-2fee-4f8c-991d-0f05538a93df/image.jpg" height="400"/>|<img src="https://velog.velcdn.com/images/yunlinit/post/e11db386-253c-4de1-94cd-908cd7c5ab74/image.jpg" height="400"/>|
+|<img src="https://velog.velcdn.com/images/yunlinit/post/80c47f35-5ab5-4f47-8713-7eebfe35efa3/image.jpg" width ="185" height="280"/> |<img src="https://velog.velcdn.com/images/yunlinit/post/920757ad-f23d-4ea7-b4b7-13a9bbb893ef/image.jpg" width ="190" height="280"/>|<img src="https://velog.velcdn.com/images/yunlinit/post/b12df080-9bb5-4a21-9b9a-706c0b6052e2/image.jpg" width ="190" height="280"/>|<img src="https://velog.velcdn.com/images/yunlinit/post/6ec92887-7129-4720-bf84-293c0813b83a/image.jpg" width ="195" height="280"/>|
 |insamjoo300@gmail.com|yunlinit@gmail.com|yungayeon223@gmail.com|tlstlsrbrb11@gmail.com|
 
 
 
 # 🛠 기술스택
 ___
-* Front: HTML, CSS, Javascript, Jquery3, Tailwind, DaisyUI
-* Front-API: Weather API, Free Weather API
-* 웹-프레임워크: 구글 앱 스크립트
-* Back-개발언어: Java, Python
-* Back-프레임워크: SpringBoot 3, FastAPI, Selenium
-* Back-라이브러리: Langchain, BeautifulSoup, Lombok, Tomcat
-* 템플릿 엔진: JSP
-* ORM: Mybatis 3
-* DB: MySQL 10
-* 쿼리 브라우저: SQLYog
-* 형성 관리: Git, GitHub
-* 협업툴: Discord, Google 스프레드시트, Google 문서, 클로바노트
-* 디자인: Figma
-* 개발환경: Jdk 1.7, MAVEN, Spring Tool Suit 4, Visual Studio Code, Window 10
+- **언어**
+  - Java, Python
+- **Front-end**
+  - HTML, CSS, JavaScript, jQuery, Tailwind, daisyUI
+  - API: Open Weather API, Open Meteo API
+- **Back-end**
+  - 프레임워크 : SpringBoot, Selenium, FastAPI
+  - 라이브러리 : Langchain, BeautifulSoup, Lombok, Tomcat
+  - 템플릿 엔진 : JSP
+  - ORM : Mybatis
+- **DB**
+  - MySQL
+  - 쿼리 브라우저 : SQLyog
+- **버전 관리**
+  - Git, GitHub
+- **디자인**
+  - Figma
+- **협업 툴**
+  - Discord, Google 스프레드시트, Google 문서, 클로바노트
+- **개발 환경**
+  - JDK, MAVEN, Spring Tool Suit 4, Visual Studio Code, Window 10
+  - 웹-프레임워크: 구글 앱 스크립트
 
+## ERD 구조
 
+![](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2F1J00E%2FbtsHumNYl9w%2FQkavhQhkAPtGc7tEKkwpH1%2Fimg.png)
+- [ERD 링크](https://www.erdcloud.com/d/uBmHGrDrDXbLRwjhX)
 # 🙋‍♂️ 역할 분담
 ---
 ### 🐱‍💻서명원

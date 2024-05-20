@@ -117,402 +117,329 @@
 // 		  ],
 // 		};
 		
-// URL에서 파라미터를 추출하는 함수
 function getUriParams(uri) {
-  // 공백 제거
-  uri = uri.trim();
-  
-  // '&amp;'를 '&'로 변환
-  uri = uri.replaceAll("&amp;", "&");
+	  uri = uri.trim();
+	  uri = uri.replaceAll("&amp;", "&");
+	  if (uri.indexOf("#") !== -1) {
+	    let pos = uri.indexOf("#");
+	    uri = uri.substr(0, pos);
+	  }
 
-  // URL에 '#'이 포함된 경우 '#' 이후의 문자열 제거
-  if (uri.indexOf("#") !== -1) {
-    let pos = uri.indexOf("#");
-    uri = uri.substr(0, pos);
-  }
+	  let params = {};
 
-  // 파라미터를 저장할 객체 초기화
-  let params = {};
+	  uri.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (str, key, value) {
+	    params[key] = value;
+	  });
+	  return params;
+	}
 
-  // 정규 표현식을 사용하여 URL에서 파라미터를 추출
-  uri.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (str, key, value) {
-    params[key] = value;
-  });
+	function codepenPlugin() {
+	  const toHTMLRenderers = {
+	    codepen(node) {
+	      const html = renderCodepen(node.literal);
 
-  // 파라미터 객체 반환
-  return params;
-}
+	      return [
+	        { type: "openTag", tagName: "div", outerNewLine: true },
+	        { type: "html", content: html },
+	        { type: "closeTag", tagName: "div", outerNewLine: true }
+	      ];
+	    }
+	  };
 
-//CodePen을 렌더링하는 플러그인 함수
-function codepenPlugin() {
-  // toHTMLRenderers 객체 정의
-  const toHTMLRenderers = {
-    // codepen 노드를 처리하는 함수
-    codepen(node) {
-      // codepen 노드를 HTML로 렌더링
-      const html = renderCodepen(node.literal);
+	  function renderCodepen(uri) {
+	    let uriParams = getUriParams(uri);
 
-      // 렌더링 결과를 반환
-      return [
-        { type: "openTag", tagName: "div", outerNewLine: true },
-        { type: "html", content: html },
-        { type: "closeTag", tagName: "div", outerNewLine: true }
-      ];
-    }
-  };
+	    let height = 400;
 
-  // CodePen을 iframe으로 렌더링하는 함수
-  function renderCodepen(uri) {
-    // URL에서 파라미터를 추출
-    let uriParams = getUriParams(uri);
+	    let preview = "";
 
-    // 기본 높이를 400으로 설정
-    let height = 400;
+	    if (uriParams.height) {
+	      height = uriParams.height;
+	    }
 
-    // 파라미터에 height가 있으면 해당 값으로 설정
-    if (uriParams.height) {
-      height = uriParams.height;
-    }
+	    let width = "100%";
 
-    // 기본 너비를 100%로 설정
-    let width = "100%";
+	    if (uriParams.width) {
+	      width = uriParams.width;
+	    }
 
-    // 파라미터에 width가 있으면 해당 값으로 설정
-    if (uriParams.width) {
-      width = uriParams.width;
-    }
+	    if (!isNaN(width)) {
+	      width += "px";
+	    }
 
-    // width가 숫자이면 'px' 단위를 추가
-    if (!isNaN(width)) {
-      width += "px";
-    }
+	    let iframeUri = uri;
 
-    // iframe의 URL을 설정
-    let iframeUri = uri;
+	    if (iframeUri.indexOf("#") !== -1) {
+	      let pos = iframeUri.indexOf("#");
+	      iframeUri = iframeUri.substr(0, pos);
+	    }
 
-    // URL에 '#'이 포함된 경우 '#' 이후의 문자열 제거
-    if (iframeUri.indexOf("#") !== -1) {
-      let pos = iframeUri.indexOf("#");
-      iframeUri = iframeUri.substr(0, pos);
-    }
+	    return (
+	      '<iframe height="' +
+	      height +
+	      '" style="width: ' +
+	      width +
+	      ';" scrolling="no" title="" src="' +
+	      iframeUri +
+	      '" frameborder="no" allowtransparency="true" allowfullscreen="true"></iframe>'
+	    );
+	  }
 
-    // iframe HTML 문자열 생성 및 반환
-    return (
-      '<iframe height="' +
-      height +
-      '" style="width: ' +
-      width +
-      ';" scrolling="no" title="" src="' +
-      iframeUri +
-      '" frameborder="no" allowtransparency="true" allowfullscreen="true"></iframe>'
-    );
-  }
-
-  // 플러그인 객체 반환
-  return { toHTMLRenderers };
-}
+	  return { toHTMLRenderers };
+	}
 	// 유튜브 플러그인 끝
 
 	// repl 플러그인 시작
-// repl.it을 렌더링하는 플러그인 함수
-function replPlugin() {
-  // toHTMLRenderers 객체 정의
-  const toHTMLRenderers = {
-    // repl 노드를 처리하는 함수
-    repl(node) {
-      // repl 노드를 HTML로 렌더링
-      const html = renderRepl(node.literal);
+	function replPlugin() {
+	  const toHTMLRenderers = {
+	    repl(node) {
+	      const html = renderRepl(node.literal);
 
-      // 렌더링 결과를 반환
-      return [
-        { type: "openTag", tagName: "div", outerNewLine: true },
-        { type: "html", content: html },
-        { type: "closeTag", tagName: "div", outerNewLine: true }
-      ];
-    }
-  };
+	      return [
+	        { type: "openTag", tagName: "div", outerNewLine: true },
+	        { type: "html", content: html },
+	        { type: "closeTag", tagName: "div", outerNewLine: true }
+	      ];
+	    }
+	  };
 
-  // repl.it을 iframe으로 렌더링하는 함수
-  function renderRepl(uri) {
-    // URL에서 파라미터를 추출
-    var uriParams = getUriParams(uri);
+	  function renderRepl(uri) {
+	    var uriParams = getUriParams(uri);
 
-    // 기본 높이를 400으로 설정
-    var height = 400;
+	    var height = 400;
 
-    // 파라미터에 height가 있으면 해당 값으로 설정
-    if (uriParams.height) {
-      height = uriParams.height;
-    }
+	    if (uriParams.height) {
+	      height = uriParams.height;
+	    }
 
-    // iframe HTML 문자열 생성 및 반환
-    return (
-      '<iframe frameborder="0" width="100%" height="' +
-      height +
-      'px" src="' +
-      uri +
-      '"></iframe>'
-    );
-  }
+	    return (
+	      '<iframe frameborder="0" width="100%" height="' +
+	      height +
+	      'px" src="' +
+	      uri +
+	      '"></iframe>'
+	    );
+	  }
 
-  // 플러그인 객체 반환
-  return { toHTMLRenderers };
-}
+	  return { toHTMLRenderers };
+	}
 
-// YouTube를 렌더링하는 플러그인 함수
-function youtubePlugin() {
-  // toHTMLRenderers 객체 정의
-  const toHTMLRenderers = {
-    // youtube 노드를 처리하는 함수
-    youtube(node) {
-      // youtube 노드를 HTML로 렌더링
-      const html = renderYoutube(node.literal);
+	function youtubePlugin() {
+	  const toHTMLRenderers = {
+	    youtube(node) {
+	      const html = renderYoutube(node.literal);
 
-      // 렌더링 결과를 반환
-      return [
-        { type: "openTag", tagName: "div", outerNewLine: true },
-        { type: "html", content: html },
-        { type: "closeTag", tagName: "div", outerNewLine: true }
-      ];
-    }
-  };
+	      return [
+	        { type: "openTag", tagName: "div", outerNewLine: true },
+	        { type: "html", content: html },
+	        { type: "closeTag", tagName: "div", outerNewLine: true }
+	      ];
+	    }
+	  };
 
-  // YouTube 동영상을 iframe으로 렌더링하는 함수
-  function renderYoutube(uri) {
-    // URL의 다양한 형식을 표준화된 형식으로 변환
-    uri = uri.replace("https://www.youtube.com/watch?v=", "");
-    uri = uri.replace("http://www.youtube.com/watch?v=", "");
-    uri = uri.replace("www.youtube.com/watch?v=", "");
-    uri = uri.replace("youtube.com/watch?v=", "");
-    uri = uri.replace("https://youtu.be/", "");
-    uri = uri.replace("http://youtu.be/", "");
-    uri = uri.replace("youtu.be/", "");
+	  function renderYoutube(uri) {
+	    uri = uri.replace("https://www.youtube.com/watch?v=", "");
+	    uri = uri.replace("http://www.youtube.com/watch?v=", "");
+	    uri = uri.replace("www.youtube.com/watch?v=", "");
+	    uri = uri.replace("youtube.com/watch?v=", "");
+	    uri = uri.replace("https://youtu.be/", "");
+	    uri = uri.replace("http://youtu.be/", "");
+	    uri = uri.replace("youtu.be/", "");
 
-    // URL에서 파라미터를 추출
-    let uriParams = getUriParams(uri);
+	    let uriParams = getUriParams(uri);
 
-    // 기본 너비와 높이를 100%로 설정
-    let width = "100%";
-    let height = "100%";
+	    let width = "100%";
+	    let height = "100%";
 
-    // 기본 최대 너비를 500으로 설정
-    let maxWidth = 500;
+	    let maxWidth = 500;
 
-    // 파라미터에 'max-width'가 없고 'ratio'가 '9/16'인 경우 기본 최대 너비를 300으로 설정
-    if (!uriParams["max-width"] && uriParams["ratio"] == "9/16") {
-      uriParams["max-width"] = 300;
-    }
+	    if (!uriParams["max-width"] && uriParams["ratio"] == "9/16") {
+	      uriParams["max-width"] = 300;
+	    }
 
-    // 파라미터에 'max-width'가 있으면 해당 값으로 설정
-    if (uriParams["max-width"]) {
-      maxWidth = uriParams["max-width"];
-    }
+	    if (uriParams["max-width"]) {
+	      maxWidth = uriParams["max-width"];
+	    }
 
-    // 기본 비율을 16/9로 설정
-    let ratio = "16/9";
+	    let ratio = "16/9";
 
-    // 파라미터에 'ratio'가 있으면 해당 값으로 설정
-    if (uriParams["ratio"]) {
-      ratio = uriParams["ratio"];
-    }
+	    if (uriParams["ratio"]) {
+	      ratio = uriParams["ratio"];
+	    }
 
-    // 기본 왼쪽 마진을 auto로 설정
-    let marginLeft = "auto";
+	    let marginLeft = "auto";
 
-    // 파라미터에 'margin-left'가 있으면 해당 값으로 설정
-    if (uriParams["margin-left"]) {
-      marginLeft = uriParams["margin-left"];
-    }
+	    if (uriParams["margin-left"]) {
+	      marginLeft = uriParams["margin-left"];
+	    }
 
-    // 기본 오른쪽 마진을 auto로 설정
-    let marginRight = "auto";
+	    let marginRight = "auto";
 
-    // 파라미터에 'margin-right'가 있으면 해당 값으로 설정
-    if (uriParams["margin-right"]) {
-      marginRight = uriParams["margin-right"];
-    }
+	    if (uriParams["margin-right"]) {
+	      marginRight = uriParams["margin-right"];
+	    }
 
-    // YouTube 동영상 ID 추출
-    let youtubeId = uri;
+	    let youtubeId = uri;
 
-    // URL에 '?'가 포함된 경우 '?' 이전의 문자열만 사용
-    if (youtubeId.indexOf("?") !== -1) {
-      let pos = uri.indexOf("?");
-      youtubeId = youtubeId.substr(0, pos);
-    }
+	    if (youtubeId.indexOf("?") !== -1) {
+	      let pos = uri.indexOf("?");
+	      youtubeId = youtubeId.substr(0, pos);
+	    }
 
-    // YouTube 동영상을 iframe으로 렌더링하는 HTML 문자열 생성 및 반환
-    return (
-      '<div style="max-width:' +
-      maxWidth +
-      "px; margin-left:" +
-      marginLeft +
-      "; margin-right:" +
-      marginRight +
-      ';" class="ratio-' +
-      ratio +
-      ' relative"><iframe class="absolute top-0 left-0 w-full" width="' +
-      width +
-      '" height="' +
-      height +
-      '" src="https://www.youtube.com/embed/' +
-      youtubeId +
-      '" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>'
-    );
-  }
+	    return (
+	      '<div style="max-width:' +
+	      maxWidth +
+	      "px; margin-left:" +
+	      marginLeft +
+	      "; margin-right:" +
+	      marginRight +
+	      ';" class="ratio-' +
+	      ratio +
+	      ' relative"><iframe class="absolute top-0 left-0 w-full" width="' +
+	      width +
+	      '" height="' +
+	      height +
+	      '" src="https://www.youtube.com/embed/' +
+	      youtubeId +
+	      '" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>'
+	    );
+	  }
+	  // 유튜브 플러그인 끝
 
-  // 플러그인 객체 반환
-  return { toHTMLRenderers };
-}
+	  return { toHTMLRenderers };
+	}
 
 	// katex 플러그인
-// KaTeX 플러그인 함수
-function katexPlugin() {
-  // toHTMLRenderers 객체 정의
-  const toHTMLRenderers = {
-    // katex 노드를 처리하는 함수
-    katex(node) {
-      // KaTeX 수식을 HTML로 렌더링
-      let html = katex.renderToString(node.literal, {
-        throwOnError: false
-      });
+	function katexPlugin() {
+	  const toHTMLRenderers = {
+	    katex(node) {
+	      let html = katex.renderToString(node.literal, {
+	        throwOnError: false
+	      });
 
-      // 렌더링 결과를 반환
-      return [
-        { type: "openTag", tagName: "div", outerNewLine: true },
-        { type: "html", content: html },
-        { type: "closeTag", tagName: "div", outerNewLine: true }
-      ];
-    }
-  };
+	      return [
+	        { type: "openTag", tagName: "div", outerNewLine: true },
+	        { type: "html", content: html },
+	        { type: "closeTag", tagName: "div", outerNewLine: true }
+	      ];
+	    }
+	  };
 
-  // 플러그인 객체 반환
-  return { toHTMLRenderers };
-}
+	  return { toHTMLRenderers };
+	}
 
-// 차트 옵션 정의
-const ToastEditor__chartOptions = {
-  minWidth: 100,
-  maxWidth: 600,
-  minHeight: 100,
-  maxHeight: 300
-};
+	const ToastEditor__chartOptions = {
+	  minWidth: 100,
+	  maxWidth: 600,
+	  minHeight: 100,
+	  maxHeight: 300
+	};
 
-// Toast UI 에디터 초기화 함수
-function ToastEditor__init() {
-  // 모든 .toast-ui-editor 요소에 대해 반복
-  $(".toast-ui-editor").each(function (index, node) {
-    const $node = $(node); // jQuery 객체로 변환
-    const $initialValueEl = $node.find(" > script"); // 자식 script 요소 찾기
-    const initialValue =
-      $initialValueEl.length == 0 ? "" : $initialValueEl.html().trim(); // 초기 값 설정
-    
-    const theme = localStorage.getItem('theme') ?? "light"; // 테마 설정
+	function ToastEditor__init() {
+	  $(".toast-ui-editor").each(function (index, node) {
+	    const $node = $(node);
+	    const $initialValueEl = $node.find(" > script");
+	    const initialValue =
+	      $initialValueEl.length == 0 ? "" : $initialValueEl.html().trim();
+	    
+	    const theme = localStorage.getItem('theme') ?? "light";
 
-    // Toast UI 에디터 인스턴스 생성
-    const editor = new toastui.Editor({
-      el: node, // 에디터를 삽입할 DOM 요소
-      previewStyle: "vertical", // 미리보기 스타일
-      initialValue: initialValue, // 초기 값
-      height: "600px", // 에디터 높이
-      theme: theme, // 테마
-      plugins: [
-        [toastui.Editor.plugin.chart, ToastEditor__chartOptions], // 차트 플러그인
-        [toastui.Editor.plugin.codeSyntaxHighlight, { highlighter: Prism }], // 코드 하이라이팅 플러그인
-        toastui.Editor.plugin.colorSyntax, // 색상 플러그인
-        toastui.Editor.plugin.tableMergedCell, // 테이블 병합 셀 플러그인
-        toastui.Editor.plugin.uml, // UML 플러그인
-        katexPlugin, // KaTeX 플러그인
-        youtubePlugin, // 유튜브 플러그인
-        codepenPlugin, // 코드펜 플러그인
-        replPlugin // repl.it 플러그인
-      ],
-      // 커스텀 HTML Sanitizer 설정
-      customHTMLSanitizer: (html) => {
-        return (
-          DOMPurify.sanitize(html, {
-            ADD_TAGS: ["iframe"], // 허용할 태그 추가
-            ADD_ATTR: [
-              "width",
-              "height",
-              "allow",
-              "allowfullscreen",
-              "frameborder",
-              "scrolling",
-              "style",
-              "title",
-              "loading",
-              "allowtransparency"
-            ]
-          }) || ""
-        );
-      }
-    });
+	    const editor = new toastui.Editor({
+	      el: node,
+	      previewStyle: "vertical",
+	      initialValue: initialValue,
+	      height: "600px",
+	      theme : theme,
+	      plugins: [
+	        [toastui.Editor.plugin.chart, ToastEditor__chartOptions],
+	        [toastui.Editor.plugin.codeSyntaxHighlight, { highlighter: Prism }],
+	        toastui.Editor.plugin.colorSyntax,
+	        toastui.Editor.plugin.tableMergedCell,
+	        toastui.Editor.plugin.uml,
+	        katexPlugin,
+	        youtubePlugin,
+	        codepenPlugin,
+	        replPlugin
+	      ],
+	      customHTMLSanitizer: (html) => {
+	        return (
+	          DOMPurify.sanitize(html, {
+	            ADD_TAGS: ["iframe"],
+	            ADD_ATTR: [
+	              "width",
+	              "height",
+	              "allow",
+	              "allowfullscreen",
+	              "frameborder",
+	              "scrolling",
+	              "style",
+	              "title",
+	              "loading",
+	              "allowtransparency"
+	            ]
+	          }) || ""
+	        );
+	      }
+	    });
 
-    // 에디터 인스턴스를 jQuery 데이터로 저장
-    $node.data("data-toast-editor", editor);
-  });
-}
+	    $node.data("data-toast-editor", editor);
+	  });
+	}
 
-// Toast UI 뷰어 초기화 함수
-function ToastEditorView__init() {
-  // 모든 .toast-ui-viewer 요소에 대해 반복
-  $(".toast-ui-viewer").each(function (index, node) {
-    const $node = $(node); // jQuery 객체로 변환
-    const $initialValueEl = $node.find(" > script"); // 자식 script 요소 찾기
-    const initialValue =
-      $initialValueEl.length == 0 ? "" : $initialValueEl.html().trim(); // 초기 값 설정
-    $node.empty(); // 요소 내용 비우기
-    
-    const theme = localStorage.getItem('theme') ?? "light"; // 테마 설정
+	function ToastEditorView__init() {
+	  $(".toast-ui-viewer").each(function (index, node) {
+		  
+	    const $node = $(node);
+	    const $initialValueEl = $node.find(" > script");
+	    const initialValue =
+	      $initialValueEl.length == 0 ? "" : $initialValueEl.html().trim();
+	    $node.empty();
+	    
+	    const theme = localStorage.getItem('theme') ?? "light";
 
-    // Toast UI 뷰어 인스턴스 생성
-    let viewer = new toastui.Editor.factory({
-      el: node, // 뷰어를 삽입할 DOM 요소
-      initialValue: initialValue, // 초기 값
-      viewer: true, // 뷰어 모드
-      theme: theme, // 테마
-      plugins: [
-        [toastui.Editor.plugin.codeSyntaxHighlight, { highlighter: Prism }], // 코드 하이라이팅 플러그인
-        toastui.Editor.plugin.colorSyntax, // 색상 플러그인
-        toastui.Editor.plugin.tableMergedCell, // 테이블 병합 셀 플러그인
-        toastui.Editor.plugin.uml, // UML 플러그인
-        katexPlugin, // KaTeX 플러그인
-        youtubePlugin, // 유튜브 플러그인
-        codepenPlugin, // 코드펜 플러그인
-        replPlugin // repl.it 플러그인
-      ],
-      // 커스텀 HTML Sanitizer 설정
-      customHTMLSanitizer: (html) => {
-        return (
-          DOMPurify.sanitize(html, {
-            ADD_TAGS: ["iframe"], // 허용할 태그 추가
-            ADD_ATTR: [
-              "width",
-              "height",
-              "allow",
-              "allowfullscreen",
-              "frameborder",
-              "scrolling",
-              "style",
-              "title",
-              "loading",
-              "allowtransparency"
-            ]
-          }) || ""
-        );
-      }
-    });
+	    let viewer = new toastui.Editor.factory({
+	      el: node,
+	      initialValue: initialValue,
+	      viewer: true,
+	      theme : theme,
+	      plugins: [
+	        [toastui.Editor.plugin.codeSyntaxHighlight, { highlighter: Prism }],
+	        toastui.Editor.plugin.colorSyntax,
+	        toastui.Editor.plugin.tableMergedCell,
+	        toastui.Editor.plugin.uml,
+	        katexPlugin,
+	        youtubePlugin,
+	        codepenPlugin,
+	        replPlugin
+	      ],
+	      customHTMLSanitizer: (html) => {
+	        return (
+	          DOMPurify.sanitize(html, {
+	            ADD_TAGS: ["iframe"],
+	            ADD_ATTR: [
+	              "width",
+	              "height",
+	              "allow",
+	              "allowfullscreen",
+	              "frameborder",
+	              "scrolling",
+	              "style",
+	              "title",
+	              "loading",
+	              "allowtransparency"
+	            ]
+	          }) || ""
+	        );
+	      }
+	    });
 
-    // 뷰어 인스턴스를 jQuery 데이터로 저장
-    $node.data("data-toast-editor", viewer);
-  });
-}
+	    $node.data("data-toast-editor", viewer);
+	  });
+	}
 
-// 문서가 준비되었을 때 에디터와 뷰어 초기화 함수 호출
-$(function () {
-  ToastEditor__init();
-  ToastEditorView__init();
-});
+	$(function () {
+	  ToastEditor__init();
+	  ToastEditorView__init();
+	});
 
 </script>
