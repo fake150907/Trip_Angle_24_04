@@ -20,7 +20,7 @@ ___
 |<img src="https://velog.velcdn.com/images/yunlinit/post/80c47f35-5ab5-4f47-8713-7eebfe35efa3/image.jpg" width ="185" height="280"/> |<img src="https://velog.velcdn.com/images/yunlinit/post/920757ad-f23d-4ea7-b4b7-13a9bbb893ef/image.jpg" width ="190" height="280"/>|<img src="https://velog.velcdn.com/images/yunlinit/post/b12df080-9bb5-4a21-9b9a-706c0b6052e2/image.jpg" width ="190" height="280"/>|<img src="https://velog.velcdn.com/images/yunlinit/post/6ec92887-7129-4720-bf84-293c0813b83a/image.jpg" width ="195" height="280"/>|
 |insamjoo300@gmail.com|yunlinit@gmail.com|yungayeon223@gmail.com|tlstlsrbrb11@gmail.com|
 
-
+<img src="https://velog.velcdn.com/images/yunlinit/post/f7e048cc-cde0-4945-82c5-447df2aac9ee/image.jpg" width ="650" height="auto"/>
 
 # 🛠 기술스택
 ___
