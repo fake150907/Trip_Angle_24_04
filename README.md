@@ -24,22 +24,33 @@ ___
 
 # 🛠 기술스택
 ___
-* Front: HTML, CSS, Javascript, Jquery3, Tailwind, DaisyUI
-* Front-API: Open Weather API, Open Meteo API
-* 웹-프레임워크: 구글 앱 스크립트
-* Back-개발언어: Java, Python
-* Back-프레임워크: SpringBoot 3, FastAPI, Selenium
-* Back-라이브러리: Langchain, BeautifulSoup, Lombok, Tomcat
-* 템플릿 엔진: JSP
-* ORM: Mybatis 3
-* DB: MySQL 10
-* 쿼리 브라우저: SQLYog
-* 형성 관리: Git, GitHub
-* 협업툴: Discord, Google 스프레드시트, Google 문서, 클로바노트
-* 디자인: Figma
-* 개발환경: Jdk 1.7, MAVEN, Spring Tool Suit 4, Visual Studio Code, Window 10
+- **언어**
+  - Java, Python
+- **Front-end**
+  - HTML, CSS, JavaScript, jQuery, Tailwind, daisyUI
+  - API: Open Weather API, Open Meteo API
+- **Back-end**
+  - 프레임워크 : SpringBoot, Selenium, FastAPI
+  - 라이브러리 : Langchain, BeautifulSoup, Lombok, Tomcat
+  - 템플릿 엔진 : JSP
+  - ORM : Mybatis
+- **DB**
+  - MySQL
+  - 쿼리 브라우저 : SQLyog
+- **버전 관리**
+  - Git, GitHub
+- **디자인**
+  - Figma
+- **협업 툴**
+  - Discord, Google 스프레드시트, Google 문서, 클로바노트
+- **개발 환경**
+  - JDK, MAVEN, Spring Tool Suit 4, Visual Studio Code, Window 10
+  - 웹-프레임워크: 구글 앱 스크립트
 
+## ERD 구조
 
+![](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2F1J00E%2FbtsHumNYl9w%2FQkavhQhkAPtGc7tEKkwpH1%2Fimg.png)
+- [ERD 링크](https://www.erdcloud.com/d/uBmHGrDrDXbLRwjhX)
 # 🙋‍♂️ 역할 분담
 ---
 ### 🐱‍💻서명원
