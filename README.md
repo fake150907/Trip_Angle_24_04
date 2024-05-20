@@ -33,7 +33,7 @@ ___
   - 프레임워크 : SpringBoot, Selenium, FastAPI
   - 라이브러리 : Langchain, BeautifulSoup, Lombok, Tomcat
   - 템플릿 엔진 : JSP
-  - ORM : Mybatis
+  - ORM : MyBatis
 - **DB**
   - MySQL
   - 쿼리 브라우저 : SQLyog
