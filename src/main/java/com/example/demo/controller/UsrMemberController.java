@@ -100,7 +100,6 @@ public class UsrMemberController {
 		if (rq.isLogined()) {
 			return Ut.jsHistoryBack("F-A", "이미 로그인 했습니다.");
 		}
-
 		// 로그인 페이지 반환
 		return "usr/member/login";
 	}
