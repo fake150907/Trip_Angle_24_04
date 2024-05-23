@@ -33,7 +33,6 @@
                             <div style="display: inline-block; font-weight: 600; margin-left: 4em;">연락처</div> <input
                             class="title input input-bordered input-md w-full max-w-xs" autocomplete="off" type="text"
                             placeholder="전화번호를 입력해주세요" name="contact" style="margin-left: 1.8em" /></td>
-
                     </tr>
 
                     <tr>
@@ -47,9 +46,6 @@
                                 style="width: 780px; height: 300px;"></textarea> 
                             </div></td>
                     </tr>
-
-
-
                     <tr>
                         <th></th>
                         </br>
@@ -62,8 +58,6 @@
 
                     </tr>
                 </tbody>
-
-
             </table>
         </form>
 

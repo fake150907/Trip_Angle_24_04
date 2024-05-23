@@ -870,7 +870,7 @@ img {
 	position: relative;
 	margin: auto;
 	margin-top: 100px;
-	margin-bottom: 80px;
+
 }
 
 /* Caption text */
