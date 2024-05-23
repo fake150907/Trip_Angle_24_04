@@ -20,7 +20,7 @@ ___
 |<img src="https://velog.velcdn.com/images/yunlinit/post/80c47f35-5ab5-4f47-8713-7eebfe35efa3/image.jpg" width ="185" height="280"/> |<img src="https://velog.velcdn.com/images/yunlinit/post/920757ad-f23d-4ea7-b4b7-13a9bbb893ef/image.jpg" width ="190" height="280"/>|<img src="https://velog.velcdn.com/images/yunlinit/post/b12df080-9bb5-4a21-9b9a-706c0b6052e2/image.jpg" width ="190" height="280"/>|<img src="https://velog.velcdn.com/images/yunlinit/post/6ec92887-7129-4720-bf84-293c0813b83a/image.jpg" width ="195" height="280"/>|
 |insamjoo300@gmail.com|yunlinit@gmail.com|yungayeon223@gmail.com|tlstlsrbrb11@gmail.com|
 
-
+<img src="https://velog.velcdn.com/images/yunlinit/post/f7e048cc-cde0-4945-82c5-447df2aac9ee/image.jpg" width ="650" height="auto"/>
 
 # 🛠 기술스택
 ___
@@ -33,7 +33,7 @@ ___
   - 프레임워크 : SpringBoot, Selenium, FastAPI
   - 라이브러리 : Langchain, BeautifulSoup, Lombok, Tomcat
   - 템플릿 엔진 : JSP
-  - ORM : Mybatis
+  - ORM : MyBatis
 - **DB**
   - MySQL
   - 쿼리 브라우저 : SQLyog
@@ -268,6 +268,13 @@ ___
 ![](https://velog.velcdn.com/images/insamju300/post/b763dc5f-0120-4451-913a-4b7c6603da24/image.png)
 - 트립앵글의 회원이 작성한 여행 후기의 상세 내용을 확인 할 수 있습니다.
 
+### [공지사항 리스트]
+![](https://velog.velcdn.com/images/insamju300/post/37d1d8b9-6bba-4893-83cb-88e9b87df418/image.png)
+- 공지사항 목록을 일반 적인 게시판 페이지네이션 형식으로 보여줍니다.
+
+### [공지사항 상세]
+![](https://velog.velcdn.com/images/insamju300/post/11fbb74f-0ebe-44bf-8658-153c91ab96d5/image.png)
+- 운영자가 작성한 공지사항의 상세 내용을 확인할 수 있습니다.
 
 # 📑 TripAngle 환경설정 가이드 북
 
